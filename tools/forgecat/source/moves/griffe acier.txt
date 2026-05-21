@@ -1,0 +1,10 @@
+Nom : Griffe acier
+Type : Acier
+Tiers : 1
+prérequis : Posséder des griffes
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+
+Effets : Inflige 4 dégâts physiques + attaque.

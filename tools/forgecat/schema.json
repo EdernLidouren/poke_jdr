@@ -1,0 +1,42 @@
+{
+  "categories": {
+    "moves": {
+      "id_prefix": "move",
+      "required_fields": ["nom", "tiers", "type", "effets"]
+    },
+    "abilities": {
+      "id_prefix": "ability",
+      "required_fields": ["nom", "tiers", "type", "effets"]
+    }
+  },
+  "fields": {
+    "nom": { "type": "text" },
+    "tiers": { "type": "int" },
+    "type": {
+      "type": "enum",
+      "values": ["acier"]
+    },
+    "évolutif": {
+      "type": "enum",
+      "values": ["oui", "non"]
+    },
+    "prérequis": { "type": "text" },
+    "portée": {
+      "type": "enum",
+      "values": ["contact", "courte", "moyenne", "longue"]
+    },
+    "cible": {
+      "type": "enum",
+      "values": ["personnelle", "une cible"]
+    },
+    "utilisation": {
+      "type": "enum",
+      "values": ["action", "réaction", "action rapide"]
+    },
+    "concentration": {
+      "type": "enum",
+      "values": ["oui", "non"]
+    },
+    "effets": { "type": "text" }
+  }
+}
