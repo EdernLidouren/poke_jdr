@@ -1,5 +1,4 @@
 import re
-import json
 import unicodedata
 from pathlib import Path
 
@@ -7,9 +6,6 @@ from validator import validate
 
 
 SOURCE_DIR = Path("source")
-DIST_DIR = Path("dist")
-ERRORS_FILE = DIST_DIR / "errors.txt"
-CATALOGUE_FILE = DIST_DIR / "catalogue.json"
 
 
 def normalize(text: str) -> str:
@@ -89,17 +85,5 @@ def parse_catalogue(schema: dict) -> tuple[dict, list[str]]:
             seen_ids[entity_id] = str(filepath)
             entity["id"] = entity_id
             catalogue[category].append(entity)
-
-    DIST_DIR.mkdir(exist_ok=True)
-
-    if all_errors:
-        with open(ERRORS_FILE, "w", encoding="utf-8") as f:
-            f.write("RAPPORT D'ERREURS FORGECAT\n")
-            f.write("=" * 40 + "\n")
-            for err in all_errors:
-                f.write(err + "\n")
-    else:
-        with open(CATALOGUE_FILE, "w", encoding="utf-8") as f:
-            json.dump(catalogue, f, ensure_ascii=False, indent=2)
 
     return catalogue, all_errors

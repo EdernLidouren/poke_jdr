@@ -1,0 +1,28 @@
+{
+  "moves": [
+    {
+      "nom": "Griffe acier",
+      "type": "Acier",
+      "tiers": "1",
+      "prérequis": "Posséder des griffes",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_griffe_acier"
+    }
+  ],
+  "abilities": [
+    {
+      "nom": "Griffe acier",
+      "type": "Acier",
+      "tiers": "1",
+      "prérequis": "Posséder des griffes",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "ability_griffe_acier"
+    }
+  ]
+}
