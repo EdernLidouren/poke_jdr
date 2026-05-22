@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\js\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\.claude\")",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

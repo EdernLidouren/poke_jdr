@@ -7,6 +7,10 @@
     "abilities": {
       "id_prefix": "ability",
       "required_fields": ["nom", "tiers", "type", "effets"]
+    },
+    "items": {
+      "id_prefix": "item",
+      "required_fields": ["nom", "tiers", "effets"]
     }
   },
   "fields": {

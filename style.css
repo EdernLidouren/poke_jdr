@@ -1,0 +1,45 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: monospace;
+  font-size: 14px;
+  background: #f5f5f5;
+  color: #222;
+  padding: 1rem;
+}
+
+#app {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.erreur {
+  background: #ffe0e0;
+  border: 1px solid #cc0000;
+  color: #cc0000;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.erreur h2 {
+  margin-bottom: 0.5rem;
+}
+
+pre {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

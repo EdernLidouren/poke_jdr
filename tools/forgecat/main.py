@@ -48,6 +48,20 @@ def write_catalogue(catalogue: dict):
     print(f"Catalogue écrit vers {SITE_DATA_DIR / 'catalogue.json'}")
 
 
+def add_catalogue_base(catalogue):
+    """Ajoute au catalogue une base externe. Reçoit un dictionnaire et renvoie un dictionnaire."""
+    catalogue_base = {
+        "types": [
+            "aucun", "feu", "eau", "plante", "électrique", "normal", "glace", "poison", "vol", "sol", "combat", "dragon", "psy", "acier", "spectre", "fée", "ténèbres", "insecte",
+            "feu (fantôme)", "eau (fantôme)", "plante (fantôme)", "électrique (fantôme)", "normal (fantôme)", "glace (fantôme)", "vol (fantôme)", "sol (fantôme)", "combat (fantôme)", "dragon (fantôme)", "psy (fantôme)", "acier (fantôme)", "spectre (fantôme)", "fée (fantôme)", "ténèbres (fantôme)", "insecte (fantôme)", "poison (fantôme)"
+        ],
+        "skills": [
+            "acrobatie", "perception", "survie"
+        ]
+    }
+    catalogue.update(catalogue_base)
+    return catalogue
+
 def main():
     print("\nFORGECAT — Générateur de catalogue JDR")
     print("=" * 40)
@@ -76,6 +90,8 @@ def main():
         write_errors(all_errors)
         sys.exit(1)
     else:
+        # On ajoute une base au catalogue avant écriture :
+        catalogue = add_catalogue_base(catalogue)
         write_catalogue(catalogue)
         sys.exit(0)
 
