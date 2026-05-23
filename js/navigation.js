@@ -1,4 +1,5 @@
 import { rendreParametres } from './parametres.js';
+import { rendreGeneral }    from './general.js';
 
 const SOUS_ONGLETS = [
   { id: 'general',   label: 'Général' },
@@ -47,6 +48,7 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
     save.sheets.forEach((fiche, i) => {
       const btn = document.createElement('button');
       btn.className = 'onglet' + (ongletActif === i ? ' actif' : '');
+      btn.dataset.ficheIndex = i;
       btn.textContent = fiche.caracs.nom || 'Nouvelle fiche';
       btn.addEventListener('click', () => changerOnglet(i));
       nav.appendChild(btn);
@@ -89,6 +91,8 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
 
     if (ongletActif === 'parametres') {
       rendreParametres(zone, catalogue, save, onSaveChange, remplacerSave);
+    } else if (estFiche() && sousOngletActif === 'general') {
+      rendreGeneral(zone, catalogue, save, onSaveChange);
     } else {
       const div = document.createElement('div');
       div.dataset.tab = estFiche()

@@ -95,6 +95,120 @@ body {
   padding: 0.5rem 0;
 }
 
+/* --- Blocs de contenu --- */
+
+.bloc {
+  margin-bottom: 1.5rem;
+}
+
+.bloc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0.8rem;
+}
+
+.bloc-header h2 {
+  font-size: 1.1rem;
+}
+
+.btn-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: #888;
+  padding: 0.1rem 0.3rem;
+  line-height: 1;
+}
+
+.btn-toggle:hover {
+  color: #333;
+}
+
+/* --- Lignes de champs --- */
+
+.bloc-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+/* display: flex surpasse [hidden] du navigateur — on le rétablit explicitement */
+.bloc-contenu[hidden] {
+  display: none;
+}
+
+.champ-ligne {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.champ-ligne label {
+  width: 7rem;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: #444;
+}
+
+.champ-ligne input[type="text"] {
+  font-family: monospace;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  background: #fff;
+  width: 14rem;
+}
+
+.champ-ligne input[type="number"] {
+  font-family: monospace;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  background: #fff;
+  width: 4rem;
+  text-align: center;
+  /* Masque les flèches natives du navigateur */
+  -moz-appearance: textfield;
+}
+
+.champ-ligne input[type="number"]::-webkit-inner-spin-button,
+.champ-ligne input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.champ-ligne select {
+  font-family: monospace;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0.2rem 0.4rem;
+  background: #fff;
+  min-width: 10rem;
+}
+
+.btn-stepper {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: monospace;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.btn-stepper:hover {
+  background: #e0e0e0;
+}
+
 /* --- Paramètres --- */
 
 .parametres-section h2 {
