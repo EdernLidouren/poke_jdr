@@ -6,6 +6,7 @@ export function rendreGeneral(zone, catalogue, save, onSaveChange) {
   zone.replaceChildren(
     construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChange),
     construireBlocCaracteristiques(caracs, save, onSaveChange),
+    construireBlocCompetences(catalogue, save, onSaveChange),
   );
 }
 
@@ -205,6 +206,66 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange) {
 
   section.append(header, contenu);
   return section;
+}
+
+// =========================================================
+// Bloc Compétences
+// =========================================================
+
+function construireBlocCompetences(catalogue, save, onSaveChange) {
+  const section = document.createElement('section');
+  section.className = 'bloc';
+
+  const header = document.createElement('div');
+  header.className = 'bloc-header';
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Compétences';
+  const btnToggle = creerBtnToggle();
+  header.append(h2, btnToggle);
+
+  const contenu = document.createElement('div');
+  contenu.className = 'bloc-contenu';
+  brancherToggle(btnToggle, contenu);
+
+  const skills = save.sheets[save.fiche_active].skills;
+
+  for (const nom of (catalogue.skills || [])) {
+    if (!skills[nom]) skills[nom] = { base: 0, mod: 0 };
+    const entree = skills[nom];
+
+    const ligne = document.createElement('div');
+    ligne.className = 'stat-ligne';
+
+    const lbl = document.createElement('span');
+    lbl.className = 'stat-label';
+    lbl.textContent = nom;
+
+    const spanTotal = document.createElement('span');
+    spanTotal.className = 'stat-total';
+    spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+
+    const groupeBase = creerStatGroupe('base', entree.base, -3, 3, (val) => {
+      entree.base = val;
+      spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+      onSaveChange(save);
+    });
+
+    const groupeMod = creerStatGroupe('mod', entree.mod, -999, 999, (val) => {
+      entree.mod = val;
+      spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+      onSaveChange(save);
+    });
+
+    ligne.append(lbl, spanTotal, groupeBase, groupeMod);
+    contenu.appendChild(ligne);
+  }
+
+  section.append(header, contenu);
+  return section;
+}
+
+function calcTotalSkill(base, mod) {
+  return Math.min(3, Math.max(-3, base + mod));
 }
 
 // =========================================================

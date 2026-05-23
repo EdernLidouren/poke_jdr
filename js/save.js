@@ -117,14 +117,25 @@ function validateFiche(fiche, catalogue) {
     ? fiche.abilities.filter(id => typeof id === 'string' && idsAbility.has(id))
     : [];
 
-  const idsSkill = new Set((catalogue.skills || []).map(s => s.id));
-  if (!fiche.skills || typeof fiche.skills !== 'object' || Array.isArray(fiche.skills)) {
-    fiche.skills = {};
-  } else {
-    for (const cle of Object.keys(fiche.skills)) {
-      if (!idsSkill.has(cle)) delete fiche.skills[cle];
+  const skillsCatalogue = catalogue.skills || [];
+  const skillsSave = (fiche.skills && typeof fiche.skills === 'object' && !Array.isArray(fiche.skills))
+    ? fiche.skills : {};
+  const nouvellesSkills = {};
+  for (const nom of skillsCatalogue) {
+    const entree = skillsSave[nom];
+    if (
+      entree &&
+      typeof entree === 'object' &&
+      !Array.isArray(entree) &&
+      Number.isInteger(entree.base) &&
+      Number.isInteger(entree.mod)
+    ) {
+      nouvellesSkills[nom] = { base: entree.base, mod: entree.mod };
+    } else {
+      nouvellesSkills[nom] = { base: 0, mod: 0 };
     }
   }
+  fiche.skills = nouvellesSkills;
 
   const idsItem = new Set((catalogue.items || []).map(i => i.id));
   if (!fiche.items || typeof fiche.items !== 'object' || Array.isArray(fiche.items)) {

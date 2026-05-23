@@ -1,7 +1,6 @@
 const PREFIXES = {
   moves: 'move_',
   abilities: 'ability_',
-  skills: 'skill_',
   items: 'item_',
   rules: 'rule_',
 };
@@ -37,6 +36,10 @@ function buildCatalogue(raw) {
         )
       : [];
   }
+
+  db.skills = Array.isArray(raw.skills)
+    ? raw.skills.filter(s => typeof s === 'string')
+    : [];
 
   db.types = Array.isArray(raw.types)
     ? raw.types.filter(t => typeof t === 'string')
