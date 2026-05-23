@@ -17,7 +17,7 @@ async function init() {
   const sauvegarde = loadSave(catalogue);
   persistSave(sauvegarde);
 
-  afficherInterfacePrincipale(sauvegarde);
+  afficherInterfacePrincipale(sauvegarde, (save) => persistSave(save));
 }
 
 init();

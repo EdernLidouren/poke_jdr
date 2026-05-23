@@ -1,3 +1,5 @@
+import { initialiserNavigation } from './navigation.js';
+
 const app = document.getElementById('app');
 
 export function afficherErreurChargement(message) {
@@ -14,12 +16,7 @@ export function afficherErreurChargement(message) {
   app.replaceChildren(div);
 }
 
-export function afficherInterfacePrincipale(sauvegarde) {
-  const titre = document.createElement('h1');
-  titre.textContent = 'Pokefiche';
-
-  const pre = document.createElement('pre');
-  pre.textContent = JSON.stringify(sauvegarde, null, 2);
-
-  app.replaceChildren(titre, pre);
+export function afficherInterfacePrincipale(sauvegarde, onSaveChange) {
+  app.replaceChildren();
+  initialiserNavigation(app, sauvegarde, onSaveChange);
 }

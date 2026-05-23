@@ -25,7 +25,16 @@
       "id": "ability_griffe_acier"
     }
   ],
+  "items": [
+    {
+      "nom": "Ténacité",
+      "tiers": "1",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "item_tenacite"
+    }
+  ],
   "types": [
+    "aucun",
     "feu",
     "eau",
     "plante",
@@ -60,5 +69,10 @@
     "ténèbres (fantôme)",
     "insecte (fantôme)",
     "poison (fantôme)"
+  ],
+  "skills": [
+    "acrobatie",
+    "perception",
+    "survie"
   ]
 }

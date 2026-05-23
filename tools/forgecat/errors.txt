@@ -1,0 +1,3 @@
+RAPPORT D'ERREURS FORGECAT
+========================================
+[AVERTISSEMENT] Aucun fichier .txt dans : source\items
