@@ -13,7 +13,7 @@
     },
     {
       "nom": "Poing feu",
-      "type": "feu",
+      "type": "Feu",
       "tiers": "2",
       "cible": "Personnelle",
       "portée": "Longue",

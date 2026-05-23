@@ -121,25 +121,56 @@ function validateFiche(fiche, catalogue) {
       fiche.moves.current_moves = {};
     } else {
       for (const id of Object.keys(fiche.moves.current_moves)) {
-        if (!idsMove.has(id)) { delete fiche.moves.current_moves[id]; continue; }
+        if (!idsMove.has(id)) {
+          console.warn(`[save] moves.current_moves : id "${id}" absent du catalogue → retiré`);
+          delete fiche.moves.current_moves[id];
+          continue;
+        }
         const entree = fiche.moves.current_moves[id];
         if (!entree || typeof entree !== 'object' || Array.isArray(entree)) {
-          fiche.moves.current_moves[id] = { is_memorized: true, player_notes: '' }; continue;
+          console.warn(`[save] moves.current_moves["${id}"] : structure invalide (${JSON.stringify(entree)}) → réinitialisé`);
+          fiche.moves.current_moves[id] = { is_memorized: true, player_notes: '' };
+          continue;
         }
-        if (typeof entree.is_memorized !== 'boolean') entree.is_memorized = true;
-        if (typeof entree.player_notes !== 'string')  entree.player_notes = '';
+        if (typeof entree.is_memorized !== 'boolean') {
+          console.warn(`[save] moves.current_moves["${id}"].is_memorized : valeur non booléenne (${JSON.stringify(entree.is_memorized)}) → réinitialisé à true`);
+          entree.is_memorized = true;
+        }
+        if (typeof entree.player_notes !== 'string') {
+          console.warn(`[save] moves.current_moves["${id}"].player_notes : valeur non string (${JSON.stringify(entree.player_notes)}) → réinitialisé à ""`);
+          entree.player_notes = '';
+        }
       }
     }
   }
 
   const idsAbility = new Set((catalogue.abilities || []).map(a => a.id));
-  fiche.abilities = Array.isArray(fiche.abilities)
-    ? fiche.abilities.filter(id => typeof id === 'string' && idsAbility.has(id))
-    : [];
+  if (Array.isArray(fiche.abilities)) {
+    const abilitiesValidees = [];
+    for (const id of fiche.abilities) {
+      if (typeof id === 'string' && idsAbility.has(id)) {
+        abilitiesValidees.push(id);
+      } else {
+        console.warn(`[save] abilities : "${id}" absent du catalogue ou invalide → retiré`);
+      }
+    }
+    fiche.abilities = abilitiesValidees;
+  } else {
+    fiche.abilities = [];
+  }
 
   const skillsCatalogue = catalogue.skills || [];
   const skillsSave = (fiche.skills && typeof fiche.skills === 'object' && !Array.isArray(fiche.skills))
     ? fiche.skills : {};
+
+  // Signaler les clés présentes dans le save mais absentes du catalogue
+  const setSkillsCatalogue = new Set(skillsCatalogue);
+  for (const nom of Object.keys(skillsSave)) {
+    if (!setSkillsCatalogue.has(nom)) {
+      console.warn(`[save] skills : clé "${nom}" absente du catalogue → retirée`);
+    }
+  }
+
   const nouvellesSkills = {};
   for (const nom of skillsCatalogue) {
     const entree = skillsSave[nom];
@@ -152,6 +183,9 @@ function validateFiche(fiche, catalogue) {
     ) {
       nouvellesSkills[nom] = { base: entree.base, mod: entree.mod };
     } else {
+      if (entree !== undefined) {
+        console.warn(`[save] skills["${nom}"] : structure invalide (${JSON.stringify(entree)}) → réinitialisé à {base:0, mod:0}`);
+      }
       nouvellesSkills[nom] = { base: 0, mod: 0 };
     }
   }
@@ -162,7 +196,10 @@ function validateFiche(fiche, catalogue) {
     fiche.items = {};
   } else {
     for (const cle of Object.keys(fiche.items)) {
-      if (!idsItem.has(cle)) delete fiche.items[cle];
+      if (!idsItem.has(cle)) {
+        console.warn(`[save] items : clé "${cle}" absente du catalogue → retirée`);
+        delete fiche.items[cle];
+      }
     }
   }
 
