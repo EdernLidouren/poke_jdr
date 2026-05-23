@@ -46,7 +46,10 @@ function creerFicheDefaut() {
   return {
     caracs: { ...DEFAUT_CARACS },
     skills: {},
-    moves: [],
+    moves: {
+      moves_max: 4,
+      current_moves: {},
+    },
     abilities: [],
     items: {},
   };
@@ -108,9 +111,26 @@ function validateFiche(fiche, catalogue) {
   fiche.caracs = validateCaracs(fiche.caracs, catalogue);
 
   const idsMove = new Set((catalogue.moves || []).map(m => m.id));
-  fiche.moves = Array.isArray(fiche.moves)
-    ? fiche.moves.filter(id => typeof id === 'string' && idsMove.has(id))
-    : [];
+  if (!fiche.moves || typeof fiche.moves !== 'object' || Array.isArray(fiche.moves)) {
+    fiche.moves = { moves_max: 4, current_moves: {} };
+  } else {
+    if (!Number.isInteger(fiche.moves.moves_max) || fiche.moves.moves_max <= 0) {
+      fiche.moves.moves_max = 4;
+    }
+    if (!fiche.moves.current_moves || typeof fiche.moves.current_moves !== 'object' || Array.isArray(fiche.moves.current_moves)) {
+      fiche.moves.current_moves = {};
+    } else {
+      for (const id of Object.keys(fiche.moves.current_moves)) {
+        if (!idsMove.has(id)) { delete fiche.moves.current_moves[id]; continue; }
+        const entree = fiche.moves.current_moves[id];
+        if (!entree || typeof entree !== 'object' || Array.isArray(entree)) {
+          fiche.moves.current_moves[id] = { is_memorized: true, player_notes: '' }; continue;
+        }
+        if (typeof entree.is_memorized !== 'boolean') entree.is_memorized = true;
+        if (typeof entree.player_notes !== 'string')  entree.player_notes = '';
+      }
+    }
+  }
 
   const idsAbility = new Set((catalogue.abilities || []).map(a => a.id));
   fiche.abilities = Array.isArray(fiche.abilities)

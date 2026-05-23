@@ -1,20 +1,31 @@
 const PREFIXES = {
-  moves: 'move_',
+  moves:     'move_',
   abilities: 'ability_',
-  items: 'item_',
-  rules: 'rule_',
+  items:     'item_',
+  rules:     'rule_',
 };
 
+// =========================================================
+// Chargement
+// =========================================================
+
 export async function loadCatalogue() {
-  let raw;
-  try {
-    const reponse = await fetch('/data/catalogue.json');
-    if (!reponse.ok) throw new Error(`HTTP ${reponse.status}`);
-    raw = await reponse.json();
-  } catch {
-    return null;
+  // Fetch catalogue et filters en parallèle
+  const [rawCatalogue, rawFilters] = await Promise.all([
+    fetchJson('/data/catalogue.json'),
+    fetchJson('/data/filters.json'),  // null si introuvable — non bloquant
+  ]);
+
+  if (rawCatalogue === null) {
+    return { db: null, availableFilters: {} };
   }
-  return buildCatalogue(raw);
+
+  const db = buildCatalogue(rawCatalogue);
+  const availableFilters = buildAvailableFilters(db, rawFilters || {});
+
+  console.log('availableFilters:', availableFilters);
+
+  return { db, availableFilters };
 }
 
 export function hasCatalogueContent(db) {
@@ -23,6 +34,24 @@ export function hasCatalogueContent(db) {
   return cats.some(c => Array.isArray(db[c]) && db[c].length > 0)
     || (Array.isArray(db.types) && db.types.length > 0);
 }
+
+// =========================================================
+// Helpers fetch
+// =========================================================
+
+async function fetchJson(url) {
+  try {
+    const reponse = await fetch(url);
+    if (!reponse.ok) throw new Error(`HTTP ${reponse.status}`);
+    return await reponse.json();
+  } catch {
+    return null;
+  }
+}
+
+// =========================================================
+// Construction de db
+// =========================================================
 
 function buildCatalogue(raw) {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
@@ -37,6 +66,7 @@ function buildCatalogue(raw) {
       : [];
   }
 
+  // skills : tableau de strings plates
   db.skills = Array.isArray(raw.skills)
     ? raw.skills.filter(s => typeof s === 'string')
     : [];
@@ -46,4 +76,50 @@ function buildCatalogue(raw) {
     : [];
 
   return db;
+}
+
+// =========================================================
+// Construction de availableFilters
+// =========================================================
+
+function buildAvailableFilters(db, rawFilters) {
+  if (!rawFilters || typeof rawFilters !== 'object' || Array.isArray(rawFilters)) return {};
+
+  const commonFilters = estObjetPlat(rawFilters.common) ? rawFilters.common : {};
+  const result = {};
+
+  for (const [categorie, entrees] of Object.entries(db)) {
+    // Uniquement les tableaux d'objets (skip skills et types qui sont des strings)
+    if (!Array.isArray(entrees) || entrees.length === 0) continue;
+    if (typeof entrees[0] !== 'object' || entrees[0] === null) continue;
+
+    const catFilters = estObjetPlat(rawFilters[categorie]) ? rawFilters[categorie] : {};
+    const merged = { ...commonFilters, ...catFilters };
+    if (Object.keys(merged).length === 0) continue;
+
+    result[categorie] = {};
+
+    for (const [champ, config] of Object.entries(merged)) {
+      if (!config || typeof config !== 'object') continue;
+
+      if (config.type === 'text') {
+        result[categorie][champ] = { type: 'text' };
+      } else if (config.type === 'enum') {
+        const valeurs = new Set();
+        for (const item of entrees) {
+          const val = item[champ];
+          if (val !== null && val !== undefined && val !== '') valeurs.add(val);
+        }
+        result[categorie][champ] = { type: 'enum', values: [...valeurs].sort() };
+      }
+    }
+
+    if (Object.keys(result[categorie]).length === 0) delete result[categorie];
+  }
+
+  return result;
+}
+
+function estObjetPlat(val) {
+  return val !== null && val !== undefined && typeof val === 'object' && !Array.isArray(val);
 }

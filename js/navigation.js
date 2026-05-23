@@ -1,5 +1,6 @@
 import { rendreParametres } from './parametres.js';
 import { rendreGeneral }    from './general.js';
+import { rendreCapacites }  from './capacites.js';
 
 const SOUS_ONGLETS = [
   { id: 'general',   label: 'Général' },
@@ -8,7 +9,7 @@ const SOUS_ONGLETS = [
   { id: 'objets',    label: 'Objets' },
 ];
 
-export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSaveChange) {
+export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSaveChange, availableFilters) {
   // save est mutable : remplacerSave peut le substituer entièrement
   let save = saveInitiale;
   // ongletActif : index numérique (fiche) ou 'regles' | 'parametres'
@@ -93,6 +94,8 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       rendreParametres(zone, catalogue, save, onSaveChange, remplacerSave);
     } else if (estFiche() && sousOngletActif === 'general') {
       rendreGeneral(zone, catalogue, save, onSaveChange);
+    } else if (estFiche() && sousOngletActif === 'capacites') {
+      rendreCapacites(zone, catalogue, save, onSaveChange, availableFilters);
     } else {
       const div = document.createElement('div');
       div.dataset.tab = estFiche()

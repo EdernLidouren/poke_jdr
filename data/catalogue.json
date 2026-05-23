@@ -10,6 +10,16 @@
       "utilisation": "Action",
       "effets": "Inflige 4 dégâts physiques + attaque.",
       "id": "move_griffe_acier"
+    },
+    {
+      "nom": "Poing feu",
+      "type": "feu",
+      "tiers": "2",
+      "cible": "Personnelle",
+      "portée": "Longue",
+      "utilisation": "Réaction",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_poing_feu"
     }
   ],
   "abilities": [

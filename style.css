@@ -89,6 +89,27 @@ body {
   font-weight: bold;
 }
 
+/* --- Navigation tertiaire (sous-onglets internes) --- */
+
+.nav-tertiaire {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1rem;
+}
+
+.nav-tertiaire .sous-onglet {
+  border-right: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.nav-tertiaire .sous-onglet.actif {
+  border-bottom-color: #888;
+  background: none;
+  font-weight: bold;
+}
+
 /* --- Contenu --- */
 
 #contenu-onglet {
@@ -159,7 +180,8 @@ body {
   margin-left: 1rem;
 }
 
-.champ-ligne input[type="text"] {
+.champ-ligne input[type="text"],
+.champ-ligne input[type="search"] {
   font-family: monospace;
   font-size: 14px;
   border: 1px solid #bbb;
@@ -167,6 +189,10 @@ body {
   padding: 0.2rem 0.4rem;
   background: #fff;
   width: 14rem;
+}
+
+.champ-ligne input.filtre-text {
+  width: 20rem;
 }
 
 .champ-ligne input[type="number"] {
@@ -354,6 +380,62 @@ body {
 
 .erreur h2 {
   margin-bottom: 0.5rem;
+}
+
+/* --- Bouton réinitialiser les filtres --- */
+
+.btn-reset-filtres {
+  margin-top: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  font-family: monospace;
+  font-size: 13px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.btn-reset-filtres:hover {
+  background: #e0e0e0;
+}
+
+/* --- Catalogue de moves --- */
+
+.moves-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.move-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.move-entree:last-child {
+  border-bottom: none;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.move-entree[hidden] {
+  display: none;
+}
+
+.move-entete {
+  color: #222;
+}
+
+.move-effets {
+  color: #555;
+  margin-top: 0.15rem;
+}
+
+.moves-vide {
+  padding: 0.6rem 0.4rem;
+  color: #888;
+  font-size: 13px;
+  font-style: italic;
 }
 
 pre {

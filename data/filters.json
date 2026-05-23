@@ -1,0 +1,20 @@
+{
+  "common": {
+    "nom": { "type": "text" },
+    "tiers": { "type": "enum" }
+  },
+  "moves": {
+    "type": { "type": "enum" },
+    "cible": { "type": "enum" },
+    "portée": { "type": "enum" },
+    "utilisation": { "type": "enum" },
+    "concentration": { "type": "enum" },
+    "évolutif": { "type": "enum" }
+  },
+  "abilities": {
+    "type": { "type": "enum" },
+    "cible": { "type": "enum" }
+  },
+  "items": {
+  }
+}

@@ -3,21 +3,21 @@ import { loadSave, persistSave } from './save.js';
 import { afficherErreurChargement, afficherInterfacePrincipale } from './ui.js';
 
 async function init() {
-  const catalogue = await loadCatalogue();
+  const { db, availableFilters } = await loadCatalogue();
 
-  if (!catalogue || !hasCatalogueContent(catalogue)) {
+  if (!db || !hasCatalogueContent(db)) {
     afficherErreurChargement(
-      catalogue === null
+      db === null
         ? 'Le fichier catalogue est introuvable ou illisible.'
         : 'Le catalogue ne contient aucune donnée valide.'
     );
     return;
   }
 
-  const sauvegarde = loadSave(catalogue);
+  const sauvegarde = loadSave(db);
   persistSave(sauvegarde);
 
-  afficherInterfacePrincipale(catalogue, sauvegarde, (save) => persistSave(save));
+  afficherInterfacePrincipale(db, sauvegarde, (save) => persistSave(save), availableFilters);
 }
 
 init();

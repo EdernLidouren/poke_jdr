@@ -18,7 +18,7 @@
     "tiers": { "type": "int" },
     "type": {
       "type": "enum",
-      "values": ["acier"]
+      "values": ["feu", "eau", "plante", "électrique", "vol", "sol", "normal", "combat", "insecte", "glace", "fée", "spectre", "ténèbres", "acier", "dragon", "psy", "poison"]
     },
     "évolutif": {
       "type": "enum",
