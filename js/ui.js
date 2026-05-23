@@ -16,7 +16,7 @@ export function afficherErreurChargement(message) {
   app.replaceChildren(div);
 }
 
-export function afficherInterfacePrincipale(sauvegarde, onSaveChange) {
+export function afficherInterfacePrincipale(catalogue, sauvegarde, onSaveChange) {
   app.replaceChildren();
-  initialiserNavigation(app, sauvegarde, onSaveChange);
+  initialiserNavigation(app, catalogue, sauvegarde, onSaveChange);
 }

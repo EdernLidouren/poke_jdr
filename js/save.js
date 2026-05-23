@@ -50,7 +50,7 @@ function creerFicheDefaut() {
   };
 }
 
-function creerSauvegardeDefaut() {
+export function creerSauvegardeDefaut() {
   return {
     sheets: [creerFicheDefaut()],
     fiche_active: 0,
@@ -68,7 +68,7 @@ export function loadSave(catalogue) {
     return creerSauvegardeDefaut();
   }
 
-  const validated = validateSave(parsed, catalogue);
+  const validated = validerSauvegarde(parsed, catalogue);
   return validated !== null ? validated : creerSauvegardeDefaut();
 }
 
@@ -76,7 +76,7 @@ export function persistSave(save) {
   localStorage.setItem(CLE_STORAGE, JSON.stringify(save));
 }
 
-function validateSave(obj, catalogue) {
+export function validerSauvegarde(obj, catalogue) {
   // Erreurs critiques
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return null;
   if (!Array.isArray(obj.sheets)) return null;

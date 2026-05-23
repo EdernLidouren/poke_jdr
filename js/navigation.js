@@ -1,3 +1,5 @@
+import { rendreParametres } from './parametres.js';
+
 const SOUS_ONGLETS = [
   { id: 'general',   label: 'Général' },
   { id: 'capacites', label: 'Capacités' },
@@ -5,13 +7,23 @@ const SOUS_ONGLETS = [
   { id: 'objets',    label: 'Objets' },
 ];
 
-export function initialiserNavigation(conteneur, save, onSaveChange) {
+export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSaveChange) {
+  // save est mutable : remplacerSave peut le substituer entièrement
+  let save = saveInitiale;
   // ongletActif : index numérique (fiche) ou 'regles' | 'parametres'
   let ongletActif = save.fiche_active;
   let sousOngletActif = 'general';
 
   function estFiche() {
     return typeof ongletActif === 'number';
+  }
+
+  // Remplace intégralement la sauvegarde (import, réinitialisation)
+  function remplacerSave(nouvelleSave) {
+    save = nouvelleSave;
+    ongletActif = save.fiche_active;
+    onSaveChange(save);
+    rendre();
   }
 
   function changerOnglet(cible) {
@@ -75,11 +87,15 @@ export function initialiserNavigation(conteneur, save, onSaveChange) {
     const zone = document.createElement('div');
     zone.id = 'contenu-onglet';
 
-    const div = document.createElement('div');
-    div.dataset.tab = estFiche()
-      ? `fiche-${ongletActif}-${sousOngletActif}`
-      : ongletActif;
-    zone.appendChild(div);
+    if (ongletActif === 'parametres') {
+      rendreParametres(zone, catalogue, save, onSaveChange, remplacerSave);
+    } else {
+      const div = document.createElement('div');
+      div.dataset.tab = estFiche()
+        ? `fiche-${ongletActif}-${sousOngletActif}`
+        : ongletActif;
+      zone.appendChild(div);
+    }
 
     return zone;
   }
