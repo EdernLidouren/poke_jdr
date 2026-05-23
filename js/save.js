@@ -8,15 +8,17 @@ const DEFAUT_CARACS = {
   type_3: '',
   niveau: 1,
   expérience: 0,
-  pv_max: 1,
-  pv: 1,
-  pouvoir_max: 0,
-  pouvoir: 0,
-  force: 0,
-  constitution: 0,
-  charisme: 0,
-  esprit: 0,
-  agilité: 0,
+  // Caractéristiques primaires
+  force: 0,        force_mod: 0,
+  constitution: 0, constitution_mod: 0,
+  charisme: 0,     charisme_mod: 0,
+  esprit: 0,       esprit_mod: 0,
+  agilité: 0,      agilité_mod: 0,
+  // Caractéristiques secondaires
+  pv_max: 1,       pv: 1,
+  pouvoir_max: 0,  pouvoir: 0,
+  garde: 0,        garde_mod: 0,
+  garde_speciale: 0, garde_speciale_mod: 0,
 };
 
 const CARACS_TYPES = {
@@ -27,15 +29,15 @@ const CARACS_TYPES = {
   type_3: 'string',
   niveau: 'number',
   expérience: 'number',
-  pv_max: 'number',
-  pv: 'number',
-  pouvoir_max: 'number',
-  pouvoir: 'number',
-  force: 'number',
-  constitution: 'number',
-  charisme: 'number',
-  esprit: 'number',
-  agilité: 'number',
+  force: 'number',        force_mod: 'number',
+  constitution: 'number', constitution_mod: 'number',
+  charisme: 'number',     charisme_mod: 'number',
+  esprit: 'number',       esprit_mod: 'number',
+  agilité: 'number',      agilité_mod: 'number',
+  pv_max: 'number',       pv: 'number',
+  pouvoir_max: 'number',  pouvoir: 'number',
+  garde: 'number',        garde_mod: 'number',
+  garde_speciale: 'number', garde_speciale_mod: 'number',
 };
 
 const CHAMPS_TYPE_ENUM = new Set(['type_1', 'type_2', 'type_3']);
