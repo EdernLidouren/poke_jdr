@@ -22,8 +22,12 @@ export function rendreCapacites(zone, catalogue, save, onSaveChange, availableFi
       // Construire le bloc recherche avec référence vers le callback
       const sectionRecherche = construireBlocRecherche(movesFilters, appliquerFiltres);
 
-      // Ordre visuel : recherche d'abord, catalogue ensuite
-      contenu.append(sectionRecherche, sectionCatalogue);
+      // Indicateur (même logique que "Mes capacités", statique dans cette vue)
+      const indicateurCatalogue = document.createElement('p');
+      mettreAJourIndicateur(indicateurCatalogue, save);
+
+      // Ordre visuel : indicateur, recherche, catalogue
+      contenu.append(indicateurCatalogue, sectionRecherche, sectionCatalogue);
     } else {
       rendreContenuMesCapacites(contenu, catalogue, save, onSaveChange);
     }

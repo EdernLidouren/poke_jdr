@@ -22,8 +22,13 @@ export function rendreTalents(zone, catalogue, save, onSaveChange, availableFilt
       // Construire le bloc recherche avec référence vers le callback
       const sectionRecherche = construireBlocRecherche(abilitiesFilters, appliquerFiltres);
 
-      // Ordre visuel : recherche d'abord, catalogue ensuite
-      contenu.append(sectionRecherche, sectionCatalogue);
+      // Indicateur (même logique que "Mes talents", statique dans cette vue)
+      const abilityMapCatalogue = new Map((catalogue.abilities || []).map(a => [a.id, a]));
+      const indicateurCatalogue = document.createElement('p');
+      mettreAJourIndicateurTalents(indicateurCatalogue, save, abilityMapCatalogue);
+
+      // Ordre visuel : indicateur, recherche, catalogue
+      contenu.append(indicateurCatalogue, sectionRecherche, sectionCatalogue);
     } else {
       rendreContenuMesTalents(contenu, catalogue, save, onSaveChange);
     }
@@ -143,6 +148,22 @@ function construireBlocRecherche(abilitiesFilters, appliquerFiltres) {
 // Sous-onglet Mes talents
 // =========================================================
 
+function mettreAJourIndicateurTalents(el, save, abilityMap) {
+  const ca  = save.sheets[save.fiche_active].abilities.current_abilities;
+  const max = save.sheets[save.fiche_active].abilities.abilities_max;
+  let score = 0;
+  for (const [id, entree] of Object.entries(ca)) {
+    const ability = abilityMap.get(id);
+    if (ability) score += (ability.tiers || 0) * entree.quantity;
+  }
+  el.textContent = `${score} / ${max} talents`;
+  el.className = 'mt-indicateur ' + (
+    score < max   ? 'statut-ok'      :
+    score === max ? 'statut-neutre'  :
+                   'statut-depasse'
+  );
+}
+
 function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
   const abilityMap = new Map((catalogue.abilities || []).map(a => [a.id, a]));
 
@@ -150,26 +171,29 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
   const indicateur = document.createElement('p');
 
   function recalculerIndicateur() {
-    const ca  = save.sheets[save.fiche_active].abilities.current_abilities;
-    const max = save.sheets[save.fiche_active].abilities.abilities_max;
-    let score = 0;
-    for (const [id, entree] of Object.entries(ca)) {
-      const ability = abilityMap.get(id);
-      if (ability) score += (ability.tiers || 0) * entree.quantity;
-    }
-    indicateur.textContent = `${score} / ${max} talents`;
-    indicateur.className = 'mt-indicateur ' + (
-      score < max   ? 'statut-ok'      :
-      score === max ? 'statut-neutre'  :
-                     'statut-depasse'
-    );
+    mettreAJourIndicateurTalents(indicateur, save, abilityMap);
   }
 
   recalculerIndicateur();
 
-  // Liste
+  // Bloc "Talents appris"
+  const section = document.createElement('section');
+  section.className = 'bloc';
+
+  const blocHeader = document.createElement('div');
+  blocHeader.className = 'bloc-header';
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Talents appris';
+  const btnToggle = creerBtnToggle(false); // développé par défaut
+  blocHeader.append(h2, btnToggle);
+
+  const corps = document.createElement('div');
+  corps.className = 'bloc-contenu';
+  brancherToggle(btnToggle, corps);
+
   const liste = document.createElement('div');
   liste.className = 'mt-liste';
+  corps.appendChild(liste);
 
   function construireListe() {
     liste.replaceChildren();
@@ -280,7 +304,8 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
   }
 
   construireListe();
-  contenu.append(indicateur, liste);
+  section.append(blocHeader, corps);
+  contenu.append(indicateur, section);
 }
 
 // =========================================================
