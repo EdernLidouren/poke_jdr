@@ -58,7 +58,9 @@ function creerFicheDefaut() {
       equipment_max: 4,
       current_equipment: {},
     },
-    items: {},
+    items: {
+      current_items: {},
+    },
   };
 }
 
@@ -253,12 +255,31 @@ function validateFiche(fiche, catalogue) {
 
   const idsItem = new Set((catalogue.items || []).map(i => i.id));
   if (!fiche.items || typeof fiche.items !== 'object' || Array.isArray(fiche.items)) {
-    fiche.items = {};
+    fiche.items = { current_items: {} };
   } else {
-    for (const cle of Object.keys(fiche.items)) {
-      if (!idsItem.has(cle)) {
-        console.warn(`[save] items : clé "${cle}" absente du catalogue → retirée`);
-        delete fiche.items[cle];
+    if (
+      !fiche.items.current_items ||
+      typeof fiche.items.current_items !== 'object' ||
+      Array.isArray(fiche.items.current_items)
+    ) {
+      fiche.items.current_items = {};
+    } else {
+      for (const id of Object.keys(fiche.items.current_items)) {
+        if (!idsItem.has(id)) {
+          delete fiche.items.current_items[id];
+          continue;
+        }
+        const entree = fiche.items.current_items[id];
+        if (!entree || typeof entree !== 'object' || Array.isArray(entree)) {
+          fiche.items.current_items[id] = { quantity: 1, player_notes: '' };
+          continue;
+        }
+        if (!Number.isInteger(entree.quantity) || entree.quantity <= 0) {
+          entree.quantity = 1;
+        }
+        if (typeof entree.player_notes !== 'string') {
+          entree.player_notes = '';
+        }
       }
     }
   }

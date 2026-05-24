@@ -3,6 +3,7 @@ import { rendreGeneral }    from './general.js';
 import { rendreCapacites }  from './capacites.js';
 import { rendreTalents }    from './talents.js';
 import { rendreEquipement } from './equipement.js';
+import { rendreObjets }    from './objets.js';
 
 const SOUS_ONGLETS = [
   { id: 'general',   label: 'Général' },
@@ -103,6 +104,8 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       rendreTalents(zone, catalogue, save, onSaveChange, availableFilters);
     } else if (estFiche() && sousOngletActif === 'equipement') {
       rendreEquipement(zone, catalogue, save, onSaveChange, availableFilters);
+    } else if (estFiche() && sousOngletActif === 'objets') {
+      rendreObjets(zone, catalogue, save, onSaveChange, availableFilters);
     } else {
       const div = document.createElement('div');
       div.dataset.tab = estFiche()

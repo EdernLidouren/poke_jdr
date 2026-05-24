@@ -787,6 +787,83 @@ body {
   margin-top: 0.3rem;
 }
 
+/* --- Mon inventaire --- */
+
+.it-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.it-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.it-entree:last-child {
+  border-bottom: none;
+}
+
+.it-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.it-entete-info {
+  flex: 1;
+}
+
+.it-effets {
+  color: #555;
+  margin-top: 0.15rem;
+  font-size: 13px;
+}
+
+/* --- Catalogue d'objets --- */
+
+.items-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.items-entree:last-child {
+  border-bottom: none;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.items-entree[hidden] {
+  display: none;
+}
+
+.items-entete {
+  color: #222;
+}
+
+.items-effets {
+  color: #555;
+  margin-top: 0.15rem;
+  font-size: 13px;
+}
+
+.items-vide {
+  padding: 0.6rem 0.4rem;
+  color: #888;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.items-action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
 pre {
   background: #fff;
   border: 1px solid #ccc;
