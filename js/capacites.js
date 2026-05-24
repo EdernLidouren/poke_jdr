@@ -17,7 +17,7 @@ export function rendreCapacites(zone, catalogue, save, onSaveChange, availableFi
 
       // Construire le bloc catalogue d'abord pour obtenir le callback de filtrage
       const { section: sectionCatalogue, appliquerFiltres } =
-        construireBlocCatalogueMoves(catalogue, save, movesFilters);
+        construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChange);
 
       // Construire le bloc recherche avec référence vers le callback
       const sectionRecherche = construireBlocRecherche(movesFilters, appliquerFiltres);
@@ -168,7 +168,7 @@ function construireBlocRecherche(movesFilters, appliquerFiltres) {
 // Bloc Catalogue des capacités
 // =========================================================
 
-function construireBlocCatalogueMoves(catalogue, save, movesFilters) {
+function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChange) {
   const section = document.createElement('section');
   section.className = 'bloc';
 
@@ -198,7 +198,11 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters) {
     ligne2.className = 'move-effets';
     ligne2.textContent = move.effets;
 
-    entree.append(ligne1, ligne2);
+    const ligne3 = document.createElement('div');
+    ligne3.className = 'move-action';
+    ligne3.appendChild(creerBoutonAction(move, save, onSaveChange));
+
+    entree.append(ligne1, ligne2, ligne3);
     liste.appendChild(entree);
     moveElements.set(move.id, entree);
   }
@@ -262,6 +266,37 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters) {
   }
 
   return { section, appliquerFiltres };
+}
+
+// =========================================================
+// Bouton Ajouter / Retirer
+// =========================================================
+
+function creerBoutonAction(move, save, onSaveChange) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-move-action';
+
+  function mettreAJour() {
+    const estPresent = move.id in save.sheets[save.fiche_active].moves.current_moves;
+    btn.textContent = estPresent ? 'Retirer' : 'Ajouter';
+    btn.dataset.etat  = estPresent ? 'retirer' : 'ajouter';
+  }
+
+  mettreAJour();
+
+  btn.addEventListener('click', () => {
+    const cm = save.sheets[save.fiche_active].moves.current_moves;
+    if (move.id in cm) {
+      delete cm[move.id];
+    } else {
+      cm[move.id] = { is_memorized: true, player_notes: '' };
+    }
+    onSaveChange(save);
+    mettreAJour();
+  });
+
+  return btn;
 }
 
 // =========================================================
