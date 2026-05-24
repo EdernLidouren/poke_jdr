@@ -8,6 +8,10 @@
       "id_prefix": "ability",
       "required_fields": ["nom", "tiers", "effets"]
     },
+    "equipment": {
+      "id_prefix": "equipment",
+      "required_fields": ["nom", "tiers", "effets"]
+    },
     "items": {
       "id_prefix": "item",
       "required_fields": ["nom", "tiers", "effets"]

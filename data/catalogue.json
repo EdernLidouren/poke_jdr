@@ -30,6 +30,14 @@
       "id": "ability_tenacite"
     }
   ],
+  "equipment": [
+    {
+      "nom": "Casque brut",
+      "tiers": "1",
+      "effets": "Renvoie la moitié des dégâts physiques.",
+      "id": "equipment_casque_brut"
+    }
+  ],
   "items": [
     {
       "nom": "Baie oran",

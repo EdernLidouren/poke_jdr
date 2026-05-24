@@ -680,6 +680,113 @@ body {
   color: #333;
 }
 
+/* --- Mon équipement --- */
+
+.eq-indicateur {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.eq-indicateur.statut-ok {
+  color: #2a7a2a;
+  background: #edfaed;
+  border: 1px solid #a3d9a3;
+}
+
+.eq-indicateur.statut-neutre {
+  color: #555;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.eq-indicateur.statut-depasse {
+  color: #933;
+  background: #fff5f5;
+  border: 1px solid #c88;
+}
+
+.eq-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.eq-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.eq-entree:last-child {
+  border-bottom: none;
+}
+
+.eq-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #222;
+}
+
+.eq-entete-info {
+  flex: 1;
+}
+
+.eq-effets {
+  color: #555;
+  margin-top: 0.15rem;
+}
+
+/* --- Catalogue d'équipements --- */
+
+.equipment-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.equipment-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.equipment-entree:last-child {
+  border-bottom: none;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.equipment-entree[hidden] {
+  display: none;
+}
+
+.equipment-entete {
+  color: #222;
+}
+
+.equipment-effets {
+  color: #555;
+  margin-top: 0.15rem;
+}
+
+.equipment-vide {
+  padding: 0.6rem 0.4rem;
+  color: #888;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.equipment-action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
 pre {
   background: #fff;
   border: 1px solid #ccc;

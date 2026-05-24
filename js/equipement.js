@@ -1,37 +1,37 @@
-// Onglet Talents — sous-onglets Mes talents et Catalogue
+// Onglet Équipement — sous-onglets Mon équipement et Catalogue
 
-const SOUS_ONGLETS_TALENTS = [
-  { id: 'mes-talents', label: 'Mes talents' },
-  { id: 'catalogue',   label: 'Catalogue' },
+const SOUS_ONGLETS_EQUIPEMENT = [
+  { id: 'mon-equipement', label: 'Mon équipement' },
+  { id: 'catalogue',      label: 'Catalogue' },
 ];
 
-export function rendreTalents(zone, catalogue, save, onSaveChange, availableFilters) {
-  let sousOnglet = 'mes-talents';
+export function rendreEquipement(zone, catalogue, save, onSaveChange, availableFilters) {
+  let sousOnglet = 'mon-equipement';
 
   function rendre() {
     const nav = creerNavTertiaire(sousOnglet, (id) => { sousOnglet = id; rendre(); });
     const contenu = document.createElement('div');
 
     if (sousOnglet === 'catalogue') {
-      const abilitiesFilters = (availableFilters && availableFilters.abilities) || {};
+      const equipmentFilters = (availableFilters && availableFilters.equipment) || {};
 
       // Indicateur — mis à jour par les boutons +/−
-      const abilityMapCatalogue = new Map((catalogue.abilities || []).map(a => [a.id, a]));
+      const equipmentMapCatalogue = new Map((catalogue.equipment || []).map(e => [e.id, e]));
       const indicateurCatalogue = document.createElement('p');
-      mettreAJourIndicateurTalents(indicateurCatalogue, save, abilityMapCatalogue);
-      const majIndicateurCatalogue = () => mettreAJourIndicateurTalents(indicateurCatalogue, save, abilityMapCatalogue);
+      mettreAJourIndicateurEquipement(indicateurCatalogue, save, equipmentMapCatalogue);
+      const majIndicateurCatalogue = () => mettreAJourIndicateurEquipement(indicateurCatalogue, save, equipmentMapCatalogue);
 
       // Construire le bloc catalogue d'abord pour obtenir le callback de filtrage
       const { section: sectionCatalogue, appliquerFiltres } =
-        construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onSaveChange, majIndicateurCatalogue);
+        construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onSaveChange, majIndicateurCatalogue);
 
       // Construire le bloc recherche avec référence vers le callback
-      const sectionRecherche = construireBlocRecherche(abilitiesFilters, appliquerFiltres);
+      const sectionRecherche = construireBlocRecherche(equipmentFilters, appliquerFiltres);
 
       // Ordre visuel : indicateur, recherche, catalogue
       contenu.append(indicateurCatalogue, sectionRecherche, sectionCatalogue);
     } else {
-      rendreContenuMesTalents(contenu, catalogue, save, onSaveChange);
+      rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange);
     }
 
     zone.replaceChildren(nav, contenu);
@@ -48,7 +48,7 @@ function creerNavTertiaire(actif, onChange) {
   const nav = document.createElement('nav');
   nav.className = 'nav-tertiaire';
 
-  for (const { id, label } of SOUS_ONGLETS_TALENTS) {
+  for (const { id, label } of SOUS_ONGLETS_EQUIPEMENT) {
     const btn = document.createElement('button');
     btn.className = 'sous-onglet' + (actif === id ? ' actif' : '');
     btn.textContent = label;
@@ -63,14 +63,14 @@ function creerNavTertiaire(actif, onChange) {
 // Bloc Recherche
 // =========================================================
 
-function construireBlocRecherche(abilitiesFilters, appliquerFiltres) {
+function construireBlocRecherche(equipmentFilters, appliquerFiltres) {
   const section = document.createElement('section');
   section.className = 'bloc';
 
   const header = document.createElement('div');
   header.className = 'bloc-header';
   const h2 = document.createElement('h2');
-  h2.textContent = 'Rechercher parmi les talents';
+  h2.textContent = 'Rechercher parmi les équipements';
   const btnToggle = creerBtnToggle(false); // développé par défaut
   header.append(h2, btnToggle);
 
@@ -80,13 +80,13 @@ function construireBlocRecherche(abilitiesFilters, appliquerFiltres) {
 
   // État des filtres
   const filtres = {};
-  for (const champ of Object.keys(abilitiesFilters)) filtres[champ] = '';
+  for (const champ of Object.keys(equipmentFilters)) filtres[champ] = '';
 
   // Références pour la réinitialisation
   const champRefs = [];
 
-  // Générer les filtres depuis abilitiesFilters
-  for (const [champ, config] of Object.entries(abilitiesFilters)) {
+  // Générer les filtres depuis equipmentFilters
+  for (const [champ, config] of Object.entries(equipmentFilters)) {
     // Ignorer les enums sans valeurs (champ inexistant dans le catalogue courant)
     if (config.type === 'enum' && config.values.length === 0) continue;
 
@@ -146,45 +146,45 @@ function construireBlocRecherche(abilitiesFilters, appliquerFiltres) {
 }
 
 // =========================================================
-// Sous-onglet Mes talents
+// Sous-onglet Mon équipement
 // =========================================================
 
-function mettreAJourIndicateurTalents(el, save, abilityMap) {
-  const ca  = save.sheets[save.fiche_active].abilities.current_abilities;
-  const max = save.sheets[save.fiche_active].abilities.abilities_max;
+function mettreAJourIndicateurEquipement(el, save, equipmentMap) {
+  const ca  = save.sheets[save.fiche_active].equipment.current_equipment;
+  const max = save.sheets[save.fiche_active].equipment.equipment_max;
   let score = 0;
   for (const [id, entree] of Object.entries(ca)) {
-    const ability = abilityMap.get(id);
-    if (ability) score += (parseInt(ability.tiers, 10) || 0) * entree.quantity;
+    const equipment = equipmentMap.get(id);
+    if (equipment) score += (parseInt(equipment.tiers, 10) || 0) * entree.quantity;
   }
-  el.textContent = `${score} / ${max} talents`;
-  el.className = 'mt-indicateur ' + (
+  el.textContent = `${score} / ${max} équipements`;
+  el.className = 'eq-indicateur ' + (
     score < max   ? 'statut-ok'      :
     score === max ? 'statut-neutre'  :
                    'statut-depasse'
   );
 }
 
-function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
-  const abilityMap = new Map((catalogue.abilities || []).map(a => [a.id, a]));
+function rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange) {
+  const equipmentMap = new Map((catalogue.equipment || []).map(e => [e.id, e]));
 
   // Indicateur
   const indicateur = document.createElement('p');
 
   function recalculerIndicateur() {
-    mettreAJourIndicateurTalents(indicateur, save, abilityMap);
+    mettreAJourIndicateurEquipement(indicateur, save, equipmentMap);
   }
 
   recalculerIndicateur();
 
-  // Bloc "Talents appris"
+  // Bloc "Équipements acquis"
   const section = document.createElement('section');
   section.className = 'bloc';
 
   const blocHeader = document.createElement('div');
   blocHeader.className = 'bloc-header';
   const h2 = document.createElement('h2');
-  h2.textContent = 'Talents appris';
+  h2.textContent = 'Équipements acquis';
   const btnToggle = creerBtnToggle(false); // développé par défaut
   blocHeader.append(h2, btnToggle);
 
@@ -193,38 +193,38 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
   brancherToggle(btnToggle, corps);
 
   const liste = document.createElement('div');
-  liste.className = 'mt-liste';
+  liste.className = 'eq-liste';
   corps.appendChild(liste);
 
   function construireListe() {
     liste.replaceChildren();
 
-    const ca = save.sheets[save.fiche_active].abilities.current_abilities;
+    const ca = save.sheets[save.fiche_active].equipment.current_equipment;
     const entries = Object.entries(ca)
-      .map(([id, entree]) => ({ id, entree, ability: abilityMap.get(id) }))
-      .filter(({ ability }) => ability !== undefined)
-      .sort((a, b) => a.ability.nom.localeCompare(b.ability.nom));
+      .map(([id, entree]) => ({ id, entree, equipment: equipmentMap.get(id) }))
+      .filter(({ equipment }) => equipment !== undefined)
+      .sort((a, b) => a.equipment.nom.localeCompare(b.equipment.nom));
 
     if (entries.length === 0) {
       const vide = document.createElement('p');
-      vide.className = 'abilities-vide';
-      vide.textContent = 'Aucun talent acquis.';
+      vide.className = 'equipment-vide';
+      vide.textContent = 'Aucun équipement acquis.';
       liste.appendChild(vide);
       return;
     }
 
-    for (const { id, entree, ability } of entries) {
+    for (const { id, entree, equipment } of entries) {
       const div = document.createElement('div');
-      div.className = 'mt-entree';
-      div.dataset.abilityId = id;
+      div.className = 'eq-entree';
+      div.dataset.equipmentId = id;
 
       // Ligne 1 : nom, tiers — [−] qty [+]
       const ligne1 = document.createElement('div');
-      ligne1.className = 'mt-entete';
+      ligne1.className = 'eq-entete';
 
       const spanInfo = document.createElement('span');
-      spanInfo.className = 'mt-entete-info';
-      spanInfo.textContent = `${ability.nom}, tiers ${ability.tiers}`;
+      spanInfo.className = 'eq-entete-info';
+      spanInfo.textContent = `${equipment.nom}, tiers ${equipment.tiers}`;
 
       const spanQuantity = document.createElement('span');
       spanQuantity.className = 'ability-quantity';
@@ -235,7 +235,7 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
       btnMoins.className = 'btn-ability-qty';
       btnMoins.textContent = '−';
       btnMoins.addEventListener('click', () => {
-        const cm = save.sheets[save.fiche_active].abilities.current_abilities;
+        const cm = save.sheets[save.fiche_active].equipment.current_equipment;
         if (!(id in cm)) return;
         if (cm[id].quantity === 1) {
           delete cm[id];
@@ -243,7 +243,7 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
           div.remove();
           recalculerIndicateur();
           // Afficher le message vide si la liste est maintenant vide
-          if (Object.keys(save.sheets[save.fiche_active].abilities.current_abilities).length === 0) {
+          if (Object.keys(save.sheets[save.fiche_active].equipment.current_equipment).length === 0) {
             construireListe();
           }
         } else {
@@ -259,7 +259,7 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
       btnPlus.className = 'btn-ability-qty';
       btnPlus.textContent = '+';
       btnPlus.addEventListener('click', () => {
-        const cm = save.sheets[save.fiche_active].abilities.current_abilities;
+        const cm = save.sheets[save.fiche_active].equipment.current_equipment;
         cm[id].quantity++;
         onSaveChange(save);
         spanQuantity.textContent = String(cm[id].quantity);
@@ -270,8 +270,8 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
 
       // Ligne 2 : effets
       const ligne2 = document.createElement('div');
-      ligne2.className = 'mt-effets';
-      ligne2.textContent = ability.effets;
+      ligne2.className = 'eq-effets';
+      ligne2.textContent = equipment.effets;
 
       // Ligne 3 : toggle notes + textarea (réduit par défaut)
       const ligne3 = document.createElement('div');
@@ -287,7 +287,7 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
       textarea.value = entree.player_notes || '';
       textarea.hidden = true;
       textarea.addEventListener('input', () => {
-        const cm = save.sheets[save.fiche_active].abilities.current_abilities;
+        const cm = save.sheets[save.fiche_active].equipment.current_equipment;
         if (cm[id]) cm[id].player_notes = textarea.value;
         onSaveChange(save);
       });
@@ -310,66 +310,66 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
 }
 
 // =========================================================
-// Bloc Catalogue des talents
+// Bloc Catalogue des équipements
 // =========================================================
 
-function construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onSaveChange, onIndicateurChange) {
+function construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onSaveChange, onIndicateurChange) {
   const section = document.createElement('section');
   section.className = 'bloc';
 
   const header = document.createElement('div');
   header.className = 'bloc-header';
   const h2 = document.createElement('h2');
-  h2.textContent = 'Catalogue des talents';
+  h2.textContent = 'Catalogue des équipements';
   header.appendChild(h2);
 
   const liste = document.createElement('div');
-  liste.className = 'abilities-liste';
+  liste.className = 'equipment-liste';
 
-  // Map abilityId → élément DOM pour accès direct sans querySelector
-  const abilityElements = new Map();
-  // Map abilityId → span quantity pour mise à jour ciblée
+  // Map equipmentId → élément DOM pour accès direct sans querySelector
+  const equipmentElements = new Map();
+  // Map equipmentId → span quantity pour mise à jour ciblée
   const quantitySpans = new Map();
 
-  for (const ability of (catalogue.abilities || [])) {
+  for (const equipment of (catalogue.equipment || [])) {
     const entree = document.createElement('div');
-    entree.className = 'ability-entree';
-    entree.dataset.abilityId = ability.id;
+    entree.className = 'equipment-entree';
+    entree.dataset.equipmentId = equipment.id;
 
     // Ligne 1 : entête
     const ligne1 = document.createElement('div');
-    ligne1.className = 'ability-entete';
-    ligne1.textContent = `${ability.nom}, tiers ${ability.tiers}`;
+    ligne1.className = 'equipment-entete';
+    ligne1.textContent = `${equipment.nom}, tiers ${equipment.tiers}`;
 
     // Ligne 2 : effets
     const ligne2 = document.createElement('div');
-    ligne2.className = 'ability-effets';
-    ligne2.textContent = ability.effets;
+    ligne2.className = 'equipment-effets';
+    ligne2.textContent = equipment.effets;
 
     // Ligne 3 : − quantity +
     const ligne3 = document.createElement('div');
-    ligne3.className = 'ability-action';
+    ligne3.className = 'equipment-action';
 
     const spanQuantity = document.createElement('span');
     spanQuantity.className = 'ability-quantity';
-    const ca = save.sheets[save.fiche_active].abilities.current_abilities;
-    spanQuantity.textContent = ca[ability.id] ? String(ca[ability.id].quantity) : '0';
-    quantitySpans.set(ability.id, spanQuantity);
+    const ca = save.sheets[save.fiche_active].equipment.current_equipment;
+    spanQuantity.textContent = ca[equipment.id] ? String(ca[equipment.id].quantity) : '0';
+    quantitySpans.set(equipment.id, spanQuantity);
 
     const btnMoins = document.createElement('button');
     btnMoins.type = 'button';
     btnMoins.className = 'btn-ability-qty';
     btnMoins.textContent = '−';
     btnMoins.addEventListener('click', () => {
-      const cm = save.sheets[save.fiche_active].abilities.current_abilities;
-      if (!(ability.id in cm)) return;
-      if (cm[ability.id].quantity === 1) {
-        delete cm[ability.id];
+      const cm = save.sheets[save.fiche_active].equipment.current_equipment;
+      if (!(equipment.id in cm)) return;
+      if (cm[equipment.id].quantity === 1) {
+        delete cm[equipment.id];
       } else {
-        cm[ability.id].quantity--;
+        cm[equipment.id].quantity--;
       }
       onSaveChange(save);
-      spanQuantity.textContent = cm[ability.id] ? String(cm[ability.id].quantity) : '0';
+      spanQuantity.textContent = cm[equipment.id] ? String(cm[equipment.id].quantity) : '0';
       if (onIndicateurChange) onIndicateurChange();
     });
 
@@ -378,14 +378,14 @@ function construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onS
     btnPlus.className = 'btn-ability-qty';
     btnPlus.textContent = '+';
     btnPlus.addEventListener('click', () => {
-      const cm = save.sheets[save.fiche_active].abilities.current_abilities;
-      if (ability.id in cm) {
-        cm[ability.id].quantity++;
+      const cm = save.sheets[save.fiche_active].equipment.current_equipment;
+      if (equipment.id in cm) {
+        cm[equipment.id].quantity++;
       } else {
-        cm[ability.id] = { quantity: 1, player_notes: '' };
+        cm[equipment.id] = { quantity: 1, player_notes: '' };
       }
       onSaveChange(save);
-      spanQuantity.textContent = String(cm[ability.id].quantity);
+      spanQuantity.textContent = String(cm[equipment.id].quantity);
       if (onIndicateurChange) onIndicateurChange();
     });
 
@@ -393,13 +393,13 @@ function construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onS
 
     entree.append(ligne1, ligne2, ligne3);
     liste.appendChild(entree);
-    abilityElements.set(ability.id, entree);
+    equipmentElements.set(equipment.id, entree);
   }
 
   // Message état vide (caché par défaut)
   const msgVide = document.createElement('p');
-  msgVide.className = 'abilities-vide';
-  msgVide.textContent = 'Aucun talent ne correspond à votre recherche.';
+  msgVide.className = 'equipment-vide';
+  msgVide.textContent = 'Aucun équipement ne correspond à votre recherche.';
   msgVide.hidden = true;
   liste.appendChild(msgVide);
 
@@ -409,24 +409,24 @@ function construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onS
   function appliquerFiltres(filtres) {
     let visibleCount = 0;
 
-    for (const ability of (catalogue.abilities || [])) {
-      const el = abilityElements.get(ability.id);
+    for (const equipment of (catalogue.equipment || [])) {
+      const el = equipmentElements.get(equipment.id);
       if (!el) continue;
 
       let visible = true;
 
       // Filtres catalogue : text et enum
-      outer: for (const [champ, config] of Object.entries(abilitiesFilters)) {
+      outer: for (const [champ, config] of Object.entries(equipmentFilters)) {
         const valeur = filtres[champ];
         if (!valeur) continue; // chaîne vide → filtre inactif
 
         if (config.type === 'text') {
-          const abilityVal = String(ability[champ] ?? '');
-          if (!abilityVal.toLowerCase().includes(valeur.toLowerCase())) {
+          const equipmentVal = String(equipment[champ] ?? '');
+          if (!equipmentVal.toLowerCase().includes(valeur.toLowerCase())) {
             visible = false; break outer;
           }
         } else if (config.type === 'enum') {
-          if (String(ability[champ] ?? '') !== valeur) { visible = false; break outer; }
+          if (String(equipment[champ] ?? '') !== valeur) { visible = false; break outer; }
         }
       }
 

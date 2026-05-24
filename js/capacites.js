@@ -15,16 +15,17 @@ export function rendreCapacites(zone, catalogue, save, onSaveChange, availableFi
     if (sousOnglet === 'catalogue') {
       const movesFilters = (availableFilters && availableFilters.moves) || {};
 
+      // Indicateur — mis à jour par les boutons Ajouter/Retirer
+      const indicateurCatalogue = document.createElement('p');
+      mettreAJourIndicateur(indicateurCatalogue, save);
+      const majIndicateurCatalogue = () => mettreAJourIndicateur(indicateurCatalogue, save);
+
       // Construire le bloc catalogue d'abord pour obtenir le callback de filtrage
       const { section: sectionCatalogue, appliquerFiltres } =
-        construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChange);
+        construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChange, majIndicateurCatalogue);
 
       // Construire le bloc recherche avec référence vers le callback
       const sectionRecherche = construireBlocRecherche(movesFilters, appliquerFiltres);
-
-      // Indicateur (même logique que "Mes capacités", statique dans cette vue)
-      const indicateurCatalogue = document.createElement('p');
-      mettreAJourIndicateur(indicateurCatalogue, save);
 
       // Ordre visuel : indicateur, recherche, catalogue
       contenu.append(indicateurCatalogue, sectionRecherche, sectionCatalogue);
@@ -173,7 +174,7 @@ function construireBlocRecherche(movesFilters, appliquerFiltres) {
 // Bloc Catalogue des capacités
 // =========================================================
 
-function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChange) {
+function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChange, onIndicateurChange) {
   const section = document.createElement('section');
   section.className = 'bloc';
 
@@ -205,7 +206,7 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChang
 
     const ligne3 = document.createElement('div');
     ligne3.className = 'move-action';
-    ligne3.appendChild(creerBoutonAction(move, save, onSaveChange));
+    ligne3.appendChild(creerBoutonAction(move, save, onSaveChange, onIndicateurChange));
 
     entree.append(ligne1, ligne2, ligne3);
     liste.appendChild(entree);
@@ -277,7 +278,7 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChang
 // Bouton Ajouter / Retirer
 // =========================================================
 
-function creerBoutonAction(move, save, onSaveChange) {
+function creerBoutonAction(move, save, onSaveChange, onIndicateurChange) {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'btn-move-action';
@@ -299,6 +300,7 @@ function creerBoutonAction(move, save, onSaveChange) {
     }
     onSaveChange(save);
     mettreAJour();
+    if (onIndicateurChange) onIndicateurChange();
   });
 
   return btn;
@@ -332,7 +334,7 @@ function mettreAJourIndicateur(el, save) {
   const max = save.sheets[save.fiche_active].moves.moves_max;
   const count = Object.values(cm).filter(e => e.is_memorized === true).length;
 
-  el.textContent = `${count} / ${max} capacités apprises`;
+  el.textContent = `${count} / ${max} capacités`;
   el.className = 'mc-indicateur ' + (
     count < max  ? 'statut-ok'      :
     count === max ? 'statut-neutre' :

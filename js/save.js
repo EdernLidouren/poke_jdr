@@ -54,6 +54,10 @@ function creerFicheDefaut() {
       abilities_max: 4,
       current_abilities: {},
     },
+    equipment: {
+      equipment_max: 4,
+      current_equipment: {},
+    },
     items: {},
   };
 }
@@ -169,6 +173,40 @@ function validateFiche(fiche, catalogue) {
         const entree = fiche.abilities.current_abilities[id];
         if (!entree || typeof entree !== 'object' || Array.isArray(entree)) {
           fiche.abilities.current_abilities[id] = { quantity: 1, player_notes: '' };
+          continue;
+        }
+        if (!Number.isInteger(entree.quantity) || entree.quantity <= 0) {
+          entree.quantity = 1;
+        }
+        if (typeof entree.player_notes !== 'string') {
+          entree.player_notes = '';
+        }
+      }
+    }
+  }
+
+  const idsEquipment = new Set((catalogue.equipment || []).map(e => e.id));
+  if (!fiche.equipment || typeof fiche.equipment !== 'object' || Array.isArray(fiche.equipment)) {
+    fiche.equipment = { equipment_max: 4, current_equipment: {} };
+  } else {
+    if (!Number.isInteger(fiche.equipment.equipment_max) || fiche.equipment.equipment_max <= 0) {
+      fiche.equipment.equipment_max = 4;
+    }
+    if (
+      !fiche.equipment.current_equipment ||
+      typeof fiche.equipment.current_equipment !== 'object' ||
+      Array.isArray(fiche.equipment.current_equipment)
+    ) {
+      fiche.equipment.current_equipment = {};
+    } else {
+      for (const id of Object.keys(fiche.equipment.current_equipment)) {
+        if (!idsEquipment.has(id)) {
+          delete fiche.equipment.current_equipment[id];
+          continue;
+        }
+        const entree = fiche.equipment.current_equipment[id];
+        if (!entree || typeof entree !== 'object' || Array.isArray(entree)) {
+          fiche.equipment.current_equipment[id] = { quantity: 1, player_notes: '' };
           continue;
         }
         if (!Number.isInteger(entree.quantity) || entree.quantity <= 0) {

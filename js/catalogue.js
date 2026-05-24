@@ -1,6 +1,7 @@
 const PREFIXES = {
   moves:     'move_',
   abilities: 'ability_',
+  equipment: 'equipment_',
   items:     'item_',
   rules:     'rule_',
 };
