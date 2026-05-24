@@ -466,6 +466,88 @@ body {
   background: #ffe8e8;
 }
 
+/* --- Mes capacités --- */
+
+.mc-indicateur {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.mc-indicateur.statut-ok {
+  color: #2a7a2a;
+  background: #edfaed;
+  border: 1px solid #a3d9a3;
+}
+
+.mc-indicateur.statut-neutre {
+  color: #555;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.mc-indicateur.statut-depasse {
+  color: #933;
+  background: #fff5f5;
+  border: 1px solid #c88;
+}
+
+.btn-move-retirer {
+  margin-left: 0.4rem;
+  border-color: #c88;
+  color: #933;
+  background: #fff5f5;
+}
+
+.btn-move-retirer:hover {
+  background: #ffe8e8;
+}
+
+.move-notes {
+  margin-top: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.btn-toggle-notes {
+  font-family: monospace;
+  font-size: 11px;
+  color: #888;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  width: fit-content;
+}
+
+.btn-toggle-notes:hover {
+  color: #333;
+}
+
+.move-notes-textarea {
+  font-family: monospace;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0.3rem 0.4rem;
+  background: #fff;
+  resize: vertical;
+  min-height: 3.5rem;
+  width: 100%;
+  max-width: 40rem;
+  color: #333;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.move-notes-textarea[hidden] {
+  display: none;
+}
+
 pre {
   background: #fff;
   border: 1px solid #ccc;

@@ -24,8 +24,9 @@ export function rendreCapacites(zone, catalogue, save, onSaveChange, availableFi
 
       // Ordre visuel : recherche d'abord, catalogue ensuite
       contenu.append(sectionRecherche, sectionCatalogue);
+    } else {
+      rendreContenuMesCapacites(contenu, catalogue, save, onSaveChange);
     }
-    // 'mes-capacites' : vide pour l'instant
 
     zone.replaceChildren(nav, contenu);
   }
@@ -297,6 +298,149 @@ function creerBoutonAction(move, save, onSaveChange) {
   });
 
   return btn;
+}
+
+// =========================================================
+// Sous-onglet Mes capacités
+// =========================================================
+
+function rendreContenuMesCapacites(contenu, catalogue, save, onSaveChange) {
+  const indicateur = document.createElement('p');
+  indicateur.className = 'mc-indicateur';
+  mettreAJourIndicateur(indicateur, save);
+
+  const zoneBlocs = document.createElement('div');
+
+  function reconstruire() {
+    mettreAJourIndicateur(indicateur, save);
+    zoneBlocs.replaceChildren(
+      construireBlocListeMoves('apprise', catalogue, save, onSaveChange, reconstruire),
+      construireBlocListeMoves('oubliee', catalogue, save, onSaveChange, reconstruire),
+    );
+  }
+
+  reconstruire();
+  contenu.append(indicateur, zoneBlocs);
+}
+
+function mettreAJourIndicateur(el, save) {
+  const cm  = save.sheets[save.fiche_active].moves.current_moves;
+  const max = save.sheets[save.fiche_active].moves.moves_max;
+  const count = Object.values(cm).filter(e => e.is_memorized === true).length;
+
+  el.textContent = `${count} / ${max} capacités apprises`;
+  el.className = 'mc-indicateur ' + (
+    count < max  ? 'statut-ok'      :
+    count === max ? 'statut-neutre' :
+                   'statut-depasse'
+  );
+}
+
+function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstruire) {
+  const estApprise = type === 'apprise';
+
+  const section = document.createElement('section');
+  section.className = 'bloc';
+
+  const header = document.createElement('div');
+  header.className = 'bloc-header';
+  const h2 = document.createElement('h2');
+  h2.textContent = estApprise ? 'Capacités apprises' : 'Capacités oubliées';
+  // Apprises ouvert par défaut, Oubliées fermé par défaut
+  const btnToggle = creerBtnToggle(!estApprise);
+  header.append(h2, btnToggle);
+
+  const corps = document.createElement('div');
+  corps.className = 'bloc-contenu';
+  corps.hidden = !estApprise;
+  brancherToggle(btnToggle, corps);
+
+  const cm      = save.sheets[save.fiche_active].moves.current_moves;
+  const moveMap = new Map((catalogue.moves || []).map(m => [m.id, m]));
+  const entries = Object.entries(cm).filter(([, e]) => e.is_memorized === estApprise);
+
+  if (entries.length === 0) {
+    const vide = document.createElement('p');
+    vide.className = 'moves-vide';
+    vide.textContent = estApprise ? 'Aucune capacité apprise.' : 'Aucune capacité oubliée.';
+    corps.appendChild(vide);
+  } else {
+    for (const [id, entree] of entries) {
+      const move = moveMap.get(id);
+      if (!move) continue;
+
+      const div = document.createElement('div');
+      div.className = 'move-entree';
+
+      // Ligne 1 : entête
+      const ligne1 = document.createElement('div');
+      ligne1.className = 'move-entete';
+      ligne1.textContent =
+        `${move.nom}, ${move.type}, tiers ${move.tiers} : ${move.cible}, ${move.portée}, ${move.utilisation}.`;
+
+      // Ligne 2 : effets
+      const ligne2 = document.createElement('div');
+      ligne2.className = 'move-effets';
+      ligne2.textContent = move.effets;
+
+      // Ligne 3 : bouton Oublier ou Mémoriser + bouton Retirer
+      const ligne3 = document.createElement('div');
+      ligne3.className = 'move-action';
+
+      const btnStatut = document.createElement('button');
+      btnStatut.type = 'button';
+      btnStatut.className = 'btn-move-action';
+      btnStatut.textContent = estApprise ? 'Oublier' : 'Mémoriser';
+      btnStatut.addEventListener('click', () => {
+        cm[id].is_memorized = !estApprise;
+        onSaveChange(save);
+        reconstruire();
+      });
+
+      const btnRetirer = document.createElement('button');
+      btnRetirer.type = 'button';
+      btnRetirer.className = 'btn-move-action btn-move-retirer';
+      btnRetirer.textContent = 'Retirer';
+      btnRetirer.addEventListener('click', () => {
+        delete cm[id];
+        onSaveChange(save);
+        reconstruire();
+      });
+
+      ligne3.append(btnStatut, btnRetirer);
+
+      // Ligne 4 : toggle notes + textarea
+      const ligne4 = document.createElement('div');
+      ligne4.className = 'move-notes';
+
+      const btnNotes = document.createElement('button');
+      btnNotes.type = 'button';
+      btnNotes.className = 'btn-toggle-notes';
+      btnNotes.textContent = 'Notes ▼';
+
+      const textarea = document.createElement('textarea');
+      textarea.className = 'move-notes-textarea';
+      textarea.value = entree.player_notes || '';
+      textarea.hidden = true;
+      textarea.addEventListener('input', () => {
+        cm[id].player_notes = textarea.value;
+        onSaveChange(save);
+      });
+
+      btnNotes.addEventListener('click', () => {
+        textarea.hidden = !textarea.hidden;
+        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
+      });
+
+      ligne4.append(btnNotes, textarea);
+
+      div.append(ligne1, ligne2, ligne3, ligne4);
+      corps.appendChild(div);
+    }
+  }
+
+  section.append(header, corps);
+  return section;
 }
 
 // =========================================================
