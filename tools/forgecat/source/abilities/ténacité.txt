@@ -1,0 +1,4 @@
+Nom : Ténacité
+Tiers : 1
+
+Effets : Immunise contre la peur.

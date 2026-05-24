@@ -24,23 +24,18 @@
   ],
   "abilities": [
     {
-      "nom": "Griffe acier",
-      "type": "Acier",
+      "nom": "Ténacité",
       "tiers": "1",
-      "prérequis": "Posséder des griffes",
-      "cible": "Une cible",
-      "portée": "Contact",
-      "utilisation": "Action",
-      "effets": "Inflige 4 dégâts physiques + attaque.",
-      "id": "ability_griffe_acier"
+      "effets": "Immunise contre la peur.",
+      "id": "ability_tenacite"
     }
   ],
   "items": [
     {
-      "nom": "Ténacité",
+      "nom": "Baie oran",
       "tiers": "1",
-      "effets": "Inflige 4 dégâts physiques + attaque.",
-      "id": "item_tenacite"
+      "effets": "Soigne 10 PV.",
+      "id": "item_baie_oran"
     }
   ],
   "types": [

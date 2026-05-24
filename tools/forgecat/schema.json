@@ -6,7 +6,7 @@
     },
     "abilities": {
       "id_prefix": "ability",
-      "required_fields": ["nom", "tiers", "type", "effets"]
+      "required_fields": ["nom", "tiers", "effets"]
     },
     "items": {
       "id_prefix": "item",

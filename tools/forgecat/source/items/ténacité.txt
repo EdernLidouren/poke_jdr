@@ -1,4 +1,0 @@
-Nom : Ténacité
-Tiers : 1
-
-Effets : Inflige 4 dégâts physiques + attaque.

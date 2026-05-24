@@ -50,7 +50,10 @@ function creerFicheDefaut() {
       moves_max: 4,
       current_moves: {},
     },
-    abilities: [],
+    abilities: {
+      abilities_max: 4,
+      current_abilities: {},
+    },
     items: {},
   };
 }
@@ -145,18 +148,37 @@ function validateFiche(fiche, catalogue) {
   }
 
   const idsAbility = new Set((catalogue.abilities || []).map(a => a.id));
-  if (Array.isArray(fiche.abilities)) {
-    const abilitiesValidees = [];
-    for (const id of fiche.abilities) {
-      if (typeof id === 'string' && idsAbility.has(id)) {
-        abilitiesValidees.push(id);
-      } else {
-        console.warn(`[save] abilities : "${id}" absent du catalogue ou invalide → retiré`);
+  if (!fiche.abilities || typeof fiche.abilities !== 'object' || Array.isArray(fiche.abilities)) {
+    fiche.abilities = { abilities_max: 4, current_abilities: {} };
+  } else {
+    if (!Number.isInteger(fiche.abilities.abilities_max) || fiche.abilities.abilities_max <= 0) {
+      fiche.abilities.abilities_max = 4;
+    }
+    if (
+      !fiche.abilities.current_abilities ||
+      typeof fiche.abilities.current_abilities !== 'object' ||
+      Array.isArray(fiche.abilities.current_abilities)
+    ) {
+      fiche.abilities.current_abilities = {};
+    } else {
+      for (const id of Object.keys(fiche.abilities.current_abilities)) {
+        if (!idsAbility.has(id)) {
+          delete fiche.abilities.current_abilities[id];
+          continue;
+        }
+        const entree = fiche.abilities.current_abilities[id];
+        if (!entree || typeof entree !== 'object' || Array.isArray(entree)) {
+          fiche.abilities.current_abilities[id] = { quantity: 1, player_notes: '' };
+          continue;
+        }
+        if (!Number.isInteger(entree.quantity) || entree.quantity <= 0) {
+          entree.quantity = 1;
+        }
+        if (typeof entree.player_notes !== 'string') {
+          entree.player_notes = '';
+        }
       }
     }
-    fiche.abilities = abilitiesValidees;
-  } else {
-    fiche.abilities = [];
   }
 
   const skillsCatalogue = catalogue.skills || [];

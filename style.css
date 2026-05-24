@@ -548,6 +548,138 @@ body {
   display: none;
 }
 
+/* --- Mes talents --- */
+
+.mt-indicateur {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.mt-indicateur.statut-ok {
+  color: #2a7a2a;
+  background: #edfaed;
+  border: 1px solid #a3d9a3;
+}
+
+.mt-indicateur.statut-neutre {
+  color: #555;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.mt-indicateur.statut-depasse {
+  color: #933;
+  background: #fff5f5;
+  border: 1px solid #c88;
+}
+
+.mt-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.mt-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mt-entree:last-child {
+  border-bottom: none;
+}
+
+.mt-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #222;
+}
+
+.mt-entete-info {
+  flex: 1;
+}
+
+.mt-effets {
+  color: #555;
+  margin-top: 0.15rem;
+}
+
+/* --- Catalogue de talents --- */
+
+.abilities-liste {
+  display: flex;
+  flex-direction: column;
+}
+
+.ability-entree {
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ability-entree:last-child {
+  border-bottom: none;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.ability-entree[hidden] {
+  display: none;
+}
+
+.ability-entete {
+  color: #222;
+}
+
+.ability-effets {
+  color: #555;
+  margin-top: 0.15rem;
+}
+
+.abilities-vide {
+  padding: 0.6rem 0.4rem;
+  color: #888;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.ability-action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.btn-ability-qty {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: monospace;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.btn-ability-qty:hover {
+  background: #e0e0e0;
+}
+
+.ability-quantity {
+  min-width: 1.6rem;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+}
+
 pre {
   background: #fff;
   border: 1px solid #ccc;

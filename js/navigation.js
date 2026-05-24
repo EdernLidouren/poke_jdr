@@ -1,6 +1,7 @@
 import { rendreParametres } from './parametres.js';
 import { rendreGeneral }    from './general.js';
 import { rendreCapacites }  from './capacites.js';
+import { rendreTalents }    from './talents.js';
 
 const SOUS_ONGLETS = [
   { id: 'general',   label: 'Général' },
@@ -96,6 +97,8 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       rendreGeneral(zone, catalogue, save, onSaveChange);
     } else if (estFiche() && sousOngletActif === 'capacites') {
       rendreCapacites(zone, catalogue, save, onSaveChange, availableFilters);
+    } else if (estFiche() && sousOngletActif === 'talents') {
+      rendreTalents(zone, catalogue, save, onSaveChange, availableFilters);
     } else {
       const div = document.createElement('div');
       div.dataset.tab = estFiche()
