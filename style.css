@@ -819,6 +819,17 @@ body {
   font-size: 13px;
 }
 
+.it-notes-textarea {
+  width: 100%;
+  min-height: 8rem;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
 /* --- Catalogue d'objets --- */
 
 .items-liste {

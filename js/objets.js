@@ -153,7 +153,7 @@ function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
   const blocHeader = document.createElement('div');
   blocHeader.className = 'bloc-header';
   const h2 = document.createElement('h2');
-  h2.textContent = 'Inventaire';
+  h2.textContent = 'Mon inventaire';
   const btnToggle = creerBtnToggle(false); // développé par défaut
   blocHeader.append(h2, btnToggle);
 
@@ -272,7 +272,34 @@ function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
 
   construireListe();
   section.append(blocHeader, corps);
-  contenu.append(section);
+
+  // Bloc "Notes d'inventaire"
+  const sectionNotes = document.createElement('section');
+  sectionNotes.className = 'bloc';
+
+  const notesHeader = document.createElement('div');
+  notesHeader.className = 'bloc-header';
+  const h2Notes = document.createElement('h2');
+  h2Notes.textContent = 'Notes d\'inventaire';
+  const btnToggleNotes = creerBtnToggle(false); // développé par défaut
+  notesHeader.append(h2Notes, btnToggleNotes);
+
+  const notesCorps = document.createElement('div');
+  notesCorps.className = 'bloc-contenu';
+  brancherToggle(btnToggleNotes, notesCorps);
+
+  const textarea = document.createElement('textarea');
+  textarea.className = 'it-notes-textarea';
+  textarea.value = save.sheets[save.fiche_active].items.notes || '';
+  textarea.addEventListener('input', () => {
+    save.sheets[save.fiche_active].items.notes = textarea.value;
+    onSaveChange(save);
+  });
+
+  notesCorps.appendChild(textarea);
+  sectionNotes.append(notesHeader, notesCorps);
+
+  contenu.append(section, sectionNotes);
 }
 
 // =========================================================

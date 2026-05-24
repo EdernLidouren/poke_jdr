@@ -60,6 +60,7 @@ function creerFicheDefaut() {
     },
     items: {
       current_items: {},
+      notes: '',
     },
   };
 }
@@ -255,7 +256,7 @@ function validateFiche(fiche, catalogue) {
 
   const idsItem = new Set((catalogue.items || []).map(i => i.id));
   if (!fiche.items || typeof fiche.items !== 'object' || Array.isArray(fiche.items)) {
-    fiche.items = { current_items: {} };
+    fiche.items = { current_items: {}, notes: '' };
   } else {
     if (
       !fiche.items.current_items ||
@@ -282,6 +283,10 @@ function validateFiche(fiche, catalogue) {
         }
       }
     }
+  }
+
+  if (typeof fiche.items.notes !== 'string') {
+    fiche.items.notes = '';
   }
 
   return fiche;
