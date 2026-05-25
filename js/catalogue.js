@@ -1,3 +1,5 @@
+const BASE_URL = window.location.hostname === 'localhost' ? '' : '/poke_jdr';
+
 const PREFIXES = {
   moves:     'move_',
   abilities: 'ability_',
@@ -14,8 +16,8 @@ const PREFIXES = {
 export async function loadCatalogue() {
   // Fetch catalogue et filters en parallèle
   const [rawCatalogue, rawFilters] = await Promise.all([
-    fetchJson('/data/catalogue.json'),
-    fetchJson('/data/filters.json'),  // null si introuvable — non bloquant
+    fetchJson(`${BASE_URL}/data/catalogue.json`),
+    fetchJson(`${BASE_URL}/data/filters.json`),  // null si introuvable — non bloquant
   ]);
 
   if (rawCatalogue === null) {
