@@ -91,6 +91,12 @@ def parse_catalogue(schema: dict) -> tuple[dict, list[str]]:
                         for v in value.split(",") 
                         if v.strip()
                     ]
+            # Préfixer les incompatibilités avec l'id_prefix de leur catégorie
+            if "incompatibilités" in entity and isinstance(entity["incompatibilités"], list):
+                prefix = cat_schema["id_prefix"]
+                entity["incompatibilités"] = [
+                    f"{prefix}_{v}" for v in entity["incompatibilités"]
+                ]
             entity["id"] = entity_id
             catalogue[category].append(entity)
 

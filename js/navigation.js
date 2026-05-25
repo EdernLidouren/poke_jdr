@@ -6,8 +6,9 @@ import { rendreEquipement } from './equipement.js';
 import { rendreObjets }    from './objets.js';
 
 const SOUS_ONGLETS = [
-  { id: 'general',   label: 'Général' },
-  { id: 'capacites', label: 'Capacités' },
+  { id: 'general',    label: 'Général' },
+  { id: 'combat',     label: 'Combat' },
+  { id: 'capacites',  label: 'Capacités' },
   { id: 'talents',    label: 'Talents' },
   { id: 'equipement', label: 'Équipement' },
   { id: 'objets',     label: 'Objets' },
@@ -98,6 +99,10 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       rendreParametres(zone, catalogue, save, onSaveChange, remplacerSave);
     } else if (estFiche() && sousOngletActif === 'general') {
       rendreGeneral(zone, catalogue, save, onSaveChange);
+    } else if (estFiche() && sousOngletActif === 'combat') {
+      const div = document.createElement('div');
+      div.dataset.tab = 'combat';
+      zone.appendChild(div);
     } else if (estFiche() && sousOngletActif === 'capacites') {
       rendreCapacites(zone, catalogue, save, onSaveChange, availableFilters);
     } else if (estFiche() && sousOngletActif === 'talents') {

@@ -50,7 +50,7 @@
     {
       "nom": "Lenteur",
       "incompatibilités": [
-        "vitesse"
+        "status_vitesse"
       ],
       "effets": "Impose un désavantage aux jets d'esquive.",
       "id": "status_lenteur"

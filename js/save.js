@@ -62,6 +62,9 @@ function creerFicheDefaut() {
       current_items: {},
       notes: '',
     },
+    current_fight: {
+      statuts: {},
+    },
   };
 }
 
@@ -287,6 +290,26 @@ function validateFiche(fiche, catalogue) {
 
   if (typeof fiche.items.notes !== 'string') {
     fiche.items.notes = '';
+  }
+
+  const idsStatus = new Set((catalogue.status || []).map(s => s.id));
+  if (!fiche.current_fight || typeof fiche.current_fight !== 'object' || Array.isArray(fiche.current_fight)) {
+    fiche.current_fight = { statuts: {} };
+  } else {
+    if (!fiche.current_fight.statuts || typeof fiche.current_fight.statuts !== 'object' || Array.isArray(fiche.current_fight.statuts)) {
+      fiche.current_fight.statuts = {};
+    } else {
+      for (const id of Object.keys(fiche.current_fight.statuts)) {
+        if (!idsStatus.has(id)) {
+          delete fiche.current_fight.statuts[id];
+          continue;
+        }
+        const valeur = fiche.current_fight.statuts[id];
+        if (!Number.isInteger(valeur) || valeur <= 0) {
+          delete fiche.current_fight.statuts[id];
+        }
+      }
+    }
   }
 
   return fiche;
