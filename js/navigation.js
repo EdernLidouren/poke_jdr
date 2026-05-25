@@ -4,6 +4,7 @@ import { rendreCapacites }  from './capacites.js';
 import { rendreTalents }    from './talents.js';
 import { rendreEquipement } from './equipement.js';
 import { rendreObjets }    from './objets.js';
+import { rendreCombat }   from './combat.js';
 
 const SOUS_ONGLETS = [
   { id: 'general',    label: 'Général' },
@@ -100,9 +101,7 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
     } else if (estFiche() && sousOngletActif === 'general') {
       rendreGeneral(zone, catalogue, save, onSaveChange);
     } else if (estFiche() && sousOngletActif === 'combat') {
-      const div = document.createElement('div');
-      div.dataset.tab = 'combat';
-      zone.appendChild(div);
+      rendreCombat(zone, catalogue, save, onSaveChange);
     } else if (estFiche() && sousOngletActif === 'capacites') {
       rendreCapacites(zone, catalogue, save, onSaveChange, availableFilters);
     } else if (estFiche() && sousOngletActif === 'talents') {
