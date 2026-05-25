@@ -3,6 +3,7 @@ const PREFIXES = {
   abilities: 'ability_',
   equipment: 'equipment_',
   items:     'item_',
+  status:    'status_',
   rules:     'rule_',
 };
 
