@@ -36,6 +36,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   zone.appendChild(section);
 
   construireListe();
+  peuplerZoneAjout();
 
   // =========================================================
   // Construction de la liste des statuts actifs
@@ -159,6 +160,97 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
     // Afficher le message vide si plus aucun statut actif
     if (Object.keys(save.sheets[save.fiche_active].current_fight.statuts).length === 0) {
       construireListe();
+    }
+  }
+
+  // =========================================================
+  // Zone d'ajout
+  // =========================================================
+
+  function peuplerZoneAjout() {
+    zoneAjout.replaceChildren();
+
+    // Liste déroulante des statuts
+    const selectStatut = document.createElement('select');
+    selectStatut.className = 'cf-select-statut';
+    for (const status of (catalogue.status || [])) {
+      const opt = document.createElement('option');
+      opt.value = status.id;
+      opt.textContent = status.nom;
+      selectStatut.appendChild(opt);
+    }
+
+    // Liste déroulante des valeurs 1–99
+    const selectValeur = document.createElement('select');
+    selectValeur.className = 'cf-select-valeur';
+    for (let i = 1; i <= 99; i++) {
+      const opt = document.createElement('option');
+      opt.value = String(i);
+      opt.textContent = String(i);
+      selectValeur.appendChild(opt);
+    }
+
+    // Bouton Ajouter
+    const btnAjouter = document.createElement('button');
+    btnAjouter.type = 'button';
+    btnAjouter.className = 'cf-btn-ajouter';
+    btnAjouter.textContent = 'Ajouter';
+    btnAjouter.addEventListener('click', () => {
+      const statusId     = selectStatut.value;
+      const valeurAjoutee = parseInt(selectValeur.value, 10);
+      const status       = statusMap.get(statusId);
+      if (!status) return;
+
+      const sf              = save.sheets[save.fiche_active].current_fight.statuts;
+      const incompatibilites = status.incompatibilités || [];
+
+      if (statusId in sf) {
+        // Cas 1 — statut déjà actif : incrémenter, plafonner à 99
+        sf[statusId] = Math.min(99, sf[statusId] + valeurAjoutee);
+        onSaveChange(save);
+        const ligne = zoneStatuts.querySelector(`[data-status-id="${statusId}"]`);
+        if (ligne) {
+          ligne.querySelector('.cf-statut-valeur').textContent = String(sf[statusId]);
+        }
+      } else {
+        const incompsActifs = incompatibilites.filter(id => id in sf);
+
+        if (incompsActifs.length > 0) {
+          // Cas 2 — incompatibilités actives
+          const valeurMax = Math.max(...incompsActifs.map(id => sf[id]));
+          for (const id of incompsActifs) {
+            sf[id] = Math.max(0, sf[id] - valeurAjoutee);
+          }
+          nettoyer();
+          if (valeurMax < valeurAjoutee) {
+            sf[statusId] = valeurAjoutee - valeurMax;
+          }
+          onSaveChange(save);
+          construireListe();
+        } else {
+          // Cas 3 — aucune incompatibilité active
+          sf[statusId] = valeurAjoutee;
+          onSaveChange(save);
+          construireListe();
+        }
+      }
+    });
+
+    zoneAjout.append(selectStatut, selectValeur, btnAjouter);
+  }
+
+  // =========================================================
+  // Nettoyage : supprime les entrées ≤ 0 du save et du DOM
+  // =========================================================
+
+  function nettoyer() {
+    const sf = save.sheets[save.fiche_active].current_fight.statuts;
+    for (const id of Object.keys(sf)) {
+      if (sf[id] <= 0) {
+        delete sf[id];
+        const ligneEl = zoneStatuts.querySelector(`[data-status-id="${id}"]`);
+        if (ligneEl) ligneEl.remove();
+      }
     }
   }
 }
