@@ -83,6 +83,14 @@ def parse_catalogue(schema: dict) -> tuple[dict, list[str]]:
                 continue
 
             seen_ids[entity_id] = str(filepath)
+            # Convertir les champs de type list en tableaux
+            for key, value in entity.items():
+                if key in schema["fields"] and schema["fields"][key]["type"] == "list":
+                    entity[key] = [
+                        normalize(v.strip()) 
+                        for v in value.split(",") 
+                        if v.strip()
+                    ]
             entity["id"] = entity_id
             catalogue[category].append(entity)
 

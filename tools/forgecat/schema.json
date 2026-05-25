@@ -15,6 +15,10 @@
     "items": {
       "id_prefix": "item",
       "required_fields": ["nom", "tiers", "effets"]
+    },
+    "status": {
+      "id_prefix": "status",
+      "required_fields": ["nom", "incompatibilités", "effets"]
     }
   },
   "fields": {
@@ -45,6 +49,7 @@
       "type": "enum",
       "values": ["oui", "non"]
     },
-    "effets": { "type": "text" }
+    "effets": { "type": "text" },
+    "incompatibilités": { "type": "list" }
   }
 }

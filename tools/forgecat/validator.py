@@ -52,6 +52,8 @@ def validate(entity: dict, category: str, schema: dict) -> ValidationResult:
         elif field_type == "regex":
             if not re.fullmatch(field_def["pattern"], value):
                 errors.append(f"'{key}' : valeur '{value}' ne correspond pas au format attendu")
+        elif field_type == "list":
+            pass  # n'importe quelle liste de strings séparées par des virgules est valide
 
     return ValidationResult(valid=len(errors) == 0, errors=errors)
 

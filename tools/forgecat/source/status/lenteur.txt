@@ -1,0 +1,4 @@
+Nom : Lenteur
+incompatibilités : Vitesse
+
+effets : Impose un désavantage aux jets d'esquive.

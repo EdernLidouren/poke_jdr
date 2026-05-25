@@ -46,6 +46,16 @@
       "id": "item_baie_oran"
     }
   ],
+  "status": [
+    {
+      "nom": "Lenteur",
+      "incompatibilités": [
+        "vitesse"
+      ],
+      "effets": "Impose un désavantage aux jets d'esquive.",
+      "id": "status_lenteur"
+    }
+  ],
   "types": [
     "aucun",
     "feu",
