@@ -875,7 +875,44 @@ body {
   margin-top: 0.3rem;
 }
 
-/* --- Onglet Combat --- */
+/* --- Onglet Combat — actions de tour --- */
+
+.cf-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.6rem 0.75rem;
+}
+
+.cf-btn-tour {
+  padding: 0.3rem 0.9rem;
+  background: #3a6fa8;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.cf-btn-tour:hover {
+  background: #2c5480;
+}
+
+.cf-btn-fin-combat {
+  padding: 0.3rem 0.9rem;
+  background: #933;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.cf-btn-fin-combat:hover {
+  background: #711;
+}
+
+/* --- Onglet Combat — statuts --- */
 
 .cf-statuts-actifs {
   display: flex;

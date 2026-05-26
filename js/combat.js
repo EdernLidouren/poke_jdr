@@ -2,6 +2,9 @@
 
 const STATUTS_SANS_DECREMENT = ['status_blessure', 'status_regeneration'];
 
+// Contexte enregistré par rendreCombat, utilisé par les fonctions exportées
+let _ctx = null;
+
 export function rendreCombat(zone, catalogue, save, onSaveChange) {
   const statusMap = new Map((catalogue.status || []).map(s => [s.id, s]));
 
@@ -33,10 +36,38 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
 
   corps.append(zoneStatuts, zoneAjout);
   section.append(header, corps);
-  zone.appendChild(section);
+
+  // Bloc actions — sans titre ni toggle, placé avant le bloc Statuts
+  const sectionActions = document.createElement('section');
+  sectionActions.className = 'bloc cf-actions';
+
+  const btnDebutDeTour = document.createElement('button');
+  btnDebutDeTour.type = 'button';
+  btnDebutDeTour.className = 'cf-btn-tour';
+  btnDebutDeTour.textContent = 'Début de tour';
+  btnDebutDeTour.addEventListener('click', executerDebutDeTour);
+
+  const btnFinDeTour = document.createElement('button');
+  btnFinDeTour.type = 'button';
+  btnFinDeTour.className = 'cf-btn-tour';
+  btnFinDeTour.textContent = 'Fin de tour';
+  btnFinDeTour.addEventListener('click', executerFinDeTour);
+
+  const btnFinDeCombat = document.createElement('button');
+  btnFinDeCombat.type = 'button';
+  btnFinDeCombat.className = 'cf-btn-fin-combat';
+  btnFinDeCombat.textContent = 'Fin de combat';
+  btnFinDeCombat.addEventListener('click', executerFinDeCombat);
+
+  sectionActions.append(btnDebutDeTour, btnFinDeTour, btnFinDeCombat);
+
+  zone.append(sectionActions, section);
 
   construireListe();
   peuplerZoneAjout();
+
+  // Enregistrer le contexte pour les fonctions exportées
+  _ctx = { save, onSaveChange, construireListe, peuplerZoneAjout, nettoyer };
 
   // =========================================================
   // Construction de la liste des statuts actifs
@@ -253,6 +284,48 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
       }
     }
   }
+}
+
+// =========================================================
+// Fonctions de tour — exportées pour appel depuis d'autres modules
+// =========================================================
+
+export function executerDebutDeTour() {
+  if (!_ctx) return;
+  const { save, onSaveChange, construireListe } = _ctx;
+  const sf = save.sheets[save.fiche_active].current_fight.statuts;
+  for (const id of Object.keys(sf)) {
+    if (!STATUTS_SANS_DECREMENT.includes(id)) {
+      sf[id] = Math.max(0, sf[id] - 1);
+    }
+  }
+  // Ne pas nettoyer — les statuts à 0 restent
+  onSaveChange(save);
+  construireListe();
+}
+
+export function executerFinDeTour() {
+  if (!_ctx) return;
+  const { save, onSaveChange, construireListe, peuplerZoneAjout, nettoyer } = _ctx;
+  const sf = save.sheets[save.fiche_active].current_fight.statuts;
+  for (const id of Object.keys(sf)) {
+    if (STATUTS_SANS_DECREMENT.includes(id)) {
+      sf[id] = Math.max(0, sf[id] - 1);
+    }
+  }
+  nettoyer();
+  onSaveChange(save);
+  construireListe();
+  peuplerZoneAjout();
+}
+
+export function executerFinDeCombat() {
+  if (!_ctx) return;
+  const { save, onSaveChange, construireListe, peuplerZoneAjout } = _ctx;
+  save.sheets[save.fiche_active].current_fight.statuts = {};
+  onSaveChange(save);
+  construireListe();
+  peuplerZoneAjout();
 }
 
 // =========================================================
