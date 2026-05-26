@@ -1079,3 +1079,131 @@ pre {
   white-space: pre-wrap;
   word-break: break-word;
 }
+
+/* --- Dés --- */
+
+.btn-de-contextuel {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  padding: 0.1rem 0.3rem;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.btn-de-contextuel:hover {
+  border-color: #bbb;
+  color: #333;
+  background: #f0f0f0;
+}
+
+.des-historique {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.6rem;
+  min-height: 1.5rem;
+}
+
+.des-histo-vide {
+  color: #888;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.des-histo-ligne {
+  font-size: 13px;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  background: #f8f8f8;
+  border: 1px solid #eee;
+}
+
+.des-histo-reussite {
+  background: #edfaed;
+  border-color: #a3d9a3;
+  color: #1a5a1a;
+}
+
+.des-histo-echec {
+  background: #fff5f5;
+  border-color: #c88;
+  color: #711;
+}
+
+.des-critique {
+  font-weight: bold;
+}
+
+.des-jet-libre {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+}
+
+.des-select {
+  font-family: monospace;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0.2rem 0.3rem;
+  background: #fff;
+}
+
+.des-btn-lancer {
+  padding: 0.2rem 0.75rem;
+  font-family: monospace;
+  font-size: 13px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.des-btn-lancer:hover {
+  background: #e0e0e0;
+}
+
+.des-inline-zone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* indent aligné sur les groupes de stats (label 9rem + total 2.8rem + gaps) */
+  padding: 0.3rem 0.5rem 0.3rem 9.5rem;
+  background: #f8f8f8;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.des-inline-zone[hidden] {
+  display: none;
+}
+
+.des-select-carac {
+  font-family: monospace;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0.2rem 0.3rem;
+  background: #fff;
+}
+
+.des-btn-lancer-inline {
+  padding: 0.2rem 0.6rem;
+  font-family: monospace;
+  font-size: 12px;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.des-btn-lancer-inline:hover {
+  background: #e0e0e0;
+}

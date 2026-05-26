@@ -1,6 +1,7 @@
 // Onglet Combat
 
 import { renderJaugePV, renderJaugePouvoir, renderValeurCalculee } from './widgets.js';
+import { lancerJetCarac, rendreBlocDes } from './dice.js';
 
 const STATUTS_SANS_DECREMENT = ['status_blessure', 'status_regeneration'];
 
@@ -9,6 +10,9 @@ let _ctx = null;
 
 export function rendreCombat(zone, catalogue, save, onSaveChange) {
   const statusMap = new Map((catalogue.status || []).map(s => [s.id, s]));
+
+  // Référence au rafraîchisseur de l'historique des dés (assignée en fin de fonction)
+  let rafraichirHistorique = () => {};
 
   // =========================================================
   // Bloc "Statuts"
@@ -100,16 +104,47 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   ligneCaracGardes.appendChild(renderValeurCalculee('Garde spéciale', c.garde_speciale + c.garde_speciale_mod));
   caracsCorps.appendChild(ligneCaracGardes);
 
-  // Ligne 2 : Attaque | Attaque spéciale
+  // Ligne 2 : Attaque | Attaque spéciale (avec boutons dé)
   const ligneCaracAttaques = document.createElement('div');
   ligneCaracAttaques.className = 'cf-carac-ligne';
-  ligneCaracAttaques.appendChild(renderValeurCalculee('Attaque', c.force + c.force_mod + c.attaque_mod));
-  ligneCaracAttaques.appendChild(renderValeurCalculee('Attaque spéciale', c.charisme + c.charisme_mod + c.attaque_speciale_mod));
+
+  const elAttaque = renderValeurCalculee('Attaque', c.force + c.force_mod + c.attaque_mod);
+  const btnDeAttaque = document.createElement('button');
+  btnDeAttaque.type = 'button';
+  btnDeAttaque.className = 'btn-de-contextuel';
+  btnDeAttaque.title = 'Jet d\'attaque';
+  btnDeAttaque.textContent = '🎲';
+  btnDeAttaque.addEventListener('click', () => {
+    const cc = save.sheets[save.fiche_active].caracs;
+    lancerJetCarac('Attaque', cc.force + cc.force_mod + cc.attaque_mod);
+    rafraichirHistorique();
+  });
+  elAttaque.appendChild(btnDeAttaque);
+  ligneCaracAttaques.appendChild(elAttaque);
+
+  const elAttaqueSpec = renderValeurCalculee('Attaque spéciale', c.charisme + c.charisme_mod + c.attaque_speciale_mod);
+  const btnDeAttaqueSpec = document.createElement('button');
+  btnDeAttaqueSpec.type = 'button';
+  btnDeAttaqueSpec.className = 'btn-de-contextuel';
+  btnDeAttaqueSpec.title = 'Jet d\'attaque spéciale';
+  btnDeAttaqueSpec.textContent = '🎲';
+  btnDeAttaqueSpec.addEventListener('click', () => {
+    const cc = save.sheets[save.fiche_active].caracs;
+    lancerJetCarac('Attaque spéciale', cc.charisme + cc.charisme_mod + cc.attaque_speciale_mod);
+    rafraichirHistorique();
+  });
+  elAttaqueSpec.appendChild(btnDeAttaqueSpec);
+  ligneCaracAttaques.appendChild(elAttaqueSpec);
+
   caracsCorps.appendChild(ligneCaracAttaques);
 
   sectionCaracs.append(caracsHeader, caracsCorps);
 
-  zone.append(sectionActions, sectionCaracs, section);
+  // Bloc dés (en bas, partagé avec l'onglet Général via le module dice.js)
+  const { section: blocDes, rafraichirHistorique: _refresh } = rendreBlocDes();
+  rafraichirHistorique = _refresh;
+
+  zone.append(sectionActions, sectionCaracs, section, blocDes);
 
   construireListe();
   peuplerZoneAjout();

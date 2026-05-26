@@ -1,14 +1,17 @@
 // Onglet Général — blocs Identité et Caractéristiques
 
 import { renderJaugePV, renderJaugePouvoir } from './widgets.js';
+import { lancerJetCarac, lancerJetCompetence, rendreBlocDes, COMPETENCE_CARAC_DEFAUT, CARACS_PRIMAIRES } from './dice.js';
 
 export function rendreGeneral(zone, catalogue, save, onSaveChange) {
   const ficheIndex = save.fiche_active;
   const caracs = save.sheets[ficheIndex].caracs;
+  const { section: blocDes, rafraichirHistorique } = rendreBlocDes();
   zone.replaceChildren(
     construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChange),
-    construireBlocCaracteristiques(caracs, save, onSaveChange),
-    construireBlocCompetences(catalogue, save, onSaveChange),
+    construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHistorique),
+    construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHistorique),
+    blocDes,
   );
 }
 
@@ -86,7 +89,7 @@ function construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChang
 // Bloc Caractéristiques
 // =========================================================
 
-function construireBlocCaracteristiques(caracs, save, onSaveChange) {
+function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHistorique) {
   const section = document.createElement('section');
   section.className = 'bloc';
 
@@ -197,6 +200,19 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange) {
       }
     );
     refTotaux[cle] = spanTotal;
+
+    // Bouton dé contextuel
+    const btnDeStat = document.createElement('button');
+    btnDeStat.type = 'button';
+    btnDeStat.className = 'btn-de-contextuel';
+    btnDeStat.title = `Jet de ${label}`;
+    btnDeStat.textContent = '🎲';
+    btnDeStat.addEventListener('click', () => {
+      lancerJetCarac(label, caracs[cle] + caracs[cleMod]);
+      rafraichirHistorique();
+    });
+    ligne.appendChild(btnDeStat);
+
     contenu.appendChild(ligne);
   }
 
@@ -208,7 +224,7 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange) {
 // Bloc Compétences
 // =========================================================
 
-function construireBlocCompetences(catalogue, save, onSaveChange) {
+function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHistorique) {
   const section = document.createElement('section');
   section.className = 'bloc';
 
@@ -252,8 +268,53 @@ function construireBlocCompetences(catalogue, save, onSaveChange) {
       onSaveChange(save);
     });
 
-    ligne.append(lbl, spanTotal, groupeBase, groupeMod);
+    // Bouton dé contextuel + zone inline carac
+    const btnDe = document.createElement('button');
+    btnDe.type = 'button';
+    btnDe.className = 'btn-de-contextuel';
+    btnDe.title = `Jet de ${nom}`;
+    btnDe.textContent = '🎲';
+
+    const zoneInline = document.createElement('div');
+    zoneInline.className = 'des-inline-zone';
+    zoneInline.hidden = true;
+
+    const selectCarac = document.createElement('select');
+    selectCarac.className = 'des-select-carac';
+    for (const c of CARACS_PRIMAIRES) {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c.charAt(0).toUpperCase() + c.slice(1);
+      selectCarac.appendChild(opt);
+    }
+    const caracDefaut = COMPETENCE_CARAC_DEFAUT[nom];
+    if (caracDefaut) selectCarac.value = caracDefaut;
+
+    const btnLancerSkill = document.createElement('button');
+    btnLancerSkill.type = 'button';
+    btnLancerSkill.className = 'des-btn-lancer-inline';
+    btnLancerSkill.textContent = 'Lancer';
+    btnLancerSkill.addEventListener('click', () => {
+      const nomCarac = selectCarac.value;
+      const c = save.sheets[save.fiche_active].caracs;
+      const valCarac = c[nomCarac] + (c[`${nomCarac}_mod`] || 0);
+      lancerJetCompetence(nom, calcTotalSkill(entree.base, entree.mod), nomCarac, valCarac);
+      rafraichirHistorique();
+      zoneInline.hidden = true;
+      btnDe.textContent = '🎲';
+    });
+
+    zoneInline.append(selectCarac, btnLancerSkill);
+
+    btnDe.addEventListener('click', () => {
+      const wasHidden = zoneInline.hidden;
+      zoneInline.hidden = !wasHidden;
+      btnDe.textContent = wasHidden ? '▲' : '🎲';
+    });
+
+    ligne.append(lbl, spanTotal, groupeBase, groupeMod, btnDe);
     contenu.appendChild(ligne);
+    contenu.appendChild(zoneInline);
   }
 
   section.append(header, contenu);
