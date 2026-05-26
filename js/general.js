@@ -1,5 +1,7 @@
 // Onglet Général — blocs Identité et Caractéristiques
 
+import { renderJaugePV, renderJaugePouvoir } from './widgets.js';
+
 export function rendreGeneral(zone, catalogue, save, onSaveChange) {
   const ficheIndex = save.fiche_active;
   const caracs = save.sheets[ficheIndex].caracs;
@@ -100,56 +102,32 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange) {
   brancherToggle(btnToggle, contenu);
 
   // --- Références croisées ---
-  let refInputPV       = null;
-  let refInputPouvoir  = null;
   let refGardeTotale      = null;
   let refGardeSpecTotale  = null;
+  let refAttaque          = null;
+  let refAttaqueSpec      = null;
   const refTotaux = {};
 
-  function calcGarde()     { return Math.floor(10 + (caracs.constitution + caracs.agilité) / 2) + caracs.garde_mod; }
-  function calcGardeSpec() { return Math.floor(10 + (caracs.esprit + caracs.agilité) / 2) + caracs.garde_speciale_mod; }
+  function calcGarde()         { return Math.floor(10 + (caracs.constitution + caracs.agilité) / 2) + caracs.garde_mod; }
+  function calcGardeSpec()     { return Math.floor(10 + (caracs.esprit + caracs.agilité) / 2) + caracs.garde_speciale_mod; }
+  function calcAttaque()       { return caracs.force + caracs.force_mod + caracs.attaque_mod; }
+  function calcAttaqueSpec()   { return caracs.charisme + caracs.charisme_mod + caracs.attaque_speciale_mod; }
 
   function mettreAJourGardes() {
     if (refGardeTotale)     refGardeTotale.textContent     = calcGarde();
     if (refGardeSpecTotale) refGardeSpecTotale.textContent = calcGardeSpec();
   }
 
+  function mettreAJourAttaques() {
+    if (refAttaque)     refAttaque.textContent     = calcAttaque();
+    if (refAttaqueSpec) refAttaqueSpec.textContent = calcAttaqueSpec();
+  }
+
   // ---- Sous-bloc secondaires (en premier) ----
   contenu.appendChild(creerTitreSousBloc('Caractéristiques secondaires'));
 
-  // PV | PV max sur une seule ligne
-  const { conteneur: lignePV, input1: inputPV, input2: inputPVMax } = creerChampNombreDouble(
-    'PV', caracs.pv, 0, caracs.pv_max,
-    (val) => { caracs.pv = val; onSaveChange(save); },
-    'PV max', caracs.pv_max, 1, 999,
-    (val) => {
-      caracs.pv_max = val;
-      if (refInputPV) {
-        refInputPV.max = val;
-        if (Number(refInputPV.value) > val) { refInputPV.value = val; caracs.pv = val; }
-      }
-      onSaveChange(save);
-    }
-  );
-  refInputPV = inputPV;
-  contenu.appendChild(lignePV);
-
-  // Pouvoir | Pouvoir max sur une seule ligne
-  const { conteneur: lignePouvoir, input1: inputPouvoir, input2: inputPouvMax } = creerChampNombreDouble(
-    'Pouvoir', caracs.pouvoir, 0, caracs.pouvoir_max,
-    (val) => { caracs.pouvoir = val; onSaveChange(save); },
-    'Pouvoir max', caracs.pouvoir_max, 0, 999,
-    (val) => {
-      caracs.pouvoir_max = val;
-      if (refInputPouvoir) {
-        refInputPouvoir.max = val;
-        if (Number(refInputPouvoir.value) > val) { refInputPouvoir.value = val; caracs.pouvoir = val; }
-      }
-      onSaveChange(save);
-    }
-  );
-  refInputPouvoir = inputPouvoir;
-  contenu.appendChild(lignePouvoir);
+  contenu.appendChild(renderJaugePV(save, onSaveChange));
+  contenu.appendChild(renderJaugePouvoir(save, onSaveChange));
 
   // Garde
   const { ligne: ligneGarde, spanTotal: spanGardeTotale } = creerLigneGarde(
@@ -166,6 +144,22 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange) {
   );
   refGardeSpecTotale = spanGardeSpecTotale;
   contenu.appendChild(ligneGardeSpec);
+
+  // Attaque (total lecture seule + mod éditable 0–99)
+  const { ligne: ligneAttaque, spanTotal: spanAttaqueTotale } = creerLigneGarde(
+    'Attaque', calcAttaque(), caracs.attaque_mod, 0, 99,
+    (val) => { caracs.attaque_mod = val; mettreAJourAttaques(); onSaveChange(save); }
+  );
+  refAttaque = spanAttaqueTotale;
+  contenu.appendChild(ligneAttaque);
+
+  // Attaque spéciale (total lecture seule + mod éditable 0–99)
+  const { ligne: ligneAttaqueSpec, spanTotal: spanAttaqueSpecTotale } = creerLigneGarde(
+    'Attaque spéciale', calcAttaqueSpec(), caracs.attaque_speciale_mod, 0, 99,
+    (val) => { caracs.attaque_speciale_mod = val; mettreAJourAttaques(); onSaveChange(save); }
+  );
+  refAttaqueSpec = spanAttaqueSpecTotale;
+  contenu.appendChild(ligneAttaqueSpec);
 
   // --- Séparateur ---
   contenu.appendChild(creerSeparateur());
@@ -191,12 +185,14 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange) {
         caracs[cle] = val;
         refTotaux[cle].textContent = caracs[cle] + caracs[cleMod];
         if (affecteGarde) mettreAJourGardes();
+        mettreAJourAttaques();
         onSaveChange(save);
       },
       (val) => {
         caracs[cleMod] = val;
         refTotaux[cle].textContent = caracs[cle] + caracs[cleMod];
         if (affecteGarde) mettreAJourGardes();
+        mettreAJourAttaques();
         onSaveChange(save);
       }
     );

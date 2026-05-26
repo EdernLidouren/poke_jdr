@@ -1,5 +1,7 @@
 // Onglet Combat
 
+import { renderJaugePV, renderJaugePouvoir, renderValeurCalculee } from './widgets.js';
+
 const STATUTS_SANS_DECREMENT = ['status_blessure', 'status_regeneration'];
 
 // Contexte enregistré par rendreCombat, utilisé par les fonctions exportées
@@ -37,9 +39,18 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   corps.append(zoneStatuts, zoneAjout);
   section.append(header, corps);
 
-  // Bloc actions — sans titre ni toggle, placé avant le bloc Statuts
+  // Bloc "Commandes"
   const sectionActions = document.createElement('section');
-  sectionActions.className = 'bloc cf-actions';
+  sectionActions.className = 'bloc';
+
+  const actionsHeader = document.createElement('div');
+  actionsHeader.className = 'bloc-header';
+  const h2Actions = document.createElement('h2');
+  h2Actions.textContent = 'Commandes';
+  actionsHeader.appendChild(h2Actions);
+
+  const actionsCorps = document.createElement('div');
+  actionsCorps.className = 'cf-actions';
 
   const btnDebutDeTour = document.createElement('button');
   btnDebutDeTour.type = 'button';
@@ -59,9 +70,46 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   btnFinDeCombat.textContent = 'Fin de combat';
   btnFinDeCombat.addEventListener('click', executerFinDeCombat);
 
-  sectionActions.append(btnDebutDeTour, btnFinDeTour, btnFinDeCombat);
+  actionsCorps.append(btnDebutDeTour, btnFinDeTour, btnFinDeCombat);
+  sectionActions.append(actionsHeader, actionsCorps);
 
-  zone.append(sectionActions, section);
+  // Bloc "Caractéristiques"
+  const c = save.sheets[save.fiche_active].caracs;
+
+  const sectionCaracs = document.createElement('section');
+  sectionCaracs.className = 'bloc';
+
+  const caracsHeader = document.createElement('div');
+  caracsHeader.className = 'bloc-header';
+  const h2Caracs = document.createElement('h2');
+  h2Caracs.textContent = 'Caractéristiques';
+  const btnToggleCaracs = creerBtnToggle(false); // développé par défaut
+  caracsHeader.append(h2Caracs, btnToggleCaracs);
+
+  const caracsCorps = document.createElement('div');
+  caracsCorps.className = 'bloc-contenu';
+  brancherToggle(btnToggleCaracs, caracsCorps);
+
+  caracsCorps.appendChild(renderJaugePV(save, onSaveChange));
+  caracsCorps.appendChild(renderJaugePouvoir(save, onSaveChange));
+
+  // Ligne 1 : Garde | Garde spéciale
+  const ligneCaracGardes = document.createElement('div');
+  ligneCaracGardes.className = 'cf-carac-ligne';
+  ligneCaracGardes.appendChild(renderValeurCalculee('Garde', c.garde + c.garde_mod));
+  ligneCaracGardes.appendChild(renderValeurCalculee('Garde spéciale', c.garde_speciale + c.garde_speciale_mod));
+  caracsCorps.appendChild(ligneCaracGardes);
+
+  // Ligne 2 : Attaque | Attaque spéciale
+  const ligneCaracAttaques = document.createElement('div');
+  ligneCaracAttaques.className = 'cf-carac-ligne';
+  ligneCaracAttaques.appendChild(renderValeurCalculee('Attaque', c.force + c.force_mod + c.attaque_mod));
+  ligneCaracAttaques.appendChild(renderValeurCalculee('Attaque spéciale', c.charisme + c.charisme_mod + c.attaque_speciale_mod));
+  caracsCorps.appendChild(ligneCaracAttaques);
+
+  sectionCaracs.append(caracsHeader, caracsCorps);
+
+  zone.append(sectionActions, sectionCaracs, section);
 
   construireListe();
   peuplerZoneAjout();

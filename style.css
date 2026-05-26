@@ -1021,6 +1021,55 @@ body {
   background: #1e5e1e;
 }
 
+/* --- Onglet Combat — lignes de caractéristiques côte à côte --- */
+
+.cf-carac-ligne {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.cf-carac-ligne .widget-valeur-calculee {
+  flex: 1;
+}
+
+/* --- Widgets partagés --- */
+
+.widget-jauge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.4rem;
+}
+
+.widget-jauge-label {
+  flex: 1;
+  font-weight: 500;
+}
+
+.widget-jauge-valeur {
+  min-width: 4rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.widget-valeur-calculee {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.4rem;
+}
+
+.widget-valeur-label {
+  flex: 1;
+  color: #444;
+}
+
+.widget-valeur-total {
+  font-weight: bold;
+  min-width: 2rem;
+  text-align: right;
+}
+
 pre {
   background: #fff;
   border: 1px solid #ccc;
