@@ -1,9 +1,72 @@
-import { validerSauvegarde, creerSauvegardeDefaut } from './save.js';
+import { validerSauvegarde, creerSauvegardeDefaut, creerFicheDefaut } from './save.js';
 
 // --- Interface publique ---
 
 export function rendreParametres(zone, catalogue, save, onSaveChange, remplacerSave) {
-  zone.replaceChildren(construireSectionSauvegarde(catalogue, save, onSaveChange, remplacerSave));
+  zone.replaceChildren(
+    construireSectionFiches(save, remplacerSave),
+    construireSectionSauvegarde(catalogue, save, onSaveChange, remplacerSave),
+  );
+}
+
+// --- Section Fiches ---
+
+function construireSectionFiches(save, remplacerSave) {
+  const section = document.createElement('section');
+  section.className = 'parametres-section';
+
+  const titre = document.createElement('h2');
+  titre.textContent = 'Fiches';
+  section.appendChild(titre);
+
+  section.append(
+    blocNouvelleFiche(save, remplacerSave),
+    blocSupprimerFiche(save, remplacerSave),
+  );
+
+  return section;
+}
+
+function blocNouvelleFiche(save, remplacerSave) {
+  const { conteneur, bouton } = creerBloc(
+    'Nouvelle fiche',
+    'Crée une nouvelle fiche vide et bascule dessus.'
+  );
+
+  bouton.addEventListener('click', () => {
+    const nouvelleFiche = creerFicheDefaut();
+    nouvelleFiche.caracs.nom = 'Nouvelle fiche';
+    save.sheets.push(nouvelleFiche);
+    save.fiche_active = save.sheets.length - 1;
+    remplacerSave(save);
+  });
+
+  return conteneur;
+}
+
+function blocSupprimerFiche(save, remplacerSave) {
+  const { conteneur, bouton } = creerBloc(
+    'Supprimer la fiche active',
+    'Supprime définitivement la fiche actuellement sélectionnée.'
+  );
+
+  bouton.addEventListener('click', () => {
+    const nomFiche = save.sheets[save.fiche_active].caracs.nom || 'Nouvelle fiche';
+    if (!confirm(`Supprimer la fiche "${nomFiche}" ? Cette action est irréversible.`)) return;
+
+    if (save.sheets.length === 1) {
+      // Une seule fiche : remplacer par une fiche vide plutôt que supprimer
+      save.sheets = [creerFicheDefaut()];
+      save.fiche_active = 0;
+    } else {
+      save.sheets.splice(save.fiche_active, 1);
+      save.fiche_active = Math.max(0, save.fiche_active - 1);
+    }
+
+    remplacerSave(save);
+  });
+
+  return conteneur;
 }
 
 // --- Section Sauvegarde ---

@@ -46,7 +46,7 @@ const CARACS_TYPES = {
 
 const CHAMPS_TYPE_ENUM = new Set(['type_1', 'type_2', 'type_3']);
 
-function creerFicheDefaut() {
+export function creerFicheDefaut() {
   return {
     caracs: { ...DEFAUT_CARACS },
     skills: {},
