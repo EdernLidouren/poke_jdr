@@ -4,7 +4,11 @@
       "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\js\")",
       "Bash(mkdir -p \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\.claude\")",
       "mcp__Claude_Preview__preview_start",
-      "PowerShell(Get-NetTCPConnection -LocalPort 8000 -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Get-Process -Id $_ -ErrorAction SilentlyContinue })"
+      "PowerShell(Get-NetTCPConnection -LocalPort 8000 -State Listen -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Get-Process -Id $_ -ErrorAction SilentlyContinue })",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:8000\" -TimeoutSec 5)",
+      "PowerShell(Get-Process -Name python -ErrorAction SilentlyContinue)",
+      "PowerShell(netstat -ano)",
+      "PowerShell($client = New-Object System.Net.Sockets.TcpClient; $client.Connect\\(\"127.0.0.1\", 8000\\); $client.Connected)"
     ]
   }
 }

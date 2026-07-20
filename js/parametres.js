@@ -1,12 +1,55 @@
 import { validerSauvegarde, creerSauvegardeDefaut, creerFicheDefaut } from './save.js';
+import { definirTheme, lireTheme } from './theme.js';
 
 // --- Interface publique ---
 
 export function rendreParametres(zone, catalogue, save, onSaveChange, remplacerSave) {
   zone.replaceChildren(
+    construireSectionApparence(),
     construireSectionFiches(save, remplacerSave),
     construireSectionSauvegarde(catalogue, save, onSaveChange, remplacerSave),
   );
+}
+
+// --- Section Apparence ---
+
+function construireSectionApparence() {
+  const section = document.createElement('section');
+  section.className = 'parametres-section';
+
+  const titre = document.createElement('h2');
+  titre.textContent = 'Apparence';
+  section.appendChild(titre);
+
+  const bloc = document.createElement('div');
+  bloc.className = 'param-bloc';
+
+  const label = document.createElement('label');
+  label.className = 'param-label';
+  label.htmlFor = 'select-theme';
+  label.textContent = 'Thème';
+
+  const select = document.createElement('select');
+  select.id = 'select-theme';
+  select.className = 'param-select';
+
+  for (const [valeur, libelle] of [
+    ['auto',   'Automatique (système)'],
+    ['clair',  'Clair'],
+    ['sombre', 'Sombre'],
+  ]) {
+    const opt = document.createElement('option');
+    opt.value = valeur;
+    opt.textContent = libelle;
+    select.appendChild(opt);
+  }
+
+  select.value = lireTheme();
+  select.addEventListener('change', () => definirTheme(select.value));
+
+  bloc.append(label, select);
+  section.appendChild(bloc);
+  return section;
 }
 
 // --- Section Fiches ---

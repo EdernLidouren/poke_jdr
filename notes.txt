@@ -1,0 +1,4 @@
+pv max et pouvoir max ont disparu de l'onglet général
+jet de compétence : Préciser le nom de la carac associée
+statuts actifs : Le nom du du statut et son niveau sont beaucoup trop éloignés
+ajouter un bouton + à droite des onglets de fiche pour en créer une nouvelle
