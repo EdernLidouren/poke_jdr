@@ -204,7 +204,7 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
     // Bouton dé contextuel
     const btnDeStat = document.createElement('button');
     btnDeStat.type = 'button';
-    btnDeStat.className = 'btn-de-contextuel';
+    btnDeStat.className = 'btn-lancer';
     btnDeStat.title = `Jet de ${label}`;
     btnDeStat.textContent = '🎲';
     btnDeStat.addEventListener('click', () => {
@@ -271,7 +271,7 @@ function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHist
     // Bouton dé contextuel + zone inline carac
     const btnDe = document.createElement('button');
     btnDe.type = 'button';
-    btnDe.className = 'btn-de-contextuel';
+    btnDe.className = 'btn-lancer';
     btnDe.title = `Jet de ${nom}`;
     btnDe.textContent = '🎲';
 
@@ -292,7 +292,7 @@ function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHist
 
     const btnLancerSkill = document.createElement('button');
     btnLancerSkill.type = 'button';
-    btnLancerSkill.className = 'des-btn-lancer-inline';
+    btnLancerSkill.className = 'btn-lancer';
     btnLancerSkill.textContent = 'Lancer';
     btnLancerSkill.addEventListener('click', () => {
       const nomCarac = selectCarac.value;

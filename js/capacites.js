@@ -281,12 +281,10 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChang
 function creerBoutonAction(move, save, onSaveChange, onIndicateurChange) {
   const btn = document.createElement('button');
   btn.type = 'button';
-  btn.className = 'btn-move-action';
-
   function mettreAJour() {
     const estPresent = move.id in save.sheets[save.fiche_active].moves.current_moves;
     btn.textContent = estPresent ? 'Retirer' : 'Ajouter';
-    btn.dataset.etat  = estPresent ? 'retirer' : 'ajouter';
+    btn.className   = estPresent ? 'btn-retirer' : 'btn-ajouter';
   }
 
   mettreAJour();
@@ -395,7 +393,7 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
 
       const btnStatut = document.createElement('button');
       btnStatut.type = 'button';
-      btnStatut.className = 'btn-move-action';
+      btnStatut.className = 'btn-bascule';
       btnStatut.textContent = estApprise ? 'Oublier' : 'Mémoriser';
       btnStatut.addEventListener('click', () => {
         cm[id].is_memorized = !estApprise;
@@ -405,7 +403,7 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
 
       const btnRetirer = document.createElement('button');
       btnRetirer.type = 'button';
-      btnRetirer.className = 'btn-move-action btn-move-retirer';
+      btnRetirer.className = 'btn-retirer';
       btnRetirer.textContent = 'Retirer';
       btnRetirer.addEventListener('click', () => {
         delete cm[id];

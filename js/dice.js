@@ -200,7 +200,7 @@ export function rendreBlocDes() {
 
   const btnLancer = document.createElement('button');
   btnLancer.type = 'button';
-  btnLancer.className = 'des-btn-lancer';
+  btnLancer.className = 'btn-lancer';
   btnLancer.textContent = 'Lancer';
   btnLancer.addEventListener('click', () => {
     lancerJetLibre(parseInt(selectFaces.value, 10), parseInt(selectNombre.value, 10));

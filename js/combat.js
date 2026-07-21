@@ -111,7 +111,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   const elAttaque = renderValeurCalculee('Attaque', c.force + c.force_mod + c.attaque_mod);
   const btnDeAttaque = document.createElement('button');
   btnDeAttaque.type = 'button';
-  btnDeAttaque.className = 'btn-de-contextuel';
+  btnDeAttaque.className = 'btn-lancer';
   btnDeAttaque.title = 'Jet d\'attaque';
   btnDeAttaque.textContent = '🎲';
   btnDeAttaque.addEventListener('click', () => {
@@ -125,7 +125,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   const elAttaqueSpec = renderValeurCalculee('Attaque spéciale', c.charisme + c.charisme_mod + c.attaque_speciale_mod);
   const btnDeAttaqueSpec = document.createElement('button');
   btnDeAttaqueSpec.type = 'button';
-  btnDeAttaqueSpec.className = 'btn-de-contextuel';
+  btnDeAttaqueSpec.className = 'btn-lancer';
   btnDeAttaqueSpec.title = 'Jet d\'attaque spéciale';
   btnDeAttaqueSpec.textContent = '🎲';
   btnDeAttaqueSpec.addEventListener('click', () => {
@@ -307,7 +307,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
     // Bouton Ajouter
     const btnAjouter = document.createElement('button');
     btnAjouter.type = 'button';
-    btnAjouter.className = 'cf-btn-ajouter';
+    btnAjouter.className = 'btn-ajouter';
     btnAjouter.textContent = 'Ajouter';
     btnAjouter.addEventListener('click', () => {
       const statusId     = selectStatut.value;

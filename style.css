@@ -20,6 +20,16 @@
   --c-border:        #cccccc;   /* bordure standard */
   --c-border-light:  #dddddd;   /* bordure légère (blocs, séparateurs) */
   --c-border-xlight: #e8e8e8;   /* bordure très légère (listes) */
+
+  /* Boutons d'action typés */
+  --c-btn-ajouter-bg:    #1a5fcb;   /* bleu roi — WCAG AA 5.9:1 texte blanc */
+  --c-btn-ajouter-hover: #1550b0;
+  --c-btn-retirer-bg:    #c0392b;   /* rouge carmin — WCAG AA 5.4:1 texte blanc */
+  --c-btn-retirer-hover: #a93226;
+  --c-btn-bascule-bg:    #d97706;   /* ambre — WCAG AA 6.9:1 texte noir */
+  --c-btn-bascule-hover: #bf6a05;
+  --c-btn-lancer-bg:     #1a1a1a;   /* quasi-noir */
+  --c-btn-lancer-hover:  #333333;
 }
 
 /* --- Mode sombre automatique (préférence système) --- */
@@ -40,6 +50,8 @@
     --c-border:        #444444;
     --c-border-light:  #3a3a3a;
     --c-border-xlight: #333333;
+    --c-btn-lancer-bg:    #111111;
+    --c-btn-lancer-hover: #282828;
   }
 }
 
@@ -60,6 +72,8 @@ body.theme-sombre {
   --c-border:        #444444;
   --c-border-light:  #3a3a3a;
   --c-border-xlight: #333333;
+  --c-btn-lancer-bg:    #111111;
+  --c-btn-lancer-hover: #282828;
 }
 
 /* --- Réinitialisation --- */
@@ -536,31 +550,60 @@ body {
 
 .move-action {
   margin-top: 0.3rem;
+  display: flex;
+  gap: 0.4rem;
 }
 
-.btn-move-action {
-  padding: 0.2rem 0.7rem;
-  font-size: 12px;
-  border: 1px solid var(--c-border-input);
+/* --- Boutons typés --- */
+
+.btn-ajouter,
+.btn-retirer,
+.btn-bascule,
+.btn-lancer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 3px;
-  background: var(--c-surface-alt);
-  color: var(--c-text);
   cursor: pointer;
+  flex-shrink: 0;
+  line-height: 1;
 }
 
-.btn-move-action:hover {
-  background: var(--c-surface-hover);
+.btn-ajouter {
+  padding: 0.2rem 0.7rem;
+  font-size: 13px;
+  background: var(--c-btn-ajouter-bg);
+  color: #ffffff;
+  border: none;
 }
+.btn-ajouter:hover { background: var(--c-btn-ajouter-hover); }
 
-.btn-move-action[data-etat="retirer"] {
-  border-color: #c88;
-  color: #933;
-  background: #fff5f5;
+.btn-retirer {
+  padding: 0.2rem 0.7rem;
+  font-size: 13px;
+  background: var(--c-btn-retirer-bg);
+  color: #ffffff;
+  border: none;
 }
+.btn-retirer:hover { background: var(--c-btn-retirer-hover); }
 
-.btn-move-action[data-etat="retirer"]:hover {
-  background: #ffe8e8;
+.btn-bascule {
+  padding: 0.2rem 0.7rem;
+  font-size: 13px;
+  background: var(--c-btn-bascule-bg);
+  color: #000000;
+  border: none;
 }
+.btn-bascule:hover { background: var(--c-btn-bascule-hover); }
+
+.btn-lancer {
+  padding: 0.2rem 0.45rem;
+  font-size: 15px;
+  background: var(--c-btn-lancer-bg);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.btn-lancer:hover { background: var(--c-btn-lancer-hover); }
 
 /* --- Mes capacités --- */
 
@@ -589,17 +632,6 @@ body {
   color: #933;
   background: #fff5f5;
   border: 1px solid #c88;
-}
-
-.btn-move-retirer {
-  margin-left: 0.4rem;
-  border-color: #c88;
-  color: #933;
-  background: #fff5f5;
-}
-
-.btn-move-retirer:hover {
-  background: #ffe8e8;
 }
 
 .move-notes {
@@ -1115,20 +1147,6 @@ body {
   color: var(--c-text);
 }
 
-.cf-btn-ajouter {
-  padding: 0.25rem 0.75rem;
-  background: #2a7a2a;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.cf-btn-ajouter:hover {
-  background: #1e5e1e;
-}
-
 /* --- Onglet Combat — lignes de caractéristiques côte à côte --- */
 
 .cf-carac-ligne {
@@ -1191,24 +1209,6 @@ pre {
 
 /* --- Dés --- */
 
-.btn-de-contextuel {
-  background: none;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 13px;
-  line-height: 1;
-  padding: 0.1rem 0.3rem;
-  color: var(--c-text-ter);
-  flex-shrink: 0;
-}
-
-.btn-de-contextuel:hover {
-  border-color: var(--c-border-input);
-  color: var(--c-text);
-  background: var(--c-surface-alt);
-}
-
 .des-historique {
   display: flex;
   flex-direction: column;
@@ -1265,20 +1265,6 @@ pre {
   color: var(--c-text);
 }
 
-.des-btn-lancer {
-  padding: 0.2rem 0.75rem;
-  font-size: 13px;
-  border: 1px solid var(--c-border-med);
-  border-radius: 3px;
-  background: var(--c-surface-alt);
-  color: var(--c-text);
-  cursor: pointer;
-}
-
-.des-btn-lancer:hover {
-  background: var(--c-surface-hover);
-}
-
 .des-inline-zone {
   display: flex;
   align-items: center;
@@ -1302,18 +1288,4 @@ pre {
   padding: 0.2rem 0.3rem;
   background: var(--c-surface);
   color: var(--c-text);
-}
-
-.des-btn-lancer-inline {
-  padding: 0.2rem 0.6rem;
-  font-size: 12px;
-  border: 1px solid var(--c-border-med);
-  border-radius: 3px;
-  background: var(--c-surface-alt);
-  color: var(--c-text);
-  cursor: pointer;
-}
-
-.des-btn-lancer-inline:hover {
-  background: var(--c-surface-hover);
 }
