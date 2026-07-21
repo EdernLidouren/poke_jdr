@@ -28,8 +28,9 @@
   --c-btn-retirer-hover: #a93226;
   --c-btn-bascule-bg:    #d97706;   /* ambre — WCAG AA 6.9:1 texte noir */
   --c-btn-bascule-hover: #bf6a05;
-  --c-btn-lancer-bg:     #1a1a1a;   /* quasi-noir */
-  --c-btn-lancer-hover:  #333333;
+  --c-btn-lancer-bg:     #7b2d8b;   /* violet prune — WCAG AA 8.1:1 texte blanc */
+  --c-btn-lancer-hover:  #9c3fad;   /* prune clair — WCAG AA 5.6:1 texte blanc */
+  --c-btn-supprimer-fg:  #993333;   /* rouge sombre (statut actif clair) */
 }
 
 /* --- Mode sombre automatique (préférence système) --- */
@@ -50,8 +51,9 @@
     --c-border:        #444444;
     --c-border-light:  #3a3a3a;
     --c-border-xlight: #333333;
-    --c-btn-lancer-bg:    #111111;
-    --c-btn-lancer-hover: #282828;
+    --c-btn-lancer-bg:    #6a1b7a;   /* prune sombre — WCAG AA 10.2:1 texte blanc */
+    --c-btn-lancer-hover: #7b2d8b;
+    --c-btn-supprimer-fg: var(--c-text);   /* blanc cassé — WCAG AA 11.7:1 */
   }
 }
 
@@ -72,8 +74,9 @@ body.theme-sombre {
   --c-border:        #444444;
   --c-border-light:  #3a3a3a;
   --c-border-xlight: #333333;
-  --c-btn-lancer-bg:    #111111;
-  --c-btn-lancer-hover: #282828;
+  --c-btn-lancer-bg:    #6a1b7a;
+  --c-btn-lancer-hover: #7b2d8b;
+  --c-btn-supprimer-fg: var(--c-text);
 }
 
 /* --- Réinitialisation --- */
@@ -551,7 +554,7 @@ body {
 }
 
 .move-bande {
-  width: 6px;
+  width: 12px;
   flex-shrink: 0;
   background: var(--move-type-color, var(--c-border));
 }
@@ -1105,7 +1108,7 @@ body {
   font-size: 14px;
   line-height: 1;
   padding: 0 0.35rem;
-  color: #933;
+  color: var(--c-btn-supprimer-fg);
 }
 
 .cf-btn-supprimer:hover {
@@ -1329,4 +1332,41 @@ pre {
   padding: 0.2rem 0.3rem;
   background: var(--c-surface);
   color: var(--c-text);
+}
+
+/* --- Bandeaux indicateurs — overrides mode sombre ---
+   statut-ok   : #7ed07e / #1a3320  → 7.3:1 WCAG AA ✓
+   statut-depasse : #f07070 / #3a1a1a → 5.4:1 WCAG AA ✓ */
+
+@media (prefers-color-scheme: dark) {
+  body:not(.theme-clair) .mc-indicateur.statut-ok,
+  body:not(.theme-clair) .mt-indicateur.statut-ok,
+  body:not(.theme-clair) .eq-indicateur.statut-ok {
+    color: #7ed07e;
+    background: #1a3320;
+    border-color: #2d6a2d;
+  }
+  body:not(.theme-clair) .mc-indicateur.statut-depasse,
+  body:not(.theme-clair) .mt-indicateur.statut-depasse,
+  body:not(.theme-clair) .eq-indicateur.statut-depasse {
+    color: #f07070;
+    background: #3a1a1a;
+    border-color: #8b4444;
+  }
+}
+
+body.theme-sombre .mc-indicateur.statut-ok,
+body.theme-sombre .mt-indicateur.statut-ok,
+body.theme-sombre .eq-indicateur.statut-ok {
+  color: #7ed07e;
+  background: #1a3320;
+  border-color: #2d6a2d;
+}
+
+body.theme-sombre .mc-indicateur.statut-depasse,
+body.theme-sombre .mt-indicateur.statut-depasse,
+body.theme-sombre .eq-indicateur.statut-depasse {
+  color: #f07070;
+  background: #3a1a1a;
+  border-color: #8b4444;
 }
