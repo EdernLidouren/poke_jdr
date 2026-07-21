@@ -336,19 +336,13 @@ function construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onS
     entree.className = 'ability-entree';
     entree.dataset.abilityId = ability.id;
 
-    // Ligne 1 : entête
+    // Ligne 1 : entête — nom + [−] qty [+]
     const ligne1 = document.createElement('div');
     ligne1.className = 'ability-entete';
-    ligne1.textContent = `${ability.nom}, tiers ${ability.tiers}`;
 
-    // Ligne 2 : effets
-    const ligne2 = document.createElement('div');
-    ligne2.className = 'ability-effets';
-    ligne2.textContent = ability.effets;
-
-    // Ligne 3 : − quantity +
-    const ligne3 = document.createElement('div');
-    ligne3.className = 'ability-action';
+    const spanNom = document.createElement('span');
+    spanNom.className = 'ability-entete-nom';
+    spanNom.textContent = `${ability.nom}, tiers ${ability.tiers}`;
 
     const spanQuantity = document.createElement('span');
     spanQuantity.className = 'ability-quantity';
@@ -389,9 +383,14 @@ function construireBlocCatalogueAbilities(catalogue, save, abilitiesFilters, onS
       if (onIndicateurChange) onIndicateurChange();
     });
 
-    ligne3.append(btnMoins, spanQuantity, btnPlus);
+    ligne1.append(spanNom, btnMoins, spanQuantity, btnPlus);
 
-    entree.append(ligne1, ligne2, ligne3);
+    // Ligne 2 : effets
+    const ligne2 = document.createElement('div');
+    ligne2.className = 'ability-effets';
+    ligne2.textContent = ability.effets;
+
+    entree.append(ligne1, ligne2);
     liste.appendChild(entree);
     abilityElements.set(ability.id, entree);
   }

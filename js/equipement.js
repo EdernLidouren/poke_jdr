@@ -336,19 +336,13 @@ function construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onS
     entree.className = 'equipment-entree';
     entree.dataset.equipmentId = equipment.id;
 
-    // Ligne 1 : entête
+    // Ligne 1 : entête — nom + [−] qty [+]
     const ligne1 = document.createElement('div');
     ligne1.className = 'equipment-entete';
-    ligne1.textContent = `${equipment.nom}, tiers ${equipment.tiers}`;
 
-    // Ligne 2 : effets
-    const ligne2 = document.createElement('div');
-    ligne2.className = 'equipment-effets';
-    ligne2.textContent = equipment.effets;
-
-    // Ligne 3 : − quantity +
-    const ligne3 = document.createElement('div');
-    ligne3.className = 'equipment-action';
+    const spanNom = document.createElement('span');
+    spanNom.className = 'equipment-entete-nom';
+    spanNom.textContent = `${equipment.nom}, tiers ${equipment.tiers}`;
 
     const spanQuantity = document.createElement('span');
     spanQuantity.className = 'ability-quantity';
@@ -389,9 +383,14 @@ function construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onS
       if (onIndicateurChange) onIndicateurChange();
     });
 
-    ligne3.append(btnMoins, spanQuantity, btnPlus);
+    ligne1.append(spanNom, btnMoins, spanQuantity, btnPlus);
 
-    entree.append(ligne1, ligne2, ligne3);
+    // Ligne 2 : effets
+    const ligne2 = document.createElement('div');
+    ligne2.className = 'equipment-effets';
+    ligne2.textContent = equipment.effets;
+
+    entree.append(ligne1, ligne2);
     liste.appendChild(entree);
     equipmentElements.set(equipment.id, entree);
   }

@@ -797,7 +797,14 @@ body {
 }
 
 .ability-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   color: var(--c-text);
+}
+
+.ability-entete-nom {
+  flex: 1;
 }
 
 .ability-effets {
@@ -929,7 +936,14 @@ body {
 }
 
 .equipment-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   color: var(--c-text);
+}
+
+.equipment-entete-nom {
+  flex: 1;
 }
 
 .equipment-effets {
