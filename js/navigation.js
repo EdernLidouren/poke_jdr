@@ -1,5 +1,6 @@
 import { rendreParametres } from './parametres.js';
 import { rendreGeneral }    from './general.js';
+import { creerFicheDefaut } from './save.js';
 import { rendreCapacites }  from './capacites.js';
 import { rendreTalents }    from './talents.js';
 import { rendreEquipement } from './equipement.js';
@@ -60,6 +61,21 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       btn.addEventListener('click', () => changerOnglet(i));
       nav.appendChild(btn);
     });
+
+    // Bouton création de nouvelle fiche
+    const btnNouvelleF = document.createElement('button');
+    btnNouvelleF.type = 'button';
+    btnNouvelleF.className = 'btn-nouvelle-fiche';
+    btnNouvelleF.textContent = '+';
+    btnNouvelleF.setAttribute('aria-label', 'Créer une nouvelle fiche');
+    btnNouvelleF.addEventListener('click', () => {
+      const nf = creerFicheDefaut();
+      nf.caracs.nom = 'Nouvelle fiche';
+      save.sheets.push(nf);
+      save.fiche_active = save.sheets.length - 1;
+      remplacerSave(save);
+    });
+    nav.appendChild(btnNouvelleF);
 
     // Séparateur pour pousser les onglets fixes à droite
     const sep = document.createElement('span');

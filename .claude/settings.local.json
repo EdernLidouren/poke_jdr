@@ -11,7 +11,9 @@
       "PowerShell($client = New-Object System.Net.Sockets.TcpClient; $client.Connect\\(\"127.0.0.1\", 8000\\); $client.Connected)",
       "PowerShell(Invoke-WebRequest -Uri \"http://localhost:8000/js/main.js\" -UseBasicParsing)",
       "PowerShell(Invoke-WebRequest -Uri \"http://localhost:8000/style.css\" -UseBasicParsing)",
-      "PowerShell(\\(Get-Item \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\js\\\\general.js\"\\).LastWriteTime; \\(Get-Item \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\style.css\"\\).LastWriteTime)"
+      "PowerShell(\\(Get-Item \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\js\\\\general.js\"\\).LastWriteTime; \\(Get-Item \"C:\\\\Users\\\\Administrateur\\\\Documents\\\\Travail\\\\programmation\\\\python\\\\poke_jdr\\\\style.css\"\\).LastWriteTime)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('C:/Users/Administrateur/Documents/Travail/programmation/python/poke_jdr/data/catalogue.json','r',encoding='utf-8'\\)\\); types=sorted\\(set\\(m.get\\('type',''\\) for m in d.get\\('moves',[]\\)\\)\\); print\\('\\\\n'.join\\(types\\)\\)\")",
+      "Bash(python -c ' *)"
     ]
   }
 }

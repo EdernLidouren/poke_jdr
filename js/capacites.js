@@ -1,5 +1,32 @@
 // Onglet Capacités — sous-onglets Mes capacités et Catalogue
 
+// Couleurs par type (lowercase) — utilisées pour la bande latérale des cellules
+const TYPE_COULEURS = {
+  'feu':        '#e25822',
+  'eau':        '#4488dd',
+  'plante':     '#43a047',
+  'électrique': '#fbc02d',
+  'normal':     '#9e9e9e',
+  'glace':      '#4fc3f7',
+  'poison':     '#8e24aa',
+  'vol':        '#7986cb',
+  'sol':        '#f9a825',
+  'combat':     '#c62828',
+  'dragon':     '#1565c0',
+  'psy':        '#e91e63',
+  'acier':      '#78909c',
+  'spectre':    '#512da8',
+  'fée':        '#f06292',
+  'ténèbres':   '#4e342e',
+  'insecte':    '#7cb342',
+};
+
+function getCouleurType(type) {
+  if (!type) return '#888888';
+  const base = type.toLowerCase().replace(' (fantôme)', '');
+  return TYPE_COULEURS[base] || '#888888';
+}
+
 const SOUS_ONGLETS_CAPACITES = [
   { id: 'mes-capacites', label: 'Mes capacités' },
   { id: 'catalogue',     label: 'Catalogue' },
@@ -194,6 +221,13 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChang
     const entree = document.createElement('div');
     entree.className = 'move-entree';
     entree.dataset.moveId = move.id;
+    entree.style.setProperty('--move-type-color', getCouleurType(move.type));
+
+    const bande = document.createElement('div');
+    bande.className = 'move-bande';
+
+    const moveCorps = document.createElement('div');
+    moveCorps.className = 'move-corps';
 
     const ligne1 = document.createElement('div');
     ligne1.className = 'move-entete';
@@ -204,11 +238,13 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChang
     ligne2.className = 'move-effets';
     ligne2.textContent = move.effets;
 
-    const ligne3 = document.createElement('div');
-    ligne3.className = 'move-action';
-    ligne3.appendChild(creerBoutonAction(move, save, onSaveChange, onIndicateurChange));
+    moveCorps.append(ligne1, ligne2);
 
-    entree.append(ligne1, ligne2, ligne3);
+    const actions = document.createElement('div');
+    actions.className = 'move-action';
+    actions.appendChild(creerBoutonAction(move, save, onSaveChange, onIndicateurChange));
+
+    entree.append(bande, moveCorps, actions);
     liste.appendChild(entree);
     moveElements.set(move.id, entree);
   }
@@ -375,6 +411,13 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
 
       const div = document.createElement('div');
       div.className = 'move-entree';
+      div.style.setProperty('--move-type-color', getCouleurType(move.type));
+
+      const bande = document.createElement('div');
+      bande.className = 'move-bande';
+
+      const moveCorps = document.createElement('div');
+      moveCorps.className = 'move-corps';
 
       // Ligne 1 : entête
       const ligne1 = document.createElement('div');
@@ -387,7 +430,33 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
       ligne2.className = 'move-effets';
       ligne2.textContent = move.effets;
 
-      // Ligne 3 : bouton Oublier ou Mémoriser + bouton Retirer
+      // Ligne 4 : toggle notes + textarea (dans le corps)
+      const ligne4 = document.createElement('div');
+      ligne4.className = 'move-notes';
+
+      const btnNotes = document.createElement('button');
+      btnNotes.type = 'button';
+      btnNotes.className = 'btn-toggle-notes';
+      btnNotes.textContent = 'Notes ▼';
+
+      const textarea = document.createElement('textarea');
+      textarea.className = 'move-notes-textarea';
+      textarea.value = entree.player_notes || '';
+      textarea.hidden = true;
+      textarea.addEventListener('input', () => {
+        cm[id].player_notes = textarea.value;
+        onSaveChange(save);
+      });
+
+      btnNotes.addEventListener('click', () => {
+        textarea.hidden = !textarea.hidden;
+        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
+      });
+
+      ligne4.append(btnNotes, textarea);
+      moveCorps.append(ligne1, ligne2, ligne4);
+
+      // Ligne 3 : bouton Oublier ou Mémoriser + bouton Retirer (colonne droite)
       const ligne3 = document.createElement('div');
       ligne3.className = 'move-action';
 
@@ -413,32 +482,7 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
 
       ligne3.append(btnStatut, btnRetirer);
 
-      // Ligne 4 : toggle notes + textarea
-      const ligne4 = document.createElement('div');
-      ligne4.className = 'move-notes';
-
-      const btnNotes = document.createElement('button');
-      btnNotes.type = 'button';
-      btnNotes.className = 'btn-toggle-notes';
-      btnNotes.textContent = 'Notes ▼';
-
-      const textarea = document.createElement('textarea');
-      textarea.className = 'move-notes-textarea';
-      textarea.value = entree.player_notes || '';
-      textarea.hidden = true;
-      textarea.addEventListener('input', () => {
-        cm[id].player_notes = textarea.value;
-        onSaveChange(save);
-      });
-
-      btnNotes.addEventListener('click', () => {
-        textarea.hidden = !textarea.hidden;
-        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
-      });
-
-      ligne4.append(btnNotes, textarea);
-
-      div.append(ligne1, ligne2, ligne3, ligne4);
+      div.append(bande, moveCorps, ligne3);
       corps.appendChild(div);
     }
   }

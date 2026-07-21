@@ -122,6 +122,23 @@ body {
   flex: 1;
 }
 
+.btn-nouvelle-fiche {
+  padding: 0.25rem 0.6rem;
+  margin-bottom: -2px;
+  border: 1px solid var(--c-border-med);
+  border-bottom: none;
+  border-radius: 3px 3px 0 0;
+  background: none;
+  color: var(--c-text-sec);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+.btn-nouvelle-fiche:hover {
+  background: var(--c-surface-hover);
+  color: var(--c-text);
+}
+
 .onglet {
   padding: 0.4rem 0.9rem;
   border: 1px solid transparent;
@@ -514,22 +531,35 @@ body {
 .moves-liste {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
 }
 
 .move-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--c-border-med);
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--c-surface);
   font-size: 13px;
   line-height: 1.5;
-}
-
-.move-entree:last-child {
-  border-bottom: none;
 }
 
 /* display: flex surpasse [hidden] — on le rétablit */
 .move-entree[hidden] {
   display: none;
+}
+
+.move-bande {
+  width: 6px;
+  flex-shrink: 0;
+  background: var(--move-type-color, var(--c-border));
+}
+
+.move-corps {
+  flex: 1;
+  padding: 0.4rem 0.5rem;
+  min-width: 0;
 }
 
 .move-entete {
@@ -542,16 +572,21 @@ body {
 }
 
 .moves-vide {
-  padding: 0.6rem 0.4rem;
+  padding: 0.6rem 0.5rem;
   color: var(--c-text-ter);
   font-size: 13px;
   font-style: italic;
 }
 
 .move-action {
-  margin-top: 0.3rem;
+  flex-shrink: 0;
   display: flex;
-  gap: 0.4rem;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  border-left: 1px solid var(--c-border-xlight);
 }
 
 /* --- Boutons typés --- */
@@ -643,7 +678,7 @@ body {
 
 .btn-toggle-notes {
   font-size: 11px;
-  color: var(--c-text-ter);
+  color: var(--c-text-sec);
   background: none;
   border: none;
   cursor: pointer;
