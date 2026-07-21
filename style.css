@@ -1279,6 +1279,12 @@ pre {
   color: #711;
 }
 
+.des-avdes {
+  font-size: 12px;
+  color: var(--c-text-sec);
+  font-style: italic;
+}
+
 .des-critique {
   font-weight: bold;
 }

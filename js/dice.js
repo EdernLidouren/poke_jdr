@@ -11,7 +11,19 @@ export const COMPETENCE_CARAC_DEFAUT = {
   survie:     'esprit',
 };
 
-// Modificateurs internes (non exposés dans l'UI pour l'instant)
+// Niveau de compétence (-3…3) → bonus fixe + contribution avantage/désavantage pour ce jet
+// avBonus > 0 : ajoute un avantage ; avBonus < 0 : ajoute un désavantage
+const NIVEAUX_COMPETENCE = new Map([
+  [ 3, { bonus:  5, avBonus:  1 }],
+  [ 2, { bonus:  5, avBonus:  0 }],
+  [ 1, { bonus:  2, avBonus:  0 }],
+  [ 0, { bonus:  0, avBonus:  0 }],
+  [-1, { bonus: -2, avBonus:  0 }],
+  [-2, { bonus: -5, avBonus:  0 }],
+  [-3, { bonus: -5, avBonus: -1 }],
+]);
+
+// Modificateurs globaux (futurs contrôles UI)
 let avantage    = 0;
 let désavantage = 0;
 
@@ -65,18 +77,39 @@ export function lancerJetCarac(nomCarac, valeurCarac) {
 }
 
 /**
- * Jet de compétence : 1d20 + scoreCompetence + valeurCarac
- * @returns {{ label, detail, total, critique }}
+ * Jet de compétence avec résolution avantage/désavantage et bonus de niveau.
+ * @param {string} nomCompetence
+ * @param {number} niveauCompetence  Valeur [-3, 3] issue de calcTotalSkill
+ * @param {string} nomCarac
+ * @param {number} valeurCarac
+ * @returns {{ label, detail, total, critique, avDes }}
  */
-export function lancerJetCompetence(nomCompetence, scoreCompetence, nomCarac, valeurCarac) {
-  const { total: de, critique } = lancerDe(20, 1);
-  const total = de + scoreCompetence + valeurCarac;
-  const entry = {
-    label:   nomCompetence,
-    detail:  `d20(${de}) + ${scoreCompetence} + ${valeurCarac}`,
-    total,
-    critique,
-  };
+export function lancerJetCompetence(nomCompetence, niveauCompetence, nomCarac, valeurCarac) {
+  const { bonus, avBonus } = NIVEAUX_COMPETENCE.get(niveauCompetence) ?? { bonus: 0, avBonus: 0 };
+  const solde = (avantage + Math.max(0,  avBonus))
+              - (désavantage + Math.max(0, -avBonus));
+
+  const { de, desLances, retenuIdx, avDes } = _tirerD20(solde);
+
+  const total = de + valeurCarac + bonus;
+
+  let critique = null;
+  if (de === 20) critique = 'réussite';
+  else if (de === 1) critique = 'échec';
+
+  const signBonus = bonus === 0 ? '' : bonus > 0 ? ` + ${bonus}` : ` − ${Math.abs(bonus)}`;
+
+  let detail;
+  if (avDes) {
+    const [d1, d2] = desLances;
+    const d1Str = retenuIdx === 0 ? `${d1}→retenu` : String(d1);
+    const d2Str = retenuIdx === 1 ? `${d2}→retenu` : String(d2);
+    detail = `d20(${d1Str}, ${d2Str}) + ${valeurCarac} (${nomCarac})${signBonus}`;
+  } else {
+    detail = `d20(${de}) + ${valeurCarac} (${nomCarac})${signBonus}`;
+  }
+
+  const entry = { label: nomCompetence, detail, total, critique, avDes };
   _ajouterHistorique(entry);
   return entry;
 }
@@ -161,6 +194,13 @@ export function rendreBlocDes() {
 
       ligne.textContent = `🎲 ${entry.label} : ${entry.detail} = ${entry.total}`;
 
+      if (entry.avDes) {
+        const badge = document.createElement('span');
+        badge.className = 'des-avdes';
+        badge.textContent = `  [${entry.avDes}]`;
+        ligne.appendChild(badge);
+      }
+
       if (entry.critique) {
         const badge = document.createElement('span');
         badge.className = 'des-critique';
@@ -215,8 +255,26 @@ export function rendreBlocDes() {
 }
 
 // =========================================================
-// Helper interne
+// Helpers internes
 // =========================================================
+
+// Lance 1 ou 2d20 selon le solde avantage/désavantage.
+// solde > 0 → avantage (garder le meilleur) ; solde < 0 → désavantage (garder le pire).
+function _tirerD20(solde) {
+  if (solde === 0) {
+    const de = Math.floor(Math.random() * 20) + 1;
+    return { de, desLances: null, retenuIdx: null, avDes: null };
+  }
+  const d1 = Math.floor(Math.random() * 20) + 1;
+  const d2 = Math.floor(Math.random() * 20) + 1;
+  const avDes = solde > 0 ? 'avantage' : 'désavantage';
+  // avantage → max ; désavantage → min. En cas d'égalité, d2 est retenu (indice 1).
+  const retenuIdx = solde > 0
+    ? (d2 >= d1 ? 1 : 0)
+    : (d2 <= d1 ? 1 : 0);
+  const de = retenuIdx === 1 ? d2 : d1;
+  return { de, desLances: [d1, d2], retenuIdx, avDes };
+}
 
 function _ajouterHistorique(entry) {
   _historique.unshift(entry);
