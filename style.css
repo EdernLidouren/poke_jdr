@@ -1117,7 +1117,6 @@ body {
 }
 
 .cf-statut-nom {
-  flex: 1;
   font-weight: 500;
 }
 
@@ -1165,8 +1164,7 @@ body {
 }
 
 .cf-select-statut {
-  flex: 1;
-  min-width: 8rem;
+  max-width: 14rem;
   font-size: 13px;
   border: 1px solid var(--c-border-input);
   border-radius: 3px;
