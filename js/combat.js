@@ -97,16 +97,8 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   caracsCorps.appendChild(renderJaugePV(save, onSaveChange));
   caracsCorps.appendChild(renderJaugePouvoir(save, onSaveChange));
 
-  // Ligne 1 : Garde | Garde spéciale
-  const ligneCaracGardes = document.createElement('div');
-  ligneCaracGardes.className = 'cf-carac-ligne';
-  ligneCaracGardes.appendChild(renderValeurCalculee('Garde', c.garde + c.garde_mod));
-  ligneCaracGardes.appendChild(renderValeurCalculee('Garde spéciale', c.garde_speciale + c.garde_speciale_mod));
-  caracsCorps.appendChild(ligneCaracGardes);
-
-  // Ligne 2 : Attaque | Attaque spéciale (avec boutons dé)
-  const ligneCaracAttaques = document.createElement('div');
-  ligneCaracAttaques.className = 'cf-carac-ligne';
+  caracsCorps.appendChild(renderValeurCalculee('Garde', c.garde + c.garde_mod));
+  caracsCorps.appendChild(renderValeurCalculee('Garde spéciale', c.garde_speciale + c.garde_speciale_mod));
 
   const elAttaque = renderValeurCalculee('Attaque', c.force + c.force_mod + c.attaque_mod);
   const btnDeAttaque = document.createElement('button');
@@ -120,7 +112,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
     rafraichirHistorique();
   });
   elAttaque.appendChild(btnDeAttaque);
-  ligneCaracAttaques.appendChild(elAttaque);
+  caracsCorps.appendChild(elAttaque);
 
   const elAttaqueSpec = renderValeurCalculee('Attaque spéciale', c.charisme + c.charisme_mod + c.attaque_speciale_mod);
   const btnDeAttaqueSpec = document.createElement('button');
@@ -134,9 +126,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
     rafraichirHistorique();
   });
   elAttaqueSpec.appendChild(btnDeAttaqueSpec);
-  ligneCaracAttaques.appendChild(elAttaqueSpec);
-
-  caracsCorps.appendChild(ligneCaracAttaques);
+  caracsCorps.appendChild(elAttaqueSpec);
 
   sectionCaracs.append(caracsHeader, caracsCorps);
 
