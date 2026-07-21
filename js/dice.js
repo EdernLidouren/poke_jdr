@@ -115,10 +115,46 @@ export function lancerJetCompetence(nomCompetence, niveauCompetence, nomCarac, v
 }
 
 /**
- * Jet libre : nombreDes dés à faces faces, sans modificateur.
- * @returns {{ label, detail, total, critique }}
+ * Jet libre : nombreDes dés à faces faces, avec résolution avantage/désavantage optionnelle.
+ * @param {'avantage'|'désavantage'|null} modeAvDes
+ * @returns {{ label, detail, total, critique, avDes }}
  */
-export function lancerJetLibre(faces, nombreDes) {
+export function lancerJetLibre(faces, nombreDes, modeAvDes = null) {
+  if (modeAvDes) {
+    const r1 = lancerDe(faces, nombreDes);
+    const r2 = lancerDe(faces, nombreDes);
+    // avantage → garder le plus haut ; désavantage → garder le plus bas.
+    // En cas d'égalité r2 est retenu, cohérent avec _tirerD20.
+    const garder1 = modeAvDes === 'avantage' ? r1.total > r2.total : r1.total < r2.total;
+    const retenu    = garder1 ? r1 : r2;
+    const nonRetenu = garder1 ? r2 : r1;
+    const total = retenu.total;
+
+    let critique = null;
+    if (nombreDes === 1) {
+      if (faces === 20) {
+        if (total === 20)     critique = 'réussite';
+        else if (total === 1) critique = 'échec';
+      } else if (faces === 100) {
+        if (total <= 5)        critique = 'réussite';
+        else if (total >= 96)  critique = 'échec';
+      }
+    }
+
+    const label = `${nombreDes}d${faces}`;
+    const retenuStr    = retenu.resultats.join('+')    + '→retenu';
+    const nonRetenuStr = nonRetenu.resultats.join('+');
+    // r1 toujours en premier dans le détail
+    const [premier, second] = garder1
+      ? [retenuStr, nonRetenuStr]
+      : [nonRetenuStr, retenuStr];
+    const detail = `${label}(${premier}, ${second})`;
+
+    const entry = { label, detail, total, critique, avDes: modeAvDes };
+    _ajouterHistorique(entry);
+    return entry;
+  }
+
   const { resultats, total, critique } = lancerDe(faces, nombreDes);
   const label = `${nombreDes}d${faces}`;
   const entry = {
@@ -238,16 +274,27 @@ export function rendreBlocDes() {
   }
   selectFaces.value = '20';
 
+  const selectMode = document.createElement('select');
+  selectMode.className = 'des-select';
+  selectMode.setAttribute('aria-label', 'Mode avantage');
+  for (const [val, lbl] of [['', 'Sans avantage'], ['avantage', 'Avantage'], ['désavantage', 'Désavantage']]) {
+    const opt = document.createElement('option');
+    opt.value = val;
+    opt.textContent = lbl;
+    selectMode.appendChild(opt);
+  }
+
   const btnLancer = document.createElement('button');
   btnLancer.type = 'button';
   btnLancer.className = 'btn-lancer';
   btnLancer.textContent = 'Lancer';
   btnLancer.addEventListener('click', () => {
-    lancerJetLibre(parseInt(selectFaces.value, 10), parseInt(selectNombre.value, 10));
+    const mode = selectMode.value || null;
+    lancerJetLibre(parseInt(selectFaces.value, 10), parseInt(selectNombre.value, 10), mode);
     rafraichirHistorique();
   });
 
-  zoneJetLibre.append(selectNombre, selectFaces, btnLancer);
+  zoneJetLibre.append(selectNombre, selectFaces, selectMode, btnLancer);
   corps.append(zoneHisto, zoneJetLibre);
   section.append(header, corps);
 
