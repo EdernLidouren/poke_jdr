@@ -157,12 +157,21 @@ function mettreAJourIndicateurTalents(el, save, abilityMap) {
     const ability = abilityMap.get(id);
     if (ability) score += (parseInt(ability.tiers, 10) || 0) * entree.quantity;
   }
-  el.textContent = `${score} / ${max} talents`;
-  el.className = 'mt-indicateur ' + (
-    score < max   ? 'statut-ok'      :
-    score === max ? 'statut-neutre'  :
-                   'statut-depasse'
-  );
+  const statut = score < max ? 'statut-ok' : score === max ? 'statut-neutre' : 'statut-depasse';
+
+  el.className = 'mt-indicateur ' + statut;
+
+  const icone = document.createElement('span');
+  icone.className = 'indicateur-icone';
+  if (statut === 'statut-depasse') {
+    icone.textContent = '×';
+    icone.setAttribute('aria-label', 'Limite dépassée');
+  } else {
+    icone.textContent = '✓';
+    icone.setAttribute('aria-hidden', 'true');
+  }
+
+  el.replaceChildren(icone, `${score} / ${max} talents`);
 }
 
 function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {

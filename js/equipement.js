@@ -157,12 +157,21 @@ function mettreAJourIndicateurEquipement(el, save, equipmentMap) {
     const equipment = equipmentMap.get(id);
     if (equipment) score += (parseInt(equipment.tiers, 10) || 0) * entree.quantity;
   }
-  el.textContent = `${score} / ${max} équipements`;
-  el.className = 'eq-indicateur ' + (
-    score < max   ? 'statut-ok'      :
-    score === max ? 'statut-neutre'  :
-                   'statut-depasse'
-  );
+  const statut = score < max ? 'statut-ok' : score === max ? 'statut-neutre' : 'statut-depasse';
+
+  el.className = 'eq-indicateur ' + statut;
+
+  const icone = document.createElement('span');
+  icone.className = 'indicateur-icone';
+  if (statut === 'statut-depasse') {
+    icone.textContent = '×';
+    icone.setAttribute('aria-label', 'Limite dépassée');
+  } else {
+    icone.textContent = '✓';
+    icone.setAttribute('aria-hidden', 'true');
+  }
+
+  el.replaceChildren(icone, `${score} / ${max} équipements`);
 }
 
 function rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange) {

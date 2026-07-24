@@ -652,24 +652,9 @@ body {
   padding: 0.3rem 0.5rem;
   border-radius: 3px;
   display: inline-block;
-}
-
-.mc-indicateur.statut-ok {
-  color: #2a7a2a;
-  background: #edfaed;
-  border: 1px solid #a3d9a3;
-}
-
-.mc-indicateur.statut-neutre {
-  color: var(--c-text-sec);
+  color: var(--c-text);
   background: var(--c-surface-alt);
   border: 1px solid var(--c-border);
-}
-
-.mc-indicateur.statut-depasse {
-  color: #933;
-  background: #fff5f5;
-  border: 1px solid #c88;
 }
 
 .move-notes {
@@ -721,24 +706,9 @@ body {
   padding: 0.3rem 0.5rem;
   border-radius: 3px;
   display: inline-block;
-}
-
-.mt-indicateur.statut-ok {
-  color: #2a7a2a;
-  background: #edfaed;
-  border: 1px solid #a3d9a3;
-}
-
-.mt-indicateur.statut-neutre {
-  color: var(--c-text-sec);
+  color: var(--c-text);
   background: var(--c-surface-alt);
   border: 1px solid var(--c-border);
-}
-
-.mt-indicateur.statut-depasse {
-  color: #933;
-  background: #fff5f5;
-  border: 1px solid #c88;
 }
 
 .mt-liste {
@@ -860,24 +830,9 @@ body {
   padding: 0.3rem 0.5rem;
   border-radius: 3px;
   display: inline-block;
-}
-
-.eq-indicateur.statut-ok {
-  color: #2a7a2a;
-  background: #edfaed;
-  border: 1px solid #a3d9a3;
-}
-
-.eq-indicateur.statut-neutre {
-  color: var(--c-text-sec);
+  color: var(--c-text);
   background: var(--c-surface-alt);
   border: 1px solid var(--c-border);
-}
-
-.eq-indicateur.statut-depasse {
-  color: #933;
-  background: #fff5f5;
-  border: 1px solid #c88;
 }
 
 .eq-liste {
@@ -1346,39 +1301,29 @@ pre {
   color: var(--c-text);
 }
 
-/* --- Bandeaux indicateurs — overrides mode sombre ---
-   statut-ok   : #7ed07e / #1a3320  → 7.3:1 WCAG AA ✓
-   statut-depasse : #f07070 / #3a1a1a → 5.4:1 WCAG AA ✓ */
+/* --- Pictogramme d'état des bandeaux indicateurs ---
+   Fond bleu (--c-btn-ajouter-bg #1a5fcb) : 5.9:1 blanc WCAG AA ✓
+   Fond rouge (--c-btn-retirer-bg #c0392b) : 5.4:1 blanc WCAG AA ✓ */
 
-@media (prefers-color-scheme: dark) {
-  body:not(.theme-clair) .mc-indicateur.statut-ok,
-  body:not(.theme-clair) .mt-indicateur.statut-ok,
-  body:not(.theme-clair) .eq-indicateur.statut-ok {
-    color: #7ed07e;
-    background: #1a3320;
-    border-color: #2d6a2d;
-  }
-  body:not(.theme-clair) .mc-indicateur.statut-depasse,
-  body:not(.theme-clair) .mt-indicateur.statut-depasse,
-  body:not(.theme-clair) .eq-indicateur.statut-depasse {
-    color: #f07070;
-    background: #3a1a1a;
-    border-color: #8b4444;
-  }
+.indicateur-icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25em;
+  height: 1.25em;
+  border-radius: 2px;
+  font-size: 0.85em;
+  line-height: 1;
+  margin-right: 0.35em;
+  vertical-align: middle;
+  color: #ffffff;
 }
 
-body.theme-sombre .mc-indicateur.statut-ok,
-body.theme-sombre .mt-indicateur.statut-ok,
-body.theme-sombre .eq-indicateur.statut-ok {
-  color: #7ed07e;
-  background: #1a3320;
-  border-color: #2d6a2d;
+.statut-ok .indicateur-icone,
+.statut-neutre .indicateur-icone {
+  background: var(--c-btn-ajouter-bg);
 }
 
-body.theme-sombre .mc-indicateur.statut-depasse,
-body.theme-sombre .mt-indicateur.statut-depasse,
-body.theme-sombre .eq-indicateur.statut-depasse {
-  color: #f07070;
-  background: #3a1a1a;
-  border-color: #8b4444;
+.statut-depasse .indicateur-icone {
+  background: var(--c-btn-retirer-bg);
 }

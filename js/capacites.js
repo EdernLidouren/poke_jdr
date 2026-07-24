@@ -367,13 +367,21 @@ function mettreAJourIndicateur(el, save) {
   const cm  = save.sheets[save.fiche_active].moves.current_moves;
   const max = save.sheets[save.fiche_active].moves.moves_max;
   const count = Object.values(cm).filter(e => e.is_memorized === true).length;
+  const statut = count < max ? 'statut-ok' : count === max ? 'statut-neutre' : 'statut-depasse';
 
-  el.textContent = `${count} / ${max} capacités`;
-  el.className = 'mc-indicateur ' + (
-    count < max  ? 'statut-ok'      :
-    count === max ? 'statut-neutre' :
-                   'statut-depasse'
-  );
+  el.className = 'mc-indicateur ' + statut;
+
+  const icone = document.createElement('span');
+  icone.className = 'indicateur-icone';
+  if (statut === 'statut-depasse') {
+    icone.textContent = '×';
+    icone.setAttribute('aria-label', 'Limite dépassée');
+  } else {
+    icone.textContent = '✓';
+    icone.setAttribute('aria-hidden', 'true');
+  }
+
+  el.replaceChildren(icone, `${count} / ${max} capacités`);
 }
 
 function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstruire) {
