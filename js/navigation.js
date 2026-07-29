@@ -73,6 +73,21 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
     if (btnActif) btnActif.focus();
   }
 
+  // Déplace la fiche active d'une position dans la direction donnée ('gauche'|'droite'), avec wrap.
+  function deplacerFiche(direction) {
+    const i = save.fiche_active;
+    const n = save.sheets.length;
+    const j = direction === 'gauche' ? (i - 1 + n) % n : (i + 1) % n;
+    [save.sheets[i], save.sheets[j]] = [save.sheets[j], save.sheets[i]];
+    save.fiche_active = j;
+    ongletActif = j;
+    // TODO: annoncer le déplacement au lecteur d'écran (message ARIA live) — ex. "Fiche déplacée en position 3 sur 5"
+    onSaveChange(save);
+    rendre();
+    const btnActif = conteneur.querySelector('#nav-principal button.actif');
+    if (btnActif) btnActif.focus();
+  }
+
   // Raccourci clavier Delete — enregistré une seule fois
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Delete' || e.repeat) return;
@@ -85,6 +100,22 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
     )) return;
     if (!estFiche()) return;
     supprimerFiche(save.fiche_active);
+  });
+
+  // Raccourci clavier Ctrl+Flèche — réordonne les onglets de fiche, avec wrap
+  document.addEventListener('keydown', (e) => {
+    if (!e.ctrlKey || e.repeat) return;
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const active = document.activeElement;
+    if (active && (
+      active.tagName === 'INPUT' ||
+      active.tagName === 'TEXTAREA' ||
+      active.tagName === 'SELECT' ||
+      active.isContentEditable
+    )) return;
+    if (!estFiche()) return;
+    e.preventDefault();
+    deplacerFiche(e.key === 'ArrowLeft' ? 'gauche' : 'droite');
   });
 
   function rendreNavPrincipal() {
