@@ -32,23 +32,48 @@
       "type": "enum",
       "values": ["oui", "non"]
     },
+    "contact": {
+      "type": "enum",
+      "values": ["oui", "non"]
+    },
     "prérequis": { "type": "text" },
+    "conditions": { "type": "text" },
     "portée": {
       "type": "enum",
-      "values": ["contact", "courte", "moyenne", "longue"]
+      "values": ["voir description", "contact", "courte", "moyenne", "longue"]
+    },
+    "envergure": {
+      "type": "enum",
+      "values": ["voir description", "contact", "courte", "moyenne", "longue"]
     },
     "cible": {
       "type": "enum",
-      "values": ["personnelle", "une cible"]
+      "values": ["voir description", "aucune", "personnelle", "une cible", "multicibles", "aura", "ligne", "cône", "zone"]
     },
     "utilisation": {
       "type": "enum",
-      "values": ["action", "réaction", "action rapide"]
+      "values": ["voir description", "action", "réaction", "action rapide"]
     },
     "concentration": {
       "type": "enum",
       "values": ["oui", "non"]
     },
+    "jet de la cible": {
+      "type": "enum",
+      "values": ["voir description", "attaque", "attaque spéciale", "défense", "défense spéciale", "agilité"]
+    },
+    "taux de critique": { "type": "int" },
+    "taux de maladresse": { "type": "int" },
+    "contrecoup": { "type": "int" },
+    "mouvement minimal": {
+      "type": "enum",
+      "values": ["voir description", "courte", "moyenne", "longue"]
+    },
+    "mouvement offert": {
+      "type": "enum",
+      "values": ["voir description", "courte", "moyenne", "longue"]
+    },
+    "mécaniques": { "type": "text" },
     "effets": { "type": "text" },
     "incompatibilités": { "type": "list" }
   }
