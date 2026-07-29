@@ -49,6 +49,44 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
     rendre();
   }
 
+  // Supprime la fiche à l'index donné (ou la remplace par une vide si c'est la dernière).
+  // Place le focus sur l'onglet devenu actif après reconstruction.
+  function supprimerFiche(ficheIndex) {
+    const nomFiche = save.sheets[ficheIndex].caracs.nom || 'Nouvelle fiche';
+    if (!confirm(`Supprimer la fiche "${nomFiche}" ? Cette action est irréversible.`)) return;
+
+    if (save.sheets.length === 1) {
+      save.sheets = [creerFicheDefaut()];
+      save.fiche_active = 0;
+    } else {
+      save.sheets.splice(ficheIndex, 1);
+      if (ficheIndex < save.fiche_active) {
+        save.fiche_active = save.fiche_active - 1;
+      } else if (ficheIndex === save.fiche_active) {
+        save.fiche_active = Math.max(0, ficheIndex - 1);
+      }
+    }
+
+    remplacerSave(save);
+    // rendre() est terminé — le DOM est reconstruit, on peut placer le focus
+    const btnActif = conteneur.querySelector('#nav-principal button.actif');
+    if (btnActif) btnActif.focus();
+  }
+
+  // Raccourci clavier Delete — enregistré une seule fois
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Delete' || e.repeat) return;
+    const active = document.activeElement;
+    if (active && (
+      active.tagName === 'INPUT' ||
+      active.tagName === 'TEXTAREA' ||
+      active.tagName === 'SELECT' ||
+      active.isContentEditable
+    )) return;
+    if (!estFiche()) return;
+    supprimerFiche(save.fiche_active);
+  });
+
   function rendreNavPrincipal() {
     const nav = document.createElement('nav');
     nav.id = 'nav-principal';
@@ -57,8 +95,24 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       const btn = document.createElement('button');
       btn.className = 'onglet' + (ongletActif === i ? ' actif' : '');
       btn.dataset.ficheIndex = i;
-      btn.textContent = fiche.caracs.nom || 'Nouvelle fiche';
-      btn.addEventListener('click', () => changerOnglet(i));
+
+      const spanNom = document.createElement('span');
+      spanNom.className = 'onglet-nom';
+      spanNom.textContent = fiche.caracs.nom || 'Nouvelle fiche';
+
+      const spanX = document.createElement('span');
+      spanX.className = 'onglet-supprimer';
+      spanX.setAttribute('aria-hidden', 'true');
+      spanX.textContent = '×';
+
+      btn.append(spanNom, spanX);
+      btn.addEventListener('click', (e) => {
+        if (e.target.closest('.onglet-supprimer')) {
+          supprimerFiche(i);
+        } else {
+          changerOnglet(i);
+        }
+      });
       nav.appendChild(btn);
     });
 
@@ -76,6 +130,17 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
       remplacerSave(save);
     });
     nav.appendChild(btnNouvelleF);
+
+    // Bouton accessible (masqué visuellement) — supprime la fiche active
+    const btnSupprimerActive = document.createElement('button');
+    btnSupprimerActive.type = 'button';
+    btnSupprimerActive.className = 'sr-only';
+    btnSupprimerActive.textContent = 'Supprimer la fiche active';
+    if (!estFiche()) btnSupprimerActive.disabled = true;
+    btnSupprimerActive.addEventListener('click', () => {
+      if (estFiche()) supprimerFiche(save.fiche_active);
+    });
+    nav.appendChild(btnSupprimerActive);
 
     // Séparateur pour pousser les onglets fixes à droite
     const sep = document.createElement('span');

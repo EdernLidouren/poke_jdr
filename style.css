@@ -111,6 +111,20 @@ body {
   margin: 0 auto;
 }
 
+/* --- Accessibilité : masqué visuellement, lisible par les lecteurs d'écran --- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* --- Navigation principale --- */
 
 #nav-principal {
@@ -165,6 +179,25 @@ body {
   border-bottom-color: var(--c-surface);
   color: var(--c-text);
   font-weight: bold;
+}
+
+.onglet-supprimer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 2px;
+  margin-left: 0.4em;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--c-text-ter);
+  vertical-align: middle;
+}
+
+.onglet-supprimer:hover {
+  background: var(--c-btn-retirer-bg);
+  color: #ffffff;
 }
 
 /* --- Sous-navigation --- */

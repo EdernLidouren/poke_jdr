@@ -523,5 +523,8 @@ function mettreAJourLabelOnglet(ficheIndex, nom) {
   const nav = document.getElementById('nav-principal');
   if (!nav) return;
   const btn = nav.querySelector(`button[data-fiche-index="${ficheIndex}"]`);
-  if (btn) btn.textContent = nom || 'Nouvelle fiche';
+  if (btn) {
+    const spanNom = btn.querySelector('.onglet-nom');
+    if (spanNom) spanNom.textContent = nom || 'Nouvelle fiche';
+  }
 }
