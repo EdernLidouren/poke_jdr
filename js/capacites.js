@@ -349,6 +349,41 @@ function rendreContenuMesCapacites(contenu, catalogue, save, onSaveChange) {
   indicateur.className = 'mc-indicateur';
   mettreAJourIndicateur(indicateur, save);
 
+  const fiche = save.sheets[save.fiche_active];
+  const divMax = document.createElement('div');
+  divMax.className = 'max-controle';
+  const lblMax = document.createElement('span');
+  lblMax.className = 'max-controle-label';
+  lblMax.textContent = 'Maximum';
+  const spanMax = document.createElement('span');
+  spanMax.className = 'max-controle-valeur';
+  spanMax.textContent = String(fiche.moves.moves_max);
+  const btnMaxMoins = document.createElement('button');
+  btnMaxMoins.type = 'button';
+  btnMaxMoins.className = 'btn-stepper';
+  btnMaxMoins.textContent = '−';
+  btnMaxMoins.setAttribute('aria-label', 'Diminuer le maximum de capacités');
+  const btnMaxPlus = document.createElement('button');
+  btnMaxPlus.type = 'button';
+  btnMaxPlus.className = 'btn-stepper';
+  btnMaxPlus.textContent = '+';
+  btnMaxPlus.setAttribute('aria-label', 'Augmenter le maximum de capacités');
+  btnMaxMoins.addEventListener('click', () => {
+    if (fiche.moves.moves_max <= 1) return;
+    fiche.moves.moves_max--;
+    spanMax.textContent = String(fiche.moves.moves_max);
+    onSaveChange(save);
+    mettreAJourIndicateur(indicateur, save);
+  });
+  btnMaxPlus.addEventListener('click', () => {
+    if (fiche.moves.moves_max >= 99) return;
+    fiche.moves.moves_max++;
+    spanMax.textContent = String(fiche.moves.moves_max);
+    onSaveChange(save);
+    mettreAJourIndicateur(indicateur, save);
+  });
+  divMax.append(lblMax, btnMaxMoins, spanMax, btnMaxPlus);
+
   const zoneBlocs = document.createElement('div');
 
   function reconstruire() {
@@ -360,7 +395,7 @@ function rendreContenuMesCapacites(contenu, catalogue, save, onSaveChange) {
   }
 
   reconstruire();
-  contenu.append(indicateur, zoneBlocs);
+  contenu.append(indicateur, divMax, zoneBlocs);
 }
 
 function mettreAJourIndicateur(el, save) {

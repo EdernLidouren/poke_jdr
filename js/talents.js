@@ -186,6 +186,41 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
 
   recalculerIndicateur();
 
+  const fiche = save.sheets[save.fiche_active];
+  const divMax = document.createElement('div');
+  divMax.className = 'max-controle';
+  const lblMax = document.createElement('span');
+  lblMax.className = 'max-controle-label';
+  lblMax.textContent = 'Maximum';
+  const spanMax = document.createElement('span');
+  spanMax.className = 'max-controle-valeur';
+  spanMax.textContent = String(fiche.abilities.abilities_max);
+  const btnMaxMoins = document.createElement('button');
+  btnMaxMoins.type = 'button';
+  btnMaxMoins.className = 'btn-stepper';
+  btnMaxMoins.textContent = '−';
+  btnMaxMoins.setAttribute('aria-label', 'Diminuer le maximum de talents');
+  const btnMaxPlus = document.createElement('button');
+  btnMaxPlus.type = 'button';
+  btnMaxPlus.className = 'btn-stepper';
+  btnMaxPlus.textContent = '+';
+  btnMaxPlus.setAttribute('aria-label', 'Augmenter le maximum de talents');
+  btnMaxMoins.addEventListener('click', () => {
+    if (fiche.abilities.abilities_max <= 1) return;
+    fiche.abilities.abilities_max--;
+    spanMax.textContent = String(fiche.abilities.abilities_max);
+    onSaveChange(save);
+    mettreAJourIndicateurTalents(indicateur, save, abilityMap);
+  });
+  btnMaxPlus.addEventListener('click', () => {
+    if (fiche.abilities.abilities_max >= 99) return;
+    fiche.abilities.abilities_max++;
+    spanMax.textContent = String(fiche.abilities.abilities_max);
+    onSaveChange(save);
+    mettreAJourIndicateurTalents(indicateur, save, abilityMap);
+  });
+  divMax.append(lblMax, btnMaxMoins, spanMax, btnMaxPlus);
+
   // Bloc "Talents appris"
   const section = document.createElement('section');
   section.className = 'bloc';
@@ -315,7 +350,7 @@ function rendreContenuMesTalents(contenu, catalogue, save, onSaveChange) {
 
   construireListe();
   section.append(blocHeader, corps);
-  contenu.append(indicateur, section);
+  contenu.append(indicateur, divMax, section);
 }
 
 // =========================================================

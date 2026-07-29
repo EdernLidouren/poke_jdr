@@ -1360,3 +1360,22 @@ pre {
 .statut-depasse .indicateur-icone {
   background: var(--c-btn-retirer-bg);
 }
+
+.max-controle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.max-controle-label {
+  font-size: 13px;
+  color: var(--c-text-ter);
+}
+
+.max-controle-valeur {
+  font-size: 13px;
+  font-weight: bold;
+  min-width: 1.5rem;
+  text-align: center;
+}
