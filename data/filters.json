@@ -9,7 +9,11 @@
     "portée": { "type": "enum" },
     "utilisation": { "type": "enum" },
     "concentration": { "type": "enum" },
-    "évolutif": { "type": "enum" }
+    "évolutif": { "type": "enum" },
+    "contact": { "type": "enum" },
+    "cible": { "type": "enum" },
+    "envergure": { "type": "enum" },
+    "jet de la cible": { "type": "enum" }
   },
   "abilities": {
     "type": { "type": "enum" },
