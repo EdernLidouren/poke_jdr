@@ -52,10 +52,10 @@ function construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChang
     (val) => {
       caracs.niveau = val;
       if (refInputExp) {
-        refInputExp.max = val;
-        if (Number(refInputExp.value) > val) {
-          refInputExp.value = val;
-          caracs.expérience = val;
+        refInputExp.max = val + 1;
+        if (Number(refInputExp.value) > val + 1) {
+          refInputExp.value = val + 1;
+          caracs.expérience = val + 1;
         }
       }
       onSaveChange(save);
@@ -63,7 +63,7 @@ function construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChang
   );
 
   const { conteneur: ligneExp, input: inputExp } = creerChampNombre(
-    'Expérience', caracs.expérience, 0, caracs.niveau || 20,
+    'Expérience', caracs.expérience, 0, caracs.niveau + 1,
     (val) => { caracs.expérience = val; onSaveChange(save); }
   );
   refInputExp = inputExp;
