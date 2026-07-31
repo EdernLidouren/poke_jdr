@@ -2,7 +2,7 @@
 
 import { renderJaugePV, renderJaugePouvoir } from './widgets.js';
 import { executerFinDeCombat } from './combat.js';
-import { lancerJetCarac, lancerJetCompetence, rendreBlocDes, COMPETENCE_CARAC_DEFAUT, CARACS_PRIMAIRES } from './dice.js';
+import { lancerJetCarac, lancerJetCompetence, rendreBlocDes, CARACS_PRIMAIRES } from './dice.js';
 
 export function rendreGeneral(zone, catalogue, save, onSaveChange) {
   const ficheIndex = save.fiche_active;
@@ -329,7 +329,7 @@ function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHist
       opt.textContent = c.charAt(0).toUpperCase() + c.slice(1);
       selectCarac.appendChild(opt);
     }
-    const caracDefaut = COMPETENCE_CARAC_DEFAUT[nom];
+    const caracDefaut = catalogue.competence_carac_defaut?.[nom];
     if (caracDefaut) selectCarac.value = caracDefaut;
 
     const btnLancerSkill = document.createElement('button');

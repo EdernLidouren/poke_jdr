@@ -4,13 +4,6 @@ export const FACES_DISPONIBLES = [4, 6, 8, 10, 12, 20, 100];
 
 export const CARACS_PRIMAIRES = ['force', 'constitution', 'charisme', 'esprit', 'agilité'];
 
-// Mapping compétence → caractéristique primaire par défaut
-export const COMPETENCE_CARAC_DEFAUT = {
-  acrobatie:  'agilité',
-  perception: 'esprit',
-  survie:     'esprit',
-};
-
 // Niveau de compétence (-3…3) → bonus fixe + contribution avantage/désavantage pour ce jet
 // avBonus > 0 : ajoute un avantage ; avBonus < 0 : ajoute un désavantage
 const NIVEAUX_COMPETENCE = new Map([

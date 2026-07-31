@@ -14,10 +14,11 @@ const PREFIXES = {
 // =========================================================
 
 export async function loadCatalogue() {
-  // Fetch catalogue et filters en parallèle
-  const [rawCatalogue, rawFilters] = await Promise.all([
+  // Fetch catalogue, filters et skills en parallèle
+  const [rawCatalogue, rawFilters, rawSkills] = await Promise.all([
     fetchJson(`${BASE_URL}/data/catalogue.json`),
     fetchJson(`${BASE_URL}/data/filters.json`),  // null si introuvable — non bloquant
+    fetchJson(`${BASE_URL}/data/skills.json`),   // null si introuvable — non bloquant
   ]);
 
   if (rawCatalogue === null) {
@@ -25,9 +26,8 @@ export async function loadCatalogue() {
   }
 
   const db = buildCatalogue(rawCatalogue);
+  db.competence_carac_defaut = buildSkillsMapping(rawSkills);
   const availableFilters = buildAvailableFilters(db, rawFilters || {});
-
-  console.log('availableFilters:', availableFilters);
 
   return { db, availableFilters };
 }
@@ -80,6 +80,22 @@ function buildCatalogue(raw) {
     : [];
 
   return db;
+}
+
+// =========================================================
+// Construction du mapping compétences → caractéristiques
+// =========================================================
+
+function buildSkillsMapping(raw) {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
+  const result = {};
+  for (const [cle, valeur] of Object.entries(raw)) {
+    if (typeof cle === 'string' && cle.length > 0 &&
+        typeof valeur === 'string' && valeur.length > 0) {
+      result[cle] = valeur;
+    }
+  }
+  return result;
 }
 
 // =========================================================
