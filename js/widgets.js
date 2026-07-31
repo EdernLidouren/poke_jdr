@@ -89,7 +89,7 @@ function _renderJauge(save, label, cleVal, cleMax, onUpdate) {
   inputMax.addEventListener('change',   () => clampMax(inputMax.value));
 
   ligne.append(lbl, spanTotal, groupeActuel, groupeMax);
-  return ligne;
+  return { ligne, rafraichir };
 }
 
 // =========================================================

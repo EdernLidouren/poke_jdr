@@ -94,8 +94,8 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   caracsCorps.className = 'bloc-contenu';
   brancherToggle(btnToggleCaracs, caracsCorps);
 
-  caracsCorps.appendChild(renderJaugePV(save, onSaveChange));
-  caracsCorps.appendChild(renderJaugePouvoir(save, onSaveChange));
+  caracsCorps.appendChild(renderJaugePV(save, onSaveChange).ligne);
+  caracsCorps.appendChild(renderJaugePouvoir(save, onSaveChange).ligne);
 
   caracsCorps.appendChild(renderValeurCalculee('Garde', c.garde + c.garde_mod));
   caracsCorps.appendChild(renderValeurCalculee('Garde spéciale', c.garde_speciale + c.garde_speciale_mod));

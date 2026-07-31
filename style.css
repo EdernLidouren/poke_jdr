@@ -31,6 +31,12 @@
   --c-btn-lancer-bg:     #7b2d8b;   /* violet prune — WCAG AA 8.1:1 texte blanc */
   --c-btn-lancer-hover:  #9c3fad;   /* prune clair — WCAG AA 5.6:1 texte blanc */
   --c-btn-supprimer-fg:  #993333;   /* rouge sombre (statut actif clair) */
+
+  /* Repos court / Repos long — famille bleue croissante */
+  --c-btn-repos-court-bg:    #2776b8;   /* bleu moyen — WCAG AA 4.7:1 texte blanc */
+  --c-btn-repos-court-hover: #1d65a3;
+  --c-btn-repos-long-bg:     #1549a0;   /* bleu profond — WCAG AA 8.6:1 texte blanc */
+  --c-btn-repos-long-hover:  #103585;
 }
 
 /* --- Mode sombre automatique (préférence système) --- */
@@ -54,6 +60,10 @@
     --c-btn-lancer-bg:    #6a1b7a;   /* prune sombre — WCAG AA 10.2:1 texte blanc */
     --c-btn-lancer-hover: #7b2d8b;
     --c-btn-supprimer-fg: var(--c-text);   /* blanc cassé — WCAG AA 11.7:1 */
+    --c-btn-repos-court-bg:    #1d6db5;   /* bleu ajusté mode sombre — WCAG AA 5.4:1 texte blanc */
+    --c-btn-repos-court-hover: #1560a5;
+    --c-btn-repos-long-bg:     #1549a0;   /* identique — contraste déjà élevé */
+    --c-btn-repos-long-hover:  #0e3a88;
   }
 }
 
@@ -77,6 +87,10 @@ body.theme-sombre {
   --c-btn-lancer-bg:    #6a1b7a;
   --c-btn-lancer-hover: #7b2d8b;
   --c-btn-supprimer-fg: var(--c-text);
+  --c-btn-repos-court-bg:    #1d6db5;
+  --c-btn-repos-court-hover: #1560a5;
+  --c-btn-repos-long-bg:     #1549a0;
+  --c-btn-repos-long-hover:  #0e3a88;
 }
 
 /* --- Réinitialisation --- */
@@ -383,6 +397,46 @@ body {
 }
 
 /* --- Sous-blocs --- */
+
+.sous-bloc-entete {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.45rem;
+}
+
+.sous-bloc-entete .sous-bloc-titre {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.btn-repos {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.45rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #ffffff;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.btn-repos-court {
+  background: var(--c-btn-repos-court-bg);
+}
+
+.btn-repos-court:hover {
+  background: var(--c-btn-repos-court-hover);
+}
+
+.btn-repos-long {
+  background: var(--c-btn-repos-long-bg);
+}
+
+.btn-repos-long:hover {
+  background: var(--c-btn-repos-long-hover);
+}
 
 .sous-bloc-titre {
   font-size: 0.78rem;

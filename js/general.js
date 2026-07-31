@@ -1,6 +1,7 @@
 // Onglet Général — blocs Identité et Caractéristiques
 
 import { renderJaugePV, renderJaugePouvoir } from './widgets.js';
+import { executerFinDeCombat } from './combat.js';
 import { lancerJetCarac, lancerJetCompetence, rendreBlocDes, COMPETENCE_CARAC_DEFAUT, CARACS_PRIMAIRES } from './dice.js';
 
 export function rendreGeneral(zone, catalogue, save, onSaveChange) {
@@ -127,10 +128,51 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
   }
 
   // ---- Sous-bloc secondaires (en premier) ----
-  contenu.appendChild(creerTitreSousBloc('Caractéristiques secondaires'));
+  const enteteSecondaires = document.createElement('div');
+  enteteSecondaires.className = 'sous-bloc-entete';
+  enteteSecondaires.appendChild(creerTitreSousBloc('Caractéristiques secondaires'));
 
-  contenu.appendChild(renderJaugePV(save, onSaveChange));
-  contenu.appendChild(renderJaugePouvoir(save, onSaveChange));
+  const btnReposCourt = document.createElement('button');
+  btnReposCourt.type = 'button';
+  btnReposCourt.className = 'btn-repos btn-repos-court';
+  btnReposCourt.textContent = 'Repos court';
+  btnReposCourt.setAttribute('aria-label', 'Repos court — récupérer la moitié des PV et du Pouvoir');
+
+  const btnReposLong = document.createElement('button');
+  btnReposLong.type = 'button';
+  btnReposLong.className = 'btn-repos btn-repos-long';
+  btnReposLong.textContent = 'Repos long';
+  btnReposLong.setAttribute('aria-label', 'Repos long — remettre PV et Pouvoir au maximum');
+
+  enteteSecondaires.append(btnReposCourt, btnReposLong);
+  contenu.appendChild(enteteSecondaires);
+
+  const { ligne: lignePV, rafraichir: rafraichirPV } = renderJaugePV(save, onSaveChange);
+  const { ligne: lignePouvoir, rafraichir: rafraichirPouvoir } = renderJaugePouvoir(save, onSaveChange);
+  contenu.appendChild(lignePV);
+  contenu.appendChild(lignePouvoir);
+
+  btnReposCourt.addEventListener('click', () => {
+    const c = save.sheets[save.fiche_active].caracs;
+    c.pv      = Math.min(c.pv_max,      c.pv      + Math.floor(c.pv_max      / 2));
+    c.pouvoir = Math.min(c.pouvoir_max, c.pouvoir + Math.floor(c.pouvoir_max / 2));
+    // TODO: annoncer le repos au lecteur d'écran (ARIA live) — ex. "Repos court : PV X/Y, Pouvoir X/Y"
+    onSaveChange(save);
+    rafraichirPV();
+    rafraichirPouvoir();
+    executerFinDeCombat();
+  });
+
+  btnReposLong.addEventListener('click', () => {
+    const c = save.sheets[save.fiche_active].caracs;
+    c.pv      = c.pv_max;
+    c.pouvoir = c.pouvoir_max;
+    // TODO: annoncer le repos au lecteur d'écran (ARIA live) — ex. "Repos long : PV X/Y, Pouvoir X/Y"
+    onSaveChange(save);
+    rafraichirPV();
+    rafraichirPouvoir();
+    executerFinDeCombat();
+  });
 
   // Garde
   const { ligne: ligneGarde, spanTotal: spanGardeTotale } = creerLigneGarde(
