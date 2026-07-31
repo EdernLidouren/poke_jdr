@@ -26,6 +26,9 @@ export async function loadCatalogue() {
   }
 
   const db = buildCatalogue(rawCatalogue);
+  if (rawSkills === null) {
+    console.warn('skills.json introuvable ou JSON invalide — mapping compétences→caracs désactivé.');
+  }
   db.competence_carac_defaut = buildSkillsMapping(rawSkills);
   const availableFilters = buildAvailableFilters(db, rawFilters || {});
 
