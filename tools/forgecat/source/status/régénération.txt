@@ -1,0 +1,4 @@
+Nom : Régénération
+incompatibilités : Blessure
+
+effets : Le pokémon est soigné à chaque fin de tour d'un montant égal au niveau de ce statut.

@@ -1,0 +1,4 @@
+Nom : Puissance
+incompatibilités : Apathie
+
+effets : Octroie un avantage sur les jets et jets de sauvegarde de charisme.

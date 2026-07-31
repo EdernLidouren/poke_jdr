@@ -1,0 +1,4 @@
+Nom : Force
+incompatibilités : Faiblesse
+
+effets : Octroie un avantage sur les jets et jets de sauvegarde de force.

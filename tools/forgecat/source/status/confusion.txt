@@ -1,0 +1,4 @@
+Nom : Confusion
+incompatibilités : Aucune
+
+effets : Lorsqu'il doit consommer au moins 1 point de pouvoir, le pokémon en consomme 1 supplémentaire. Ce statut brise la concentration.

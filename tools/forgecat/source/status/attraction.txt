@@ -1,0 +1,4 @@
+Nom : Attraction
+incompatibilités : Peur, berserk
+
+effets : Si le pokémon souhaite se déplacer alors que sa source d'attraction est en vue, il doit faire un jet de discipline dont la difficulté est égale à 10 + attaque spéciale de la source + niveau du statut d'attraction, ou bien un degré défini par le maître de jeu. En cas d'échec, le pokémon ne peut pas s'éloigner de la source.  Il souffre également d'un désavantage sur tous ses jets à l'encontre de cette source. Ce statut brise la concentration si les effets de celle-ci nuisent à la source de l'attraction. Il ne peut y avoir qu'une seule source d'attraction active à la fois. Généralement, une nouvelle source remplace l'ancienne.

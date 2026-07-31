@@ -1,0 +1,4 @@
+Nom : Doute
+incompatibilités : Volonté
+
+effets : Impose un désavantage aux jets et jets de sauvegarde d'esprit. Les attaques spéciales ciblant ce pokémon se font avec avantage.

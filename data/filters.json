@@ -13,6 +13,13 @@
     "contact": { "type": "enum" },
     "cible": { "type": "enum" },
     "envergure": { "type": "enum" },
+    "mouvement minimal": { "type": "enum" },
+    "mouvement offert": { "type": "enum" },
+    "mécaniques": { "type": "text" },
+    "taux de critique": { "type": "int" },
+    "taux de maladresse": { "type": "int" },
+    "contrecoup": { "type": "int" },
+    "prérequis": { "type": "text" },
     "jet de la cible": { "type": "enum" }
   },
   "abilities": {

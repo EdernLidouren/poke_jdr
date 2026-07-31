@@ -1,0 +1,4 @@
+Nom : Vitesse
+incompatibilités : Lenteur
+
+effets : Octroie un avantage aux jets et jets de sauvegarde d'agilité. Lors de son tour, le pokémon peut transformer sa réaction en mouvement en plus de son action. Ses déplacements ne le laissent jamais sans défense.

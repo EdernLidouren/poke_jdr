@@ -1,0 +1,4 @@
+Nom : Fragilité
+incompatibilités : Endurance
+
+effets : Impose un désavantage aux jets et jets de sauvegarde de constitution. Les attaques physiques ciblant ce pokémon se font avec avantage.

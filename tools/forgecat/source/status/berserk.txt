@@ -1,0 +1,4 @@
+Nom : Berserk
+incompatibilités : Peur, attraction
+
+effets : Le pokémon ne peut entreprendre que des actions offensives. Si aucune cible n'est accessible, il s'en prend à des objets inanimés.

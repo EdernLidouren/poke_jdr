@@ -1,0 +1,5 @@
+RAPPORT D'ERREURS FORGECAT
+========================================
+
+source\status\confusion.txt
+  - Champ obligatoire manquant : 'incompatibilités'

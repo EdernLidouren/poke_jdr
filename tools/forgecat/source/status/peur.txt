@@ -1,0 +1,4 @@
+Nom : Peur
+incompatibilités : Attraction, berserk
+
+effets : Le pokémon ne peut pas se rapprocher de la source de sa peur, sauf s'il réussit un jet de discipline dont la difficulté est égale à 10 + attaque spéciale de la source + niveau du statut de peur, ou bien un degré défini par le maître de jeu. Il souffre également d'un désavantage sur tous ses jets à l'encontre de cette source. Ce statut brise la concentration si les effets de celle-ci nuisent à la source de la peur. Il ne peut y avoir qu'une seule source de peur active à la fois. Généralement, une nouvelle source remplace l'ancienne.

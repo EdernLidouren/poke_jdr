@@ -1,0 +1,4 @@
+Nom : Apathie
+incompatibilités : Puissance
+
+effets : Impose un désavantage sur les jets et jets de sauvegarde de charisme.

@@ -1,4 +1,4 @@
 Nom : Lenteur
 incompatibilités : Vitesse
 
-effets : Impose un désavantage aux jets d'esquive.
+effets : Impose un désavantage aux jets et jets de sauvegarde d'agilité. Si le pokémon utilise son action lors de son tour, il perd sa réaction, et inversement.

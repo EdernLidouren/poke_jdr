@@ -1,5 +1,16 @@
 {
-  "acrobatie":  "agilité",
+  "acrobatie": "agilité",
+  "artisanat": "esprit",
+  "arts": "charisme",
+  "athlétisme": "force",
+  "autorité": "charisme",
+  "discipline": "esprit",
+  "discrétion": "agilité",
+  "éloquence": "charisme",
+  "érudition": "esprit",
+  "médecine"": "esprit",
   "perception": "esprit",
-  "survie":     "esprit"
+  "perspicacité": "esprit",
+  "roublardise": "agilité",
+  "survie":   "esprit"
 }

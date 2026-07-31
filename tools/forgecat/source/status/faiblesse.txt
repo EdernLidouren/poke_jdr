@@ -1,0 +1,4 @@
+Nom : Faiblesse
+incompatibilités : Force
+
+effets : Impose un désavantage sur les jets et jets de sauvegarde de force.

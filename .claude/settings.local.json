@@ -15,7 +15,9 @@
       "Bash(python -c \"import json; d=json.load\\(open\\('C:/Users/Administrateur/Documents/Travail/programmation/python/poke_jdr/data/catalogue.json','r',encoding='utf-8'\\)\\); types=sorted\\(set\\(m.get\\('type',''\\) for m in d.get\\('moves',[]\\)\\)\\); print\\('\\\\n'.join\\(types\\)\\)\")",
       "Bash(python -c ' *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(python -c \"import json; d=json.load\\(open\\('data/catalogue.json', encoding='utf-8'\\)\\); print\\(list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\('data/catalogue.json', encoding='utf-8'\\)\\); print\\(d['skills']\\)\")"
     ]
   }
 }

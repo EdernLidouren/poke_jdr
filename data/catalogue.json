@@ -48,12 +48,135 @@
   ],
   "status": [
     {
+      "nom": "Apathie",
+      "incompatibilités": [
+        "status_puissance"
+      ],
+      "effets": "Impose un désavantage sur les jets et jets de sauvegarde de charisme.",
+      "id": "status_apathie"
+    },
+    {
+      "nom": "Attraction",
+      "incompatibilités": [
+        "status_peur",
+        "status_berserk"
+      ],
+      "effets": "Si le pokémon souhaite se déplacer alors que sa source d'attraction est en vue, il doit faire un jet de discipline dont la difficulté est égale à 10 + attaque spéciale de la source + niveau du statut d'attraction, ou bien un degré défini par le maître de jeu. En cas d'échec, le pokémon ne peut pas s'éloigner de la source.  Il souffre également d'un désavantage sur tous ses jets à l'encontre de cette source. Ce statut brise la concentration si les effets de celle-ci nuisent à la source de l'attraction. Il ne peut y avoir qu'une seule source d'attraction active à la fois. Généralement, une nouvelle source remplace l'ancienne.",
+      "id": "status_attraction"
+    },
+    {
+      "nom": "Berserk",
+      "incompatibilités": [
+        "status_peur",
+        "status_attraction"
+      ],
+      "effets": "Le pokémon ne peut entreprendre que des actions offensives. Si aucune cible n'est accessible, il s'en prend à des objets inanimés.",
+      "id": "status_berserk"
+    },
+    {
+      "nom": "Blessure",
+      "incompatibilités": [
+        "status_regeneration"
+      ],
+      "effets": "Le pokémon subit chaque fin de tour un nombre de dégâts neutres égal au niveau de ce statut.",
+      "id": "status_blessure"
+    },
+    {
+      "nom": "Confusion",
+      "incompatibilités": [
+        "status_aucune"
+      ],
+      "effets": "Lorsqu'il doit consommer au moins 1 point de pouvoir, le pokémon en consomme 1 supplémentaire. Ce statut brise la concentration.",
+      "id": "status_confusion"
+    },
+    {
+      "nom": "Doute",
+      "incompatibilités": [
+        "status_volonte"
+      ],
+      "effets": "Impose un désavantage aux jets et jets de sauvegarde d'esprit. Les attaques spéciales ciblant ce pokémon se font avec avantage.",
+      "id": "status_doute"
+    },
+    {
+      "nom": "Endurance",
+      "incompatibilités": [
+        "status_fragilite"
+      ],
+      "effets": "Octroie un avantage aux jets et jets de sauvegarde de constitution. Les attaques physiques ciblant ce pokémon se font avec désavantage.",
+      "id": "status_endurance"
+    },
+    {
+      "nom": "Faiblesse",
+      "incompatibilités": [
+        "status_force"
+      ],
+      "effets": "Impose un désavantage sur les jets et jets de sauvegarde de force.",
+      "id": "status_faiblesse"
+    },
+    {
+      "nom": "Force",
+      "incompatibilités": [
+        "status_faiblesse"
+      ],
+      "effets": "Octroie un avantage sur les jets et jets de sauvegarde de force.",
+      "id": "status_force"
+    },
+    {
+      "nom": "Fragilité",
+      "incompatibilités": [
+        "status_endurance"
+      ],
+      "effets": "Impose un désavantage aux jets et jets de sauvegarde de constitution. Les attaques physiques ciblant ce pokémon se font avec avantage.",
+      "id": "status_fragilite"
+    },
+    {
       "nom": "Lenteur",
       "incompatibilités": [
         "status_vitesse"
       ],
-      "effets": "Impose un désavantage aux jets d'esquive.",
+      "effets": "Impose un désavantage aux jets et jets de sauvegarde d'agilité. Si le pokémon utilise son action lors de son tour, il perd sa réaction, et inversement.",
       "id": "status_lenteur"
+    },
+    {
+      "nom": "Peur",
+      "incompatibilités": [
+        "status_attraction",
+        "status_berserk"
+      ],
+      "effets": "Le pokémon ne peut pas se rapprocher de la source de sa peur, sauf s'il réussit un jet de discipline dont la difficulté est égale à 10 + attaque spéciale de la source + niveau du statut de peur, ou bien un degré défini par le maître de jeu. Il souffre également d'un désavantage sur tous ses jets à l'encontre de cette source. Ce statut brise la concentration si les effets de celle-ci nuisent à la source de la peur. Il ne peut y avoir qu'une seule source de peur active à la fois. Généralement, une nouvelle source remplace l'ancienne.",
+      "id": "status_peur"
+    },
+    {
+      "nom": "Puissance",
+      "incompatibilités": [
+        "status_apathie"
+      ],
+      "effets": "Octroie un avantage sur les jets et jets de sauvegarde de charisme.",
+      "id": "status_puissance"
+    },
+    {
+      "nom": "Régénération",
+      "incompatibilités": [
+        "status_blessure"
+      ],
+      "effets": "Le pokémon est soigné à chaque fin de tour d'un montant égal au niveau de ce statut.",
+      "id": "status_regeneration"
+    },
+    {
+      "nom": "Vitesse",
+      "incompatibilités": [
+        "status_lenteur"
+      ],
+      "effets": "Octroie un avantage aux jets et jets de sauvegarde d'agilité. Lors de son tour, le pokémon peut transformer sa réaction en mouvement en plus de son action. Ses déplacements ne le laissent jamais sans défense.",
+      "id": "status_vitesse"
+    },
+    {
+      "nom": "Volonté",
+      "incompatibilités": [
+        "status_doute"
+      ],
+      "effets": "Octroie un avantage aux jets et jets de sauvegarde d'esprit. Les attaques spéciales ciblant ce pokémon se font avec désavantage.",
+      "id": "status_volonte"
     }
   ],
   "types": [
@@ -95,7 +218,16 @@
   ],
   "skills": [
     "acrobatie",
+    "athlétisme",
+    "autorité",
+    "discipline",
+    "discrétion",
+    "éloquence",
+    "érudition",
+    "médecine",
     "perception",
+    "perspicacité",
+    "roublardise",
     "survie"
   ]
 }

@@ -56,7 +56,7 @@ def add_catalogue_base(catalogue):
             "feu (fantôme)", "eau (fantôme)", "plante (fantôme)", "électrique (fantôme)", "normal (fantôme)", "glace (fantôme)", "vol (fantôme)", "sol (fantôme)", "combat (fantôme)", "dragon (fantôme)", "psy (fantôme)", "acier (fantôme)", "spectre (fantôme)", "fée (fantôme)", "ténèbres (fantôme)", "insecte (fantôme)", "poison (fantôme)"
         ],
         "skills": [
-            "acrobatie", "perception", "survie"
+            "acrobatie", "athlétisme", "autorité", "discipline", "discrétion", "éloquence", "érudition", "médecine", "perception", "perspicacité", "roublardise", "survie"
         ]
     }
     catalogue.update(catalogue_base)
