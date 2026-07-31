@@ -222,7 +222,7 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
 
   for (const { label, cle, affecteGarde } of STATS) {
     const cleMod = `${cle}_mod`;
-    const { ligne, spanTotal } = creerLigneStat(
+    const { ligne, spanTotal, controles } = creerLigneStat(
       label,
       caracs[cle], caracs[cleMod],
       0, 999, -999, 999,
@@ -253,7 +253,7 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
       lancerJetCarac(label, caracs[cle] + caracs[cleMod]);
       rafraichirHistorique();
     });
-    ligne.appendChild(btnDeStat);
+    controles.appendChild(btnDeStat);
 
     contenu.appendChild(ligne);
   }
@@ -354,7 +354,11 @@ function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHist
       btnDe.textContent = wasHidden ? '▲' : '🎲';
     });
 
-    ligne.append(lbl, spanTotal, groupeBase, groupeMod, btnDe);
+    const controles = document.createElement('div');
+    controles.className = 'stat-controles';
+    controles.append(groupeBase, groupeMod, btnDe);
+
+    ligne.append(lbl, spanTotal, controles);
     contenu.appendChild(ligne);
     contenu.appendChild(zoneInline);
   }
@@ -519,12 +523,15 @@ function creerLigneStat(labelTexte, valeurBase, valeurMod, minBase, maxBase, min
   spanTotal.className = 'stat-total';
   spanTotal.textContent = valeurBase + valeurMod;
 
-  ligne.append(
-    lbl, spanTotal,
+  const controles = document.createElement('div');
+  controles.className = 'stat-controles';
+  controles.append(
     creerStatGroupe('base', valeurBase, minBase, maxBase, onChangeBase),
     creerStatGroupe('mod',  valeurMod,  minMod,  maxMod,  onChangeMod),
   );
-  return { ligne, spanTotal };
+
+  ligne.append(lbl, spanTotal, controles);
+  return { ligne, spanTotal, controles };
 }
 
 function creerLigneGarde(labelTexte, totalInitial, valeurMod, minMod, maxMod, onChangeMod) {
@@ -539,7 +546,11 @@ function creerLigneGarde(labelTexte, totalInitial, valeurMod, minMod, maxMod, on
   spanTotal.className = 'stat-total';
   spanTotal.textContent = totalInitial;
 
-  ligne.append(lbl, spanTotal, creerStatGroupe('mod', valeurMod, minMod, maxMod, onChangeMod));
+  const controles = document.createElement('div');
+  controles.className = 'stat-controles';
+  controles.appendChild(creerStatGroupe('mod', valeurMod, minMod, maxMod, onChangeMod));
+
+  ligne.append(lbl, spanTotal, controles);
   return { ligne, spanTotal };
 }
 

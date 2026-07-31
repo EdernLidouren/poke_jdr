@@ -489,6 +489,14 @@ body {
   gap: 0.2rem;
 }
 
+/* Conteneur des contrôles — transparent sur desktop,
+   rangée 2 sur mobile via la media query */
+.stat-controles {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .stat-groupe-label {
   font-size: 11px;
   color: var(--c-text-ter);
@@ -1239,17 +1247,6 @@ body {
   color: var(--c-text);
 }
 
-/* --- Onglet Combat — lignes de caractéristiques côte à côte --- */
-
-.cf-carac-ligne {
-  display: flex;
-  gap: 0.25rem;
-}
-
-.cf-carac-ligne .widget-valeur-calculee {
-  flex: 1;
-}
-
 /* --- Widgets partagés --- */
 
 .widget-jauge {
@@ -1432,4 +1429,101 @@ pre {
   font-weight: bold;
   min-width: 1.5rem;
   text-align: center;
+}
+
+/* ===================================================
+   Responsive — point de rupture mobile (≤ 600px)
+   =================================================== */
+
+@media (max-width: 600px) {
+
+  /* --- Fondations ---------------------------------------- */
+
+  body {
+    padding: 0.5rem;
+  }
+
+  /* Sous-navigation : défilement horizontal plutôt que retour
+     à la ligne, pour les 6 sous-onglets serrés sur mobile */
+  #nav-secondaire {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* --- Lignes de champs (Identité, filtres) -------------- */
+
+  .champ-ligne {
+    flex-wrap: wrap;
+  }
+
+  /* Inputs texte / recherche : largeurs fixes (14 rem et 20 rem)
+     remplacées par un comportement fluide */
+  .champ-ligne input[type="text"],
+  .champ-ligne input[type="search"],
+  .champ-ligne input.filtre-text {
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .champ-ligne select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* --- Onglet Paramètres ---------------------------------- */
+
+  .param-bloc {
+    flex-wrap: wrap;
+  }
+
+  /* --- Zone de dés libres --------------------------------- */
+
+  .des-jet-libre {
+    flex-wrap: wrap;
+  }
+
+  /* Supprime l'indentation desktop (9,5 rem) alignée sur la
+     grille des stats, inutilisable sur écran étroit */
+  .des-inline-zone {
+    padding-left: 0.5rem;
+  }
+
+  /* --- Cibles tactiles (minimum 44 × 44 px) -------------- */
+
+  .btn-stepper,
+  .btn-ability-qty {
+    width: 2.75rem;   /* 44px à base 16px */
+    height: 2.75rem;
+  }
+
+  .btn-ajouter,
+  .btn-retirer,
+  .btn-bascule,
+  .btn-lancer {
+    min-height: 2.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* --- Lignes de caractéristiques — réagencement deux rangées --- */
+
+  /* Rangée 1 : nom + valeur totale */
+  .stat-ligne {
+    flex-wrap: wrap;
+  }
+
+  /* Le label s'étend sur toute la largeur disponible de la rangée 1,
+     poussant stat-total à droite */
+  .stat-label {
+    flex-grow: 1;
+    width: auto;
+  }
+
+  /* Rangée 2 : contrôles (groupes + dé) en pleine largeur */
+  .stat-controles {
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
 }

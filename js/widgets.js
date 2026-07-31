@@ -88,7 +88,11 @@ function _renderJauge(save, label, cleVal, cleMax, onUpdate) {
   btnMaxPlus.addEventListener('click',  () => clampMax(Number(inputMax.value) + 1));
   inputMax.addEventListener('change',   () => clampMax(inputMax.value));
 
-  ligne.append(lbl, spanTotal, groupeActuel, groupeMax);
+  const controles = document.createElement('div');
+  controles.className = 'stat-controles';
+  controles.append(groupeActuel, groupeMax);
+
+  ligne.append(lbl, spanTotal, controles);
   return { ligne, rafraichir };
 }
 
