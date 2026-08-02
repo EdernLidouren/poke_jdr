@@ -41,6 +41,9 @@
   /* Couleurs critique dés (popup et historique) */
   --c-de-reussite: #1a6a1a;
   --c-de-echec:    #a01010;
+
+  /* Ombre popup — visible sur fond clair */
+  --c-popup-ombre: rgba(0, 0, 0, 0.25);
 }
 
 /* --- Mode sombre automatique (préférence système) --- */
@@ -70,6 +73,7 @@
     --c-btn-repos-long-hover:  #0e3a88;
     --c-de-reussite: #6fcc6f;
     --c-de-echec:    #e06060;
+    --c-popup-ombre: rgba(0, 0, 0, 0.6);
   }
 }
 
@@ -99,6 +103,7 @@ body.theme-sombre {
   --c-btn-repos-long-hover:  #0e3a88;
   --c-de-reussite: #6fcc6f;
   --c-de-echec:    #e06060;
+  --c-popup-ombre: rgba(0, 0, 0, 0.6);
 }
 
 /* --- Réinitialisation --- */
@@ -1413,8 +1418,8 @@ pre {
   padding: 0.4rem 1rem;
   border-radius: 6px;
   background: var(--c-surface);
-  border: 1px solid var(--c-border-med);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--c-text);
+  box-shadow: 0 3px 10px var(--c-popup-ombre);
   font-size: 14px;
   color: var(--c-text);
   white-space: nowrap;
