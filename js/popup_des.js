@@ -4,10 +4,15 @@
 
 import { prefixeJet, texteAvDes, texteCritique } from './messages_des.js';
 
+// Passer à true pour réactiver le toast dans une prochaine version.
+const ACTIF = false;
+
 const DELAI_MS = 4000;
 const TRANSITION_MS = 350;
 
 export function initPopupDes() {
+  if (!ACTIF) return;
+
   const popup = document.createElement('div');
   popup.id = 'popup-de';
   // Pas d'aria-live sur le toast — l'annonce lecteur d'écran sera gérée
