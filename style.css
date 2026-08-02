@@ -157,6 +157,7 @@ body {
 #nav-principal {
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: 2px;
   border-bottom: 2px solid var(--c-border-med);
   margin-bottom: 0;
@@ -232,6 +233,7 @@ body {
 
 #nav-secondaire {
   display: flex;
+  flex-wrap: wrap;
   gap: 0;
   border-bottom: 1px solid var(--c-border);
   background: var(--c-surface-alt);
@@ -264,6 +266,7 @@ body {
 
 .nav-tertiaire {
   display: flex;
+  flex-wrap: wrap;
   gap: 0;
   border-bottom: 1px solid var(--c-border-light);
   margin-bottom: 1rem;
@@ -1518,13 +1521,6 @@ pre {
 
   body {
     padding: 0.5rem;
-  }
-
-  /* Sous-navigation : défilement horizontal plutôt que retour
-     à la ligne, pour les 6 sous-onglets serrés sur mobile */
-  #nav-secondaire {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   /* --- Lignes de champs (Identité, filtres) -------------- */
