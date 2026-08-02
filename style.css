@@ -1412,22 +1412,23 @@ pre {
 
 #popup-de {
   position: fixed;
-  bottom: 1.2rem;
-  right: 1.2rem;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
   display: flex;
   align-items: baseline;
   gap: 0.3em;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 6px;
   background: var(--c-surface);
   border: 2px solid var(--c-text);
   box-shadow: 0 3px 10px var(--c-popup-ombre);
-  font-size: 14px;
+  font-size: 15px;
   color: var(--c-text);
   white-space: nowrap;
-  max-width: calc(100vw - 2.4rem);
-  pointer-events: none;
+  max-width: calc(100vw - 2rem);
+  cursor: pointer;
   opacity: 1;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
@@ -1436,9 +1437,10 @@ pre {
   display: none;
 }
 
+/* translateX(-50%) doit rester dans les deux états pour maintenir le centrage */
 #popup-de.popup-de-masque {
   opacity: 0;
-  transform: translateY(0.4rem);
+  transform: translateX(-50%) translateY(-0.5rem);
 }
 
 .popup-de-total {
@@ -1554,17 +1556,6 @@ pre {
 
   .des-jet-libre {
     flex-wrap: wrap;
-  }
-
-  /* --- Popup résultat de dé ------------------------------- */
-
-  #popup-de {
-    bottom: 0.5rem;
-    right: 0.5rem;
-    left: 0.5rem;
-    max-width: none;
-    justify-content: center;
-    font-size: 13px;
   }
 
   /* Supprime l'indentation desktop (9,5 rem) alignée sur la
