@@ -1,9 +1,10 @@
-dans l'onglet combat, zone caractéristiques : Faire en sorte que chaque ligne de carac (attaque, attaque spéciale, garde, etc.) soit affiché de la même façon que pouvoir et pv (ne pas étaler les éléments sur toute la ligne mais les resserrer proprement sur la gauche)
-dans l'onglet capacités/talent, sous-onglet mes capacités/talents : La première zone possède un film, une teinte un peu verte. Supprime ceci pour que le visuel reste dans des nuances de gris. (fais attention, cela s'applique aussi au texte affiché).
 
-+ ajouter bouton supprimer fiche actuelle, sous forme de croix placée à droite de l'onglet actuellement sélectionné
-bonus : réorganiser l'ordre des onglets, drag'n drop ou ctrl + flèche en navigation. Bouton suppr pour supprimer.
 + reofrmuler les résultats de jets de dés
-+ ajouter bouton repos court, repos long. Placer juste au début de caractéristiques secondaires, visuellement à droite
-+ ajouter boutons + et - dans mes capacités, mes talents, mes équipements pour ajuster la valeur max
-+ travailler sur l'aspect responsive
+
+
+Quand un onglet est sélectionné dans son groupe, il devrait être encadré (en blanc si mode sombre, en noir si mode clair).
+quand on presse un bouton de lancer de dés (dans l'onglet général, ou combat) : Afficher la ligne du résultat sur une petite popup de la hauteur d'une ligne.
+dans le popup, le résultat final du jet de dé doit être doublé en taille de police, et augmenté de moitié dans la zone d'historique en bas de page.
+responsive :
+onglet général, caractéristiques secondaires : Resserrer tous les éléments de "garde" sur une même ligne. Idem pour garde spéciale, attaque et attaque spéciale. Idem pour chaque caractéristique primaire. Il  y a notamment un énorme espace entre le texte et la première valeur, ce qui est inutile.
+pour les groupes d'onglets (fiches, général/combat/etc.) : Afficher sur plusieurs lignes si cela déborde, car le scrolling est peu ergonomique.
