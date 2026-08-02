@@ -1,5 +1,7 @@
 // Module dés — jets de dés, historique, bloc lanceur
 
+import { prefixeJet, texteAvDes, texteCritique } from './messages_des.js';
+
 export const FACES_DISPONIBLES = [4, 6, 8, 10, 12, 20, 100];
 
 export const CARACS_PRIMAIRES = ['force', 'constitution', 'charisme', 'esprit', 'agilité'];
@@ -221,23 +223,31 @@ export function rendreBlocDes() {
       if (entry.critique === 'réussite')  ligne.classList.add('des-histo-reussite');
       else if (entry.critique === 'échec') ligne.classList.add('des-histo-echec');
 
-      ligne.textContent = `🎲 ${entry.label} : ${entry.detail} = ${entry.total}`;
+      const spanPrefixe = document.createElement('span');
+      spanPrefixe.textContent = prefixeJet(entry);
 
-      if (entry.avDes) {
+      const spanTotal = document.createElement('span');
+      spanTotal.className = 'des-histo-total';
+      spanTotal.textContent = String(entry.total);
+
+      ligne.append(spanPrefixe, spanTotal);
+
+      const txAvDes = texteAvDes(entry.avDes);
+      if (txAvDes) {
         const badge = document.createElement('span');
         badge.className = 'des-avdes';
-        badge.textContent = `  [${entry.avDes}]`;
+        badge.textContent = `  ${txAvDes}`;
         ligne.appendChild(badge);
       }
 
-      if (entry.critique) {
+      const txCrit = texteCritique(entry.critique);
+      if (txCrit) {
         const badge = document.createElement('span');
         badge.className = 'des-critique';
-        badge.textContent = entry.critique === 'réussite'
-          ? '  ★ Réussite critique !'
-          : '  ✗ Échec critique !';
+        badge.textContent = `  ${txCrit}`;
         ligne.appendChild(badge);
       }
+
       zoneHisto.appendChild(ligne);
     }
   }
@@ -321,4 +331,5 @@ function _ajouterHistorique(entry) {
   if (_historique.length > TAILLE_HISTORIQUE) {
     _historique.length = TAILLE_HISTORIQUE;
   }
+  document.dispatchEvent(new CustomEvent('de-lance', { detail: entry }));
 }

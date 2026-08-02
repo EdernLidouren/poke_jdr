@@ -37,6 +37,10 @@
   --c-btn-repos-court-hover: #1d65a3;
   --c-btn-repos-long-bg:     #1549a0;   /* bleu profond — WCAG AA 8.6:1 texte blanc */
   --c-btn-repos-long-hover:  #103585;
+
+  /* Couleurs critique dés (popup et historique) */
+  --c-de-reussite: #1a6a1a;
+  --c-de-echec:    #a01010;
 }
 
 /* --- Mode sombre automatique (préférence système) --- */
@@ -64,6 +68,8 @@
     --c-btn-repos-court-hover: #1560a5;
     --c-btn-repos-long-bg:     #1549a0;   /* identique — contraste déjà élevé */
     --c-btn-repos-long-hover:  #0e3a88;
+    --c-de-reussite: #6fcc6f;
+    --c-de-echec:    #e06060;
   }
 }
 
@@ -91,6 +97,8 @@ body.theme-sombre {
   --c-btn-repos-court-hover: #1560a5;
   --c-btn-repos-long-bg:     #1549a0;
   --c-btn-repos-long-hover:  #0e3a88;
+  --c-de-reussite: #6fcc6f;
+  --c-de-echec:    #e06060;
 }
 
 /* --- Réinitialisation --- */
@@ -1345,6 +1353,11 @@ pre {
   font-weight: bold;
 }
 
+.des-histo-total {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
 .des-jet-libre {
   display: flex;
   align-items: center;
@@ -1385,6 +1398,63 @@ pre {
   padding: 0.2rem 0.3rem;
   background: var(--c-surface);
   color: var(--c-text);
+}
+
+/* --- Popup résultat de jet de dé --- */
+
+#popup-de {
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 100;
+  display: flex;
+  align-items: baseline;
+  gap: 0.3em;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-med);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  color: var(--c-text);
+  white-space: nowrap;
+  max-width: calc(100vw - 2.4rem);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+#popup-de[hidden] {
+  display: none;
+}
+
+#popup-de.popup-de-masque {
+  opacity: 0;
+  transform: translateY(0.4rem);
+}
+
+.popup-de-total {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.popup-de-avdes {
+  font-size: 0.85em;
+  color: var(--c-text-sec);
+  font-style: italic;
+}
+
+.popup-de-critique {
+  font-weight: bold;
+}
+
+.popup-de-reussite {
+  color: var(--c-de-reussite);
+}
+
+.popup-de-echec {
+  color: var(--c-de-echec);
 }
 
 /* --- Pictogramme d'état des bandeaux indicateurs ---
@@ -1483,6 +1553,17 @@ pre {
 
   .des-jet-libre {
     flex-wrap: wrap;
+  }
+
+  /* --- Popup résultat de dé ------------------------------- */
+
+  #popup-de {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    max-width: none;
+    justify-content: center;
+    font-size: 13px;
   }
 
   /* Supprime l'indentation desktop (9,5 rem) alignée sur la
