@@ -1,10 +1,2 @@
 
-+ reofrmuler les résultats de jets de dés
-
-
-Quand un onglet est sélectionné dans son groupe, il devrait être encadré (en blanc si mode sombre, en noir si mode clair).
-quand on presse un bouton de lancer de dés (dans l'onglet général, ou combat) : Afficher la ligne du résultat sur une petite popup de la hauteur d'une ligne.
-dans le popup, le résultat final du jet de dé doit être doublé en taille de police, et augmenté de moitié dans la zone d'historique en bas de page.
-responsive :
-onglet général, caractéristiques secondaires : Resserrer tous les éléments de "garde" sur une même ligne. Idem pour garde spéciale, attaque et attaque spéciale. Idem pour chaque caractéristique primaire. Il  y a notamment un énorme espace entre le texte et la première valeur, ce qui est inutile.
-pour les groupes d'onglets (fiches, général/combat/etc.) : Afficher sur plusieurs lignes si cela déborde, car le scrolling est peu ergonomique.
+reofrmuler les résultats de jets de dés

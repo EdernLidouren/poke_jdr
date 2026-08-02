@@ -8,23 +8,22 @@
     "cible": { "type": "enum" },
     "portée": { "type": "enum" },
     "utilisation": { "type": "enum" },
-    "concentration": { "type": "enum" },
     "évolutif": { "type": "enum" },
     "contact": { "type": "enum" },
     "cible": { "type": "enum" },
     "envergure": { "type": "enum" },
     "mouvement minimal": { "type": "enum" },
     "mouvement offert": { "type": "enum" },
+    "tags": { "type": "text" },
     "mécaniques": { "type": "text" },
     "taux de critique": { "type": "int" },
     "taux de maladresse": { "type": "int" },
-    "contrecoup": { "type": "int" },
     "prérequis": { "type": "text" },
-    "jet de la cible": { "type": "enum" }
+    "jet de sauvegarde": { "type": "enum" },
+    "effets": { "type": "text" }
   },
   "abilities": {
-    "type": { "type": "enum" },
-    "cible": { "type": "enum" }
+    "tiers": { "type": "enum" }
   },
   "equipment": {
     "tiers": { "type": "enum" }

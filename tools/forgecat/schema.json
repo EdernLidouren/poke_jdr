@@ -40,7 +40,7 @@
     "conditions": { "type": "text" },
     "portée": {
       "type": "enum",
-      "values": ["voir description", "contact", "courte", "moyenne", "longue"]
+      "values": ["voir description", "personnelle", "contact", "courte", "moyenne", "longue"]
     },
     "envergure": {
       "type": "enum",
@@ -54,17 +54,12 @@
       "type": "enum",
       "values": ["voir description", "action", "réaction", "action rapide"]
     },
-    "concentration": {
-      "type": "enum",
-      "values": ["oui", "non"]
-    },
-    "jet de la cible": {
+    "jet de sauvegarde": {
       "type": "enum",
       "values": ["voir description", "attaque", "attaque spéciale", "défense", "défense spéciale", "agilité"]
     },
     "taux de critique": { "type": "int" },
     "taux de maladresse": { "type": "int" },
-    "contrecoup": { "type": "int" },
     "mouvement minimal": {
       "type": "enum",
       "values": ["voir description", "courte", "moyenne", "longue"]
@@ -74,6 +69,7 @@
       "values": ["voir description", "courte", "moyenne", "longue"]
     },
     "mécaniques": { "type": "text" },
+    "tags": { "type": "text" },
     "effets": { "type": "text" },
     "incompatibilités": { "type": "list" }
   }
