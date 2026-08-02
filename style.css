@@ -479,7 +479,7 @@ body {
 }
 
 .stat-label {
-  width: 9rem;
+  width: auto;
   flex-shrink: 0;
   font-size: 13px;
   color: var(--c-text-label);
@@ -515,7 +515,7 @@ body {
 .stat-groupe-label {
   font-size: 11px;
   color: var(--c-text-ter);
-  min-width: 2rem;
+  min-width: 1.6rem;
   text-align: right;
 }
 
@@ -523,10 +523,10 @@ body {
   font-size: 14px;
   border: 1px solid var(--c-border-input);
   border-radius: 3px;
-  padding: 0.15rem 0.3rem;
+  padding: 0.15rem 0.2rem;
   background: var(--c-surface);
   color: var(--c-text);
-  width: 3.5rem;
+  width: 2.8rem;
   text-align: center;
   -moz-appearance: textfield;
 }
