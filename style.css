@@ -189,7 +189,8 @@ body {
 
 .onglet.actif {
   background: var(--c-surface);
-  border-color: var(--c-border-med);
+  border-color: var(--c-text);
+  border-top-width: 2px;
   border-bottom-color: var(--c-surface);
   color: var(--c-text);
   font-weight: bold;
@@ -243,6 +244,7 @@ body {
   background: var(--c-surface);
   color: var(--c-text);
   font-weight: bold;
+  border-top: 2px solid var(--c-text);
 }
 
 /* --- Navigation tertiaire (sous-onglets internes) --- */
@@ -261,7 +263,7 @@ body {
 }
 
 .nav-tertiaire .sous-onglet.actif {
-  border-bottom-color: var(--c-text-ter);
+  border-bottom-color: var(--c-text);
   background: none;
   font-weight: bold;
 }
