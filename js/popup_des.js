@@ -4,10 +4,9 @@
 
 import { prefixeJet, texteAvDes, texteCritique } from './messages_des.js';
 
-// Passer à true pour réactiver le toast dans une prochaine version.
-const ACTIF = false;
+const ACTIF = true;
 
-const DELAI_MS = 4000;
+const DELAI_MS = 8000;
 const TRANSITION_MS = 350;
 
 export function initPopupDes() {
