@@ -1408,6 +1408,38 @@ pre {
   color: var(--c-text);
 }
 
+/* --- Compétences vue compacte --- */
+
+.comp-compact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.3rem 0;
+}
+
+.comp-compact label {
+  font-size: 13px;
+  color: var(--c-text-label);
+}
+
+.comp-compact input[type="number"] {
+  font-size: 14px;
+  border: 1px solid var(--c-border-input);
+  border-radius: 3px;
+  padding: 0.15rem 0.2rem;
+  background: var(--c-surface);
+  color: var(--c-text);
+  width: 2.8rem;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.comp-compact input[type="number"]::-webkit-inner-spin-button,
+.comp-compact input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
 /* --- Popup résultat de jet de dé --- */
 
 #popup-de {

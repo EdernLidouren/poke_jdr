@@ -3,6 +3,7 @@
 import { renderJaugePV, renderJaugePouvoir } from './widgets.js';
 import { executerFinDeCombat } from './combat.js';
 import { lancerJetCarac, lancerJetCompetence, rendreBlocDes, CARACS_PRIMAIRES } from './dice.js';
+import { lireAffichageCompetences } from './affichage_competences.js';
 
 export function rendreGeneral(zone, catalogue, save, onSaveChange) {
   const ficheIndex = save.fiche_active;
@@ -298,6 +299,25 @@ function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHist
   contenu.className = 'bloc-contenu';
   brancherToggle(btnToggle, contenu);
 
+  function rebuilder() {
+    contenu.replaceChildren();
+    if (lireAffichageCompetences() === 'compact') {
+      remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHistorique, contenu);
+    } else {
+      remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHistorique, contenu);
+    }
+  }
+
+  rebuilder();
+  document.addEventListener('affichage-competences-change', () => {
+    if (section.isConnected) rebuilder();
+  });
+
+  section.append(header, contenu);
+  return section;
+}
+
+function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHistorique, contenu) {
   const skills = save.sheets[save.fiche_active].skills;
 
   for (const nom of (catalogue.skills || [])) {
@@ -379,9 +399,119 @@ function construireBlocCompetences(catalogue, save, onSaveChange, rafraichirHist
     contenu.appendChild(ligne);
     contenu.appendChild(zoneInline);
   }
+}
 
-  section.append(header, contenu);
-  return section;
+function remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHistorique, contenu) {
+  const skills = save.sheets[save.fiche_active].skills;
+  const skillList = catalogue.skills || [];
+  if (skillList.length === 0) return;
+
+  for (const nom of skillList) {
+    if (!skills[nom]) skills[nom] = { base: 0, mod: 0 };
+  }
+
+  const ligne = document.createElement('div');
+  ligne.className = 'comp-compact';
+
+  // Sélecteur de compétence
+  const labelSkill = document.createElement('label');
+  labelSkill.htmlFor = 'comp-select-skill';
+  labelSkill.textContent = 'Compétence';
+
+  const selectSkill = document.createElement('select');
+  selectSkill.id = 'comp-select-skill';
+  selectSkill.className = 'des-select';
+  for (const nom of skillList) {
+    const opt = document.createElement('option');
+    opt.value = nom;
+    opt.textContent = nom;
+    selectSkill.appendChild(opt);
+  }
+
+  // Total affiché
+  const spanTotal = document.createElement('span');
+  spanTotal.className = 'stat-total';
+
+  // Stepper base (-3 à 3)
+  const lblBase = document.createElement('span');
+  lblBase.className = 'stat-groupe-label';
+  lblBase.textContent = 'base';
+
+  const { btnMoins: btnBaseMoins, input: inputBase, btnPlus: btnBasePlus } = creerStepperElements(
+    0, -3, 3,
+    (val) => {
+      const nom = selectSkill.value;
+      skills[nom].base = val;
+      spanTotal.textContent = calcTotalSkill(skills[nom].base, skills[nom].mod);
+      onSaveChange(save);
+    }
+  );
+  btnBaseMoins.setAttribute('aria-label', 'Diminuer la base de la compétence');
+  btnBasePlus.setAttribute('aria-label', 'Augmenter la base de la compétence');
+
+  // Stepper mod (-999 à 999)
+  const lblMod = document.createElement('span');
+  lblMod.className = 'stat-groupe-label';
+  lblMod.textContent = 'mod';
+
+  const { btnMoins: btnModMoins, input: inputMod, btnPlus: btnModPlus } = creerStepperElements(
+    0, -999, 999,
+    (val) => {
+      const nom = selectSkill.value;
+      skills[nom].mod = val;
+      spanTotal.textContent = calcTotalSkill(skills[nom].base, skills[nom].mod);
+      onSaveChange(save);
+    }
+  );
+  btnModMoins.setAttribute('aria-label', 'Diminuer le modificateur de la compétence');
+  btnModPlus.setAttribute('aria-label', 'Augmenter le modificateur de la compétence');
+
+  // Sélecteur de carac pour le jet
+  const selectCarac = document.createElement('select');
+  selectCarac.className = 'des-select-carac';
+  selectCarac.setAttribute('aria-label', 'Caractéristique pour le jet de compétence');
+  for (const c of CARACS_PRIMAIRES) {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c.charAt(0).toUpperCase() + c.slice(1);
+    selectCarac.appendChild(opt);
+  }
+
+  // Bouton Lancer — même logique que le mode complet
+  const btnLancer = document.createElement('button');
+  btnLancer.type = 'button';
+  btnLancer.className = 'btn-lancer';
+  btnLancer.textContent = 'Lancer';
+  btnLancer.addEventListener('click', () => {
+    const nom = selectSkill.value;
+    const nomCarac = selectCarac.value;
+    const c = save.sheets[save.fiche_active].caracs;
+    const valCarac = c[nomCarac] + (c[`${nomCarac}_mod`] || 0);
+    lancerJetCompetence(nom, calcTotalSkill(skills[nom].base, skills[nom].mod), nomCarac, valCarac);
+    rafraichirHistorique();
+  });
+
+  // Mise à jour de l'affichage quand la compétence change
+  function mettreAJour(nom) {
+    const entree = skills[nom];
+    inputBase.value = String(entree.base);
+    inputMod.value = String(entree.mod);
+    spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+    const defaut = catalogue.competence_carac_defaut?.[nom];
+    if (defaut && CARACS_PRIMAIRES.includes(defaut)) selectCarac.value = defaut;
+  }
+
+  selectSkill.addEventListener('change', () => mettreAJour(selectSkill.value));
+  mettreAJour(skillList[0]);
+
+  ligne.append(
+    labelSkill, selectSkill,
+    spanTotal,
+    lblBase, btnBaseMoins, inputBase, btnBasePlus,
+    lblMod, btnModMoins, inputMod, btnModPlus,
+    selectCarac, btnLancer,
+  );
+  contenu.appendChild(ligne);
 }
 
 function calcTotalSkill(base, mod) {

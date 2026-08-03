@@ -1,5 +1,6 @@
 import { validerSauvegarde, creerSauvegardeDefaut, creerFicheDefaut } from './save.js';
 import { definirTheme, lireTheme } from './theme.js';
+import { lireAffichageCompetences, definirAffichageCompetences } from './affichage_competences.js';
 
 // --- Interface publique ---
 
@@ -49,6 +50,35 @@ function construireSectionApparence() {
 
   bloc.append(label, select);
   section.appendChild(bloc);
+
+  // Affichage des compétences
+  const blocComp = document.createElement('div');
+  blocComp.className = 'param-bloc';
+
+  const labelComp = document.createElement('label');
+  labelComp.className = 'param-label';
+  labelComp.htmlFor = 'select-affichage-comp';
+  labelComp.textContent = 'Affichage des compétences';
+
+  const selectComp = document.createElement('select');
+  selectComp.id = 'select-affichage-comp';
+  selectComp.className = 'param-select';
+
+  for (const [valeur, libelle] of [
+    ['complet', 'Vue complète'],
+    ['compact', 'Vue compacte'],
+  ]) {
+    const opt = document.createElement('option');
+    opt.value = valeur;
+    opt.textContent = libelle;
+    selectComp.appendChild(opt);
+  }
+
+  selectComp.value = lireAffichageCompetences();
+  selectComp.addEventListener('change', () => definirAffichageCompetences(selectComp.value));
+
+  blocComp.append(labelComp, selectComp);
+  section.appendChild(blocComp);
   return section;
 }
 
