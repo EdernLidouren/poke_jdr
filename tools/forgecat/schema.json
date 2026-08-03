@@ -48,7 +48,7 @@
     },
     "cible": {
       "type": "enum",
-      "values": ["voir description", "aucune", "personnelle", "une cible", "multicibles", "aura", "ligne", "cône", "zone"]
+      "values": ["voir description", "aucune", "personnelle", "une cible", "une cible ou personnelle", "multicibles", "aura", "ligne", "cône", "zone"]
     },
     "utilisation": {
       "type": "enum",
