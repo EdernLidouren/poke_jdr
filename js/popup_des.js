@@ -3,6 +3,7 @@
 // Clic sur le toast → fermeture immédiate.
 
 import { prefixeJet, texteAvDes, texteCritique } from './messages_des.js';
+import { annoncer } from './annonce.js';
 
 const ACTIF = true;
 
@@ -48,12 +49,19 @@ export function initPopupDes() {
     spanTotal.className = 'popup-de-total';
     spanTotal.textContent = String(entry.total);
 
-    // TODO: brancher l'annonce lecteur d'écran ici via le futur module
-    // d'annonce dédié (double région aria-live alternée) — ne pas utiliser
-    // aria-live directement sur le toast.
+    const txAvDes = texteAvDes(entry.avDes);
+    const txCrit  = texteCritique(entry.critique);
+
+    // Annonce au lecteur d'écran — même texte que le toast visuel.
+    annoncer(
+      prefixeJet(entry) + String(entry.total)
+      + (txAvDes ? ' ' + txAvDes : '')
+      + (txCrit  ? ' ' + txCrit  : ''),
+      'assertive'
+    );
+
     popup.append(spanPrefixe, spanTotal);
 
-    const txAvDes = texteAvDes(entry.avDes);
     if (txAvDes) {
       const span = document.createElement('span');
       span.className = 'popup-de-avdes';
@@ -61,7 +69,6 @@ export function initPopupDes() {
       popup.appendChild(span);
     }
 
-    const txCrit = texteCritique(entry.critique);
     if (txCrit) {
       const span = document.createElement('span');
       span.className = 'popup-de-critique';
