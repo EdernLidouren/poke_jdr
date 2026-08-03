@@ -9,5 +9,11 @@
 <body>
   <div id="app"></div>
   <script type="module" src="js/main.js"></script>
+
+  <!-- Régions aria-live pour les annonces au lecteur d'écran.
+       Doivent exister dès le parsing pour être enregistrées par les AT.
+       Le contenu et le niveau (polite/assertive) sont gérés par js/annonce.js. -->
+  <div id="sr-annonce-0" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+  <div id="sr-annonce-1" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>
