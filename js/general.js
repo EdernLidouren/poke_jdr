@@ -82,6 +82,23 @@ function construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChang
     caracs.type_3 = val; onSaveChange(save);
   }));
 
+  const { btnMoins: btnPkMoins, input: inputPk, btnPlus: btnPkPlus } = creerStepperElements(
+    caracs.pokedollar, 0, 100000000,
+    (val) => { caracs.pokedollar = val; onSaveChange(save); }
+  );
+  btnPkMoins.setAttribute('aria-label', 'Diminuer les Poké dollars');
+  btnPkPlus.setAttribute('aria-label', 'Augmenter les Poké dollars');
+  const lignePokedollar = document.createElement('div');
+  lignePokedollar.className = 'stat-ligne';
+  const lblPk = document.createElement('span');
+  lblPk.className = 'stat-label';
+  lblPk.textContent = 'Poké dollars';
+  const controlesPk = document.createElement('div');
+  controlesPk.className = 'stat-controles';
+  controlesPk.append(btnPkMoins, inputPk, btnPkPlus);
+  lignePokedollar.append(lblPk, controlesPk);
+  contenu.appendChild(lignePokedollar);
+
   section.append(header, contenu);
   return section;
 }

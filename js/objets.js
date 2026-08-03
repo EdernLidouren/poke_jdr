@@ -146,6 +146,57 @@ function construireBlocRecherche(itemsFilters, appliquerFiltres) {
 function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
   const itemMap = new Map((catalogue.items || []).map(i => [i.id, i]));
 
+  // Ligne Poké dollars — juste avant le bloc "Mon inventaire"
+  const caracs = save.sheets[save.fiche_active].caracs;
+  const sectionPk = document.createElement('section');
+  sectionPk.className = 'bloc';
+  const contenuPk = document.createElement('div');
+  contenuPk.className = 'bloc-contenu';
+
+  const lignePk = document.createElement('div');
+  lignePk.className = 'stat-ligne';
+  const lblPk = document.createElement('span');
+  lblPk.className = 'stat-label';
+  lblPk.textContent = 'Poké dollars';
+
+  const btnPkMoins = document.createElement('button');
+  btnPkMoins.type = 'button';
+  btnPkMoins.className = 'btn-stepper';
+  btnPkMoins.textContent = '−';
+  btnPkMoins.setAttribute('aria-label', 'Diminuer les Poké dollars');
+
+  const inputPk = document.createElement('input');
+  inputPk.type = 'number';
+  inputPk.min = '0';
+  inputPk.max = '100000000';
+  inputPk.value = String(caracs.pokedollar);
+
+  const btnPkPlus = document.createElement('button');
+  btnPkPlus.type = 'button';
+  btnPkPlus.className = 'btn-stepper';
+  btnPkPlus.textContent = '+';
+  btnPkPlus.setAttribute('aria-label', 'Augmenter les Poké dollars');
+
+  function clampPk(brut) {
+    const val = Math.round(Number(brut));
+    if (isNaN(val)) return;
+    const clamped = Math.max(0, Math.min(100000000, val));
+    inputPk.value = String(clamped);
+    caracs.pokedollar = clamped;
+    onSaveChange(save);
+  }
+
+  btnPkMoins.addEventListener('click', () => clampPk(Number(inputPk.value) - 1));
+  btnPkPlus.addEventListener('click',  () => clampPk(Number(inputPk.value) + 1));
+  inputPk.addEventListener('change',   () => clampPk(inputPk.value));
+
+  const controlesPk = document.createElement('div');
+  controlesPk.className = 'stat-controles';
+  controlesPk.append(btnPkMoins, inputPk, btnPkPlus);
+  lignePk.append(lblPk, controlesPk);
+  contenuPk.appendChild(lignePk);
+  sectionPk.appendChild(contenuPk);
+
   // Bloc "Inventaire"
   const section = document.createElement('section');
   section.className = 'bloc';
@@ -299,7 +350,7 @@ function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
   notesCorps.appendChild(textarea);
   sectionNotes.append(notesHeader, notesCorps);
 
-  contenu.append(section, sectionNotes);
+  contenu.append(sectionPk, section, sectionNotes);
 }
 
 // =========================================================

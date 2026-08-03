@@ -21,6 +21,7 @@ const DEFAUT_CARACS = {
   garde_speciale: 0, garde_speciale_mod: 0,
   attaque_mod: 0,
   attaque_speciale_mod: 0,
+  pokedollar: 0,
 };
 
 const CARACS_TYPES = {
@@ -42,6 +43,7 @@ const CARACS_TYPES = {
   garde_speciale: 'number', garde_speciale_mod: 'number',
   attaque_mod: 'number',
   attaque_speciale_mod: 'number',
+  pokedollar: 'number',
 };
 
 const CHAMPS_TYPE_ENUM = new Set(['type_1', 'type_2', 'type_3']);
@@ -340,6 +342,11 @@ function validateCaracs(caracs, catalogue) {
     } else {
       result[champ] = valeur;
     }
+  }
+
+  // pokedollar : entier ≥ 0 (la boucle gère l'absence et le mauvais type, mais pas le float ni le négatif)
+  if (!Number.isInteger(result.pokedollar) || result.pokedollar < 0) {
+    result.pokedollar = 0;
   }
 
   return result;
