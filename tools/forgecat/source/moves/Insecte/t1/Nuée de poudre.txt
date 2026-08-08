@@ -1,0 +1,12 @@
+Nom : Nuée de poudre
+Type : Insecte
+Tiers : 1
+
+Cible : Une zone
+Portée : Contact
+Envergure : Courte
+Jet de sauvegarde : Constitution
+Utilisation : Réaction
+Mécaniques : Nuée
+
+Effets : Utilisable lorsque la nuée est détruite. Inflige 6 dégâts spéciaux + attaque spéciale. Si le lanceur se trouve dans la zone d'effet, il ne subit aucun dégât et gagne 1 point de vie temporaire + tiers du lanceur.

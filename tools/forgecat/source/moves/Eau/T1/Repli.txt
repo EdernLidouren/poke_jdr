@@ -1,0 +1,9 @@
+Nom : Repli
+Type : Eau
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts. Les dégâts subis sont réduits de moitié. Le lanceur gagne 1 niveau de statut endurance et 1 niveau de statut volonté.

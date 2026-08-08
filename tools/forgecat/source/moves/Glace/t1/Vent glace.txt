@@ -1,0 +1,10 @@
+Nom : Vent glace
+Type : Glace
+Tiers : 1
+
+Cible : Un cône
+Portée : Courte
+Envergure : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts à la cible au contact.

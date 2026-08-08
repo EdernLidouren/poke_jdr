@@ -1,0 +1,10 @@
+Nom : Appel de la nuée
+Type : Insecte
+Tiers : 1
+
+Cible : Personnelle
+Portée : Contact
+Utilisation : Action
+Mécaniques : Concentration, nuée
+
+Effets : Le lanceur créée une nuée. À l'acquisition de cette capacité, si le lanceur ne possède aucune capacité liée à la mécanique de nuée, il peut en apprendre une gratuitement.

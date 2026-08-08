@@ -1,0 +1,9 @@
+Nom : Éclat Magique
+Type : Fée
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 4 dégâts spéciaux + attaque spéciale. Ignore les abris.

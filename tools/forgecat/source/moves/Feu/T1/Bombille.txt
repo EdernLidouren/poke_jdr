@@ -1,0 +1,9 @@
+Nom : Bombille
+Type : Feu
+Tiers : 1
+
+Cible : Voir description
+Portée : Contact
+Utilisation : Action
+
+Effets : Le lanceur crée une bille explosive qu'il doit placer immédiatement. La bille explose au moindre mouvement ou contact et inflige 6 dégâts spéciaux + attaque spéciale et 1 niveau de statut confusion en provoquant lumière, fumée et détonation. Un jet de roublardise est requis pour la dissimuler et un jet de perception pour la repérer. Le lanceur ne peut maintenir actives qu'un nombre de billes égal à 1 + son tiers. Créer une nouvelle bille au-delà de cette limite désactive la plus ancienne. Toutes les billes sont désactivés lorsque le lanceur profite d'un repos long ou tombe inconscient.

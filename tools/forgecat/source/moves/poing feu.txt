@@ -1,9 +1,0 @@
-Nom : Poing feu
-Type : Feu
-Tiers : 2
-
-Cible : Personnelle
-Portée : Longue
-Utilisation : Réaction
-
-Effets : Inflige 4 dégâts physiques + attaque.

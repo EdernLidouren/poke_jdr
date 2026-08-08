@@ -1,0 +1,10 @@
+Nom : Feu envieux
+Type : Feu
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+Mécaniques : Contrecoup
+
+Effets : Inflige 2 dégâts spéciaux + attaque. spéciale. Le lanceur choisit jusqu'à 2 niveaux de statut chez la cible parmi force, faiblesse, endurance, volonté et vitesse. Pour chaque niveau de statut, le retire et augmente les dégâts de 3 et le niveau de contrecoup de 2.

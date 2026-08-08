@@ -1,0 +1,10 @@
+Nom : Tourniquet
+Type : Eau
+Tiers : 1
+
+Cible : Une zone
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Si le lanceur souffre du statut lenteur, il perd un niveau de ce statut. S'il profite du statut vitesse, les dégâts passent à 6.

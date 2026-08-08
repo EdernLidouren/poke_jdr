@@ -1,0 +1,9 @@
+Nom : Douche froide
+Type : Eau
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Pour chaque niveau de statut force de la cible et jusqu'à trois niveaux au maximum, le lanceur choisit d'augmenter les dégâts de 2 ou de supprimer ce niveau de statut.

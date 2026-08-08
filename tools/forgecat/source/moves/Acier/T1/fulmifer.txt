@@ -1,0 +1,10 @@
+Nom : Fulmifer
+Type : Acier
+Tiers : 1
+évolutif : Oui
+
+Cible : Une cible
+Portée : Moyenne
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Inflige à cette cible un montant de dégâts spéciaux égal à la moitié des dégâts subis par le lanceur. Au tiers 2, le lanceur ajoute son attaque spéciale aux dégâts et peut choisir la cible de cet effet.

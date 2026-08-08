@@ -1,0 +1,10 @@
+Nom : Appel défense
+Type : Insecte
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Réaction
+Mécaniques : Nuée
+
+Effets : Utilisable lorsque le lanceur ou une cible à portée de la nuée subit une attaque. Le jet d'attaque subit un désavantage. Si le lanceur ou la cible subit des dégâts, ils sont réduits de moitié.

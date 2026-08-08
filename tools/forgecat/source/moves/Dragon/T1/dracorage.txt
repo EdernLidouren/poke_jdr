@@ -1,0 +1,9 @@
+Nom : Dracorage
+Type : Dragon
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si le lanceur souffre du statut berserk.

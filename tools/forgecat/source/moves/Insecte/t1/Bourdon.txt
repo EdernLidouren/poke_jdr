@@ -1,0 +1,10 @@
+Nom : Bourdon
+Type : Insecte
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+Jet de sauvegarde : Esprit
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale et 1 niveau de statut peur. Si la cible souffre du statut peur, inflige 6 dégâts.

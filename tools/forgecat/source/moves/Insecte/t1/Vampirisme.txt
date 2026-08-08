@@ -1,0 +1,11 @@
+Nom : Vampirisme
+Type : Insecte
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Drain de vie
+
+Effets : Inflige 2 dégâts physiques + attaque. 2 niveaux de drain de vie. Si la cible souffre du statut peur, inflige 6 dégâts.

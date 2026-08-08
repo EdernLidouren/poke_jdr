@@ -1,0 +1,9 @@
+Nom : Miroitir
+Type : Acier
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si la cible souffre du statut doute.

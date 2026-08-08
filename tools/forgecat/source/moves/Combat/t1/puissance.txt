@@ -1,0 +1,10 @@
+Nom : Puissance
+Type : Combat
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : La plage de réussite critique du lanceur est augmentée de 2.

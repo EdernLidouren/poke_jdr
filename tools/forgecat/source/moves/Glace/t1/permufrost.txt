@@ -1,0 +1,10 @@
+Nom : Permufrost
+Type : Glace
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Réaction
+mécaniques : Monstre de neige
+
+Effets : Utilisable lorsque le lanceur subit des dégâts à cause d'une action ennemie. Le lanceur peut sacrifier un monstre de neige pour ne subir que la moitié des dégâts, et se téléporter à cet emplacement. Sinon, il créée un monstre de neige et se téléporte à portée courte.

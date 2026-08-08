@@ -1,0 +1,10 @@
+Nom : Fusion froide
+Type : Glace
+Tiers : 1
+
+Cible : Personnelle
+Portée : Contact
+Utilisation : Action
+Mécaniques : Monstre de neige
+
+Effets : Le lanceur se fond avec un monstre de neige qu'il sacrifie. Il est soigné de 4 points de vie + 1 par tiers du lanceur, et gagne 1 niveau de statut endurance et 1 niveau de statut volonté.

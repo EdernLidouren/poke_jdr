@@ -1,0 +1,11 @@
+Nom : Croc éclair
+Type : Électrique
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Tags : Croc
+
+Effets : Inflige 4 dégâts physiques + attaque.

@@ -1,0 +1,10 @@
+Nom : Papillodanse
+Type : Insecte
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Chaque tour, le lanceur peut sacrifier son mouvement pour gagner 1 niveau de statut force, puissance et vitesse.

@@ -1,0 +1,12 @@
+Nom : Dracocharge
+Type : Dragon
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+Mouvement minimal : Moyenne
+Contact : Oui
+Tags : Charge
+
+Effets : Inflige 6 dégâts physiqus + attaque	.

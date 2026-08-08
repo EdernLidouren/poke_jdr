@@ -1,0 +1,9 @@
+Nom : Rush
+Type : Combat
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+
+Effets : Le lanceur gagne un mouvement plus un supplémentaire par tiers. Jusqu'à la fin de son tour, les mouvements du lanceur ne sont pas affectés par le statut lenteur ou les terrains difficiles. Le lanceur peut courir sur des surfaces verticales sans s'y arrêter. Les mouvements du lanceur ne le laissent pas sans défense.

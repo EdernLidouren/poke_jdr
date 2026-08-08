@@ -1,0 +1,10 @@
+Nom : Flash
+Type : Électrique
+Tiers : 1
+
+Cible : Une zone
+Portée : Contact
+Jet de sauvegarde : Esprit
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts. Chaque cible hostile subit 1 niveau de peur et de lenteur et perd son éventuel statut invisibilité.

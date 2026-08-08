@@ -1,0 +1,10 @@
+Nom : Câlinerie
+Type : Fée
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Inflige 6 dégâts si la cible souffre du statut attraction ou confusion.

@@ -1,0 +1,10 @@
+Nom : Casse-brique
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+Contact : Oui
+
+Effets : Inflige 2 dégâts physiques + attaque. Pour chaque niveau de statut endurance de la cible et jusqu'à trois niveaux au maximum, le lanceur choisit d'augmenter les dégâts de 2 ou de supprimer ce niveau de statut. La cible ne peut pas utiliser en réaction d'effets avec le tag "mur".

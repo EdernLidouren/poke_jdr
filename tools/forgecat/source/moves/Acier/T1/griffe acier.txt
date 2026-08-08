@@ -1,0 +1,11 @@
+Nom : Griffe acier
+Type : Acier
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+Contact : Oui
+Tags : Griffe
+
+Effets : Inflige 4 dégâts physiques + attaque.

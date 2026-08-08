@@ -1,0 +1,11 @@
+Nom : Roue de feu
+Type : Feu
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Contrecoup
+
+Effets : Inflige 6 dégâts physiques + attaque. 2 niveaux de contrecoup.

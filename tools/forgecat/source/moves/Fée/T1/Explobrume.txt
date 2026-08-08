@@ -1,0 +1,10 @@
+Nom : Explobrume
+Type : Fée
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Courte
+Utilisation : Action
+
+Effets : Pour chaque point de vie temporaire du lanceur et jusqu'à 5 au maximum, inflige 2 dégâts spéciaux à toutes les cibles sauf au lanceur. Le lanceur perd tous ses points de vie temporaire et subit 2 niveaux de statut doute.

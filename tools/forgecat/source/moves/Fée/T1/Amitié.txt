@@ -1,0 +1,9 @@
+Nom : Amitié
+Type : Fée
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+
+Effets : Le lanceur choisit jusqu'à 3 niveaux de statut parmi ceux dont il souffre ou profite. Octroie à une cible consentante autant de niveaux de statut et la soigne de 2 points de vie.

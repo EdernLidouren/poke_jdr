@@ -1,0 +1,9 @@
+Nom : Blitz
+Type : Électrique
+Tiers : 1
+
+Cible : Personnelle
+Portée : Courte
+Utilisation : Action rapide
+
+Effets : Le lanceur peut se téléporter jusqu'à portée courte.

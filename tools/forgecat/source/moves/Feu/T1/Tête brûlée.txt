@@ -1,0 +1,11 @@
+Nom : Tête brûlée
+Type : Feu
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur subit des dégâts de contrecoup en attaquant une cible, il lui inflige un nombre de dégâts de type feu égal aux dégâts subits. La nature physique ou spéciale de ces dégâts correspond à celle des dégâts initiaux.

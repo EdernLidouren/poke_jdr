@@ -1,0 +1,10 @@
+Nom : Vol magnétik
+Type : Électrique
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur profite de l'état lévitation.

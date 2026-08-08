@@ -1,0 +1,10 @@
+Nom : Dynamik
+Type : Électrique
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : À la fin de son tour, si le lanceur a consommé l'intégralité de son mouvement, il gagne 1 niveau de statut force ou puissance, selon sa caractéristique la plus hhaute entre force et charisme. Cet effet ne se déclenche que si le lanceur possède un nombre de niveaux de statut force ou puissance inférieur à son tiers. Les réductions de mouvement n'empêchent pas le déclenchement de cet effet.

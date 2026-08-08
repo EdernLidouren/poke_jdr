@@ -1,0 +1,9 @@
+Nom : Étincelle
+Type : Électrique
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Si le lanceur profite du statut puissance, il peut consommer 1 niveau de statut puissance puis relancer cette attaque sur la même cible ou une autre.

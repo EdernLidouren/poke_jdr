@@ -1,0 +1,9 @@
+Nom : Plat du jour
+Type : Dragon
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Courte
+Utilisation : Action
+
+Effets : Fait avaler à la cible n'importe quoi, comestible ou non, ce qui la nourrit comme le ferait un repas ordinaire et la soigne de 4 points de vie. Les effets de l'objet consommé, positifs comme négatifs, sont neutralisés. Si l'objet en question est un consommable, les soins sont augmentés d'une valeur égale à son tiers.

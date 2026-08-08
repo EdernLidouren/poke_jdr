@@ -1,0 +1,11 @@
+Nom : Allègement
+Type : Acier
+Tiers : 1
+évolutif : Oui
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Confère un niveau positif de discrétion à deux cibles pour chaque tiers de la capacité.

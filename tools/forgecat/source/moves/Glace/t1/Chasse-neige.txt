@@ -1,0 +1,12 @@
+Nom : Chasse-neige
+Type : Glace
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Mouvement minimal : Moyenne
+Utilisation : Action
+Tags : Charge
+
+Effets : Inflige 2 dégâts physiques + attaque. La cible est repoussée à portée courte. Si la cible souffre du statut lenteur ou si le lanceur profite du statut vitesse, la cible est repoussée à portée moyenne.

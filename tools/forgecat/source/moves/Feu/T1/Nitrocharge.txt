@@ -1,0 +1,11 @@
+Nom : Nitrocharge
+Type : Feu
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Contact : Oui
+Utilisation : Réaction
+Mouvement offert : Courte
+
+Effets : Utilisable lorsqu'une cible gagne un niveau de statut parmi force, faiblesse, endurance, volonté et vitesse. Inflige 2 dégâts physiques + attaque, + 1 dégât par niveau de statut gagné par la cible.

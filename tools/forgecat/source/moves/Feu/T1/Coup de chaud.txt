@@ -1,0 +1,10 @@
+Nom : Coup de feu
+Type : Feu
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action rapide
+
+Effets : La cible gagne 2 niveau de statut force ou faiblesse, au choix du lanceur. Si, après ce gain, la cible ne profite toujours pas d'au moins 1 niveau du statut choisi, elle est soignée de 5 points de vie.

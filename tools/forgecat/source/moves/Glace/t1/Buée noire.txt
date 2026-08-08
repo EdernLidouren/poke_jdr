@@ -1,0 +1,10 @@
+Nom : Buée noire
+Type : Glace
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Courte
+Jet de sauvegarde : Agilité
+Utilisation : Action rapide
+
+Effets : Le lanceur retire jusqu'à 3 niveaux de statut.

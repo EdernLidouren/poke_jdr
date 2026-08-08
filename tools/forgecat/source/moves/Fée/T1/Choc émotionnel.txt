@@ -1,0 +1,10 @@
+Nom : Choc émotionnel
+Type : Fée
+Tiers : 1
+
+Cible : Une cible
+Portée : courte
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Pour chaque niveau de statut attraction et peur de la cible et jusqu'à 3 niveaux au maximum, augmente les dégâts de 2.

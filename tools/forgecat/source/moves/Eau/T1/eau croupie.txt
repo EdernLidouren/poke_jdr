@@ -1,0 +1,10 @@
+Nom : Eau croupie
+Type : Eau
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : concentration
+
+Effets : Lorsque le lanceur subit au moins 5 dégâts physiques, inflige 2 dégâts spéciaux à toutes les cibles au contact.

@@ -48,7 +48,7 @@
     },
     "cible": {
       "type": "enum",
-      "values": ["voir description", "aucune", "personnelle", "une cible", "une cible ou personnelle", "multicibles", "aura", "ligne", "cône", "zone"]
+      "values": ["voir description", "aucune", "personnelle", "une cible", "une cible ou personnelle", "multicibles", "une ligne", "un cône", "une zone"]
     },
     "utilisation": {
       "type": "enum",
@@ -56,7 +56,7 @@
     },
     "jet de sauvegarde": {
       "type": "enum",
-      "values": ["voir description", "attaque", "attaque spéciale", "défense", "défense spéciale", "agilité"]
+      "values": ["voir description", "force", "charisme", "constitution", "esprit", "agilité"]
     },
     "taux de critique": { "type": "int" },
     "taux de maladresse": { "type": "int" },

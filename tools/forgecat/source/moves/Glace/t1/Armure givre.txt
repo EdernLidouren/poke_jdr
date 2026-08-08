@@ -1,0 +1,10 @@
+Nom : Armure givre
+Type : glace
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Octroie 3 points de vie temporaire + 1 par tiers du lanceur.

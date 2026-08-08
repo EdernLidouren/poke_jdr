@@ -1,0 +1,10 @@
+Nom : Double baffe
+Type : Dragon
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 fois 2 dégâts physiques + attaque.

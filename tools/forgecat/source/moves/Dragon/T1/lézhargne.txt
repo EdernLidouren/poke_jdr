@@ -1,0 +1,9 @@
+Nom : Lézhargne
+Type : Dragon
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action rapide
+
+Effets : Le lanceur choisit jusqu'à 3 niveaux de statut négatif dont il souffre parmi faiblesse, apathie, peur et attraction. Pour chaque niveau de statut, il le retire et gagne un niveau de statut berserk ainsi que, au choix, un niveau de statut force ou puissance.

@@ -1,0 +1,12 @@
+Nom : Patinoire
+Type : Glace
+Tiers : 1
+évolutif : Oui
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Moyenne
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur créée une zone de verglas au sol autour de lui. Tous les pokémons qui s'y trouvent où y pénètrent et ne possédant pas le type glace et ses passifs subissent, au début de leur tour, un niveau de statut lenteur. Le lanceur gagne quant à lui un niveau de statut vitesse pour les mêmes conditions. Au tiers 2, l'envergure devient longue.

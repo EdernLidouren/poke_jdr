@@ -1,0 +1,9 @@
+Nom : Saumure
+Type : Eau
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si la cible possède la moitié de ses points de vie ou moins ou si elle souffre du statut blessure.

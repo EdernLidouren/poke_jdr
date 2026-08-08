@@ -1,0 +1,10 @@
+Nom : Statik
+Type : Électrique
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : À la fin de son tour, si le lanceur ne s'est pas déplacé, il gagne 1 niveau de statut force ou puissance, selon sa caractéristique la plus hhaute entre force et charisme. Cet effet ne se déclenche que si le lanceur possède un nombre de niveaux de statut force ou puissance inférieur à son tiers. Les effets de téléportation ne comptent pas comme un déplacement, mais les mouvements involontaires, si.

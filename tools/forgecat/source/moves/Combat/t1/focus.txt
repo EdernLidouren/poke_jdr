@@ -1,0 +1,10 @@
+Nom : Focus
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Utilisation : Réaction
+Mécaniques : concentration
+
+Effets : Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Le prochain jet d'attaque ou d'attaque spéciale effectué par le lanceur contre cette cible obtient un avantage. Si le lanceur inflige des dégâts à la cible lors de cette action, les dégâts sont augmentés de 4. Cet effet persiste tant que le lanceur n'a pas réussi de jet d'attaque ou d'attaque spéciale contre la cible.

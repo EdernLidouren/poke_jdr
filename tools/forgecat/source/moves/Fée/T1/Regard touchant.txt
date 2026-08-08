@@ -1,0 +1,10 @@
+Nom : Regard touchant
+Type : Fée
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur est pris pour cible par une capacité offensive. Le lanceur ne peut plus être directement visé par cet effet. Le pokémon affecté peut changer de cible si une autre est à portée, ou annuler son action. Ne fonctionne pas si le pokémon affecté souffre du statut berserk ou s'il est immunisé au statut attraction.

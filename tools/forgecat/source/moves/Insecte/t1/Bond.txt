@@ -1,0 +1,9 @@
+Nom : Bond
+Type : Insecte
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+
+Effets : Le lanceur exécute un bond prodigieux. La hauteur de ce saut est égale à la moitié de son mouvement, et la longueur égale à son mouvement. Le lanceur ne subit aucun dégât de chute. Si le lanceur souffre des états piège ou emprise, il peut faire un jet avec avantage pour s'en sortir.

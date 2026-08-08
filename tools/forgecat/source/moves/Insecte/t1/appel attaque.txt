@@ -1,0 +1,10 @@
+Nom : Appel attaque
+Type : Insecte
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action rapide
+Mécaniques : Nuée
+
+Effets : La nuée inflige 6 dégâts physiques + attaque spéciale.

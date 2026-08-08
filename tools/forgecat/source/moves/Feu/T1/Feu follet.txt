@@ -1,0 +1,9 @@
+Nom : Feu follet
+Type : Feu
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Utilisation : Action
+
+Effets : Inflige 3 niveaux de statut blessure.

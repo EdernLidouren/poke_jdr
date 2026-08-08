@@ -1,0 +1,10 @@
+Nom : Colère froide
+Type : Glace
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Au lancement de la capacité, le lanceur choisit l'aspect physique ou spécial. Lorsqu'il subit une attaque de contact, il gagne un niveau de statut force ou puissance s'il n'en possède aucun.

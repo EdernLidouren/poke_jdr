@@ -1,0 +1,9 @@
+Nom : Poudre fureur
+Type : Insecte
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 niveaux de statut berserk. Si le lanceur utilise cet effet sur lui-même, il gagne également 2 niveaux de statut force.

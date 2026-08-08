@@ -1,0 +1,10 @@
+Nom : Poing sonique
+Type : Eau
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action rapide
+Tags : Poing
+
+Effets : Inflige 4 dégâts physiques + agilité.

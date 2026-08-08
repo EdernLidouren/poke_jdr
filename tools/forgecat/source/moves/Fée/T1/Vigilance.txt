@@ -1,0 +1,11 @@
+Nom : Vigilance
+Type : Fée
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Une fois par tour, le lanceur peut ignorer le premier niveau de statut qu'il reçoit. Le lanceur ne peut pas être pris par surprise.

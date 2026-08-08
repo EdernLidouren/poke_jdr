@@ -1,0 +1,11 @@
+Nom : Éclat glace
+Type : Glace
+Tiers : 1
+Évolutif : Oui
+
+Cible : Voir description
+Portée : Moyenne
+Utilisation : Action
+mécaniques : Monstre de neige
+
+Effets : Le lanceur peut faire exploser un nombre de monstres de neige égal au tiers de la capacité. Chaque monstre de neige inflige 4 dégâts physiques + attaque spéciale en zone et à portée courte. Pour chaque explosion infligeant des dégâts au lanceur, celui-ci peut créer un monstre de neige au même emplacement que celui qui vient d'être sacrifié.

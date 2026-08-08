@@ -1,0 +1,10 @@
+Nom : Cogne
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Réaction
+Contact : Oui
+
+Effets : Utilisable après que le lanceur a infligé des dégâts à une cible. Inflige 4 dégâts physiques + attaque.

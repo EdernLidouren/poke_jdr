@@ -1,0 +1,9 @@
+Nom : Indignition
+Type : Feu
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action rapide
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Si cette capacité est utilisée à la suite d'un jet d'attaque échoué contre cette même cible, ce tour ou durant le tour précédent, inflige 6 dégâts et le jet d'attaque spéciale se fait avec avantage.

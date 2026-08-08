@@ -1,0 +1,10 @@
+Nom : Constimulus
+Type : Électrique
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Retire à la cible jusqu'à trois niveaux de statut parmi faiblesse, apathie, fragilité, doute et lenteur. Soigne 4 points de vie.
