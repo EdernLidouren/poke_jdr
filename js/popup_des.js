@@ -3,7 +3,7 @@
 // Clic sur le toast → fermeture immédiate.
 
 import { prefixeJet, texteAvDes, texteCritique } from './messages_des.js';
-import { annoncer } from './annonce.js';
+import { assertive } from './announce.js';
 
 const ACTIF = true;
 
@@ -53,11 +53,10 @@ export function initPopupDes() {
     const txCrit  = texteCritique(entry.critique);
 
     // Annonce au lecteur d'écran — même texte que le toast visuel.
-    annoncer(
+    assertive(
       prefixeJet(entry) + String(entry.total)
       + (txAvDes ? ' ' + txAvDes : '')
-      + (txCrit  ? ' ' + txCrit  : ''),
-      'assertive'
+      + (txCrit  ? ' ' + txCrit  : '')
     );
 
     popup.append(spanPrefixe, spanTotal);
