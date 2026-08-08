@@ -94,7 +94,12 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   caracsCorps.className = 'bloc-contenu';
   brancherToggle(btnToggleCaracs, caracsCorps);
 
-  caracsCorps.appendChild(renderJaugePV(save, onSaveChange).ligne);
+  let rafraichirPvTemp = () => {};
+  const { ligne: lignePV } = renderJaugePV(save, onSaveChange, () => rafraichirPvTemp());
+  const { ligne: lignePvTemp, rafraichir: _rafraichirPvTemp } = renderPvTemporaires(save, onSaveChange);
+  rafraichirPvTemp = _rafraichirPvTemp;
+  caracsCorps.appendChild(lignePV);
+  caracsCorps.appendChild(lignePvTemp);
   caracsCorps.appendChild(renderJaugePouvoir(save, onSaveChange).ligne);
 
   caracsCorps.appendChild(creerLigneCombat('Garde', 10 + Math.floor((c.constitution + c.agilité) / 2)));
@@ -404,6 +409,84 @@ export function executerFinDeCombat() {
 // =========================================================
 // Helpers — toggle
 // =========================================================
+
+function renderPvTemporaires(save, onSaveChange) {
+  const ligne = document.createElement('div');
+  ligne.className = 'stat-ligne';
+
+  const lbl = document.createElement('span');
+  lbl.className = 'stat-label';
+  lbl.textContent = 'PV temporaires';
+
+  const spanTotal = document.createElement('span');
+  spanTotal.className = 'stat-total';
+
+  const groupe = document.createElement('div');
+  groupe.className = 'stat-groupe';
+
+  const lblGroupe = document.createElement('span');
+  lblGroupe.className = 'stat-groupe-label';
+  lblGroupe.textContent = 'tmp';
+
+  const btnMoins = document.createElement('button');
+  btnMoins.type = 'button';
+  btnMoins.className = 'btn-stepper';
+  btnMoins.textContent = '−';
+  btnMoins.setAttribute('aria-label', 'Diminuer les PV temporaires');
+
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.min = '0';
+
+  const btnPlus = document.createElement('button');
+  btnPlus.type = 'button';
+  btnPlus.className = 'btn-stepper';
+  btnPlus.textContent = '+';
+  btnPlus.setAttribute('aria-label', 'Augmenter les PV temporaires');
+
+  groupe.append(lblGroupe, btnMoins, input, btnPlus);
+
+  const controles = document.createElement('div');
+  controles.className = 'stat-controles';
+  controles.appendChild(groupe);
+
+  ligne.append(lbl, spanTotal, controles);
+
+  function plafond() {
+    return Math.floor(save.sheets[save.fiche_active].caracs.pv_max / 2);
+  }
+
+  function rafraichir() {
+    const c = save.sheets[save.fiche_active].caracs;
+    const max = plafond();
+    if (c.pv_temporaires > max) {
+      c.pv_temporaires = max;
+      onSaveChange(save);
+    }
+    input.max = String(max);
+    input.value = String(c.pv_temporaires);
+    spanTotal.textContent = String(c.pv_temporaires);
+  }
+
+  function clampEtNotifier(brut) {
+    const c = save.sheets[save.fiche_active].caracs;
+    const val = Math.round(Number(brut));
+    if (isNaN(val)) return;
+    const clamped = Math.max(0, Math.min(plafond(), val));
+    c.pv_temporaires = clamped;
+    input.value = String(clamped);
+    spanTotal.textContent = String(clamped);
+    onSaveChange(save);
+  }
+
+  rafraichir();
+
+  btnMoins.addEventListener('click', () => clampEtNotifier(Number(input.value) - 1));
+  btnPlus.addEventListener('click',  () => clampEtNotifier(Number(input.value) + 1));
+  input.addEventListener('change',   () => clampEtNotifier(input.value));
+
+  return { ligne, rafraichir };
+}
 
 function creerLigneCombat(label, valeur) {
   const div = document.createElement('div');

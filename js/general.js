@@ -183,8 +183,9 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
 
   btnReposLong.addEventListener('click', () => {
     const c = save.sheets[save.fiche_active].caracs;
-    c.pv      = c.pv_max;
-    c.pouvoir = c.pouvoir_max;
+    c.pv             = c.pv_max;
+    c.pouvoir        = c.pouvoir_max;
+    c.pv_temporaires = 0;
     // TODO: annoncer le repos au lecteur d'écran (ARIA live) — ex. "Repos long : PV X/Y, Pouvoir X/Y"
     onSaveChange(save);
     rafraichirPV();

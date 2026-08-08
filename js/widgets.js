@@ -4,15 +4,15 @@
 // Jauges PV / Pouvoir
 // =========================================================
 
-export function renderJaugePV(save, onUpdate) {
-  return _renderJauge(save, 'PV', 'pv', 'pv_max', onUpdate);
+export function renderJaugePV(save, onUpdate, onMaxChange) {
+  return _renderJauge(save, 'PV', 'pv', 'pv_max', onUpdate, onMaxChange);
 }
 
 export function renderJaugePouvoir(save, onUpdate) {
   return _renderJauge(save, 'Pouvoir', 'pouvoir', 'pouvoir_max', onUpdate);
 }
 
-function _renderJauge(save, label, cleVal, cleMax, onUpdate) {
+function _renderJauge(save, label, cleVal, cleMax, onUpdate, onMaxChange) {
   const ligne = document.createElement('div');
   ligne.className = 'stat-ligne';
 
@@ -78,6 +78,7 @@ function _renderJauge(save, label, cleVal, cleMax, onUpdate) {
     if (c[cleVal] > c[cleMax]) c[cleVal] = c[cleMax];
     rafraichir();
     onUpdate(save);
+    if (onMaxChange) onMaxChange();
   }
 
   btnActuelMoins.addEventListener('click', () => clampActuel(Number(inputActuel.value) - 1));

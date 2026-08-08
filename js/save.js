@@ -15,7 +15,7 @@ const DEFAUT_CARACS = {
   esprit: 0,
   agilité: 0,
   // Caractéristiques secondaires
-  pv_max: 20,      pv: 20,
+  pv_max: 20,      pv: 20,      pv_temporaires: 0,
   pouvoir_max: 10, pouvoir: 10,
   pokedollar: 0,
 };
@@ -33,7 +33,7 @@ const CARACS_TYPES = {
   charisme: 'number',
   esprit: 'number',
   agilité: 'number',
-  pv_max: 'number',       pv: 'number',
+  pv_max: 'number',       pv: 'number',      pv_temporaires: 'number',
   pouvoir_max: 'number',  pouvoir: 'number',
   pokedollar: 'number',
 };
@@ -330,9 +330,12 @@ function validateCaracs(caracs, catalogue) {
     }
   }
 
-  // pokedollar : entier ≥ 0 (la boucle gère l'absence et le mauvais type, mais pas le float ni le négatif)
+  // entiers ≥ 0 non couverts par la boucle (qui ne vérifie pas le signe ni le float)
   if (!Number.isInteger(result.pokedollar) || result.pokedollar < 0) {
     result.pokedollar = 0;
+  }
+  if (!Number.isInteger(result.pv_temporaires) || result.pv_temporaires < 0) {
+    result.pv_temporaires = 0;
   }
 
   return result;
