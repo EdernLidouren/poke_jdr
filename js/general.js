@@ -130,10 +130,10 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
   let refAttaqueSpec      = null;
   const refTotaux = {};
 
-  function calcGarde()         { return Math.floor(10 + (caracs.constitution + caracs.agilité) / 2) + caracs.garde_mod; }
-  function calcGardeSpec()     { return Math.floor(10 + (caracs.esprit + caracs.agilité) / 2) + caracs.garde_speciale_mod; }
-  function calcAttaque()       { return caracs.force + caracs.force_mod + caracs.attaque_mod; }
-  function calcAttaqueSpec()   { return caracs.charisme + caracs.charisme_mod + caracs.attaque_speciale_mod; }
+  function calcGarde()         { return 10 + Math.floor((caracs.constitution + caracs.agilité) / 2); }
+  function calcGardeSpec()     { return 10 + Math.floor((caracs.esprit + caracs.agilité) / 2); }
+  function calcAttaque()       { return caracs.force; }
+  function calcAttaqueSpec()   { return caracs.charisme; }
 
   function mettreAJourGardes() {
     if (refGardeTotale)     refGardeTotale.textContent     = calcGarde();
@@ -193,34 +193,22 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
   });
 
   // Garde
-  const { ligne: ligneGarde, spanTotal: spanGardeTotale } = creerLigneGarde(
-    'Garde', calcGarde(), caracs.garde_mod, -999, 999,
-    (val) => { caracs.garde_mod = val; mettreAJourGardes(); onSaveChange(save); }
-  );
+  const { ligne: ligneGarde, spanTotal: spanGardeTotale } = creerLigneReadOnly('Garde', calcGarde());
   refGardeTotale = spanGardeTotale;
   contenu.appendChild(ligneGarde);
 
   // Garde spéciale
-  const { ligne: ligneGardeSpec, spanTotal: spanGardeSpecTotale } = creerLigneGarde(
-    'Garde spéciale', calcGardeSpec(), caracs.garde_speciale_mod, -999, 999,
-    (val) => { caracs.garde_speciale_mod = val; mettreAJourGardes(); onSaveChange(save); }
-  );
+  const { ligne: ligneGardeSpec, spanTotal: spanGardeSpecTotale } = creerLigneReadOnly('Garde spéciale', calcGardeSpec());
   refGardeSpecTotale = spanGardeSpecTotale;
   contenu.appendChild(ligneGardeSpec);
 
-  // Attaque (total lecture seule + mod éditable 0–99)
-  const { ligne: ligneAttaque, spanTotal: spanAttaqueTotale } = creerLigneGarde(
-    'Attaque', calcAttaque(), caracs.attaque_mod, 0, 99,
-    (val) => { caracs.attaque_mod = val; mettreAJourAttaques(); onSaveChange(save); }
-  );
+  // Attaque
+  const { ligne: ligneAttaque, spanTotal: spanAttaqueTotale } = creerLigneReadOnly('Attaque', calcAttaque());
   refAttaque = spanAttaqueTotale;
   contenu.appendChild(ligneAttaque);
 
-  // Attaque spéciale (total lecture seule + mod éditable 0–99)
-  const { ligne: ligneAttaqueSpec, spanTotal: spanAttaqueSpecTotale } = creerLigneGarde(
-    'Attaque spéciale', calcAttaqueSpec(), caracs.attaque_speciale_mod, 0, 99,
-    (val) => { caracs.attaque_speciale_mod = val; mettreAJourAttaques(); onSaveChange(save); }
-  );
+  // Attaque spéciale
+  const { ligne: ligneAttaqueSpec, spanTotal: spanAttaqueSpecTotale } = creerLigneReadOnly('Attaque spéciale', calcAttaqueSpec());
   refAttaqueSpec = spanAttaqueSpecTotale;
   contenu.appendChild(ligneAttaqueSpec);
 
@@ -239,21 +227,13 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
   ];
 
   for (const { label, cle, affecteGarde } of STATS) {
-    const cleMod = `${cle}_mod`;
     const { ligne, spanTotal, controles } = creerLigneStat(
       label,
-      caracs[cle], caracs[cleMod],
-      0, 999, -999, 999,
+      caracs[cle],
+      0, 999,
       (val) => {
         caracs[cle] = val;
-        refTotaux[cle].textContent = caracs[cle] + caracs[cleMod];
-        if (affecteGarde) mettreAJourGardes();
-        mettreAJourAttaques();
-        onSaveChange(save);
-      },
-      (val) => {
-        caracs[cleMod] = val;
-        refTotaux[cle].textContent = caracs[cle] + caracs[cleMod];
+        refTotaux[cle].textContent = caracs[cle];
         if (affecteGarde) mettreAJourGardes();
         mettreAJourAttaques();
         onSaveChange(save);
@@ -268,7 +248,7 @@ function construireBlocCaracteristiques(caracs, save, onSaveChange, rafraichirHi
     btnDeStat.title = `Jet de ${label}`;
     btnDeStat.textContent = '🎲';
     btnDeStat.addEventListener('click', () => {
-      lancerJetCarac(label, caracs[cle] + caracs[cleMod]);
+      lancerJetCarac(label, caracs[cle]);
       rafraichirHistorique();
     });
     controles.appendChild(btnDeStat);
@@ -321,8 +301,7 @@ function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHist
   const skills = save.sheets[save.fiche_active].skills;
 
   for (const nom of (catalogue.skills || [])) {
-    if (!skills[nom]) skills[nom] = { base: 0, mod: 0 };
-    const entree = skills[nom];
+    if (skills[nom] === undefined) skills[nom] = 0;
 
     const ligne = document.createElement('div');
     ligne.className = 'stat-ligne';
@@ -333,17 +312,11 @@ function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHist
 
     const spanTotal = document.createElement('span');
     spanTotal.className = 'stat-total';
-    spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+    spanTotal.textContent = calcTotalSkill(skills[nom]);
 
-    const groupeBase = creerStatGroupe('base', entree.base, -3, 3, (val) => {
-      entree.base = val;
-      spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
-      onSaveChange(save);
-    });
-
-    const groupeMod = creerStatGroupe('mod', entree.mod, -999, 999, (val) => {
-      entree.mod = val;
-      spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+    const groupeBase = creerStatGroupe('val', skills[nom], -3, 3, (val) => {
+      skills[nom] = val;
+      spanTotal.textContent = calcTotalSkill(skills[nom]);
       onSaveChange(save);
     });
 
@@ -376,8 +349,8 @@ function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHist
     btnLancerSkill.addEventListener('click', () => {
       const nomCarac = selectCarac.value;
       const c = save.sheets[save.fiche_active].caracs;
-      const valCarac = c[nomCarac] + (c[`${nomCarac}_mod`] || 0);
-      lancerJetCompetence(nom, calcTotalSkill(entree.base, entree.mod), nomCarac, valCarac);
+      const valCarac = c[nomCarac];
+      lancerJetCompetence(nom, calcTotalSkill(skills[nom]), nomCarac, valCarac);
       rafraichirHistorique();
       zoneInline.hidden = true;
       btnDe.textContent = '🎲';
@@ -393,7 +366,7 @@ function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHist
 
     const controles = document.createElement('div');
     controles.className = 'stat-controles';
-    controles.append(groupeBase, groupeMod, btnDe);
+    controles.append(groupeBase, btnDe);
 
     ligne.append(lbl, spanTotal, controles);
     contenu.appendChild(ligne);
@@ -407,7 +380,7 @@ function remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHist
   if (skillList.length === 0) return;
 
   for (const nom of skillList) {
-    if (!skills[nom]) skills[nom] = { base: 0, mod: 0 };
+    if (skills[nom] === undefined) skills[nom] = 0;
   }
 
   const ligne = document.createElement('div');
@@ -441,30 +414,13 @@ function remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHist
     0, -3, 3,
     (val) => {
       const nom = selectSkill.value;
-      skills[nom].base = val;
-      spanTotal.textContent = calcTotalSkill(skills[nom].base, skills[nom].mod);
+      skills[nom] = val;
+      spanTotal.textContent = calcTotalSkill(skills[nom]);
       onSaveChange(save);
     }
   );
-  btnBaseMoins.setAttribute('aria-label', 'Diminuer la base de la compétence');
-  btnBasePlus.setAttribute('aria-label', 'Augmenter la base de la compétence');
-
-  // Stepper mod (-999 à 999)
-  const lblMod = document.createElement('span');
-  lblMod.className = 'stat-groupe-label';
-  lblMod.textContent = 'mod';
-
-  const { btnMoins: btnModMoins, input: inputMod, btnPlus: btnModPlus } = creerStepperElements(
-    0, -999, 999,
-    (val) => {
-      const nom = selectSkill.value;
-      skills[nom].mod = val;
-      spanTotal.textContent = calcTotalSkill(skills[nom].base, skills[nom].mod);
-      onSaveChange(save);
-    }
-  );
-  btnModMoins.setAttribute('aria-label', 'Diminuer le modificateur de la compétence');
-  btnModPlus.setAttribute('aria-label', 'Augmenter le modificateur de la compétence');
+  btnBaseMoins.setAttribute('aria-label', 'Diminuer la valeur de la compétence');
+  btnBasePlus.setAttribute('aria-label', 'Augmenter la valeur de la compétence');
 
   // Sélecteur de carac pour le jet
   const selectCarac = document.createElement('select');
@@ -486,17 +442,15 @@ function remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHist
     const nom = selectSkill.value;
     const nomCarac = selectCarac.value;
     const c = save.sheets[save.fiche_active].caracs;
-    const valCarac = c[nomCarac] + (c[`${nomCarac}_mod`] || 0);
-    lancerJetCompetence(nom, calcTotalSkill(skills[nom].base, skills[nom].mod), nomCarac, valCarac);
+    const valCarac = c[nomCarac];
+    lancerJetCompetence(nom, calcTotalSkill(skills[nom]), nomCarac, valCarac);
     rafraichirHistorique();
   });
 
   // Mise à jour de l'affichage quand la compétence change
   function mettreAJour(nom) {
-    const entree = skills[nom];
-    inputBase.value = String(entree.base);
-    inputMod.value = String(entree.mod);
-    spanTotal.textContent = calcTotalSkill(entree.base, entree.mod);
+    inputBase.value = String(skills[nom]);
+    spanTotal.textContent = calcTotalSkill(skills[nom]);
     const defaut = catalogue.competence_carac_defaut?.[nom];
     if (defaut && CARACS_PRIMAIRES.includes(defaut)) selectCarac.value = defaut;
   }
@@ -508,14 +462,13 @@ function remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHist
     labelSkill, selectSkill,
     spanTotal,
     lblBase, btnBaseMoins, inputBase, btnBasePlus,
-    lblMod, btnModMoins, inputMod, btnModPlus,
     selectCarac, btnLancer,
   );
   contenu.appendChild(ligne);
 }
 
-function calcTotalSkill(base, mod) {
-  return Math.min(3, Math.max(-3, base + mod));
+function calcTotalSkill(valeur) {
+  return Math.min(3, Math.max(-3, valeur));
 }
 
 // =========================================================
@@ -658,7 +611,7 @@ function creerChampSelect(labelTexte, valeur, types, onChange) {
 // Helpers partagés — lignes de stats (stat-ligne)
 // =========================================================
 
-function creerLigneStat(labelTexte, valeurBase, valeurMod, minBase, maxBase, minMod, maxMod, onChangeBase, onChangeMod) {
+function creerLigneStat(labelTexte, valeur, min, max, onChange) {
   const ligne = document.createElement('div');
   ligne.className = 'stat-ligne';
 
@@ -668,20 +621,17 @@ function creerLigneStat(labelTexte, valeurBase, valeurMod, minBase, maxBase, min
 
   const spanTotal = document.createElement('span');
   spanTotal.className = 'stat-total';
-  spanTotal.textContent = valeurBase + valeurMod;
+  spanTotal.textContent = valeur;
 
   const controles = document.createElement('div');
   controles.className = 'stat-controles';
-  controles.append(
-    creerStatGroupe('base', valeurBase, minBase, maxBase, onChangeBase),
-    creerStatGroupe('mod',  valeurMod,  minMod,  maxMod,  onChangeMod),
-  );
+  controles.appendChild(creerStatGroupe('val', valeur, min, max, onChange));
 
   ligne.append(lbl, spanTotal, controles);
   return { ligne, spanTotal, controles };
 }
 
-function creerLigneGarde(labelTexte, totalInitial, valeurMod, minMod, maxMod, onChangeMod) {
+function creerLigneReadOnly(labelTexte, valeur) {
   const ligne = document.createElement('div');
   ligne.className = 'stat-ligne';
 
@@ -691,13 +641,9 @@ function creerLigneGarde(labelTexte, totalInitial, valeurMod, minMod, maxMod, on
 
   const spanTotal = document.createElement('span');
   spanTotal.className = 'stat-total';
-  spanTotal.textContent = totalInitial;
+  spanTotal.textContent = valeur;
 
-  const controles = document.createElement('div');
-  controles.className = 'stat-controles';
-  controles.appendChild(creerStatGroupe('mod', valeurMod, minMod, maxMod, onChangeMod));
-
-  ligne.append(lbl, spanTotal, controles);
+  ligne.append(lbl, spanTotal);
   return { ligne, spanTotal };
 }
 

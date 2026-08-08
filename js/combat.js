@@ -1,6 +1,6 @@
 // Onglet Combat
 
-import { renderJaugePV, renderJaugePouvoir, renderValeurCalculee } from './widgets.js';
+import { renderJaugePV, renderJaugePouvoir } from './widgets.js';
 import { lancerJetCarac, rendreBlocDes } from './dice.js';
 
 const STATUTS_SANS_DECREMENT = ['status_blessure', 'status_regeneration'];
@@ -97,10 +97,10 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   caracsCorps.appendChild(renderJaugePV(save, onSaveChange).ligne);
   caracsCorps.appendChild(renderJaugePouvoir(save, onSaveChange).ligne);
 
-  caracsCorps.appendChild(renderValeurCalculee('Garde', c.garde + c.garde_mod));
-  caracsCorps.appendChild(renderValeurCalculee('Garde spéciale', c.garde_speciale + c.garde_speciale_mod));
+  caracsCorps.appendChild(creerLigneCombat('Garde', 10 + Math.floor((c.constitution + c.agilité) / 2)));
+  caracsCorps.appendChild(creerLigneCombat('Garde spéciale', 10 + Math.floor((c.esprit + c.agilité) / 2)));
 
-  const elAttaque = renderValeurCalculee('Attaque', c.force + c.force_mod + c.attaque_mod);
+  const ligneAttaque = creerLigneCombat('Attaque', c.force);
   const btnDeAttaque = document.createElement('button');
   btnDeAttaque.type = 'button';
   btnDeAttaque.className = 'btn-lancer';
@@ -108,13 +108,13 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   btnDeAttaque.textContent = '🎲';
   btnDeAttaque.addEventListener('click', () => {
     const cc = save.sheets[save.fiche_active].caracs;
-    lancerJetCarac('Attaque', cc.force + cc.force_mod + cc.attaque_mod);
+    lancerJetCarac('Attaque', cc.force);
     rafraichirHistorique();
   });
-  elAttaque.appendChild(btnDeAttaque);
-  caracsCorps.appendChild(elAttaque);
+  ligneAttaque.appendChild(btnDeAttaque);
+  caracsCorps.appendChild(ligneAttaque);
 
-  const elAttaqueSpec = renderValeurCalculee('Attaque spéciale', c.charisme + c.charisme_mod + c.attaque_speciale_mod);
+  const ligneAttaqueSpec = creerLigneCombat('Attaque spéciale', c.charisme);
   const btnDeAttaqueSpec = document.createElement('button');
   btnDeAttaqueSpec.type = 'button';
   btnDeAttaqueSpec.className = 'btn-lancer';
@@ -122,11 +122,11 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
   btnDeAttaqueSpec.textContent = '🎲';
   btnDeAttaqueSpec.addEventListener('click', () => {
     const cc = save.sheets[save.fiche_active].caracs;
-    lancerJetCarac('Attaque spéciale', cc.charisme + cc.charisme_mod + cc.attaque_speciale_mod);
+    lancerJetCarac('Attaque spéciale', cc.charisme);
     rafraichirHistorique();
   });
-  elAttaqueSpec.appendChild(btnDeAttaqueSpec);
-  caracsCorps.appendChild(elAttaqueSpec);
+  ligneAttaqueSpec.appendChild(btnDeAttaqueSpec);
+  caracsCorps.appendChild(ligneAttaqueSpec);
 
   sectionCaracs.append(caracsHeader, caracsCorps);
 
@@ -404,6 +404,19 @@ export function executerFinDeCombat() {
 // =========================================================
 // Helpers — toggle
 // =========================================================
+
+function creerLigneCombat(label, valeur) {
+  const div = document.createElement('div');
+  div.className = 'stat-ligne';
+  const lbl = document.createElement('span');
+  lbl.className = 'stat-label';
+  lbl.textContent = label;
+  const span = document.createElement('span');
+  span.className = 'stat-total';
+  span.textContent = String(valeur);
+  div.append(lbl, span);
+  return div;
+}
 
 function creerBtnToggle(collapsed = false) {
   const btn = document.createElement('button');

@@ -17,7 +17,8 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(python -c \"import json; d=json.load\\(open\\('data/catalogue.json', encoding='utf-8'\\)\\); print\\(list\\(d.keys\\(\\)\\)\\)\")",
-      "Bash(python -c \"import json; d=json.load\\(open\\('data/catalogue.json', encoding='utf-8'\\)\\); print\\(d['skills']\\)\")"
+      "Bash(python -c \"import json; d=json.load\\(open\\('data/catalogue.json', encoding='utf-8'\\)\\); print\\(d['skills']\\)\")",
+      "Bash(git rm *)"
     ]
   }
 }
