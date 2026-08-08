@@ -1,6 +1,7 @@
 import { rendreParametres } from './parametres.js';
 import { rendreGeneral }    from './general.js';
 import { creerFicheDefaut } from './save.js';
+import { polite }           from './announce.js';
 import { rendreCapacites }  from './capacites.js';
 import { rendreTalents }    from './talents.js';
 import { rendreEquipement } from './equipement.js';
@@ -102,9 +103,38 @@ export function initialiserNavigation(conteneur, catalogue, saveInitiale, onSave
     supprimerFiche(save.fiche_active);
   });
 
-  // Raccourci clavier Ctrl+Flèche — réordonne les onglets de fiche, avec wrap
+  // Navigation cyclique entre fiches sans les réordonner
+  function naviguerVersFiche(direction) {
+    if (save.sheets.length < 2) return;
+    const i = save.fiche_active;
+    const n = save.sheets.length;
+    const j = direction === 'gauche' ? (i - 1 + n) % n : (i + 1) % n;
+    save.fiche_active = j;
+    ongletActif = j;
+    onSaveChange(save);
+    rendre();
+    polite(save.sheets[j].caracs.nom || 'Nouvelle fiche');
+  }
+
+  // Raccourci clavier Ctrl+Flèche — navigation entre fiches, avec cyclage
   document.addEventListener('keydown', (e) => {
-    if (!e.ctrlKey || e.repeat) return;
+    if (!e.ctrlKey || e.shiftKey || e.repeat) return;
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const active = document.activeElement;
+    if (active && (
+      active.tagName === 'INPUT' ||
+      active.tagName === 'TEXTAREA' ||
+      active.tagName === 'SELECT' ||
+      active.isContentEditable
+    )) return;
+    if (!estFiche()) return;
+    e.preventDefault();
+    naviguerVersFiche(e.key === 'ArrowLeft' ? 'gauche' : 'droite');
+  });
+
+  // Raccourci clavier Ctrl+Shift+Flèche — réordonne les onglets de fiche, avec wrap
+  document.addEventListener('keydown', (e) => {
+    if (!e.ctrlKey || !e.shiftKey || e.repeat) return;
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     const active = document.activeElement;
     if (active && (
