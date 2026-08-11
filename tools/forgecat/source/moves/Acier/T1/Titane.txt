@@ -1,0 +1,10 @@
+Nom : Titane
+Type : Acier
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action rapide
+
+Effets : Octroie 3 niveaux de statut endurance.

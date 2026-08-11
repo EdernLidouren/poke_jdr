@@ -1,0 +1,11 @@
+Nom : Argilarmure
+Type : Sol
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Confère la résistance au type électrique et l'immunité à l'état emprise. Si la cible doit subir un nombre de dégâts supérieur ou égal à la moitié de ses points de vie max, réduit ces dégâts de moitié et l'effet prend fin.

@@ -1,0 +1,10 @@
+Nom : Danse plumes
+Type : Vol
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur fait se déplacer une cible contre son gré, il gagne 1 niveau de statut force ou puissance, au choix, s'il n'en possède aucun. Lorsque le lanceur est déplacé contre son gré, il gagne 1 niveau de vitesse.

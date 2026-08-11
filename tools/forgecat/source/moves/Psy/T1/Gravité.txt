@@ -1,0 +1,10 @@
+Nom : Gravité
+Type : Psy
+Tiers : 1
+
+Cible : Une zone
+Portée : Moyenne
+Envergure : Moyenne
+Utilisation : Action
+
+Effets : Crée une zone de gravité dans laquelle il est impossible de décoller du sol. Le type vol perd sa faculté de voler et son immunité au type sol, de même que l'état lévitation. Les effets nécessitant de quitter le sol, comme un saut, sont neutralisés. Les effets de téléportation ignorent cette restriction.

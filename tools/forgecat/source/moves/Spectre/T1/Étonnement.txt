@@ -1,0 +1,9 @@
+Nom : Étonnement
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action rapide
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible est sans défense, inflige 6 dégâts et 1 niveau de peur.

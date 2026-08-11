@@ -1,0 +1,11 @@
+Nom : Larcin
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Jet de sauvegarde : Agilité
+Utilisation : Action
+
+Effets : Vole un objet détenu par la cible s'il n'est pas équipé. Inflige 1 niveau de statut confusion. Le lanceur peut gratuitement faire passer l'objet à une cible au contact. Si l'objet volé est un consommable, le lanceur peut l'utiliser immédiatement.

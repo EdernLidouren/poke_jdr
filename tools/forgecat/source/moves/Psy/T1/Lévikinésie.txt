@@ -1,0 +1,10 @@
+Nom : Lévikinésie
+Type : Psy
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Une cible consentante ou le lanceur profite de l'état lévitation.

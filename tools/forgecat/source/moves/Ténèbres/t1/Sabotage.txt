@@ -1,0 +1,10 @@
+Nom : Sabotage
+Type : Ténèbres
+Tiers : 1
+Évolutif : Oui
+
+Cible : Voir description
+Portée : Contact
+Utilisation : Action
+
+Effets : Supprime un effet de zone d'un tiers égal ou inférieur. Cette capacité peut détruire un mécanisme comme un piège ou une serrure. Le lanceur peut également choisir d'endommager le mécanisme pour qu'il se brise à la prochaine utilisation.

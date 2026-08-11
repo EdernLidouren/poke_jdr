@@ -1,0 +1,9 @@
+Nom : Rayon gemme
+Type : Sol
+Tiers : 1
+
+Cible : Une cible
+Portée : courte
+Utilisation : Action rapide
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible ne profite d'aucun statut volonté, inflige 6 dégâts.

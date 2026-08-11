@@ -1,0 +1,10 @@
+Nom : Plongée
+Type : Eau
+Tiers : 1
+
+Cible : Une zone
+Portée : Contact
+Utilisation : Action
+Tags : Téléportation
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Le lanceur peut se téléporter jusqu'à portée courte.

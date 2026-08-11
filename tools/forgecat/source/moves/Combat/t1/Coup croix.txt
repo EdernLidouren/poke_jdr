@@ -1,0 +1,11 @@
+Nom : Coup croix
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Taux de critique : 2
+Utilisation : Action
+
+Effets : Inflige 4 dégâts physiques + attaque.

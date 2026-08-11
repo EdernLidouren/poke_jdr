@@ -1,0 +1,10 @@
+Nom : Amnésie
+Type : Psy
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action rapide
+
+Effets : Retire jusqu'à 3 niveaux de statut parmi apathie, doute, confusion, peur, attraction et berserk. Met fin aux effets mentaux. Si cet effet brise une concentration, la cible gagne 1 point de pouvoir.

@@ -1,0 +1,10 @@
+Nom : Poursuite
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Réaction
+
+Effets : Utilisable lorsqu'une cible s'éloigne du lanceur. Inflige 4 dégâts physique + attaque. Si la cible souffre du statut peur et que le lanceur en est la source, le lanceur peut se déplacer jusqu'à portée courte à la suite de la cible.

@@ -1,0 +1,11 @@
+Nom : Dracoqueue
+Type : Dragon
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Contact : Oui
+Utilisation : Action rapide
+Tags : Queue
+
+Effets : Inflige 2 dégâts physiques + attaque et repousse la cible d'une distance courte.

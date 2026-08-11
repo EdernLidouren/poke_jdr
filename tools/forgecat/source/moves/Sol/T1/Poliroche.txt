@@ -1,0 +1,10 @@
+Nom : Poliroche
+Type : Sol
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Confère un niveau positif d'éloquence et d'acrobatie au lanceur.

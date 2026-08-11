@@ -1,0 +1,10 @@
+Nom : Bloquage
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Réduit les dégâts subits de moitié. Si la cible est sans défense, inflige 1 niveau de statut fragilité et doute.

@@ -1,0 +1,9 @@
+Nom : Amassable
+Type : Sol
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+
+Effets : Soigne 2 points de vie. Si le lanceur sacrifie son mouvement, soigne 4 points de vie.

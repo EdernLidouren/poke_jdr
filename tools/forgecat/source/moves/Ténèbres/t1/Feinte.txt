@@ -1,0 +1,10 @@
+Nom : Feinte
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Jet de sauvegarde : Esprit
+Utilisation : Action rapide
+
+Effets : Le prochain jet d'attaque, d'attaque spéciale ou de compétence initié par le lanceur envers la cible durant ce tour ou le tour suivant obtient un avantage ainsi qu'un bonus égal à 1 + tiers du lanceur. La cible est considérée comme sans défense jusqu'à son prochain tour.

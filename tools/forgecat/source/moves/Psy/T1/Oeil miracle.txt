@@ -1,0 +1,10 @@
+Nom : Oeil miracle
+Type : Psy
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur peut voir à travers les effets d'illusion et d'invisibilité. Il obtient un avantage à ses jets de perception visuelle.

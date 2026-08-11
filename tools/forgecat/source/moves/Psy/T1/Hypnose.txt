@@ -1,0 +1,11 @@
+Nom : Hypnose
+Type : Psy
+Tiers : 1
+
+Cible : Un cône
+Portée : Courte
+Envergure : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Inflige 3 niveaux de statut confusion. Le lanceur peut répartir les niveaux de statut entre les cibles affectées.

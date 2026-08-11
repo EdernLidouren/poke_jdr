@@ -1,0 +1,9 @@
+Nom : Jet de pierre
+Type : Sol
+Tiers : 1
+
+Cible : Une cible
+Portée : courte
+Utilisation : Action
+
+Effets : Inflige 4 dégâts physiques + attaque. Ignore les immunités. Très efficace contre le type vol.

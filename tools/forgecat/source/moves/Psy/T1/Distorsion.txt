@@ -1,0 +1,10 @@
+Nom : Distorsion
+Type : Psy
+Tiers : 1
+
+Cible : Une zone
+Portée : Moyenne
+Utilisation : Action
+Mécaniques : Concentration, aura
+
+Effets : Les niveaux de statut lenteur gagnés au sein de la zone sont transformés en statut vitesse, et inversement. Les niveaux de statut ou lenteur déjà existant ne sont pas affectés. Les effets de téléportation ne peuvent ni prendre leur source, ni être initiés depuis la zone.

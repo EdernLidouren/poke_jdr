@@ -1,0 +1,10 @@
+Nom : Rancune
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Jet de sauvegarde : Esprit
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit un ou plusieurs niveaux de statut de la part d'une cible. Inflige jusqu'à 3 niveaux de statut parmi ceux subits par le lanceur.

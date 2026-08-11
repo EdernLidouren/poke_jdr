@@ -1,0 +1,9 @@
+Nom : Atterrissage
+Type : Vol
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+
+Effets : Le lanceur se pose au sol et perd son immunité jusqu'à son prochain tour. Soigne 6 points de vie.

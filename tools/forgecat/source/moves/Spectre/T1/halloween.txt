@@ -1,0 +1,10 @@
+Nom : Halloween
+Type : Spectre
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur modifie son apparence en profondeur. Le déguisement ne survit pas à un examen tactile ou à un effet de capacité comme oeil miracle.

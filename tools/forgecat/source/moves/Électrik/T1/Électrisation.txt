@@ -8,4 +8,4 @@ Contact : Oui
 Utilisation : Action
 Mécaniques : Concentration
 
-Effets : Lorsque la cible entre en contact avec une autre, elle lui inflige un nombre de dégâts de type électrique égal à 1 + le tiers du lanceur. Si la concentration maintenant cet effet est brisée, les pokémons au contact de la cible doivent réussir un jet de sauvegarde d'agilité ou subir les dégâts mentionnés plus haut. Le degré de difficulté est égal à 10 + caractéristique de charisme du lanceur + tiers de la capacité.
+Effets : Lorsque la cible entre en contact avec une autre, elle lui inflige un nombre de dégâts spéciaux égal à 1 + le tiers du lanceur. Si la concentration maintenant cet effet est brisée, les pokémons au contact de la cible doivent réussir un jet de sauvegarde d'agilité ou subir les dégâts mentionnés plus haut. Le degré de difficulté est égal à 10 + caractéristique de charisme du lanceur + tiers de la capacité.

@@ -1,0 +1,9 @@
+Nom : Châtiment
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Le lanceur choisit une cible et jusqu'à 3 niveaux de statut dont elle profite parmi force, puissance, endurance, volonté et vitesse. Inflige un nombre de dégâts spéciaux + attaque spéciale égal à 2 + 2 pour chaque niveau de statut.

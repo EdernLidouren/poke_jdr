@@ -1,0 +1,10 @@
+Nom : Représaille
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Inflige à cette cible un nombre de dégâts physiques + attaque égal à la moitié des dégâts subits par le lanceur. En cas de coup critique de la part de la cible, inflige le même nombre de dégâts.

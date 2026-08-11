@@ -1,0 +1,9 @@
+Nom : Ombre portée
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action rapide
+
+Effets : Inflige 4 dégâts spéciaux + attaque. Ignore les abris.

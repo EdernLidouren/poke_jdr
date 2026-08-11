@@ -1,0 +1,9 @@
+Nom : Dépit
+Type : Spectre
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur échoue à un jet. Le lanceur peut relancer son jet avec avantage. S'il échoue malgré tout, il gagne un nombre de points de vie temporaire égal à 1 + tiers du lanceur.

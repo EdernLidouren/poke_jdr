@@ -1,0 +1,13 @@
+Nom : Goudronnage
+Type : Sol
+Tiers : 1
+Évolutif : Oui
+
+Cible : Une zone
+Portée : Courte
+Envergure : Courte
+Utilisation : Action
+Jet de sauvegarde : Agilité
+Mécaniques : Concentration
+
+Effets : Recouvre une zone courte au tiers 1 et moyenne au tiers 2 d'une substance collante et inflammable. Les pokémons qui entrent en contact avec la substance souffrent du statut lenteur ainsi que d'une vulnérabilité au type feu. Un pokémon peut sacrifier son mouvement pour se débarrasser de la substance s'il ne se trouve plus dans la zone Au tiers 2, l'envergure et la portée sont moyennes.

@@ -1,0 +1,10 @@
+Nom : Purédpois
+Type : Poison
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Moyenne
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts. Réduit les dégâts subits de moitié. Le lanceur créée un épais nuage qui obstrue la vision. Les pokémons qui ne sont pas immunisés au poison subissent 1 niveau de statut empoisonnement s'ils débutent leur tour dans le nuage. Toutes les actions nécessitant la vue se font avec désavantage si la cible se trouve dans le nuage.

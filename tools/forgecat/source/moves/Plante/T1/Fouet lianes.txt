@@ -1,0 +1,10 @@
+Nom : Fouet lianes
+Type : Plante
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Force
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque et attire la cible au lanceur. Le lanceur peut choisir de ne pas infliger de dégâts mais d'infliger l'état emprise à la cible.

@@ -7,4 +7,4 @@ Portée : Personnelle
 Utilisation : Action
 Mécaniques : Concentration
 
-Effets : Quand le lanceur inflige des dégâts physiques de contact à une cible, celle-ci gagne 1 niveau de statut blessure.
+Effets : Quand le lanceur inflige des dégâts physiques de contact à une cible, augmente ces dégâts de 2.

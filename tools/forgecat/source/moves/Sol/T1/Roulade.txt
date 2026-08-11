@@ -1,0 +1,12 @@
+Nom : Roulade
+Type : Sol
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Mouvement minimal : Moyenne
+Utilisation : Action
+Tags : Charge
+
+Effets : Inflige 4 dégâts physiques + attaque. Si le lanceur échoue à toucher sa cible et qu'il réutilise cette capacité au tour suivant, sur la même cible ou une autre, augmente les dégâts de 8 et le taux de critique de 2, jusqu'à 3 utilisations à la suite.

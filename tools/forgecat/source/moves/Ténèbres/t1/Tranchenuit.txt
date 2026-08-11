@@ -1,0 +1,9 @@
+Nom : Tranchenuit
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 4 dégâts spéciaux + attaque spéciale. Si la cible est prise par surprise, inflige 6 dégâts et 1 niveau de statut peur.

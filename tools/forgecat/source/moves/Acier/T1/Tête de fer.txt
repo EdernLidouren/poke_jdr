@@ -1,0 +1,13 @@
+Nom : Tête de fer
+Type : Acier
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Mouvement minimal : Moyenne
+Utilisation : Action
+Tags : Charge
+Mécaniques : Contrecoup
+
+Effets : Inflige 8 dégâts physiques + attaque. 2 niveaux de contrecoup. Repousse la cible d'une distance courte.

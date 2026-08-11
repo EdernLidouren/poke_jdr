@@ -1,0 +1,9 @@
+Nom : Saisie
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Réaction
+
+Effets : Utilisable lorsqu'une cible gagne un ou plusieurs niveaux de statut. Le lanceur choisit jusqu'à 3 de ces niveaux et les gagne à la place de la cible. Le lanceur peut se déplacer jusqu'à portée moyenne.

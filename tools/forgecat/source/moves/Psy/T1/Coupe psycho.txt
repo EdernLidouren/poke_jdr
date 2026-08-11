@@ -1,0 +1,10 @@
+Nom : Coupe psycho
+Type : Psy
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Taux de critique : 2
+Utilisation : Action
+
+Effets : Inflige 4 dégâts spéciaux + attaque spéciale.

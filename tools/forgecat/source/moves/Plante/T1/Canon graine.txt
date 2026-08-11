@@ -1,0 +1,9 @@
+Nom : Canon graine
+Type : Plante
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Inflige 6 dégâts si utilisée à portée moyenne.

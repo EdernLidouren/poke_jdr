@@ -1,0 +1,9 @@
+Nom : Danse victoire
+Type : Combat
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur défait une cible. Soigne 1 point de pouvoir.

@@ -1,0 +1,4 @@
+Nom : Baie ceriz
+Tiers : 1
+
+Effets : Retire jusqu'à 3 niveaux de statut apathie et 3 niveaux de statut attraction.

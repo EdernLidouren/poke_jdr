@@ -1,0 +1,11 @@
+Nom : Coup bas
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Jet de sauvegarde : Constitution
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Si la cible est sans défense ou souffre du statut peur, inflige 6 dégâts. La cible ne peut pas utiliser de réaction à cet effet.

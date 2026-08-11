@@ -1,0 +1,10 @@
+Nom : Pisto-poing
+Type : Acier
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Réaction
+Tags : Poing
+
+Effets : Utilisable lorsqu'une cible tourne le dos au lanceur ou est déplacée contre son gré. Inflige 6 dégâts physiques + attaque.

@@ -1,0 +1,10 @@
+Nom : Cyclone
+Type : Vol
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Jet de sauvegarde : Force
+Utilisation : Action rapide
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale et repousse les cibles d'une distance courte.

@@ -1,0 +1,10 @@
+Nom : Télékinésie
+Type : Psy
+Tiers : 1
+
+Cible : Personnelle
+Portée : Courte
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur peut manipuler des objets de quelques kilogrammes au maximum sans les toucher.

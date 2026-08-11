@@ -1,0 +1,10 @@
+Nom : Hantise
+Type : Spectre
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur disparaît ou apparaît via un effet de téléportation, inflige 2 dégâts spéciaux à toutes les cibles au contact.

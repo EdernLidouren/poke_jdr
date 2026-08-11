@@ -1,6 +1,17 @@
 {
   "moves": [
     {
+      "nom": "Aegis",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsqu'il subit des dégâts physiques, le lanceur peut sacrifier 2 niveaux d'endurance pour réduire les dégâts subits de moitié.",
+      "id": "move_aegis"
+    },
+    {
       "nom": "Allègement",
       "type": "Acier",
       "tiers": "1",
@@ -9,8 +20,29 @@
       "portée": "Contact",
       "utilisation": "Action",
       "mécaniques": "Concentration",
-      "effets": "Confère un niveau positif de discrétion à deux cibles pour chaque tiers de la capacité.",
+      "effets": "Confère un niveau positif de discrétion et d'acrobatie à deux cibles pour chaque tiers de la capacité.",
       "id": "move_allegement"
+    },
+    {
+      "nom": "Ancrage",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action rapide",
+      "effets": "Octroie 2 niveaux d'endurance. Le lanceur peut dépenser son mouvement pour gagner 2 niveaux de statut endurance supplémentaires. Jusqu'à son prochain tour, le lanceur ne peut pas être déplacé, sauf par effet de téléportation.",
+      "id": "move_ancrage"
+    },
+    {
+      "nom": "Armurouille",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur perd un ou plusieurs statuts endurance, il gagne un nombre de points de vie temporaire égal au double de niveaux perdus, jusqu'à un maximum de 5.",
+      "id": "move_armurouille"
     },
     {
       "nom": "Fulmifer",
@@ -18,7 +50,7 @@
       "tiers": "1",
       "évolutif": "Oui",
       "cible": "Une cible",
-      "portée": "Moyenne",
+      "portée": "Courte",
       "utilisation": "Réaction",
       "effets": "Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Inflige à cette cible un montant de dégâts spéciaux égal à la moitié des dégâts subis par le lanceur. Au tiers 2, le lanceur ajoute son attaque spéciale aux dégâts et peut choisir la cible de cet effet.",
       "id": "move_fulmifer"
@@ -36,6 +68,17 @@
       "id": "move_griffe_acier"
     },
     {
+      "nom": "Gyroballe",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "tags": "Balle",
+      "effets": "Inflige 2 dégâts physiques + attaque. Si le lanceur souffre du statut lenteur, inflige 6 dégâts.",
+      "id": "move_gyroballe"
+    },
+    {
       "nom": "Miroitir",
       "type": "Acier",
       "tiers": "1",
@@ -44,6 +87,75 @@
       "utilisation": "Action",
       "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si la cible souffre du statut doute.",
       "id": "move_miroitir"
+    },
+    {
+      "nom": "Métalliroue",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une ligne",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque. Le lanceur peut se déplacer jusqu'à portée moyenne. Il ignore les terrains difficiles et les effets au sol.",
+      "id": "move_metalliroue"
+    },
+    {
+      "nom": "Pisto-poing",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Réaction",
+      "tags": "Poing",
+      "effets": "Utilisable lorsqu'une cible tourne le dos au lanceur ou est déplacée contre son gré. Inflige 6 dégâts physiques + attaque.",
+      "id": "move_pisto-poing"
+    },
+    {
+      "nom": "Pression extrême",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible possède la moitié ou plus de ses points de vie, inflige 6 dégâts.",
+      "id": "move_pression_extreme"
+    },
+    {
+      "nom": "Titane",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action rapide",
+      "effets": "Octroie 3 niveaux de statut endurance.",
+      "id": "move_titane"
+    },
+    {
+      "nom": "Tête de fer",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "mouvement minimal": "Moyenne",
+      "utilisation": "Action",
+      "tags": "Charge",
+      "mécaniques": "Contrecoup",
+      "effets": "Inflige 8 dégâts physiques + attaque. 2 niveaux de contrecoup. Repousse la cible d'une distance courte.",
+      "id": "move_tete_de_fer"
+    },
+    {
+      "nom": "Balayette",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "jet de sauvegarde": "Agilité",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsqu'une cible s'éloigne du lanceur. Inflige 4 dégâts physiques + attaque. La cible est jetée au sol.",
+      "id": "move_balayette"
     },
     {
       "nom": "Casse-brique",
@@ -57,6 +169,16 @@
       "id": "move_casse-brique"
     },
     {
+      "nom": "Coaching",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "utilisation": "Action",
+      "effets": "Utilisable lorsqu'une cible alliée subit des dégâts à cause d'une attaque. Le lanceur peut dépenser sa réaction. La cible gagne un nombre de points de vie temporaire égal à 1 + tiers du lanceur, peut se relever gratuitement si elle souffre de l'état au sol, et obtient un avantage à son prochain jet pour résister aux effets du statut peur ou attraction.",
+      "id": "move_coaching"
+    },
+    {
       "nom": "Cogne",
       "type": "Combat",
       "tiers": "1",
@@ -68,6 +190,39 @@
       "id": "move_cogne"
     },
     {
+      "nom": "Contre",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsqu'une cible échoue à un jet d'attaque ou d'attaque spéciale visant le lanceur. Inflige 4 dégâts physiques + attaque.",
+      "id": "move_contre"
+    },
+    {
+      "nom": "Coup croix",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "taux de critique": "2",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_coup_croix"
+    },
+    {
+      "nom": "Danse victoire",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur défait une cible. Soigne 1 point de pouvoir.",
+      "id": "move_danse_victoire"
+    },
+    {
       "nom": "Focus",
       "type": "Combat",
       "tiers": "1",
@@ -77,6 +232,26 @@
       "mécaniques": "concentration",
       "effets": "Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Le prochain jet d'attaque ou d'attaque spéciale effectué par le lanceur contre cette cible obtient un avantage. Si le lanceur inflige des dégâts à la cible lors de cette action, les dégâts sont augmentés de 4. Cet effet persiste tant que le lanceur n'a pas réussi de jet d'attaque ou d'attaque spéciale contre la cible.",
       "id": "move_focus"
+    },
+    {
+      "nom": "Gonflette",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action rapide",
+      "effets": "Octroie 3 niveaux de statut force.",
+      "id": "move_gonflette"
+    },
+    {
+      "nom": "Onde vide",
+      "type": "Combat",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si le lanceur possède la moitié de ses points de vie ou moins.",
+      "id": "move_onde_vide"
     },
     {
       "nom": "Poing karaté",
@@ -119,7 +294,7 @@
       "portée": "Personnelle",
       "utilisation": "Action",
       "mécaniques": "Concentration",
-      "effets": "Quand le lanceur inflige des dégâts physiques de contact à une cible, celle-ci gagne 1 niveau de statut blessure.",
+      "effets": "Quand le lanceur inflige des dégâts physiques de contact à une cible, augmente ces dégâts de 2.",
       "id": "move_acerecailles"
     },
     {
@@ -157,6 +332,18 @@
       "tags": "Charge",
       "effets": "Inflige 6 dégâts physiqus + attaque\t.",
       "id": "move_dracocharge"
+    },
+    {
+      "nom": "Dracoqueue",
+      "type": "Dragon",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "contact": "Oui",
+      "utilisation": "Action rapide",
+      "tags": "Queue",
+      "effets": "Inflige 2 dégâts physiques + attaque et repousse la cible d'une distance courte.",
+      "id": "move_dracoqueue"
     },
     {
       "nom": "Dracorage",
@@ -220,6 +407,17 @@
       "mécaniques": "concentration",
       "effets": "Lorsque le lanceur subit au moins 5 dégâts physiques, inflige 2 dégâts spéciaux à toutes les cibles au contact.",
       "id": "move_eau_croupie"
+    },
+    {
+      "nom": "Plongée",
+      "type": "Eau",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "tags": "Téléportation",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Le lanceur peut se téléporter jusqu'à portée courte.",
+      "id": "move_plongee"
     },
     {
       "nom": "Poing sonique",
@@ -318,16 +516,6 @@
       "id": "move_feu_envieux"
     },
     {
-      "nom": "Feu follet",
-      "type": "Feu",
-      "tiers": "1",
-      "cible": "Une cible",
-      "portée": "Moyenne",
-      "utilisation": "Action",
-      "effets": "Inflige 3 niveaux de statut blessure.",
-      "id": "move_feu_follet"
-    },
-    {
       "nom": "Flammèche",
       "type": "Feu",
       "tiers": "1",
@@ -356,7 +544,8 @@
       "contact": "Oui",
       "utilisation": "Réaction",
       "mouvement offert": "Courte",
-      "effets": "Utilisable lorsqu'une cible gagne un niveau de statut parmi force, faiblesse, endurance, volonté et vitesse. Inflige 2 dégâts physiques + attaque, + 1 dégât par niveau de statut gagné par la cible.",
+      "tags": "Charge",
+      "effets": "Utilisable lorsqu'une cible gagne un niveau de statut parmi force, puissance, endurance, volonté et vitesse. Inflige 2 dégâts physiques + attaque, + 1 dégât par niveau de statut gagné par la cible.",
       "id": "move_nitrocharge"
     },
     {
@@ -495,7 +684,7 @@
     },
     {
       "nom": "Armure givre",
-      "type": "glace",
+      "type": "Glace",
       "tiers": "1",
       "cible": "Une cible ou personnelle",
       "portée": "Contact",
@@ -583,6 +772,7 @@
       "portée": "Personnelle",
       "utilisation": "Réaction",
       "mécaniques": "Monstre de neige",
+      "tags": "Téléportation",
       "effets": "Utilisable lorsque le lanceur subit des dégâts à cause d'une action ennemie. Le lanceur peut sacrifier un monstre de neige pour ne subir que la moitié des dégâts, et se téléporter à cet emplacement. Sinon, il créée un monstre de neige et se téléporte à portée courte.",
       "id": "move_permufrost"
     },
@@ -754,13 +944,1054 @@
       "id": "move_vampirisme"
     },
     {
+      "nom": "Aromathérapie",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Retire jusqu'à 3 niveaux de statut et soigne 2 points de vie.",
+      "id": "move_aromatherapie"
+    },
+    {
+      "nom": "Canon graine",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque. Inflige 6 dégâts si utilisée à portée moyenne.",
+      "id": "move_canon_graine"
+    },
+    {
+      "nom": "Cotogarde",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit des dégâts. Les dégâts subis sont réduits de moitié. Le lanceur gagne 1 niveau de statut endurance et 1 niveau de statut volonté.",
+      "id": "move_cotogarde"
+    },
+    {
+      "nom": "Croissance",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "effets": "Octroie 3 niveaux de statut force et puissance.",
+      "id": "move_croissance"
+    },
+    {
+      "nom": "Danse fleurs",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Chaque tour, contre son mouvement, le lanceur peut désigner autant de cibles que souhaité à portée courte, lui inclus. Chaque cible peut retirer jusqu'à 1 niveau de statut négatif et gagne 2 points de vie temporaire.",
+      "id": "move_danse_fleurs"
+    },
+    {
+      "nom": "Feuille magik",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts spéciaux + attaque spéciale. Ignore les abris.",
+      "id": "move_feuille_magik"
+    },
+    {
+      "nom": "Fouet lianes",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Force",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque et attire la cible au lanceur. Le lanceur peut choisir de ne pas infliger de dégâts mais d'infliger l'état emprise à la cible.",
+      "id": "move_fouet_lianes"
+    },
+    {
+      "nom": "Nœud herbe",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Agilité",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsqu'une cible s'éloigne du lanceur. Inflige 2 dégâts physiques + attaque et 1 niveau de statut lenteur. La cible est jetée au sol.",
+      "id": "move_nud_herbe"
+    },
+    {
+      "nom": "Para-spore",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "envergure": "Courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 2 niveau de statut lenteur.",
+      "id": "move_para-spore"
+    },
+    {
+      "nom": "Poing dard",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "tags": "Poing",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_poing_dard"
+    },
+    {
+      "nom": "Vole-vie",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "mécaniques": "Drain de vie",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. 2 Niveaux de drain de vie.",
+      "id": "move_vole-vie"
+    },
+    {
+      "nom": "Épines",
+      "type": "Plante",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit un effet de contact. Inflige 4 dégâts physiques + constitution. Le lanceur ne peut pas subir l'état emprise à la suite de cet effet.",
+      "id": "move_epines"
+    },
+    {
+      "nom": "Acidarmure",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur subit un effet de contact, il gagne un niveau de statut endurance s'il n'en possède aucun. La cible subit 2 dégâts spéciaux.",
+      "id": "move_acidarmure"
+    },
+    {
+      "nom": "Acide",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Agilité",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si la cible souffre du statut fragilité. Cette capacité ignore les immunités.",
+      "id": "move_acide"
+    },
+    {
+      "nom": "Chaîne malsaine",
+      "type": "Poison",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Le lanceur choisit jusqu'à 3 niveaux de statut dont il souffre. Inflige autant de niveaux de statut. Le lanceur peut affecter une cible supplémentaire par tiers supérieur, chaque cible devant se trouver à portée courte de la précédente.",
+      "id": "move_chaine_malsaine"
+    },
+    {
+      "nom": "Choc venin",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Pour chaque niveau de statut empoisonnement de la cible et jusqu'à 3 niveaux au maximum, augmente les dégâts de 2.",
+      "id": "move_choc_venin"
+    },
+    {
+      "nom": "Crochet venin",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "tags": "Croc",
+      "effets": "Inflige 3 dégâts physiques + attaque et 1 niveau d'empoisonnement.",
+      "id": "move_crochet_venin"
+    },
+    {
+      "nom": "Poison croix",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "taux de critique": "2",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_poison_croix"
+    },
+    {
+      "nom": "Poudre toxic",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "envergure": "Courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Inflige 2 niveaux de statut empoisonnement.",
+      "id": "move_poudre_toxic"
+    },
+    {
+      "nom": "Purification",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Retire jusqu'à 3 niveaux de statut parmi faiblesse, apathie, fragilité, doute, lenteur et empoisonnement. La cible est soignée d'un nombre de points de vie égal au nombre de niveaux de statut retirés.",
+      "id": "move_purification"
+    },
+    {
+      "nom": "Purédpois",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "envergure": "Moyenne",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit des dégâts. Réduit les dégâts subits de moitié. Le lanceur créée un épais nuage qui obstrue la vision. Les pokémons qui ne sont pas immunisés au poison subissent 1 niveau de statut empoisonnement s'ils débutent leur tour dans le nuage. Toutes les actions nécessitant la vue se font avec désavantage si la cible se trouve dans le nuage.",
+      "id": "move_puredpois"
+    },
+    {
+      "nom": "Toxic",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 3 niveaux de statut empoisonnement.",
+      "id": "move_toxic"
+    },
+    {
+      "nom": "Toxicomanie",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur inflige des niveaux de statut empoisonnement, il gagne un nombre de points de vie temporaire égal au nombre de niveaux de statut infligés.",
+      "id": "move_toxicomanie"
+    },
+    {
+      "nom": "Éructation",
+      "type": "Poison",
+      "tiers": "1",
+      "cible": "Un cône",
+      "portée": "Courte",
+      "envergure": "Courte",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur dépense une utilisation de consommable. Inflige 8 dégâts spéciaux + attaque spéciale et 1 niveau de statut empoisonnement et confusion.",
+      "id": "move_eructation"
+    },
+    {
+      "nom": "Amnésie",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action rapide",
+      "effets": "Retire jusqu'à 3 niveaux de statut parmi apathie, doute, confusion, peur, attraction et berserk. Met fin aux effets mentaux. Si cet effet brise une concentration, la cible gagne 1 point de pouvoir.",
+      "id": "move_amnesie"
+    },
+    {
+      "nom": "Anti-soin",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "mécaniques": "Concentration, aura",
+      "effets": "Les cibles affectées ne peuvent plus regagner de points de vie tant qu'elles se trouvent dans la zone d'effet. Quitter puis regagner la zone ne permet pas de nouveau jet de sauvegarde.",
+      "id": "move_anti-soin"
+    },
+    {
+      "nom": "Bouclier",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Courte",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur ou une cible subit des dégâts. Les dégâts subis sont réduits de moitié. La cible gagne 1 niveau de statut endurance ou volonté, selon la nature physique ou spéciale des dégâts subits.",
+      "id": "move_bouclier"
+    },
+    {
+      "nom": "Choc mental",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Pour chaque niveau de statut confusion de la cible et jusqu'à 3 niveaux au maximum, augmente les dégâts de 2.",
+      "id": "move_choc_mental"
+    },
+    {
+      "nom": "Coupe psycho",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "taux de critique": "2",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts spéciaux + attaque spéciale.",
+      "id": "move_coupe_psycho"
+    },
+    {
+      "nom": "Crève-coeur",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale et 2 niveaux de statut peur. Inflige 8 dégâts si la cible souffre du statut attraction et que le lanceur en est la source.",
+      "id": "move_creve-coeur"
+    },
+    {
+      "nom": "Distorsion",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Moyenne",
+      "utilisation": "Action",
+      "mécaniques": "Concentration, aura",
+      "effets": "Les niveaux de statut lenteur gagnés au sein de la zone sont transformés en statut vitesse, et inversement. Les niveaux de statut ou lenteur déjà existant ne sont pas affectés. Les effets de téléportation ne peuvent ni prendre leur source, ni être initiés depuis la zone.",
+      "id": "move_distorsion"
+    },
+    {
+      "nom": "Dévorêve",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "mécaniques": "Drain de vie",
+      "effets": "Le lanceur choisit une cible et jusqu'à 3 niveaux de statut confusion dont elle souffre. Inflige un nombre de dégâts spéciaux + attaque spéciale égal au double de niveaux de statut, et autant de niveaux de drain de vie.  Retire autant de niveaux de statut confusion.",
+      "id": "move_devoreve"
+    },
+    {
+      "nom": "Gravité",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Moyenne",
+      "envergure": "Moyenne",
+      "utilisation": "Action",
+      "effets": "Crée une zone de gravité dans laquelle il est impossible de décoller du sol. Le type vol perd sa faculté de voler et son immunité au type sol, de même que l'état lévitation. Les effets nécessitant de quitter le sol, comme un saut, sont neutralisés. Les effets de téléportation ignorent cette restriction.",
+      "id": "move_gravite"
+    },
+    {
+      "nom": "Hypnose",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Un cône",
+      "portée": "Courte",
+      "envergure": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Inflige 3 niveaux de statut confusion. Le lanceur peut répartir les niveaux de statut entre les cibles affectées.",
+      "id": "move_hypnose"
+    },
+    {
+      "nom": "Interversion",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action rapide",
+      "tags": "Téléportation",
+      "effets": "Échange la position du lanceur avec celle de la cible.",
+      "id": "move_interversion"
+    },
+    {
+      "nom": "Lévikinésie",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Une cible consentante ou le lanceur profite de l'état lévitation.",
+      "id": "move_levikinesie"
+    },
+    {
+      "nom": "Oeil miracle",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur peut voir à travers les effets d'illusion et d'invisibilité. Il obtient un avantage à ses jets de perception visuelle.",
+      "id": "move_oeil_miracle"
+    },
+    {
+      "nom": "Psycroc",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "contact": "Oui",
+      "tags": "Croc",
+      "effets": "Inflige 4 dégâts spéciaux + attaque spéciale.",
+      "id": "move_psycroc"
+    },
+    {
+      "nom": "Télékinésie",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur peut manipuler des objets de quelques kilogrammes au maximum sans les toucher.",
+      "id": "move_telekinesie"
+    },
+    {
+      "nom": "Voile miroir",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "courte",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Inflige un nombre de dégâts spéciaux égal à la moitié des dégâts subits.",
+      "id": "move_voile_miroir"
+    },
+    {
+      "nom": "Échange psy",
+      "type": "Psy",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action rapide",
+      "effets": "Le lanceur choisit jusqu'à 3 niveaux de statut dont il souffre et jusqu'à 3 niveaux dont souffre la cible. Retire les niveaux de statut au lanceur et les inflige à la cible, et inversement.",
+      "id": "move_echange_psy"
+    },
+    {
+      "nom": "Amassable",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "effets": "Soigne 2 points de vie. Si le lanceur sacrifie son mouvement, soigne 4 points de vie.",
+      "id": "move_amassable"
+    },
+    {
+      "nom": "Argilarmure",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Confère la résistance au type électrique et l'immunité à l'état emprise. Si la cible doit subir un nombre de dégâts supérieur ou égal à la moitié de ses points de vie max, réduit ces dégâts de moitié et l'effet prend fin.",
+      "id": "move_argilarmure"
+    },
+    {
+      "nom": "Goudronnage",
+      "type": "Sol",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Une zone",
+      "portée": "Courte",
+      "envergure": "Courte",
+      "utilisation": "Action",
+      "jet de sauvegarde": "Agilité",
+      "mécaniques": "Concentration",
+      "effets": "Recouvre une zone courte au tiers 1 et moyenne au tiers 2 d'une substance collante et inflammable. Les pokémons qui entrent en contact avec la substance souffrent du statut lenteur ainsi que d'une vulnérabilité au type feu. Un pokémon peut sacrifier son mouvement pour se débarrasser de la substance s'il ne se trouve plus dans la zone Au tiers 2, l'envergure et la portée sont moyennes.",
+      "id": "move_goudronnage"
+    },
+    {
+      "nom": "Jet de pierre",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "courte",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque. Ignore les immunités. Très efficace contre le type vol.",
+      "id": "move_jet_de_pierre"
+    },
+    {
+      "nom": "Jet de sable",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsqu'une cible effectue un jet d'attaque ou d'attaque spéciale. Impose un désavantage à ce jet ou un avantage au jet de sauvegarde de ses cibles. Augmente de 2 le taux de maladresse de l'effet.",
+      "id": "move_jet_de_sable"
+    },
+    {
+      "nom": "Picots",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit un effet de contact. Inflige 4 dégâts physiques + constitution. Si le lanceur profite de la capacité piège de roc en concentration, inflige 6 dégâts.",
+      "id": "move_picots"
+    },
+    {
+      "nom": "Piège de roc",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur subit une attaque de contact, inflige un nombre de dégâts physiques égal à 1 + tiers du lanceur à la cible. Ignore les immunités. Ces dégâts sont doublés si la cible utilise un effet avec les tags charge ou croc.",
+      "id": "move_piege_de_roc"
+    },
+    {
+      "nom": "Poliroche",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Confère un niveau positif d'éloquence et d'acrobatie au lanceur.",
+      "id": "move_poliroche"
+    },
+    {
+      "nom": "Rayon gemme",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "courte",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible ne profite d'aucun statut volonté, inflige 6 dégâts.",
+      "id": "move_rayon_gemme"
+    },
+    {
+      "nom": "Roulade",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "mouvement minimal": "Moyenne",
+      "utilisation": "Action",
+      "tags": "Charge",
+      "effets": "Inflige 4 dégâts physiques + attaque. Si le lanceur échoue à toucher sa cible et qu'il réutilise cette capacité au tour suivant, sur la même cible ou une autre, augmente les dégâts de 8 et le taux de critique de 2, jusqu'à 3 utilisations à la suite.",
+      "id": "move_roulade"
+    },
+    {
+      "nom": "Trépignement",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Contact",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Inflige 6 dégâts spéciaux + attaque spéciale. Ne fonctionne que si le lanceur a échoué à un jet d'attaque ou de sauvegarde durant ce tour ou au tour précédent.",
+      "id": "move_trepignement"
+    },
+    {
+      "nom": "Tunnel",
+      "type": "Sol",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Voir description",
+      "utilisation": "Action",
+      "effets": "Le lanceur creuse un tunnel et peut se déplacer sous terre. Il ne peut pas être pris pour cible par la plupart des effets et ne peut pas non plus cibler un pokémon à la surface. Il peut se déplacer de son mouvement normal, mais doit dépenser une action pour ressortir.",
+      "id": "move_tunnel"
+    },
+    {
+      "nom": "Cauchemar",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Le lanceur choisit une cible et jusqu'à 3 niveaux de statut confusion dont elle souffre. Inflige un nombre de dégâts spéciaux + attaque spéciale égal au double de niveaux de statut, et autant de niveaux de statut peur.",
+      "id": "move_cauchemar"
+    },
+    {
+      "nom": "Châtiment",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Le lanceur choisit une cible et jusqu'à 3 niveaux de statut dont elle profite parmi force, puissance, endurance, volonté et vitesse. Inflige un nombre de dégâts spéciaux + attaque spéciale égal à 2 + 2 pour chaque niveau de statut.",
+      "id": "move_chatiment"
+    },
+    {
+      "nom": "Disparition",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Réaction",
+      "tags": "Téléportation",
+      "effets": "Utilisable lorsque le lanceur subit des dégâts. Le lanceur peut se téléporter et gagne 1 niveau de statut invisibilité.",
+      "id": "move_disparition"
+    },
+    {
+      "nom": "Dépit",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur échoue à un jet. Le lanceur peut relancer son jet avec avantage. S'il échoue malgré tout, il gagne un nombre de points de vie temporaire égal à 1 + tiers du lanceur.",
+      "id": "move_depit"
+    },
+    {
+      "nom": "Esprit frappeur",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur inflige des dégâts, il peut choisir de subir 1 dégât neutre pour augmenter les dégâts infligés de 2.",
+      "id": "move_esprit_frappeur"
+    },
+    {
+      "nom": "Griffe ombre",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "tags": "Griffe",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_griffe_ombre"
+    },
+    {
+      "nom": "Halloween",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur modifie son apparence en profondeur. Le déguisement ne survit pas à un examen tactile ou à un effet de capacité comme oeil miracle.",
+      "id": "move_halloween"
+    },
+    {
+      "nom": "Hantise",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur disparaît ou apparaît via un effet de téléportation, inflige 2 dégâts spéciaux à toutes les cibles au contact.",
+      "id": "move_hantise"
+    },
+    {
+      "nom": "Léchouille",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque spéciale. Si la cible souffre du statut peur, inflige 6 dégâts et 1 niveau de lenteur.",
+      "id": "move_lechouille"
+    },
+    {
+      "nom": "Ombre portée",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 4 dégâts spéciaux + attaque. Ignore les abris.",
+      "id": "move_ombre_portee"
+    },
+    {
+      "nom": "Onde folie",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Inflige 3 niveaux de statut berserk à la cible.",
+      "id": "move_onde_folie"
+    },
+    {
+      "nom": "Rancune",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit un ou plusieurs niveaux de statut de la part d'une cible. Inflige jusqu'à 3 niveaux de statut parmi ceux subits par le lanceur.",
+      "id": "move_rancune"
+    },
+    {
+      "nom": "Étonnement",
+      "type": "Spectre",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible est sans défense, inflige 6 dégâts et 1 niveau de peur.",
+      "id": "move_etonnement"
+    },
+    {
+      "nom": "Aboiement",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Un cône",
+      "portée": "Courte",
+      "envergure": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action rapide",
+      "tags": "Son",
+      "effets": "Inflige 3 niveaux de statut peur. Le lanceur peut répartir les niveaux de statut entre les cibles affectées.",
+      "id": "move_aboiement"
+    },
+    {
+      "nom": "Aiguisage",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "La plage de réussite critique du lanceur est augmentée de 3, et sa plage d'échec critique de 1.",
+      "id": "move_aiguisage"
+    },
+    {
+      "nom": "Arrogance",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque spéciale. Le lanceur choisit jusqu'à 3 niveaux de statut dont il profite parmi force, puissance et vitesse. Pour chaque niveau de statut, le retire et augmente les dégâts infligés de 2. Le lanceur gagne 1 niveau de volonté.",
+      "id": "move_arrogance"
+    },
+    {
+      "nom": "Assurance",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur inflige des dégâts à une cible sans défense ou souffrant du statut peur, augmente les dégâts infligés de 1 + tiers du lanceur.",
+      "id": "move_assurance"
+    },
+    {
+      "nom": "Baston",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque. Tous les alliés au contact de la cible peuvent dépenser leur réaction pour utiliser lutte gratuitement contre elle.",
+      "id": "move_baston"
+    },
+    {
+      "nom": "Bloquage",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Réduit les dégâts subits de moitié. Si la cible est sans défense, inflige 1 niveau de statut fragilité et doute.",
+      "id": "move_bloquage"
+    },
+    {
+      "nom": "Coup bas",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque. Si la cible est sans défense ou souffre du statut peur, inflige 6 dégâts. La cible ne peut pas utiliser de réaction à cet effet.",
+      "id": "move_coup_bas"
+    },
+    {
+      "nom": "Feinte",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action rapide",
+      "effets": "Le prochain jet d'attaque, d'attaque spéciale ou de compétence initié par le lanceur envers la cible durant ce tour ou le tour suivant obtient un avantage ainsi qu'un bonus égal à 1 + tiers du lanceur. La cible est considérée comme sans défense jusqu'à son prochain tour.",
+      "id": "move_feinte"
+    },
+    {
+      "nom": "Larcin",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "jet de sauvegarde": "Agilité",
+      "utilisation": "Action",
+      "effets": "Vole un objet détenu par la cible s'il n'est pas équipé. Inflige 1 niveau de statut confusion. Le lanceur peut gratuitement faire passer l'objet à une cible au contact. Si l'objet volé est un consommable, le lanceur peut l'utiliser immédiatement.",
+      "id": "move_larcin"
+    },
+    {
+      "nom": "Morsure",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "tags": "Croc",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_morsure"
+    },
+    {
+      "nom": "Ombre",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur peut se cacher en dépensant une action rapide. Lorsqu'il se cache, il gagne 1 point de vie temporaire + tiers du lanceur. Lorsque la concentration de cette capacité est brisée, le lanceur gagne 1 niveau de statut invisibilité.",
+      "id": "move_ombre"
+    },
+    {
+      "nom": "Poing obscur",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "tags": "Poing",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_poing_obscur"
+    },
+    {
+      "nom": "Poursuite",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsqu'une cible s'éloigne du lanceur. Inflige 4 dégâts physique + attaque. Si la cible souffre du statut peur et que le lanceur en est la source, le lanceur peut se déplacer jusqu'à portée courte à la suite de la cible.",
+      "id": "move_poursuite"
+    },
+    {
+      "nom": "Provoc",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 3 niveaux de statut berserk.",
+      "id": "move_provoc"
+    },
+    {
+      "nom": "Représaille",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Inflige à cette cible un nombre de dégâts physiques + attaque égal à la moitié des dégâts subits par le lanceur. En cas de coup critique de la part de la cible, inflige le même nombre de dégâts.",
+      "id": "move_represaille"
+    },
+    {
+      "nom": "Sabotage",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Voir description",
+      "portée": "Contact",
+      "utilisation": "Action",
+      "effets": "Supprime un effet de zone d'un tiers égal ou inférieur. Cette capacité peut détruire un mécanisme comme un piège ou une serrure. Le lanceur peut également choisir d'endommager le mécanisme pour qu'il se brise à la prochaine utilisation.",
+      "id": "move_sabotage"
+    },
+    {
+      "nom": "Saisie",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Réaction",
+      "effets": "Utilisable lorsqu'une cible gagne un ou plusieurs niveaux de statut. Le lanceur choisit jusqu'à 3 de ces niveaux et les gagne à la place de la cible. Le lanceur peut se déplacer jusqu'à portée moyenne.",
+      "id": "move_saisie"
+    },
+    {
+      "nom": "Tranchenuit",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts spéciaux + attaque spéciale. Si la cible est prise par surprise, inflige 6 dégâts et 1 niveau de statut peur.",
+      "id": "move_tranchenuit"
+    },
+    {
+      "nom": "Tricherie",
+      "type": "Ténèbres",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "utilisation": "Action rapide",
+      "effets": "La cible fait un jet d'attaque contre elle-même. Inflige 2 dégâts physiques + attaque de la cible. Si la cible souffre du statut berserk ou confusion, inflige 6 dégâts.",
+      "id": "move_tricherie"
+    },
+    {
+      "nom": "Acrobatie",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts physiques + attaque. Si le lanceur profite du statut vitesse, inflige 6 dégâts. Le lanceur peut sacrifier 1 niveau de vitesse pour se déplacer jusqu'à portée courte.",
+      "id": "move_acrobatie"
+    },
+    {
+      "nom": "Anti-brume",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "envergure": "Moyenne",
+      "utilisation": "Action rapide",
+      "effets": "Le lanceur peut retirer jusqu'à 2 niveaux de ses statuts négatifs. Les effets de gaz, nuage, poudre ou fumée sont neutralisés dans la zone d'effet.",
+      "id": "move_anti-brume"
+    },
+    {
+      "nom": "Atterrissage",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "effets": "Le lanceur se pose au sol et perd son immunité jusqu'à son prochain tour. Soigne 6 points de vie.",
+      "id": "move_atterrissage"
+    },
+    {
+      "nom": "Chute libre",
+      "type": "Vol",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "utilisation": "Réaction",
+      "effets": "Annule le déplacement involontaire d'une cible et lui octroie 1 niveau de vitesse. Permet également de ralentir la chute de plusieurs cibles, jusqu'à 3 par tiers de la capacité, jusqu'à ce qu'elles touchent le sol.",
+      "id": "move_chute_libre"
+    },
+    {
+      "nom": "Cyclone",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "jet de sauvegarde": "Force",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 2 dégâts spéciaux + attaque spéciale et repousse les cibles d'une distance courte.",
+      "id": "move_cyclone"
+    },
+    {
+      "nom": "Danse plumes",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur fait se déplacer une cible contre son gré, il gagne 1 niveau de statut force ou puissance, au choix, s'il n'en possède aucun. Lorsque le lanceur est déplacé contre son gré, il gagne 1 niveau de vitesse.",
+      "id": "move_danse_plumes"
+    },
+    {
+      "nom": "Double volée",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 fois 2 dégâts physiques + attaque.",
+      "id": "move_double_volee"
+    },
+    {
+      "nom": "Tranchair",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "taux de critique": "1",
+      "effets": "Inflige 4 dégâts spéciaux + attaque spéciale.",
+      "id": "move_tranchair"
+    },
+    {
+      "nom": "Vent arrière",
+      "type": "Vol",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Lorsque le lanceur inflige des dégâts en profitant du statut vitesse ou via un effet avec mouvement minimal, les dégâts infligés sont augmentés d'un nombre égal à 1 + tiers du lanceur.",
+      "id": "move_vent_arriere"
+    },
+    {
       "nom": "Blitz",
       "type": "Électrique",
       "tiers": "1",
       "cible": "Personnelle",
       "portée": "Courte",
       "utilisation": "Action rapide",
-      "effets": "Le lanceur peut se téléporter jusqu'à portée courte.",
+      "tags": "Téléportation",
+      "effets": "Le lanceur peut se téléporter.",
       "id": "move_blitz"
     },
     {
@@ -850,7 +2081,7 @@
       "contact": "Oui",
       "utilisation": "Action",
       "mécaniques": "Concentration",
-      "effets": "Lorsque la cible entre en contact avec une autre, elle lui inflige un nombre de dégâts de type électrique égal à 1 + le tiers du lanceur. Si la concentration maintenant cet effet est brisée, les pokémons au contact de la cible doivent réussir un jet de sauvegarde d'agilité ou subir les dégâts mentionnés plus haut. Le degré de difficulté est égal à 10 + caractéristique de charisme du lanceur + tiers de la capacité.",
+      "effets": "Lorsque la cible entre en contact avec une autre, elle lui inflige un nombre de dégâts spéciaux égal à 1 + le tiers du lanceur. Si la concentration maintenant cet effet est brisée, les pokémons au contact de la cible doivent réussir un jet de sauvegarde d'agilité ou subir les dégâts mentionnés plus haut. Le degré de difficulté est égal à 10 + caractéristique de charisme du lanceur + tiers de la capacité.",
       "id": "move_electrisation"
     },
     {
@@ -882,10 +2113,58 @@
   ],
   "items": [
     {
+      "nom": "Baie ceriz",
+      "tiers": "1",
+      "effets": "Retire jusqu'à 3 niveaux de statut apathie et 3 niveaux de statut attraction.",
+      "id": "item_baie_ceriz"
+    },
+    {
+      "nom": "Baie fraive",
+      "tiers": "1",
+      "effets": "Retire jusqu'à 3 niveaux de statut faiblesse et 3 niveaux de statut peur.",
+      "id": "item_baie_fraive"
+    },
+    {
+      "nom": "Baie kika",
+      "tiers": "1",
+      "effets": "Retire jusqu'à 3 niveaux de statut confusion et 3 niveaux de statut berserk.",
+      "id": "item_baie_kika"
+    },
+    {
+      "nom": "Baie mepo",
+      "tiers": "1",
+      "effets": "Soigne 2 points de pouvoir.",
+      "id": "item_baie_mepo"
+    },
+    {
       "nom": "Baie oran",
       "tiers": "1",
-      "effets": "Soigne 10 PV.",
+      "effets": "Soigne 10 points de vie.",
       "id": "item_baie_oran"
+    },
+    {
+      "nom": "Baie prine",
+      "tiers": "2",
+      "effets": "Retire jusqu'à 3 niveaux de n'importe quel statut.",
+      "id": "item_baie_prine"
+    },
+    {
+      "nom": "Baie pêcha",
+      "tiers": "1",
+      "effets": "Retire jusqu'à 3 niveaux de statut fragilité et 3 niveaux de statut empoisonnement.",
+      "id": "item_baie_pecha"
+    },
+    {
+      "nom": "Baie sitrus",
+      "tiers": "2",
+      "effets": "Soigne 30 points de vie.",
+      "id": "item_baie_sitrus"
+    },
+    {
+      "nom": "Baie énigma",
+      "tiers": "1",
+      "effets": "Les prochains dégâts super efficaces subits par l'utilisateur seront considérés comme simplement efficaces, et les dégâts doublement super efficaces comme super efficaces. Cet effet disparaît après un repos long et ne se cumule pas.",
+      "id": "item_baie_enigma"
     }
   ],
   "status": [
@@ -916,14 +2195,6 @@
       "id": "status_berserk"
     },
     {
-      "nom": "Blessure",
-      "incompatibilités": [
-        "status_regeneration"
-      ],
-      "effets": "Le pokémon subit chaque fin de tour un nombre de dégâts neutres égal au niveau de ce statut.",
-      "id": "status_blessure"
-    },
-    {
       "nom": "Confusion",
       "incompatibilités": [
         "status_aucune"
@@ -938,6 +2209,14 @@
       ],
       "effets": "Impose un désavantage aux jets et jets de sauvegarde d'esprit. Les attaques spéciales ciblant ce pokémon se font avec avantage.",
       "id": "status_doute"
+    },
+    {
+      "nom": "Empoisonnement",
+      "incompatibilités": [
+        "status_aucune"
+      ],
+      "effets": "Réduit de moitié les soins reçus.",
+      "id": "status_empoisonnement"
     },
     {
       "nom": "Endurance",
@@ -972,6 +2251,14 @@
       "id": "status_fragilite"
     },
     {
+      "nom": "Invisibilité",
+      "incompatibilités": [
+        "status_aucune"
+      ],
+      "effets": "Octroie un avantage sur les jets d'attaque, d'attaque spéciale et de discrétion.",
+      "id": "status_invisibilite"
+    },
+    {
       "nom": "Lenteur",
       "incompatibilités": [
         "status_vitesse"
@@ -995,14 +2282,6 @@
       ],
       "effets": "Octroie un avantage sur les jets et jets de sauvegarde de charisme.",
       "id": "status_puissance"
-    },
-    {
-      "nom": "Régénération",
-      "incompatibilités": [
-        "status_blessure"
-      ],
-      "effets": "Le pokémon est soigné à chaque fin de tour d'un montant égal au niveau de ce statut.",
-      "id": "status_regeneration"
     },
     {
       "nom": "Vitesse",

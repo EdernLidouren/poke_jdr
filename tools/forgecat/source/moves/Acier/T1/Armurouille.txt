@@ -1,0 +1,10 @@
+Nom : Armurouille
+Type : Acier
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur perd un ou plusieurs statuts endurance, il gagne un nombre de points de vie temporaire égal au double de niveaux perdus, jusqu'à un maximum de 5.

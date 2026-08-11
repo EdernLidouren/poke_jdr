@@ -1,0 +1,4 @@
+Nom : Baie kika
+Tiers : 1
+
+Effets : Retire jusqu'à 3 niveaux de statut confusion et 3 niveaux de statut berserk.

@@ -1,0 +1,11 @@
+Nom : Psycroc
+Type : Psy
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+Contact : Oui
+Tags : Croc
+
+Effets : Inflige 4 dégâts spéciaux + attaque spéciale.

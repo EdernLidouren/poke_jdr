@@ -1,0 +1,10 @@
+Nom : Chute libre
+Type : Vol
+Tiers : 1
+Évolutif : Oui
+
+Cible : Une cible
+Portée : Moyenne
+Utilisation : Réaction
+
+Effets : Annule le déplacement involontaire d'une cible et lui octroie 1 niveau de vitesse. Permet également de ralentir la chute de plusieurs cibles, jusqu'à 3 par tiers de la capacité, jusqu'à ce qu'elles touchent le sol.

@@ -1,0 +1,4 @@
+Nom : Invisibilité
+incompatibilités : Aucune
+
+effets : Octroie un avantage sur les jets d'attaque, d'attaque spéciale et de discrétion.

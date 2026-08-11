@@ -1,0 +1,9 @@
+Nom : Ancrage
+Type : Acier
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action rapide
+
+Effets : Octroie 2 niveaux d'endurance. Le lanceur peut dépenser son mouvement pour gagner 2 niveaux de statut endurance supplémentaires. Jusqu'à son prochain tour, le lanceur ne peut pas être déplacé, sauf par effet de téléportation.

@@ -1,4 +1,4 @@
 Nom : Baie oran
 Tiers : 1
 
-Effets : Soigne 10 PV.
+Effets : Soigne 10 points de vie.

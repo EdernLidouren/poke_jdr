@@ -1,0 +1,11 @@
+Nom : Para-spore
+Type : Plante
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Courte
+Jet de sauvegarde : Constitution
+Utilisation : Action rapide
+
+Effets : Inflige 2 niveau de statut lenteur.

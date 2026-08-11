@@ -1,0 +1,10 @@
+Nom : Contre
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Réaction
+
+Effets : Utilisable lorsqu'une cible échoue à un jet d'attaque ou d'attaque spéciale visant le lanceur. Inflige 4 dégâts physiques + attaque.

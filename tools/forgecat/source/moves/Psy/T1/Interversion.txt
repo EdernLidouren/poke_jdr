@@ -1,0 +1,11 @@
+Nom : Interversion
+Type : Psy
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Jet de sauvegarde : Esprit
+Utilisation : Action rapide
+Tags : Téléportation
+
+Effets : Échange la position du lanceur avec celle de la cible.

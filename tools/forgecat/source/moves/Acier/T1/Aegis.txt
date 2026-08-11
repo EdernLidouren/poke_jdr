@@ -1,0 +1,10 @@
+Nom : Aegis
+Type : Acier
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsqu'il subit des dégâts physiques, le lanceur peut sacrifier 2 niveaux d'endurance pour réduire les dégâts subits de moitié.

@@ -1,0 +1,4 @@
+Nom : Baie énigma
+Tiers : 1
+
+Effets : Les prochains dégâts super efficaces subits par l'utilisateur seront considérés comme simplement efficaces, et les dégâts doublement super efficaces comme super efficaces. Cet effet disparaît après un repos long et ne se cumule pas.

@@ -1,0 +1,11 @@
+Nom : Chaîne malsaine
+Type : Poison
+Tiers : 1
+Évolutif : Oui
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Constitution
+Utilisation : Action
+
+Effets : Le lanceur choisit jusqu'à 3 niveaux de statut dont il souffre. Inflige autant de niveaux de statut. Le lanceur peut affecter une cible supplémentaire par tiers supérieur, chaque cible devant se trouver à portée courte de la précédente.

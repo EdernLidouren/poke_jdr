@@ -7,5 +7,6 @@ Portée : Courte
 Contact : Oui
 Utilisation : Réaction
 Mouvement offert : Courte
+Tags : Charge
 
-Effets : Utilisable lorsqu'une cible gagne un niveau de statut parmi force, faiblesse, endurance, volonté et vitesse. Inflige 2 dégâts physiques + attaque, + 1 dégât par niveau de statut gagné par la cible.
+Effets : Utilisable lorsqu'une cible gagne un niveau de statut parmi force, puissance, endurance, volonté et vitesse. Inflige 2 dégâts physiques + attaque, + 1 dégât par niveau de statut gagné par la cible.

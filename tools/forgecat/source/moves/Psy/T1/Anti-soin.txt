@@ -1,0 +1,11 @@
+Nom : Anti-soin
+Type : Psy
+Tiers : 1
+
+Cible : Une zone
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action
+Mécaniques : Concentration, aura
+
+Effets : Les cibles affectées ne peuvent plus regagner de points de vie tant qu'elles se trouvent dans la zone d'effet. Quitter puis regagner la zone ne permet pas de nouveau jet de sauvegarde.

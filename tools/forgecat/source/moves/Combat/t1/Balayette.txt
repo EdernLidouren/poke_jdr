@@ -1,0 +1,10 @@
+Nom : Balayette
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Jet de sauvegarde : Agilité
+Utilisation : Réaction
+
+Effets : Utilisable lorsqu'une cible s'éloigne du lanceur. Inflige 4 dégâts physiques + attaque. La cible est jetée au sol.

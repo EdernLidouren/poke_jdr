@@ -1,0 +1,10 @@
+Nom : Crève-coeur
+Type : Psy
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale et 2 niveaux de statut peur. Inflige 8 dégâts si la cible souffre du statut attraction et que le lanceur en est la source.

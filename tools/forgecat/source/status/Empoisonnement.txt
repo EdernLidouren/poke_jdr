@@ -1,0 +1,4 @@
+Nom : Empoisonnement
+incompatibilités : aucune
+
+effets : Réduit de moitié les soins reçus.

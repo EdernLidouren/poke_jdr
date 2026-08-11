@@ -1,0 +1,10 @@
+Nom : Métalliroue
+Type : Acier
+Tiers : 1
+
+Cible : Une ligne
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Le lanceur peut se déplacer jusqu'à portée moyenne. Il ignore les terrains difficiles et les effets au sol.

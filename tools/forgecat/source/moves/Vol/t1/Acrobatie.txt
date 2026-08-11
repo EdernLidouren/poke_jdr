@@ -1,0 +1,10 @@
+Nom : Acrobatie
+Type : Vol
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Si le lanceur profite du statut vitesse, inflige 6 dégâts. Le lanceur peut sacrifier 1 niveau de vitesse pour se déplacer jusqu'à portée courte.

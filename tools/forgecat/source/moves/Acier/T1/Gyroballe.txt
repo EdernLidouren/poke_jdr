@@ -1,0 +1,10 @@
+Nom : Gyroballe
+Type : Acier
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+Tags : Balle
+
+Effets : Inflige 2 dégâts physiques + attaque. Si le lanceur souffre du statut lenteur, inflige 6 dégâts.

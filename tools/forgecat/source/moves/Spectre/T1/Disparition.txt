@@ -1,0 +1,10 @@
+Nom : Disparition
+Type : Spectre
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Réaction
+Tags : Téléportation
+
+Effets : Utilisable lorsque le lanceur subit des dégâts. Le lanceur peut se téléporter et gagne 1 niveau de statut invisibilité.

@@ -1,0 +1,10 @@
+Nom : Onde folie
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Inflige 3 niveaux de statut berserk à la cible.

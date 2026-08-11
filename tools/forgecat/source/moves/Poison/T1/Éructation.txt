@@ -1,0 +1,10 @@
+Nom : Éructation
+Type : Poison
+Tiers : 1
+
+Cible : Un cône
+Portée : Courte
+Envergure : Courte
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur dépense une utilisation de consommable. Inflige 8 dégâts spéciaux + attaque spéciale et 1 niveau de statut empoisonnement et confusion.

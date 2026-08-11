@@ -1,5 +1,5 @@
 Nom : Armure givre
-Type : glace
+Type : Glace
 Tiers : 1
 
 Cible : Une cible ou personnelle

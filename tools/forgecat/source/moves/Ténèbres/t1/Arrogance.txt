@@ -1,0 +1,10 @@
+Nom : Arrogance
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque spéciale. Le lanceur choisit jusqu'à 3 niveaux de statut dont il profite parmi force, puissance et vitesse. Pour chaque niveau de statut, le retire et augmente les dégâts infligés de 2. Le lanceur gagne 1 niveau de volonté.

@@ -1,0 +1,11 @@
+Nom : Poudre toxic
+Type : Poison
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Courte
+Jet de sauvegarde : Constitution
+Utilisation : Action
+
+Effets : Inflige 2 niveaux de statut empoisonnement.

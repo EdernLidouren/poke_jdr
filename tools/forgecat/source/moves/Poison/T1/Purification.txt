@@ -1,0 +1,10 @@
+Nom : Purification
+Type : Poison
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Retire jusqu'à 3 niveaux de statut parmi faiblesse, apathie, fragilité, doute, lenteur et empoisonnement. La cible est soignée d'un nombre de points de vie égal au nombre de niveaux de statut retirés.

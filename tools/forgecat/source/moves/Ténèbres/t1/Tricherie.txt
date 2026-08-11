@@ -1,0 +1,9 @@
+Nom : Tricherie
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action rapide
+
+Effets : La cible fait un jet d'attaque contre elle-même. Inflige 2 dégâts physiques + attaque de la cible. Si la cible souffre du statut berserk ou confusion, inflige 6 dégâts.

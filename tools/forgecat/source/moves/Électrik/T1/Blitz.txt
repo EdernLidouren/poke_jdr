@@ -5,5 +5,6 @@ Tiers : 1
 Cible : Personnelle
 Portée : Courte
 Utilisation : Action rapide
+Tags : Téléportation
 
-Effets : Le lanceur peut se téléporter jusqu'à portée courte.
+Effets : Le lanceur peut se téléporter.

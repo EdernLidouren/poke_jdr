@@ -1,0 +1,10 @@
+Nom : Anti-brume
+Type : Vol
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Moyenne
+Utilisation : Action rapide
+
+Effets : Le lanceur peut retirer jusqu'à 2 niveaux de ses statuts négatifs. Les effets de gaz, nuage, poudre ou fumée sont neutralisés dans la zone d'effet.

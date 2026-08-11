@@ -1,0 +1,10 @@
+Nom : Acidarmure
+Type : Poison
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur subit un effet de contact, il gagne un niveau de statut endurance s'il n'en possède aucun. La cible subit 2 dégâts spéciaux.

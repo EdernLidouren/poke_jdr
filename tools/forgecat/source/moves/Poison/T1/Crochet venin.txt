@@ -1,0 +1,10 @@
+Nom : Crochet venin
+Type : Poison
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Utilisation : Action
+Tags : Croc
+
+Effets : Inflige 3 dégâts physiques + attaque et 1 niveau d'empoisonnement.

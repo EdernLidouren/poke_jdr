@@ -1,0 +1,9 @@
+Nom : Bouclier
+Type : Psy
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Courte
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur ou une cible subit des dégâts. Les dégâts subis sont réduits de moitié. La cible gagne 1 niveau de statut endurance ou volonté, selon la nature physique ou spéciale des dégâts subits.

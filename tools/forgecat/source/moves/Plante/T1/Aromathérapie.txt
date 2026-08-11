@@ -1,0 +1,9 @@
+Nom : Aromathérapie
+Type : Plante
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Courte
+Utilisation : Action
+
+Effets : Retire jusqu'à 3 niveaux de statut et soigne 2 points de vie.

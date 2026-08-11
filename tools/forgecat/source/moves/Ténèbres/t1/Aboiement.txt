@@ -1,0 +1,12 @@
+Nom : Aboiement
+Type : Ténèbres
+Tiers : 1
+
+Cible : Un cône
+Portée : Courte
+Envergure : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action rapide
+Tags : Son
+
+Effets : Inflige 3 niveaux de statut peur. Le lanceur peut répartir les niveaux de statut entre les cibles affectées.

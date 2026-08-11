@@ -1,0 +1,10 @@
+Nom : Pression extrême
+Type : Acier
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Constitution
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible possède la moitié ou plus de ses points de vie, inflige 6 dégâts.

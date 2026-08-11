@@ -1,0 +1,10 @@
+Nom : Épines
+Type : Plante
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Jet de sauvegarde : Constitution
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit un effet de contact. Inflige 4 dégâts physiques + constitution. Le lanceur ne peut pas subir l'état emprise à la suite de cet effet.

@@ -1,0 +1,9 @@
+Nom : Voile miroir
+Type : Psy
+Tiers : 1
+
+Cible : Une cible
+Portée : courte
+Utilisation : Réaction
+
+Effets : Utilisable lorsque le lanceur subit des dégâts de la part d'une cible. Inflige un nombre de dégâts spéciaux égal à la moitié des dégâts subits.

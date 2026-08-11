@@ -1,0 +1,10 @@
+Nom : Aiguisage
+Type : Ténèbres
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : La plage de réussite critique du lanceur est augmentée de 3, et sa plage d'échec critique de 1.

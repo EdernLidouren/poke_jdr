@@ -1,0 +1,10 @@
+Nom : Assurance
+Type : Ténèbres
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur inflige des dégâts à une cible sans défense ou souffrant du statut peur, augmente les dégâts infligés de 1 + tiers du lanceur.

@@ -1,0 +1,9 @@
+Nom : Tunnel
+Type : Sol
+Tiers : 1
+
+Cible : Personnelle
+Portée : Voir description
+Utilisation : Action
+
+Effets : Le lanceur creuse un tunnel et peut se déplacer sous terre. Il ne peut pas être pris pour cible par la plupart des effets et ne peut pas non plus cibler un pokémon à la surface. Il peut se déplacer de son mouvement normal, mais doit dépenser une action pour ressortir.

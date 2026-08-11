@@ -1,0 +1,10 @@
+Nom : Nœud herbe
+Type : Plante
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Agilité
+Utilisation : Réaction
+
+Effets : Utilisable lorsqu'une cible s'éloigne du lanceur. Inflige 2 dégâts physiques + attaque et 1 niveau de statut lenteur. La cible est jetée au sol.

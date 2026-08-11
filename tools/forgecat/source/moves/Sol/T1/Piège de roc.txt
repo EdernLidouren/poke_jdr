@@ -1,0 +1,11 @@
+Nom : Piège de roc
+Type : Sol
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur subit une attaque de contact, inflige un nombre de dégâts physiques égal à 1 + tiers du lanceur à la cible. Ignore les immunités. Ces dégâts sont doublés si la cible utilise un effet avec les tags charge ou croc.

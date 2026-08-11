@@ -1,0 +1,4 @@
+Nom : Baie prine
+Tiers : 2
+
+Effets : Retire jusqu'à 3 niveaux de n'importe quel statut.

@@ -1,0 +1,10 @@
+Nom : Ombre
+Type : Ténèbres
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur peut se cacher en dépensant une action rapide. Lorsqu'il se cache, il gagne 1 point de vie temporaire + tiers du lanceur. Lorsque la concentration de cette capacité est brisée, le lanceur gagne 1 niveau de statut invisibilité.

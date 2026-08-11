@@ -1,0 +1,10 @@
+Nom : Cauchemar
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Le lanceur choisit une cible et jusqu'à 3 niveaux de statut confusion dont elle souffre. Inflige un nombre de dégâts spéciaux + attaque spéciale égal au double de niveaux de statut, et autant de niveaux de statut peur.

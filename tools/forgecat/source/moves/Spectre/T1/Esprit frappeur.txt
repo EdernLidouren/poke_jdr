@@ -1,0 +1,10 @@
+Nom : Esprit frappeur
+Type : Spectre
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur inflige des dégâts, il peut choisir de subir 1 dégât neutre pour augmenter les dégâts infligés de 2.

@@ -1,0 +1,10 @@
+Nom : Danse fleurs
+Type : Plante
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Chaque tour, contre son mouvement, le lanceur peut désigner autant de cibles que souhaité à portée courte, lui inclus. Chaque cible peut retirer jusqu'à 1 niveau de statut négatif et gagne 2 points de vie temporaire.

@@ -1,4 +1,0 @@
-Nom : Blessure
-incompatibilités : Régénération
-
-effets : Le pokémon subit chaque fin de tour un nombre de dégâts neutres égal au niveau de ce statut.

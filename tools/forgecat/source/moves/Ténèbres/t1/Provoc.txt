@@ -1,0 +1,10 @@
+Nom : Provoc
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action rapide
+
+Effets : Inflige 3 niveaux de statut berserk.

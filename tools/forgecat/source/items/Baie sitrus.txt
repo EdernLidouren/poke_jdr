@@ -1,0 +1,4 @@
+Nom : Baie sitrus
+Tiers : 2
+
+Effets : Soigne 30 points de vie.

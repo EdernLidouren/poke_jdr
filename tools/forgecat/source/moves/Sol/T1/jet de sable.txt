@@ -1,0 +1,9 @@
+Nom : Jet de sable
+Type : Sol
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Réaction
+
+Effets : Utilisable lorsqu'une cible effectue un jet d'attaque ou d'attaque spéciale. Impose un désavantage à ce jet ou un avantage au jet de sauvegarde de ses cibles. Augmente de 2 le taux de maladresse de l'effet.

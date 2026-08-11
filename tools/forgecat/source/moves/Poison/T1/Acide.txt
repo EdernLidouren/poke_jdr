@@ -1,0 +1,10 @@
+Nom : Acide
+Type : Poison
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Agilité
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque spéciale. Inflige 6 dégâts si la cible souffre du statut fragilité. Cette capacité ignore les immunités.

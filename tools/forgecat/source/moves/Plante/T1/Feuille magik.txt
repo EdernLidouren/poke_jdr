@@ -1,0 +1,10 @@
+Nom : Feuille magik
+Type : Plante
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Inflige 4 dégâts spéciaux + attaque spéciale. Ignore les abris.

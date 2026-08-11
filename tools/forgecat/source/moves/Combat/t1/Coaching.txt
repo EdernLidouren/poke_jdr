@@ -1,0 +1,9 @@
+Nom : Coaching
+Type : Combat
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Utilisation : Action
+
+Effets : Utilisable lorsqu'une cible alliée subit des dégâts à cause d'une attaque. Le lanceur peut dépenser sa réaction. La cible gagne un nombre de points de vie temporaire égal à 1 + tiers du lanceur, peut se relever gratuitement si elle souffre de l'état au sol, et obtient un avantage à son prochain jet pour résister aux effets du statut peur ou attraction.

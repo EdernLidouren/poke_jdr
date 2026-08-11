@@ -1,0 +1,10 @@
+Nom : Léchouille
+Type : Spectre
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque spéciale. Si la cible souffre du statut peur, inflige 6 dégâts et 1 niveau de lenteur.

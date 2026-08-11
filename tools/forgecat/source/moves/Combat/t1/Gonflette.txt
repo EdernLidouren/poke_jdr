@@ -1,0 +1,9 @@
+Nom : Gonflette
+Type : Combat
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action rapide
+
+Effets : Octroie 3 niveaux de statut force.

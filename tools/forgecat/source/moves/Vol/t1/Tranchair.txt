@@ -1,0 +1,10 @@
+Nom : Tranchair
+Type : Vol
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+Taux de critique : 1
+
+Effets : Inflige 4 dégâts spéciaux + attaque spéciale.

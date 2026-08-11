@@ -1,0 +1,10 @@
+Nom : Vent arrière
+Type : Vol
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Lorsque le lanceur inflige des dégâts en profitant du statut vitesse ou via un effet avec mouvement minimal, les dégâts infligés sont augmentés d'un nombre égal à 1 + tiers du lanceur.

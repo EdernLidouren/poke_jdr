@@ -1,0 +1,4 @@
+Nom : Baie mepo
+Tiers : 1
+
+Effets : Soigne 2 points de pouvoir.

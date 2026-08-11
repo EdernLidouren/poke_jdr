@@ -1,0 +1,11 @@
+Nom : Poing obscur
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Tags : Poing
+
+Effets : Inflige 4 dégâts physiques + attaque.

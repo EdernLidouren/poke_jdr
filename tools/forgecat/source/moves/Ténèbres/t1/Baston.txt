@@ -1,0 +1,10 @@
+Nom : Baston
+Type : Ténèbres
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+
+Effets : Inflige 2 dégâts physiques + attaque. Tous les alliés au contact de la cible peuvent dépenser leur réaction pour utiliser lutte gratuitement contre elle.

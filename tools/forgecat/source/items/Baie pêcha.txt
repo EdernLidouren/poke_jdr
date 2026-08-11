@@ -1,0 +1,4 @@
+Nom : Baie pêcha
+Tiers : 1
+
+Effets : Retire jusqu'à 3 niveaux de statut fragilité et 3 niveaux de statut empoisonnement.

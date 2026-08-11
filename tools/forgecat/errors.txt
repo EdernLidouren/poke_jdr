@@ -1,32 +1,11 @@
 RAPPORT D'ERREURS FORGECAT
 ========================================
 
-source\moves\Électrik\T1\Blitz.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
+source\moves\Sol\T1\goudronnage.txt
+  - Champ inconnu : 'jet de la cible'
 
-source\moves\Électrik\T1\Constimulus.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
+source\moves\Spectre\T1\Hantise.txt
+  - ID en doublon : 'move_hantise' (déjà défini dans source\moves\Spectre\T1\Esprit frappeur.txt)
 
-source\moves\Électrik\T1\Croc éclair.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\dynamik.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\Flash.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\Frotte frimousse.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\Statik.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\Vol magnétik.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\Électrisation.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
-
-source\moves\Électrik\T1\Étincelle.txt
-  - 'type' : valeur 'Electrique' non autorisée. Attendu : feu, eau, plante, électrique, vol, sol, normal, combat, insecte, glace, fée, spectre, ténèbres, acier, dragon, psy, poison
+source\moves\Spectre\T1\Onde folie.txt
+  - 'cible' : valeur 'Une cible.' non autorisée. Attendu : voir description, aucune, personnelle, une cible, une cible ou personnelle, multicibles, une ligne, un cône, une zone
