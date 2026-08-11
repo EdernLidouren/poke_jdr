@@ -35,10 +35,14 @@ export function creerLigneMeta(move) {
     const span = document.createElement('span');
     span.className = 'move-meta-item';
     if (court !== complet) {
-      const abbr = document.createElement('abbr');
-      abbr.title = complet;
-      abbr.textContent = court;
-      span.append(abbr, ` : ${valeur}`);
+      // aria-label porte la forme longue pour les lecteurs d'écran ;
+      // le contenu visible (forme courte) est masqué au lecteur via aria-hidden.
+      // Évite le nœud <abbr title> qui crée un focus parasite sous VoiceOver iOS.
+      span.setAttribute('aria-label', `${complet} : ${valeur}`);
+      const spanVisuel = document.createElement('span');
+      spanVisuel.setAttribute('aria-hidden', 'true');
+      spanVisuel.textContent = `${court} : ${valeur}`;
+      span.appendChild(spanVisuel);
     } else {
       span.textContent = `${court} : ${valeur}`;
     }
