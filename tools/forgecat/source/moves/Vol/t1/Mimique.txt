@@ -1,0 +1,10 @@
+Nom : Mimique
+Type : Vol
+Tiers : 1
+Évolutif : Oui
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Le lanceur reproduis la dernière capacité utilisée par la cible ce tour ou au tour précédent, pour le même coût en pouvoir et pour un minimum de 1. Si la capacité excède le tiers du lanceur, mimique échoue.

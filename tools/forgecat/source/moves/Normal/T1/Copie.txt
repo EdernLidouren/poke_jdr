@@ -1,0 +1,10 @@
+Nom : Copie
+Type : Normal
+Tiers : 1
+Évolutif : Oui
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Pendant un repos, le lanceur copie la capacité d'un allié. Le tiers de la capacité doit être égal ou inférieur au tiers du lanceur. Le lanceur peut utiliser cette capacité comme s'il la connaissait. La capacité redevient copie après un repos long.

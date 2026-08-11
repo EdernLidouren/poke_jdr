@@ -1,0 +1,13 @@
+Nom : Explosion
+Type : Normal
+Tiers : 1
+Évolutif : Oui
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Courte
+Jet de sauvegarde : Constitution
+Utilisation : Action
+Tags : Explosion
+
+Effets : Inflige 8 dégâts physiques + attaque spéciale. Le lanceur ne peut utiliser cette capacité que lorsqu'il est vaincu.

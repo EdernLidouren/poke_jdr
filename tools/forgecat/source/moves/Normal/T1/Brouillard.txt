@@ -1,0 +1,10 @@
+Nom : Brouillard
+Type : Normal
+Tiers : 1
+
+Cible : Une zone
+Portée : Longue
+Envergure : Longue
+Utilisation : Action rapide
+
+Effets : Le lanceur créée un épais nuage qui obstrue la vision. Toutes les actions nécessitant la vue se font avec désavantage si la cible se trouve dans le nuage.

@@ -1,0 +1,10 @@
+Nom : Lire-esprit
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Moyenne
+Jet de sauvegarde : Esprit
+Utilisation : Action
+
+Effets : Le lanceur lit les pensées de surface de la cible, comme son humeur globale ou ses réflexions les plus évidentes. Le lanceur devine également le niveau de la cible. S'il le décide et que la cible échoue son jet de sauvegarde, le lanceur peut lire les pensées plus profondes de la cible ainsi que ses souvenirs.

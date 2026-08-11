@@ -1,0 +1,10 @@
+Nom : Bluff
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Jet de sauvegarde : Esprit
+Utilisation : Action rapide
+
+Effets : Inflige 1 niveau de statut confusion et 1 niveau de statut lenteur. Le prochain jet d'attaque effectué contre la cible obtient un avantage.

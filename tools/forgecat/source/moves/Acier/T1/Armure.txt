@@ -1,4 +1,4 @@
-Nom : Titane
+Nom : Armure
 Type : Acier
 Tiers : 1
 

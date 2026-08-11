@@ -1,0 +1,9 @@
+Nom : Danse lames
+Type : Normal
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+
+Effets : Octroie 3 niveaux de statut force.

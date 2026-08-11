@@ -1,0 +1,10 @@
+Nom : Camouflage
+Type : Normal
+Tiers : 1
+
+Cible : Personnelle
+Portée : Personnelle
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Octroie un avantage aux jets de discrétion. Lorsque le lanceur est caché et tant qu'il ne bouge pas, il profite du statut invisibilité.

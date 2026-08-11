@@ -1,11 +1,38 @@
 RAPPORT D'ERREURS FORGECAT
 ========================================
 
-source\moves\Sol\T1\goudronnage.txt
-  - Champ inconnu : 'jet de la cible'
+source\moves\Normal\T1\Air veinard.txt
+  - 'cible' : valeur 'Une cible ou persoonnelle' non autorisée. Attendu : voir description, aucune, personnelle, une cible, une cible ou personnelle, multicibles, une ligne, un cône, une zone
 
-source\moves\Spectre\T1\Hantise.txt
-  - ID en doublon : 'move_hantise' (déjà défini dans source\moves\Spectre\T1\Esprit frappeur.txt)
+source\moves\Normal\T1\Explosion.txt
+  - 'jet de sauvegarde' : valeur 'Endurance' non autorisée. Attendu : voir description, force, charisme, constitution, esprit, agilité
 
-source\moves\Spectre\T1\Onde folie.txt
-  - 'cible' : valeur 'Une cible.' non autorisée. Attendu : voir description, aucune, personnelle, une cible, une cible ou personnelle, multicibles, une ligne, un cône, une zone
+source\moves\Poison\poison.txt
+  - Champ obligatoire manquant : 'nom'
+  - Champ obligatoire manquant : 'tiers'
+  - Champ obligatoire manquant : 'type'
+  - Champ obligatoire manquant : 'effets'
+  - Champ inconnu : 'crochet venin'
+  - Champ inconnu : 'dard-venin'
+  - Champ inconnu : 'détricanon'
+  - Champ inconnu : 'direct toxik'
+  - Champ inconnu : 'queue-poison'
+  - Champ inconnu : 'poison croix'
+  - Champ inconnu : 'acide'
+  - Champ inconnu : 'bain de smog'
+  - Champ inconnu : 'bombe acide'
+  - Champ inconnu : 'bombe beurk'
+  - Champ inconnu : 'eructation'
+  - Champ inconnu : 'détritus'
+  - Champ inconnu : 'cradovague'
+  - Champ inconnu : 'choc venin'
+  - Champ inconnu : 'purédpois'
+  - Champ inconnu : 'acidarmure'
+  - Champ inconnu : 'enroulement'
+  - Champ inconnu : 'fil toxique'
+  - Champ inconnu : 'piège de venin'
+  - Champ inconnu : 'pics toxik'
+  - Champ inconnu : 'gaz toxik'
+  - Champ inconnu : 'poudre toxik'
+  - Champ inconnu : 'suc digestif'
+  - Champ inconnu : 'toxik'

@@ -1,0 +1,11 @@
+Nom : Essorage
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Jet de sauvegarde : Constitution
+Utilisation : Action
+
+Effets : Inflige 4 dégâts physiques + attaque. Si la cible possède la moitié ou plus de ses points de vie, inflige 8 dégâts.

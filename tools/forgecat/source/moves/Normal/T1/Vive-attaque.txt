@@ -1,0 +1,10 @@
+Nom : Vive-attaque
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action rapide
+
+Effets : Inflige 2 dégâts physique + attaque. Inflige 6 dégâts si le lanceur profite du statut vitesse.

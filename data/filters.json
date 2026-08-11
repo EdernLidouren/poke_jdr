@@ -13,7 +13,6 @@
     "cible": { "type": "enum" },
     "envergure": { "type": "enum" },
     "mouvement minimal": { "type": "enum" },
-    "mouvement offert": { "type": "enum" },
     "tags": { "type": "text" },
     "mécaniques": { "type": "text" },
     "taux de critique": { "type": "int" },

@@ -1,0 +1,11 @@
+Nom : Air veinard
+Type : Normal
+Tiers : 1
+
+Cible : Une cible ou personnelle
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur ou la cible peut relancer jusqu'à 3 échecs critiques, après quoi l'effet prend fin. Lorsque cet effet prend fin, volontairement ou non, le lanceur ou la cible obtient un avantage sur son prochain jet.

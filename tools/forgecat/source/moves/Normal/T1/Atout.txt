@@ -1,0 +1,9 @@
+Nom : Atout
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Courte
+Utilisation : Action
+
+Effets : Inflige 2 dégâts spéciaux + attaque. Inflige 6 dégâts si le lanceur possède la moitié de ses points de pouvoir ou plus.

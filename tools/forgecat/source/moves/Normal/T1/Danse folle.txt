@@ -1,0 +1,11 @@
+Nom : Danse folle
+Type : Normal
+Tiers : 1
+
+Cible : Personnelle
+Portée : Contact
+Jet de sauvegarde : Esprit
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur peut dépenser son mouvement pour infliger 1 niveau de statut confusion à toutes les cibles au contact. Si le lanceur est repoussé ou attiré contre son gré, il peut se déplacer librement tant qu'il parcourt la distance indiquée.

@@ -1,0 +1,11 @@
+Nom : Chatouilles
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Jet de sauvegarde : Agilité
+Utilisation : Action rapide
+
+Effets : Inflige 2 niveaux de statut fragilité et 2 niveaux de statut doute.

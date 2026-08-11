@@ -1,0 +1,13 @@
+Nom : Bélier
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Mouvement minimal : Courte
+Utilisation : Action
+Tags : Charge
+Mécaniques : Contrecoup
+
+Effets : Inflige 8 dégâts physiques + attaque. 2 niveaux de contrecoup.

@@ -1,0 +1,11 @@
+Nom : Dernier recours
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action
+Taux de critique : 3
+
+Effets : Inflige 2 dégâts physiques + attaque. Inflige 10 dégâts si le lanceur dépense son dernier point de pouvoir pour utiliser cette capacité.

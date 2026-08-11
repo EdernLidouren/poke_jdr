@@ -1,0 +1,11 @@
+Nom : Clairvoyance
+Type : Normal
+Tiers : 1
+
+Cible : Une zone
+Portée : Personnelle
+Envergure : Longue
+Utilisation : Action
+Mécaniques : Concentration
+
+Effets : Le lanceur devine la présence de tous les pokémons présents dans la zone, qu'ils soient cachés, invisibles ou sous la surface de l'eau ou de la terre, dans le noir ou derrière un obstacle. Le lanceur devine également la présence des pièges et des effets cachés. Le lanceur peut affecter les pokémons de type spectre avec des capacités de type normal ou combat.

@@ -1,0 +1,10 @@
+Nom : Assistance
+Type : Normal
+Tiers : 1
+
+Cible : Une cible
+Portée : Contact
+Contact : Oui
+Utilisation : Action rapide
+
+Effets : La cible obtient un avantage à son prochain jet ainsi qu'un bonus égal au tiers du lanceur, et sa plage de réussite critique est augmentée de 2. En outre, si ce jet fait appel à une caractéristique, le lanceur ajoute son propre score au bonus.

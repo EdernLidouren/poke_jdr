@@ -34,6 +34,17 @@
       "id": "move_ancrage"
     },
     {
+      "nom": "Armure",
+      "type": "Acier",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action rapide",
+      "effets": "Octroie 3 niveaux de statut endurance.",
+      "id": "move_armure"
+    },
+    {
       "nom": "Armurouille",
       "type": "Acier",
       "tiers": "1",
@@ -120,17 +131,6 @@
       "utilisation": "Action",
       "effets": "Inflige 2 dégâts spéciaux + attaque spéciale. Si la cible possède la moitié ou plus de ses points de vie, inflige 6 dégâts.",
       "id": "move_pression_extreme"
-    },
-    {
-      "nom": "Titane",
-      "type": "Acier",
-      "tiers": "1",
-      "cible": "Une cible ou personnelle",
-      "portée": "Contact",
-      "contact": "Oui",
-      "utilisation": "Action rapide",
-      "effets": "Octroie 3 niveaux de statut endurance.",
-      "id": "move_titane"
     },
     {
       "nom": "Tête de fer",
@@ -942,6 +942,249 @@
       "mécaniques": "Drain de vie",
       "effets": "Inflige 2 dégâts physiques + attaque. 2 niveaux de drain de vie. Si la cible souffre du statut peur, inflige 6 dégâts.",
       "id": "move_vampirisme"
+    },
+    {
+      "nom": "Air veinard",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible ou personnelle",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur ou la cible peut relancer jusqu'à 3 échecs critiques, après quoi l'effet prend fin. Lorsque cet effet prend fin, volontairement ou non, le lanceur ou la cible obtient un avantage sur son prochain jet.",
+      "id": "move_air_veinard"
+    },
+    {
+      "nom": "Assistance",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action rapide",
+      "effets": "La cible obtient un avantage à son prochain jet ainsi qu'un bonus égal au tiers du lanceur, et sa plage de réussite critique est augmentée de 2. En outre, si ce jet fait appel à une caractéristique, le lanceur ajoute son propre score au bonus.",
+      "id": "move_assistance"
+    },
+    {
+      "nom": "Atout",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Inflige 2 dégâts spéciaux + attaque. Inflige 6 dégâts si le lanceur possède la moitié de ses points de pouvoir ou plus.",
+      "id": "move_atout"
+    },
+    {
+      "nom": "Attrition",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque. Cet effet ignore les éventuels statuts endurance de la cible. La cible ne peut pas utiliser de réaction à cet effet.",
+      "id": "move_attrition"
+    },
+    {
+      "nom": "Bluff",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 1 niveau de statut confusion et 1 niveau de statut lenteur. Le prochain jet d'attaque effectué contre la cible obtient un avantage.",
+      "id": "move_bluff"
+    },
+    {
+      "nom": "Brouillard",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Longue",
+      "envergure": "Longue",
+      "utilisation": "Action rapide",
+      "effets": "Le lanceur créée un épais nuage qui obstrue la vision. Toutes les actions nécessitant la vue se font avec désavantage si la cible se trouve dans le nuage.",
+      "id": "move_brouillard"
+    },
+    {
+      "nom": "Bâillement",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Un cône",
+      "portée": "Courte",
+      "envergure": "Courte",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Inflige 3 niveaux de statut lenteur. Le lanceur peut répartir les niveaux de statut entre les cibles affectées.",
+      "id": "move_baillement"
+    },
+    {
+      "nom": "Bélier",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "mouvement minimal": "Courte",
+      "utilisation": "Action",
+      "tags": "Charge",
+      "mécaniques": "Contrecoup",
+      "effets": "Inflige 8 dégâts physiques + attaque. 2 niveaux de contrecoup.",
+      "id": "move_belier"
+    },
+    {
+      "nom": "Camouflage",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Octroie un avantage aux jets de discrétion. Lorsque le lanceur est caché et tant qu'il ne bouge pas, il profite du statut invisibilité.",
+      "id": "move_camouflage"
+    },
+    {
+      "nom": "Chatouilles",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "jet de sauvegarde": "Agilité",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 2 niveaux de statut fragilité et 2 niveaux de statut doute.",
+      "id": "move_chatouilles"
+    },
+    {
+      "nom": "Clairvoyance",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "envergure": "Longue",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur devine la présence de tous les pokémons présents dans la zone, qu'ils soient cachés, invisibles ou sous la surface de l'eau ou de la terre, dans le noir ou derrière un obstacle. Le lanceur devine également la présence des pièges et des effets cachés. Le lanceur peut affecter les pokémons de type spectre avec des capacités de type normal ou combat.",
+      "id": "move_clairvoyance"
+    },
+    {
+      "nom": "Copie",
+      "type": "Normal",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Pendant un repos, le lanceur copie la capacité d'un allié. Le tiers de la capacité doit être égal ou inférieur au tiers du lanceur. Le lanceur peut utiliser cette capacité comme s'il la connaissait. La capacité redevient copie après un repos long.",
+      "id": "move_copie"
+    },
+    {
+      "nom": "Danse folle",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Contact",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "mécaniques": "Concentration",
+      "effets": "Le lanceur peut dépenser son mouvement pour infliger 1 niveau de statut confusion à toutes les cibles au contact. Si le lanceur est repoussé ou attiré contre son gré, il peut se déplacer librement tant qu'il parcourt la distance indiquée.",
+      "id": "move_danse_folle"
+    },
+    {
+      "nom": "Danse lames",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Personnelle",
+      "portée": "Personnelle",
+      "utilisation": "Action",
+      "effets": "Octroie 3 niveaux de statut force.",
+      "id": "move_danse_lames"
+    },
+    {
+      "nom": "Dernier recours",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "taux de critique": "3",
+      "effets": "Inflige 2 dégâts physiques + attaque. Inflige 10 dégâts si le lanceur dépense son dernier point de pouvoir pour utiliser cette capacité.",
+      "id": "move_dernier_recours"
+    },
+    {
+      "nom": "Double coup",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "effets": "Inflige 2 fois 2 dégâts physiques + attaque.",
+      "id": "move_double_coup"
+    },
+    {
+      "nom": "Essorage",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "effets": "Inflige 4 dégâts physiques + attaque. Si la cible possède la moitié ou plus de ses points de vie, inflige 8 dégâts.",
+      "id": "move_essorage"
+    },
+    {
+      "nom": "Explosion",
+      "type": "Normal",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Une zone",
+      "portée": "Personnelle",
+      "envergure": "Courte",
+      "jet de sauvegarde": "Constitution",
+      "utilisation": "Action",
+      "tags": "Explosion",
+      "effets": "Inflige 8 dégâts physiques + attaque spéciale. Le lanceur ne peut utiliser cette capacité que lorsqu'il est vaincu.",
+      "id": "move_explosion"
+    },
+    {
+      "nom": "Griffe",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action",
+      "tags": "Griffe",
+      "effets": "Inflige 4 dégâts physiques + attaque.",
+      "id": "move_griffe"
+    },
+    {
+      "nom": "Lire-esprit",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Moyenne",
+      "jet de sauvegarde": "Esprit",
+      "utilisation": "Action",
+      "effets": "Le lanceur lit les pensées de surface de la cible, comme son humeur globale ou ses réflexions les plus évidentes. Le lanceur devine également le niveau de la cible. S'il le décide et que la cible échoue son jet de sauvegarde, le lanceur peut lire les pensées plus profondes de la cible ainsi que ses souvenirs.",
+      "id": "move_lire-esprit"
+    },
+    {
+      "nom": "Vive-attaque",
+      "type": "Normal",
+      "tiers": "1",
+      "cible": "Une cible",
+      "portée": "Contact",
+      "contact": "Oui",
+      "utilisation": "Action rapide",
+      "effets": "Inflige 2 dégâts physique + attaque. Inflige 6 dégâts si le lanceur profite du statut vitesse.",
+      "id": "move_vive-attaque"
     },
     {
       "nom": "Aromathérapie",
@@ -1960,6 +2203,17 @@
       "utilisation": "Action",
       "effets": "Inflige 2 fois 2 dégâts physiques + attaque.",
       "id": "move_double_volee"
+    },
+    {
+      "nom": "Mimique",
+      "type": "Vol",
+      "tiers": "1",
+      "évolutif": "Oui",
+      "cible": "Une cible",
+      "portée": "Courte",
+      "utilisation": "Action",
+      "effets": "Le lanceur reproduis la dernière capacité utilisée par la cible ce tour ou au tour précédent, pour le même coût en pouvoir et pour un minimum de 1. Si la capacité excède le tiers du lanceur, mimique échoue.",
+      "id": "move_mimique"
     },
     {
       "nom": "Tranchair",
