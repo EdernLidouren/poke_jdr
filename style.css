@@ -642,6 +642,45 @@ body {
   background: var(--c-surface-hover);
 }
 
+/* =========================================================
+   Cellule générique — conteneur partagé (talents, équipements, objets)
+   Même apparence que .move-entree, sans la bande colorée.
+   ========================================================= */
+
+.cell-entree {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--c-border-med);
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--c-surface);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* display: flex surpasse [hidden] — on le rétablit */
+.cell-entree[hidden] {
+  display: none;
+}
+
+/* Zone de texte principale — équivalent de .move-corps */
+.cell-corps {
+  flex: 1;
+  padding: 0.4rem 0.5rem;
+  min-width: 0;
+}
+
+/* Colonne d'action à droite — contrôles [−] qty [+] */
+.cell-action {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  border-left: 1px solid var(--c-border-xlight);
+}
+
 /* --- Catalogue de moves --- */
 
 .moves-liste {
@@ -844,17 +883,7 @@ body {
 .mt-liste {
   display: flex;
   flex-direction: column;
-}
-
-.mt-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.mt-entree:last-child {
-  border-bottom: none;
+  gap: 0.4rem;
 }
 
 .mt-entete {
@@ -878,22 +907,7 @@ body {
 .abilities-liste {
   display: flex;
   flex-direction: column;
-}
-
-.ability-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.ability-entree:last-child {
-  border-bottom: none;
-}
-
-/* display: flex surpasse [hidden] — on le rétablit */
-.ability-entree[hidden] {
-  display: none;
+  gap: 0.4rem;
 }
 
 .ability-entete {
@@ -917,13 +931,6 @@ body {
   color: var(--c-text-ter);
   font-size: 13px;
   font-style: italic;
-}
-
-.ability-action {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.3rem;
 }
 
 .btn-ability-qty {
@@ -968,17 +975,7 @@ body {
 .eq-liste {
   display: flex;
   flex-direction: column;
-}
-
-.eq-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.eq-entree:last-child {
-  border-bottom: none;
+  gap: 0.4rem;
 }
 
 .eq-entete {
@@ -1002,22 +999,7 @@ body {
 .equipment-liste {
   display: flex;
   flex-direction: column;
-}
-
-.equipment-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.equipment-entree:last-child {
-  border-bottom: none;
-}
-
-/* display: flex surpasse [hidden] — on le rétablit */
-.equipment-entree[hidden] {
-  display: none;
+  gap: 0.4rem;
 }
 
 .equipment-entete {
@@ -1043,27 +1025,12 @@ body {
   font-style: italic;
 }
 
-.equipment-action {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.3rem;
-}
-
 /* --- Mon inventaire --- */
 
 .it-liste {
   display: flex;
   flex-direction: column;
-}
-
-.it-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
-}
-
-.it-entree:last-child {
-  border-bottom: none;
+  gap: 0.4rem;
 }
 
 .it-entete {
@@ -1100,20 +1067,7 @@ body {
 .items-liste {
   display: flex;
   flex-direction: column;
-}
-
-.items-entree {
-  padding: 0.55rem 0.4rem;
-  border-bottom: 1px solid var(--c-border-xlight);
-}
-
-.items-entree:last-child {
-  border-bottom: none;
-}
-
-/* display: flex surpasse [hidden] — on le rétablit */
-.items-entree[hidden] {
-  display: none;
+  gap: 0.4rem;
 }
 
 .items-entete {
@@ -1131,13 +1085,6 @@ body {
   color: var(--c-text-ter);
   font-size: 13px;
   font-style: italic;
-}
-
-.items-action {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.3rem;
 }
 
 /* --- Onglet Combat — actions de tour --- */

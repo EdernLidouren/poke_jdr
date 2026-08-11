@@ -259,10 +259,13 @@ function rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange) {
 
     for (const { id, entree, equipment } of entries) {
       const div = document.createElement('div');
-      div.className = 'eq-entree';
+      div.className = 'eq-entree cell-entree';
       div.dataset.equipmentId = id;
 
-      // Ligne 1 : nom, tiers — [−] qty [+]
+      const corps = document.createElement('div');
+      corps.className = 'cell-corps';
+
+      // Ligne 1 : nom, tiers
       const ligne1 = document.createElement('div');
       ligne1.className = 'eq-entete';
 
@@ -270,6 +273,41 @@ function rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange) {
       spanInfo.className = 'eq-entete-info';
       spanInfo.textContent = `${equipment.nom}, tiers ${equipment.tiers}`;
 
+      ligne1.append(spanInfo);
+
+      // Ligne 2 : effets
+      const ligne2 = document.createElement('div');
+      ligne2.className = 'eq-effets';
+      ligne2.textContent = equipment.effets;
+
+      // Ligne 3 : toggle notes + textarea (réduit par défaut)
+      const ligne3 = document.createElement('div');
+      ligne3.className = 'move-notes';
+
+      const btnNotes = document.createElement('button');
+      btnNotes.type = 'button';
+      btnNotes.className = 'btn-toggle-notes';
+      btnNotes.textContent = 'Notes ▼';
+
+      const textarea = document.createElement('textarea');
+      textarea.className = 'move-notes-textarea';
+      textarea.value = entree.player_notes || '';
+      textarea.hidden = true;
+      textarea.addEventListener('input', () => {
+        const cm = save.sheets[save.fiche_active].equipment.current_equipment;
+        if (cm[id]) cm[id].player_notes = textarea.value;
+        onSaveChange(save);
+      });
+
+      btnNotes.addEventListener('click', () => {
+        textarea.hidden = !textarea.hidden;
+        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
+      });
+
+      ligne3.append(btnNotes, textarea);
+      corps.append(ligne1, ligne2, ligne3);
+
+      // Colonne action — [−] qty [+]
       const spanQuantity = document.createElement('span');
       spanQuantity.className = 'ability-quantity';
       spanQuantity.textContent = String(entree.quantity);
@@ -310,40 +348,11 @@ function rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange) {
         recalculerIndicateur();
       });
 
-      ligne1.append(spanInfo, btnMoins, spanQuantity, btnPlus);
+      const action = document.createElement('div');
+      action.className = 'cell-action';
+      action.append(btnMoins, spanQuantity, btnPlus);
 
-      // Ligne 2 : effets
-      const ligne2 = document.createElement('div');
-      ligne2.className = 'eq-effets';
-      ligne2.textContent = equipment.effets;
-
-      // Ligne 3 : toggle notes + textarea (réduit par défaut)
-      const ligne3 = document.createElement('div');
-      ligne3.className = 'move-notes';
-
-      const btnNotes = document.createElement('button');
-      btnNotes.type = 'button';
-      btnNotes.className = 'btn-toggle-notes';
-      btnNotes.textContent = 'Notes ▼';
-
-      const textarea = document.createElement('textarea');
-      textarea.className = 'move-notes-textarea';
-      textarea.value = entree.player_notes || '';
-      textarea.hidden = true;
-      textarea.addEventListener('input', () => {
-        const cm = save.sheets[save.fiche_active].equipment.current_equipment;
-        if (cm[id]) cm[id].player_notes = textarea.value;
-        onSaveChange(save);
-      });
-
-      btnNotes.addEventListener('click', () => {
-        textarea.hidden = !textarea.hidden;
-        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
-      });
-
-      ligne3.append(btnNotes, textarea);
-
-      div.append(ligne1, ligne2, ligne3);
+      div.append(corps, action);
       liste.appendChild(div);
     }
   }
@@ -377,10 +386,13 @@ function construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onS
 
   for (const equipment of (catalogue.equipment || [])) {
     const entree = document.createElement('div');
-    entree.className = 'equipment-entree';
+    entree.className = 'equipment-entree cell-entree';
     entree.dataset.equipmentId = equipment.id;
 
-    // Ligne 1 : entête — nom + [−] qty [+]
+    const corps = document.createElement('div');
+    corps.className = 'cell-corps';
+
+    // Ligne 1 : entête — nom
     const ligne1 = document.createElement('div');
     ligne1.className = 'equipment-entete';
 
@@ -388,6 +400,16 @@ function construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onS
     spanNom.className = 'equipment-entete-nom';
     spanNom.textContent = `${equipment.nom}, tiers ${equipment.tiers}`;
 
+    ligne1.append(spanNom);
+
+    // Ligne 2 : effets
+    const ligne2 = document.createElement('div');
+    ligne2.className = 'equipment-effets';
+    ligne2.textContent = equipment.effets;
+
+    corps.append(ligne1, ligne2);
+
+    // Colonne action — [−] qty [+]
     const spanQuantity = document.createElement('span');
     spanQuantity.className = 'ability-quantity';
     const ca = save.sheets[save.fiche_active].equipment.current_equipment;
@@ -427,14 +449,11 @@ function construireBlocCatalogueEquipment(catalogue, save, equipmentFilters, onS
       if (onIndicateurChange) onIndicateurChange();
     });
 
-    ligne1.append(spanNom, btnMoins, spanQuantity, btnPlus);
+    const action = document.createElement('div');
+    action.className = 'cell-action';
+    action.append(btnMoins, spanQuantity, btnPlus);
 
-    // Ligne 2 : effets
-    const ligne2 = document.createElement('div');
-    ligne2.className = 'equipment-effets';
-    ligne2.textContent = equipment.effets;
-
-    entree.append(ligne1, ligne2);
+    entree.append(corps, action);
     liste.appendChild(entree);
     equipmentElements.set(equipment.id, entree);
   }

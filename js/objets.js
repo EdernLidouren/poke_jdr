@@ -235,10 +235,13 @@ function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
 
     for (const { id, entree, item } of entries) {
       const div = document.createElement('div');
-      div.className = 'it-entree';
+      div.className = 'it-entree cell-entree';
       div.dataset.itemId = id;
 
-      // Ligne 1 : nom, tiers — [−] qty [+]
+      const corps = document.createElement('div');
+      corps.className = 'cell-corps';
+
+      // Ligne 1 : nom, tiers
       const ligne1 = document.createElement('div');
       ligne1.className = 'it-entete';
 
@@ -246,6 +249,41 @@ function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
       spanInfo.className = 'it-entete-info';
       spanInfo.textContent = `${item.nom}, tiers ${item.tiers}`;
 
+      ligne1.append(spanInfo);
+
+      // Ligne 2 : effets
+      const ligne2 = document.createElement('div');
+      ligne2.className = 'it-effets';
+      ligne2.textContent = item.effets;
+
+      // Ligne 3 : toggle notes + textarea (réduit par défaut)
+      const ligne3 = document.createElement('div');
+      ligne3.className = 'move-notes';
+
+      const btnNotes = document.createElement('button');
+      btnNotes.type = 'button';
+      btnNotes.className = 'btn-toggle-notes';
+      btnNotes.textContent = 'Notes ▼';
+
+      const textarea = document.createElement('textarea');
+      textarea.className = 'move-notes-textarea';
+      textarea.value = entree.player_notes || '';
+      textarea.hidden = true;
+      textarea.addEventListener('input', () => {
+        const cm = save.sheets[save.fiche_active].items.current_items;
+        if (cm[id]) cm[id].player_notes = textarea.value;
+        onSaveChange(save);
+      });
+
+      btnNotes.addEventListener('click', () => {
+        textarea.hidden = !textarea.hidden;
+        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
+      });
+
+      ligne3.append(btnNotes, textarea);
+      corps.append(ligne1, ligne2, ligne3);
+
+      // Colonne action — [−] qty [+]
       const spanQuantity = document.createElement('span');
       spanQuantity.className = 'ability-quantity';
       spanQuantity.textContent = String(entree.quantity);
@@ -283,40 +321,11 @@ function rendreContenuInventaire(contenu, catalogue, save, onSaveChange) {
         spanQuantity.textContent = String(cm[id].quantity);
       });
 
-      ligne1.append(spanInfo, btnMoins, spanQuantity, btnPlus);
+      const action = document.createElement('div');
+      action.className = 'cell-action';
+      action.append(btnMoins, spanQuantity, btnPlus);
 
-      // Ligne 2 : effets
-      const ligne2 = document.createElement('div');
-      ligne2.className = 'it-effets';
-      ligne2.textContent = item.effets;
-
-      // Ligne 3 : toggle notes + textarea (réduit par défaut)
-      const ligne3 = document.createElement('div');
-      ligne3.className = 'move-notes';
-
-      const btnNotes = document.createElement('button');
-      btnNotes.type = 'button';
-      btnNotes.className = 'btn-toggle-notes';
-      btnNotes.textContent = 'Notes ▼';
-
-      const textarea = document.createElement('textarea');
-      textarea.className = 'move-notes-textarea';
-      textarea.value = entree.player_notes || '';
-      textarea.hidden = true;
-      textarea.addEventListener('input', () => {
-        const cm = save.sheets[save.fiche_active].items.current_items;
-        if (cm[id]) cm[id].player_notes = textarea.value;
-        onSaveChange(save);
-      });
-
-      btnNotes.addEventListener('click', () => {
-        textarea.hidden = !textarea.hidden;
-        btnNotes.textContent = textarea.hidden ? 'Notes ▼' : 'Notes ▲';
-      });
-
-      ligne3.append(btnNotes, textarea);
-
-      div.append(ligne1, ligne2, ligne3);
+      div.append(corps, action);
       liste.appendChild(div);
     }
   }
@@ -375,8 +384,11 @@ function construireBlocCatalogueItems(catalogue, save, itemsFilters, onSaveChang
 
   for (const item of (catalogue.items || [])) {
     const entree = document.createElement('div');
-    entree.className = 'items-entree';
+    entree.className = 'items-entree cell-entree';
     entree.dataset.itemId = item.id;
+
+    const corps = document.createElement('div');
+    corps.className = 'cell-corps';
 
     // Ligne 1 : entête
     const ligne1 = document.createElement('div');
@@ -388,10 +400,9 @@ function construireBlocCatalogueItems(catalogue, save, itemsFilters, onSaveChang
     ligne2.className = 'items-effets';
     ligne2.textContent = item.effets;
 
-    // Ligne 3 : − quantity +
-    const ligne3 = document.createElement('div');
-    ligne3.className = 'items-action';
+    corps.append(ligne1, ligne2);
 
+    // Colonne action — [−] qty [+]
     const spanQuantity = document.createElement('span');
     spanQuantity.className = 'ability-quantity';
     const ca = save.sheets[save.fiche_active].items.current_items;
@@ -428,9 +439,11 @@ function construireBlocCatalogueItems(catalogue, save, itemsFilters, onSaveChang
       spanQuantity.textContent = String(cm[item.id].quantity);
     });
 
-    ligne3.append(btnMoins, spanQuantity, btnPlus);
+    const action = document.createElement('div');
+    action.className = 'cell-action';
+    action.append(btnMoins, spanQuantity, btnPlus);
 
-    entree.append(ligne1, ligne2, ligne3);
+    entree.append(corps, action);
     liste.appendChild(entree);
     itemElements.set(item.id, entree);
   }
