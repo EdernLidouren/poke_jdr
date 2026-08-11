@@ -282,6 +282,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
     // Liste déroulante des statuts
     const selectStatut = document.createElement('select');
     selectStatut.className = 'cf-select-statut';
+    selectStatut.setAttribute('aria-label', 'Statut à ajouter');
     for (const status of (catalogue.status || [])) {
       const opt = document.createElement('option');
       opt.value = status.id;
@@ -292,6 +293,7 @@ export function rendreCombat(zone, catalogue, save, onSaveChange) {
     // Liste déroulante des valeurs 1–99
     const selectValeur = document.createElement('select');
     selectValeur.className = 'cf-select-valeur';
+    selectValeur.setAttribute('aria-label', 'Valeur du statut');
     for (let i = 1; i <= 99; i++) {
       const opt = document.createElement('option');
       opt.value = String(i);
@@ -437,6 +439,7 @@ function renderPvTemporaires(save, onSaveChange) {
   const input = document.createElement('input');
   input.type = 'number';
   input.min = '0';
+  input.setAttribute('aria-label', 'PV temporaires');
 
   const btnPlus = document.createElement('button');
   btnPlus.type = 'button';

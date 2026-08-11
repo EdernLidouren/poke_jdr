@@ -122,12 +122,15 @@ function construireBlocRecherche(movesFilters, appliquerFiltres) {
     const ligne = document.createElement('div');
     ligne.className = 'champ-ligne';
 
+    const filtreId = 'filtre-cap-' + champ;
     const lbl = document.createElement('label');
+    lbl.htmlFor = filtreId;
     lbl.textContent = capitaliser(champ);
 
     if (config.type === 'text') {
       const input = document.createElement('input');
       input.type = 'search';
+      input.id = filtreId;
       input.className = 'filtre-text';
       input.value = '';
       input.addEventListener('input', () => {
@@ -139,6 +142,7 @@ function construireBlocRecherche(movesFilters, appliquerFiltres) {
 
     } else if (config.type === 'enum') {
       const select = document.createElement('select');
+      select.id = filtreId;
       const optTous = document.createElement('option');
       optTous.value = ''; optTous.textContent = 'Tous';
       select.appendChild(optTous);
@@ -163,8 +167,10 @@ function construireBlocRecherche(movesFilters, appliquerFiltres) {
   const ligneStatut = document.createElement('div');
   ligneStatut.className = 'champ-ligne';
   const lblStatut = document.createElement('label');
+  lblStatut.htmlFor = 'filtre-cap-statut';
   lblStatut.textContent = 'Statut';
   const selectStatut = document.createElement('select');
+  selectStatut.id = 'filtre-cap-statut';
   for (const [val, label] of [
     ['tous',     'Tous'],
     ['apprise',  'Apprise'],
@@ -495,6 +501,7 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
 
       const textarea = document.createElement('textarea');
       textarea.className = 'move-notes-textarea';
+      textarea.setAttribute('aria-label', `Notes personnelles : ${move.nom}`);
       textarea.value = entree.player_notes || '';
       textarea.hidden = true;
       textarea.addEventListener('input', () => {

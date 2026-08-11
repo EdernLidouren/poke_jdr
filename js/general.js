@@ -89,6 +89,7 @@ function construireBlocIdentite(catalogue, caracs, ficheIndex, save, onSaveChang
   );
   btnPkMoins.setAttribute('aria-label', 'Diminuer les Poké dollars');
   btnPkPlus.setAttribute('aria-label', 'Augmenter les Poké dollars');
+  inputPk.setAttribute('aria-label', 'Poké dollars');
   const lignePokedollar = document.createElement('div');
   lignePokedollar.className = 'stat-ligne';
   const lblPk = document.createElement('span');
@@ -319,7 +320,7 @@ function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHist
       skills[nom] = val;
       spanTotal.textContent = calcTotalSkill(skills[nom]);
       onSaveChange(save);
-    });
+    }, `Valeur de ${nom}`);
 
     // Bouton dé contextuel + zone inline carac
     const btnDe = document.createElement('button');
@@ -334,6 +335,7 @@ function remplirCompetencesComplet(catalogue, save, onSaveChange, rafraichirHist
 
     const selectCarac = document.createElement('select');
     selectCarac.className = 'des-select-carac';
+    selectCarac.setAttribute('aria-label', 'Caractéristique pour le jet de compétence');
     for (const c of CARACS_PRIMAIRES) {
       const opt = document.createElement('option');
       opt.value = c;
@@ -422,6 +424,7 @@ function remplirCompetencesCompact(catalogue, save, onSaveChange, rafraichirHist
   );
   btnBaseMoins.setAttribute('aria-label', 'Diminuer la valeur de la compétence');
   btnBasePlus.setAttribute('aria-label', 'Augmenter la valeur de la compétence');
+  inputBase.setAttribute('aria-label', 'Valeur de base de la compétence');
 
   // Sélecteur de carac pour le jet
   const selectCarac = document.createElement('select');
@@ -540,13 +543,24 @@ function creerStepperElements(valeur, min, max, onChange) {
 // Helpers partagés — champs simples (champ-ligne)
 // =========================================================
 
+function idFromLabel(label) {
+  const acc = { 'é':'e','è':'e','ê':'e','ë':'e','à':'a','â':'a','î':'i','ï':'i','ô':'o','ù':'u','û':'u','ç':'c','œ':'oe' };
+  return 'champ-' + label.toLowerCase()
+    .replace(/[éèêëàâîïôùûçœ]/g, c => acc[c] || c)
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+$/, '');
+}
+
 function creerChampTexte(labelTexte, valeur, maxlength, onChange) {
+  const id = idFromLabel(labelTexte);
   const ligne = document.createElement('div');
   ligne.className = 'champ-ligne';
   const lbl = document.createElement('label');
+  lbl.htmlFor = id;
   lbl.textContent = labelTexte;
   const input = document.createElement('input');
   input.type = 'text';
+  input.id = id;
   input.maxLength = maxlength;
   input.value = valeur;
   input.addEventListener('input', () => onChange(input.value));
@@ -555,11 +569,14 @@ function creerChampTexte(labelTexte, valeur, maxlength, onChange) {
 }
 
 function creerChampNombre(labelTexte, valeur, min, max, onChange) {
+  const id = idFromLabel(labelTexte);
   const ligne = document.createElement('div');
   ligne.className = 'champ-ligne';
   const lbl = document.createElement('label');
+  lbl.htmlFor = id;
   lbl.textContent = labelTexte;
   const { btnMoins, input, btnPlus } = creerStepperElements(valeur, min, max, onChange);
+  input.id = id;
   ligne.append(lbl, btnMoins, input, btnPlus);
   return { conteneur: ligne, input };
 }
@@ -586,11 +603,14 @@ function creerChampNombreDouble(
 }
 
 function creerChampSelect(labelTexte, valeur, types, onChange) {
+  const id = idFromLabel(labelTexte);
   const ligne = document.createElement('div');
   ligne.className = 'champ-ligne';
   const lbl = document.createElement('label');
+  lbl.htmlFor = id;
   lbl.textContent = labelTexte;
   const select = document.createElement('select');
+  select.id = id;
   const optAucun = document.createElement('option');
   optAucun.value = ''; optAucun.textContent = 'aucun';
   select.appendChild(optAucun);
@@ -626,7 +646,7 @@ function creerLigneStat(labelTexte, valeur, min, max, onChange) {
 
   const controles = document.createElement('div');
   controles.className = 'stat-controles';
-  controles.appendChild(creerStatGroupe('val', valeur, min, max, onChange));
+  controles.appendChild(creerStatGroupe('val', valeur, min, max, onChange, labelTexte));
 
   ligne.append(lbl, spanTotal, controles);
   return { ligne, spanTotal, controles };
@@ -648,7 +668,7 @@ function creerLigneReadOnly(labelTexte, valeur) {
   return { ligne, spanTotal };
 }
 
-function creerStatGroupe(labelTexte, valeur, min, max, onChange) {
+function creerStatGroupe(labelTexte, valeur, min, max, onChange, ariaLabel) {
   const div = document.createElement('div');
   div.className = 'stat-groupe';
 
@@ -657,6 +677,7 @@ function creerStatGroupe(labelTexte, valeur, min, max, onChange) {
   lbl.textContent = labelTexte;
 
   const { btnMoins, input, btnPlus } = creerStepperElements(valeur, min, max, onChange);
+  if (ariaLabel) input.setAttribute('aria-label', ariaLabel);
 
   div.append(lbl, btnMoins, input, btnPlus);
   return div;

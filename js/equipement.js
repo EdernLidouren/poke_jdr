@@ -93,12 +93,15 @@ function construireBlocRecherche(equipmentFilters, appliquerFiltres) {
     const ligne = document.createElement('div');
     ligne.className = 'champ-ligne';
 
+    const filtreId = 'filtre-eq-' + champ;
     const lbl = document.createElement('label');
+    lbl.htmlFor = filtreId;
     lbl.textContent = capitaliser(champ);
 
     if (config.type === 'text') {
       const input = document.createElement('input');
       input.type = 'search';
+      input.id = filtreId;
       input.className = 'filtre-text';
       input.value = '';
       input.addEventListener('input', () => {
@@ -110,6 +113,7 @@ function construireBlocRecherche(equipmentFilters, appliquerFiltres) {
 
     } else if (config.type === 'enum') {
       const select = document.createElement('select');
+      select.id = filtreId;
       const optTous = document.createElement('option');
       optTous.value = ''; optTous.textContent = 'Tous';
       select.appendChild(optTous);
@@ -291,6 +295,7 @@ function rendreContenuMonEquipement(contenu, catalogue, save, onSaveChange) {
 
       const textarea = document.createElement('textarea');
       textarea.className = 'move-notes-textarea';
+      textarea.setAttribute('aria-label', `Notes personnelles : ${equipment.nom}`);
       textarea.value = entree.player_notes || '';
       textarea.hidden = true;
       textarea.addEventListener('input', () => {

@@ -31,10 +31,13 @@ function _renderJauge(save, label, cleVal, cleMax, onUpdate, onMaxChange) {
   lblActuel.textContent = 'actuel';
   const btnActuelMoins = document.createElement('button');
   btnActuelMoins.type = 'button'; btnActuelMoins.className = 'btn-stepper'; btnActuelMoins.textContent = '−';
+  btnActuelMoins.setAttribute('aria-label', `Diminuer ${label} actuel`);
   const inputActuel = document.createElement('input');
   inputActuel.type = 'number'; inputActuel.min = '0';
+  inputActuel.setAttribute('aria-label', `${label} actuel`);
   const btnActuelPlus = document.createElement('button');
   btnActuelPlus.type = 'button'; btnActuelPlus.className = 'btn-stepper'; btnActuelPlus.textContent = '+';
+  btnActuelPlus.setAttribute('aria-label', `Augmenter ${label} actuel`);
   groupeActuel.append(lblActuel, btnActuelMoins, inputActuel, btnActuelPlus);
 
   // Groupe "max"
@@ -45,10 +48,13 @@ function _renderJauge(save, label, cleVal, cleMax, onUpdate, onMaxChange) {
   lblMax.textContent = 'max';
   const btnMaxMoins = document.createElement('button');
   btnMaxMoins.type = 'button'; btnMaxMoins.className = 'btn-stepper'; btnMaxMoins.textContent = '−';
+  btnMaxMoins.setAttribute('aria-label', `Diminuer ${label} maximum`);
   const inputMax = document.createElement('input');
   inputMax.type = 'number'; inputMax.min = '1'; inputMax.max = '999';
+  inputMax.setAttribute('aria-label', `${label} maximum`);
   const btnMaxPlus = document.createElement('button');
   btnMaxPlus.type = 'button'; btnMaxPlus.className = 'btn-stepper'; btnMaxPlus.textContent = '+';
+  btnMaxPlus.setAttribute('aria-label', `Augmenter ${label} maximum`);
   groupeMax.append(lblMax, btnMaxMoins, inputMax, btnMaxPlus);
 
   function rafraichir() {
