@@ -682,6 +682,23 @@ body {
   color: var(--c-text);
 }
 
+.move-meta {
+  color: var(--c-text-sec);
+  font-size: 12px;
+  margin-top: 0.2rem;
+  line-height: 1.4;
+}
+
+.move-meta-sep {
+  color: var(--c-text-ter);
+  user-select: none;
+}
+
+.move-meta abbr {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
 .move-effets {
   color: var(--c-text-sec);
   margin-top: 0.15rem;

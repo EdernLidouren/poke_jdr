@@ -1,5 +1,7 @@
 // Onglet Capacités — sous-onglets Mes capacités et Catalogue
 
+import { creerLigneMeta } from './libelles.js';
+
 // Couleurs par type (lowercase) — utilisées pour la bande latérale des cellules
 const TYPE_COULEURS = {
   'feu':        '#e25822',
@@ -234,11 +236,17 @@ function construireBlocCatalogueMoves(catalogue, save, movesFilters, onSaveChang
     ligne1.textContent =
       `${move.nom}, ${move.type}, tiers ${move.tiers} : ${move.cible}, ${move.portée}, ${move.utilisation}.`;
 
+    const ligneMeta = creerLigneMeta(move);
+
     const ligne2 = document.createElement('div');
     ligne2.className = 'move-effets';
     ligne2.textContent = move.effets;
 
-    moveCorps.append(ligne1, ligne2);
+    if (ligneMeta) {
+      moveCorps.append(ligne1, ligneMeta, ligne2);
+    } else {
+      moveCorps.append(ligne1, ligne2);
+    }
 
     const actions = document.createElement('div');
     actions.className = 'move-action';
@@ -468,6 +476,9 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
       ligne1.textContent =
         `${move.nom}, ${move.type}, tiers ${move.tiers} : ${move.cible}, ${move.portée}, ${move.utilisation}.`;
 
+      // Ligne intermédiaire : métadonnées (contact, jds, mouv. min., méca., tags)
+      const ligneMeta = creerLigneMeta(move);
+
       // Ligne 2 : effets
       const ligne2 = document.createElement('div');
       ligne2.className = 'move-effets';
@@ -497,7 +508,11 @@ function construireBlocListeMoves(type, catalogue, save, onSaveChange, reconstru
       });
 
       ligne4.append(btnNotes, textarea);
-      moveCorps.append(ligne1, ligne2, ligne4);
+      if (ligneMeta) {
+        moveCorps.append(ligne1, ligneMeta, ligne2, ligne4);
+      } else {
+        moveCorps.append(ligne1, ligne2, ligne4);
+      }
 
       // Ligne 3 : bouton Oublier ou Mémoriser + bouton Retirer (colonne droite)
       const ligne3 = document.createElement('div');
