@@ -5,20 +5,27 @@
 // =========================================================
 
 export function renderJaugePV(save, onUpdate, onMaxChange) {
-  return _renderJauge(save, 'PV', 'pv', 'pv_max', onUpdate, onMaxChange);
+  return _renderJauge(save, 'PV', 'pv', 'pv_max', onUpdate, onMaxChange, '❤️');
 }
 
 export function renderJaugePouvoir(save, onUpdate) {
-  return _renderJauge(save, 'Pouvoir', 'pouvoir', 'pouvoir_max', onUpdate);
+  return _renderJauge(save, 'Pouvoir', 'pouvoir', 'pouvoir_max', onUpdate, undefined, '⭐');
 }
 
-function _renderJauge(save, label, cleVal, cleMax, onUpdate, onMaxChange) {
+function _renderJauge(save, label, cleVal, cleMax, onUpdate, onMaxChange, emoji) {
   const ligne = document.createElement('div');
   ligne.className = 'stat-ligne';
 
   const lbl = document.createElement('span');
   lbl.className = 'stat-label';
-  lbl.textContent = label;
+  if (emoji) {
+    const spanEmoji = document.createElement('span');
+    spanEmoji.setAttribute('aria-hidden', 'true');
+    spanEmoji.textContent = emoji;
+    lbl.append(spanEmoji, ' ' + label);
+  } else {
+    lbl.textContent = label;
+  }
 
   const spanTotal = document.createElement('span');
   spanTotal.className = 'stat-total';

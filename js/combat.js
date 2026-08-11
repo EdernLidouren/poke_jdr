@@ -418,7 +418,10 @@ function renderPvTemporaires(save, onSaveChange) {
 
   const lbl = document.createElement('span');
   lbl.className = 'stat-label';
-  lbl.textContent = 'PV temporaires';
+  const spanEmojiPvTemp = document.createElement('span');
+  spanEmojiPvTemp.setAttribute('aria-hidden', 'true');
+  spanEmojiPvTemp.textContent = '💙';
+  lbl.append(spanEmojiPvTemp, ' PV temporaires');
 
   const spanTotal = document.createElement('span');
   spanTotal.className = 'stat-total';
