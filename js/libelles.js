@@ -23,29 +23,18 @@ export function creerLigneMeta(move) {
 
   // champs affichés sous la forme "libellé : valeur"
   const CHAMPS = [
-    ['jet_de_sauvegarde', 'jds',        'jet de sauvegarde'],
-    ['mouvement_minimal', 'mouv. min.', 'mouvement minimal'],
-    ['mécaniques',        'méca.',      'mécaniques'],
-    ['tags',              'tags',       'tags'],
+    ['jet_de_sauvegarde', 'jds'],
+    ['mouvement_minimal', 'mouv. min.'],
+    ['mécaniques',        'méca.'],
+    ['tags',              'tags'],
   ];
 
-  for (const [champ, court, complet] of CHAMPS) {
+  for (const [champ, court] of CHAMPS) {
     const valeur = move[champ];
     if (!valeur) continue;
     const span = document.createElement('span');
     span.className = 'move-meta-item';
-    if (court !== complet) {
-      // aria-label porte la forme longue pour les lecteurs d'écran ;
-      // le contenu visible (forme courte) est masqué au lecteur via aria-hidden.
-      // Évite le nœud <abbr title> qui crée un focus parasite sous VoiceOver iOS.
-      span.setAttribute('aria-label', `${complet} : ${valeur}`);
-      const spanVisuel = document.createElement('span');
-      spanVisuel.setAttribute('aria-hidden', 'true');
-      spanVisuel.textContent = `${court} : ${valeur}`;
-      span.appendChild(spanVisuel);
-    } else {
-      span.textContent = `${court} : ${valeur}`;
-    }
+    span.textContent = `${court} : ${valeur}`;
     items.push(span);
   }
 
